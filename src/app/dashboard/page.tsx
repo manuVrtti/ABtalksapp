@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import type { Domain } from "@prisma/client";
 import { CheckCircle2, Flame, Gift } from "lucide-react";
 import { auth } from "@/auth";
-import { DashboardHeader } from "@/features/dashboard/dashboard-header";
+import { AppHeader } from "@/components/shared/app-header";
 import { SubmissionHeatmap } from "@/components/dashboard/submission-heatmap";
 import { getDashboardData } from "@/features/dashboard/get-dashboard-data";
 import { getHeatmapData } from "@/features/dashboard/get-heatmap-data";
@@ -33,21 +33,20 @@ export default async function DashboardPage() {
 
   const data = await getDashboardData(session.user.id);
 
-  const headerName =
-    data.hasEnrollment === true
-      ? data.profile.fullName
-      : (session.user.name ?? session.user.email ?? "User");
-  const headerEmail = session.user.email ?? "";
-  const headerImage = session.user.image ?? null;
+  const headerUser = {
+    name:
+      data.hasEnrollment === true
+        ? data.profile.fullName
+        : (session.user.name ?? null),
+    email: session.user.email ?? "",
+    image: session.user.image ?? null,
+    role: session.user.role ?? "STUDENT",
+  };
 
   if (!data.hasEnrollment) {
     return (
       <div className="flex min-h-svh flex-col">
-        <DashboardHeader
-          displayName={headerName}
-          email={headerEmail}
-          imageUrl={headerImage}
-        />
+        <AppHeader user={headerUser} />
         <main className="mx-auto flex max-w-lg flex-1 flex-col items-center justify-center px-4 py-12 text-center">
           <h1 className="text-lg font-semibold">Complete registration</h1>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -75,11 +74,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
-      <DashboardHeader
-        displayName={headerName}
-        email={headerEmail}
-        imageUrl={headerImage}
-      />
+      <AppHeader user={headerUser} />
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card>

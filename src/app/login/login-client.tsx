@@ -19,9 +19,16 @@ type LoginClientProps = {
   showGoogle: boolean;
   showDev: boolean;
   redirectTo: string;
+  /** Captured from ?ref= for future registration / OAuth (informational for now). */
+  referralRef?: string;
 };
 
-export function LoginClient({ showGoogle, showDev, redirectTo }: LoginClientProps) {
+export function LoginClient({
+  showGoogle,
+  showDev,
+  redirectTo,
+  referralRef,
+}: LoginClientProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pending, setPending] = useState(false);
@@ -75,6 +82,17 @@ export function LoginClient({ showGoogle, showDev, redirectTo }: LoginClientProp
 
   return (
     <div className="flex flex-col gap-6">
+      {referralRef ? (
+        <div className="rounded-md border border-dashed bg-muted/40 px-3 py-2">
+          <p className="text-xs text-muted-foreground">
+            Referred by someone? Referral code:{" "}
+            <span className="font-mono font-medium text-foreground">
+              {referralRef}
+            </span>
+          </p>
+        </div>
+      ) : null}
+
       {showGoogle ? (
         <div className="flex flex-col gap-2">
           <Button
@@ -99,6 +117,9 @@ export function LoginClient({ showGoogle, showDev, redirectTo }: LoginClientProp
 
       {showDev ? (
         <form onSubmit={handleCredentialsSignIn} className="flex flex-col gap-4">
+          {referralRef ? (
+            <input type="hidden" name="ref" value={referralRef} readOnly />
+          ) : null}
           <p className="text-sm font-medium text-foreground">Dev Login</p>
           <div className="flex flex-col gap-2">
             <Label htmlFor="dev-email">Email</Label>

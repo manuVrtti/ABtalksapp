@@ -8,17 +8,27 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-type Props = {
-  displayName: string;
+export type AppHeaderUser = {
+  name: string | null;
   email: string;
-  imageUrl: string | null;
+  image: string | null;
+  role: string;
 };
+
+type Props = {
+  user: AppHeaderUser;
+};
+
+function displayLabel(user: AppHeaderUser): string {
+  return user.name?.trim() || user.email || "User";
+}
 
 function initials(name: string) {
   const parts = name.trim().split(/\s+/);
@@ -28,8 +38,9 @@ function initials(name: string) {
   return name.slice(0, 2).toUpperCase() || "?";
 }
 
-export function DashboardHeader({ displayName, email, imageUrl }: Props) {
+export function AppHeader({ user }: Props) {
   const router = useRouter();
+  const label = displayLabel(user);
 
   return (
     <header className="border-b bg-background">
@@ -51,26 +62,29 @@ export function DashboardHeader({ displayName, email, imageUrl }: Props) {
             }
           >
             <Avatar size="sm">
-              {imageUrl ? (
-                <AvatarImage src={imageUrl} alt="" />
+              {user.image ? (
+                <AvatarImage src={user.image} alt="" />
               ) : null}
-              <AvatarFallback>{initials(displayName)}</AvatarFallback>
+              <AvatarFallback>{initials(label)}</AvatarFallback>
             </Avatar>
             <span className="hidden max-w-[140px] truncate text-sm font-medium sm:inline">
-              {displayName}
+              {label}
             </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="min-w-48">
-            <DropdownMenuLabel className="font-normal">
-              <div className="flex flex-col gap-0.5">
-                <span className="truncate text-sm font-medium">
-                  {displayName}
-                </span>
-                <span className="truncate text-xs text-muted-foreground">
-                  {email}
-                </span>
-              </div>
-            </DropdownMenuLabel>
+            <DropdownMenuGroup>
+              <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col gap-0.5">
+                  <span className="truncate text-sm font-medium">{label}</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {user.email}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    Role: {user.role}
+                  </span>
+                </div>
+              </DropdownMenuLabel>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/profile")}>
               Profile

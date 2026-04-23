@@ -8,7 +8,7 @@ import {
 import { LoginClient } from "./login-client";
 
 type Props = {
-  searchParams: Promise<{ from?: string }>;
+  searchParams: Promise<{ from?: string; ref?: string }>;
 };
 
 function resolveRedirectTo(from: string | undefined) {
@@ -21,6 +21,10 @@ function resolveRedirectTo(from: string | undefined) {
 export default async function LoginPage({ searchParams }: Props) {
   const params = await searchParams;
   const redirectTo = resolveRedirectTo(params.from);
+  const referralRef =
+    typeof params.ref === "string" && params.ref.trim() !== ""
+      ? params.ref.trim()
+      : undefined;
 
   const showGoogle = Boolean(process.env.AUTH_GOOGLE_ID);
   const showDev = process.env.ENABLE_DEV_AUTH === "true";
@@ -39,6 +43,7 @@ export default async function LoginPage({ searchParams }: Props) {
             showGoogle={showGoogle}
             showDev={showDev}
             redirectTo={redirectTo}
+            referralRef={referralRef}
           />
         </CardContent>
       </Card>
