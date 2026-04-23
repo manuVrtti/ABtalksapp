@@ -8,6 +8,7 @@ import { SubmissionHeatmap } from "@/components/dashboard/submission-heatmap";
 import { getDashboardData } from "@/features/dashboard/get-dashboard-data";
 import { getHeatmapData } from "@/features/dashboard/get-heatmap-data";
 import { getLeaderboard } from "@/features/dashboard/get-leaderboard";
+import { getAvailableQuiz } from "@/features/quiz/get-available-quiz";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -58,9 +59,10 @@ export default async function DashboardPage() {
     );
   }
 
-  const [heatmapData, leaderboard] = await Promise.all([
+  const [heatmapData, leaderboard, quizAvailability] = await Promise.all([
     getHeatmapData(data.enrollment.id),
     getLeaderboard(data.profile.domain as Domain, session.user.id),
+    getAvailableQuiz(session.user.id, data.enrollment.id),
   ]);
 
   const { enrollment, profile, todayTask, isTodayCompleted } = data;
@@ -272,6 +274,56 @@ export default async function DashboardPage() {
             </Card>
           </div>
         </div>
+
+        {quizAvailability.reason === "ready" && quizAvailability.quiz ? (
+          <Card>
+            <CardHeader>
+              <CardTitle>
+                Week {quizAvailability.quiz.weekNumber} quiz available!
+              </CardTitle>
+              <CardDescription>
+                {quizAvailability.quiz.title} · {quizAvailability.quiz.domain}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Link
+                href={`/quiz/${quizAvailability.quiz.id}`}
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "inline-flex",
+                )}
+              >
+                Take quiz
+              </Link>
+            </CardContent>
+          </Card>
+        ) : null}
+
+        {quizAvailability.reason === "already_attempted" &&
+        quizAvailability.attempt?.quiz ? (
+          <Card className="border-muted-foreground/20 bg-muted/40">
+            <CardHeader>
+              <CardTitle className="text-base text-muted-foreground">
+                Week {quizAvailability.attempt.quiz.weekNumber} quiz — scored{" "}
+                {quizAvailability.attempt.score}/10
+              </CardTitle>
+              <CardDescription className="text-muted-foreground">
+                {quizAvailability.attempt.quiz.title}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Link
+                href={`/quiz/${quizAvailability.attempt.quiz.id}`}
+                className={cn(
+                  buttonVariants({ variant: "secondary" }),
+                  "inline-flex text-muted-foreground",
+                )}
+              >
+                View results
+              </Link>
+            </CardContent>
+          </Card>
+        ) : null}
 
         <Card>
           <CardHeader>

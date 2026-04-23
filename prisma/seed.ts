@@ -67,6 +67,7 @@ async function main() {
     ];
 
   const challengeByDomain = new Map<Domain, { id: string }>();
+  const quizWeek1IdByDomain = new Map<Domain, string>();
 
   for (const spec of challengeSpecs) {
     const challenge = await prisma.challenge.create({
@@ -97,6 +98,34 @@ async function main() {
           estimatedMinutes,
           linkedinTemplate: `Day ${dayNumber} of my 60 Days of Code with ABtalks 🚀\n\nMade progress today. Check my work: {{github_link}}\n\n#ABtalks #60DaysOfCode`,
           tags: ["placeholder", `day-${dayNumber}`],
+        },
+      });
+    }
+
+    const week1Quiz = await prisma.quiz.create({
+      data: {
+        challengeId: challenge.id,
+        domain: spec.domain,
+        weekNumber: 1,
+        title: `Week 1 Quiz — ${spec.domain}`,
+      },
+    });
+    quizWeek1IdByDomain.set(spec.domain, week1Quiz.id);
+
+    const correctCycle = ["A", "B", "C", "D"] as const;
+    for (let qn = 1; qn <= 10; qn++) {
+      const correctAnswer = correctCycle[(qn - 1) % 4]!;
+      await prisma.quizQuestion.create({
+        data: {
+          quizId: week1Quiz.id,
+          questionOrder: qn,
+          questionText: `Week 1 Q${qn} placeholder for ${spec.domain}?`,
+          optionA: "Option A placeholder",
+          optionB: "Option B placeholder",
+          optionC: "Option C placeholder",
+          optionD: "Option D placeholder",
+          correctAnswer,
+          explanation: `Placeholder explanation for Week 1 Q${qn} — real content pending.`,
         },
       });
     }
@@ -370,6 +399,27 @@ async function main() {
       { referrerId: dhruvId, referredId: priyaId },
       { referrerId: dhruvId, referredId: rohanId },
     ],
+  });
+
+  const snehaId = emailToId.get("sneha@abtalks.dev")!;
+  const seWeek1QuizId = quizWeek1IdByDomain.get(Domain.SE)!;
+  const seWeek1Questions = await prisma.quizQuestion.findMany({
+    where: { quizId: seWeek1QuizId },
+    orderBy: { questionOrder: "asc" },
+  });
+  const snehaAnswers: Record<string, string> = {};
+  seWeek1Questions.forEach((q, idx) => {
+    const correct = q.correctAnswer;
+    const wrong = correct === "A" ? "B" : "A";
+    snehaAnswers[q.id] = idx < 8 ? correct : wrong;
+  });
+  await prisma.quizAttempt.create({
+    data: {
+      userId: snehaId,
+      quizId: seWeek1QuizId,
+      score: 8,
+      answers: snehaAnswers,
+    },
   });
 
   const meeraSubs = await prisma.submission.count({
