@@ -1,27 +1,38 @@
+import { auth } from "@/auth";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 
-const protectedPaths = ["/dashboard", "/challenge", "/profile"];
+const protectedPaths = ["/dashboard", "/challenge", "/profile", "/quiz", "/register"];
 
-export async function middleware(request: NextRequest) {
-  const token = await getToken({
-    req: request,
-    secret: process.env.AUTH_SECRET,
-  });
+export default auth((req) => {
+  const { pathname } = req.nextUrl;
+  const isLoggedIn = !!req.auth;
 
-  const { pathname } = request.nextUrl;
   const isProtected = protectedPaths.some((p) => pathname.startsWith(p));
+  const isAuthPage = pathname === "/login";
 
-  if (isProtected && !token) {
-    const url = new URL("/login", request.url);
+  // Protected route, not logged in → redirect to login
+  if (isProtected && !isLoggedIn) {
+    const url = new URL("/login", req.nextUrl);
     url.searchParams.set("from", pathname);
     return NextResponse.redirect(url);
   }
 
+  // Logged in, on login page → redirect to dashboard
+  if (isAuthPage && isLoggedIn) {
+    return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+  }
+
+  // Everything else proceeds normally
   return NextResponse.next();
-}
+});
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/challenge/:path*", "/profile/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/challenge/:path*",
+    "/profile/:path*",
+    "/quiz/:path*",
+    "/register/:path*",
+    "/login",
+  ],
 };
