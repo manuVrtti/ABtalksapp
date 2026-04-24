@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { getReferralCookie } from "@/app/actions/referral-actions";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
 import {
@@ -38,10 +39,14 @@ export default async function RegisterPage({ searchParams }: PageProps) {
 
   const params = await searchParams;
   const refParam = params.ref;
-  const initialRef =
+  const refFromUrlNormalized =
     typeof refParam === "string"
       ? refParam.trim().toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6)
       : "";
+  const refFromUrl =
+    refFromUrlNormalized.length > 0 ? refFromUrlNormalized : undefined;
+  const refFromCookie = await getReferralCookie();
+  const initialRef = refFromUrl ?? refFromCookie ?? "";
 
   const initialName = session.user.name?.trim() ?? "";
 

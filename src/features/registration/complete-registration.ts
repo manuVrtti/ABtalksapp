@@ -1,4 +1,5 @@
 import { EnrollmentStatus } from "@prisma/client";
+import { clearReferralCookie } from "@/app/actions/referral-actions";
 import type { RegisterInput } from "@/lib/validations/register";
 import { prisma } from "@/lib/db";
 import { generateUniqueReferralCode } from "./generate-referral-code";
@@ -105,6 +106,8 @@ export async function completeRegistration(
 
       return profile.id;
     });
+
+    await clearReferralCookie();
 
     return { ok: true, profileId };
   } catch (e) {
