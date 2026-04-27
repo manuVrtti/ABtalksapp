@@ -150,7 +150,7 @@ export default async function ChallengeDayPage({ params }: PageProps) {
   }
 
   return (
-    <div className="mx-auto flex min-h-svh max-w-3xl flex-col px-4 py-8">
+    <div className="mx-auto flex min-h-svh max-w-5xl flex-col px-4 py-8">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <Link
           href="/dashboard"

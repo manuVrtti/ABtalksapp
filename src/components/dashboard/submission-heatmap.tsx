@@ -1,7 +1,17 @@
 "use client";
 
+import * as React from "react";
+import ReactMarkdown from "react-markdown";
 import { parseCalendarKeyToUtcDate, formatDateIST } from "@/lib/date-utils";
 import type { HeatmapCell } from "@/features/dashboard/get-heatmap-data";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -31,7 +41,25 @@ function tooltipLabel(cell: HeatmapCell): string {
   }
 }
 
+function isClickable(cell: HeatmapCell): boolean {
+  return cell.status === "on_time" || cell.status === "late";
+}
+
 export function SubmissionHeatmap({ data }: Props) {
+  const [open, setOpen] = React.useState(false);
+  const [active, setActive] = React.useState<HeatmapCell | null>(null);
+
+  function openCell(cell: HeatmapCell) {
+    if (!isClickable(cell)) return;
+    setActive(cell);
+    setOpen(true);
+  }
+
+  const submittedLabel =
+    active?.submittedAt != null
+      ? formatDateIST(new Date(active.submittedAt))
+      : "—";
+
   return (
     <div className="w-full min-w-0">
       <div className="overflow-x-auto pb-1">
@@ -40,18 +68,27 @@ export function SubmissionHeatmap({ data }: Props) {
           role="grid"
           aria-label="60-day submission heatmap"
         >
-          {data.map((cell, index) => (
-            <div
-              key={cell.dayNumber}
-              role="gridcell"
-              title={tooltipLabel(cell)}
-              style={{ animationDelay: `${index * 22}ms` }}
-              className={cn(
-                "size-7 shrink-0 rounded-md opacity-0 animate-heatmap-cell sm:size-9",
-                STATUS_CLASS[cell.status],
-              )}
-            />
-          ))}
+          {data.map((cell, index) => {
+            const clickable = isClickable(cell);
+            return (
+              <button
+                key={cell.dayNumber}
+                type="button"
+                role="gridcell"
+                title={tooltipLabel(cell)}
+                disabled={!clickable}
+                onClick={() => openCell(cell)}
+                style={{ animationDelay: `${index * 22}ms` }}
+                className={cn(
+                  "size-7 shrink-0 rounded-md opacity-0 animate-heatmap-cell sm:size-9",
+                  STATUS_CLASS[cell.status],
+                  clickable &&
+                    "cursor-pointer transition-[box-shadow,transform] hover:z-10 hover:ring-2 hover:ring-primary hover:ring-offset-2 hover:ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                  !clickable && "cursor-not-allowed",
+                )}
+              />
+            );
+          })}
         </div>
       </div>
 
@@ -85,6 +122,100 @@ export function SubmissionHeatmap({ data }: Props) {
           Pending
         </li>
       </ul>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
+          showCloseButton
+          className="flex max-h-[min(90vh,720px)] max-w-[calc(100%-1.5rem)] flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
+        >
+          {active ? (
+            <>
+              <DialogHeader className="shrink-0 border-b border-border/60 px-5 pt-5 pb-3">
+                <DialogTitle className="font-display text-lg leading-snug sm:text-xl">
+                  Day {active.dayNumber}
+                  {active.taskTitle ? ` — ${active.taskTitle}` : ""}
+                </DialogTitle>
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <Badge
+                    variant="secondary"
+                    className={
+                      active.status === "on_time"
+                        ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
+                        : "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                    }
+                  >
+                    {active.status === "on_time" ? "On time" : "Late"}
+                  </Badge>
+                  <p className="text-sm text-muted-foreground">
+                    Submitted {submittedLabel}
+                  </p>
+                </div>
+              </DialogHeader>
+
+              <div className="min-h-0 flex-1 space-y-6 overflow-y-auto px-5 py-4">
+                <section className="space-y-2">
+                  <h3 className="text-sm font-semibold text-foreground">
+                    Problem
+                  </h3>
+                  <div className="max-w-none text-sm leading-relaxed text-foreground [&_p]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5">
+                    {active.problemStatement ? (
+                      <ReactMarkdown>{active.problemStatement}</ReactMarkdown>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">
+                        No problem statement on file for this day.
+                      </p>
+                    )}
+                  </div>
+                </section>
+
+                <section className="space-y-2">
+                  <h3 className="text-sm font-semibold text-foreground">
+                    Your submission
+                  </h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <span className="text-muted-foreground">GitHub: </span>
+                      {active.githubUrl ? (
+                        <a
+                          href={active.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-primary underline-offset-4 hover:underline"
+                        >
+                          {active.githubUrl}
+                        </a>
+                      ) : (
+                        "—"
+                      )}
+                    </li>
+                    <li>
+                      <span className="text-muted-foreground">LinkedIn: </span>
+                      {active.linkedinUrl ? (
+                        <a
+                          href={active.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-primary underline-offset-4 hover:underline"
+                        >
+                          {active.linkedinUrl}
+                        </a>
+                      ) : (
+                        "—"
+                      )}
+                    </li>
+                  </ul>
+                </section>
+              </div>
+
+              <div className="flex shrink-0 justify-center border-t border-border/60 bg-muted/30 px-5 py-4">
+                <Button type="button" variant="default" onClick={() => setOpen(false)}>
+                  Close
+                </Button>
+              </div>
+            </>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

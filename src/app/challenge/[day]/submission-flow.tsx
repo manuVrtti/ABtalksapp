@@ -1,9 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { DailyTask, Domain } from "@prisma/client";
-import { Flame } from "lucide-react";
+import confetti from "canvas-confetti";
+import {
+  Calendar,
+  CheckCircle,
+  CheckCircle2,
+  Flame,
+} from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -41,6 +47,44 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [successStreak, setSuccessStreak] = useState(0);
   const [successDaysCompleted, setSuccessDaysCompleted] = useState(0);
+
+  useEffect(() => {
+    if (step !== "success") return;
+    const colors = ["#6366f1", "#818cf8", "#34d399", "#fbbf24", "#f472b6"];
+    void confetti({
+      particleCount: 72,
+      spread: 70,
+      origin: { y: 0.68 },
+      ticks: 140,
+      scalar: 0.95,
+      colors,
+      disableForReducedMotion: true,
+    });
+    const t1 = window.setTimeout(() => {
+      void confetti({
+        particleCount: 28,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.65 },
+        colors,
+        disableForReducedMotion: true,
+      });
+    }, 350);
+    const t2 = window.setTimeout(() => {
+      void confetti({
+        particleCount: 28,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.65 },
+        colors,
+        disableForReducedMotion: true,
+      });
+    }, 700);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+    };
+  }, [step]);
 
   async function handleGithubSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -100,41 +144,155 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
 
   const templateTooShort = editableTemplate.length < 50;
 
+  const daysRemaining = Math.max(0, 60 - successDaysCompleted);
+  const journeyPct = Math.min(100, Math.round((successDaysCompleted / 60) * 100));
+  const completedDay60 = dayNumber === 60;
+
   if (step === "success") {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xl">
-            🎉 Day {dayNumber} complete!
-          </CardTitle>
-          <CardDescription>
-            Nice work — your streak and progress are updated.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-center gap-2 rounded-lg border bg-muted/40 px-4 py-3">
-            <Flame className="size-8 shrink-0 text-orange-500" aria-hidden />
-            <div>
-              <p className="text-sm text-muted-foreground">Current streak</p>
-              <p className="text-2xl font-semibold tabular-nums">
-                {successStreak}
+    if (completedDay60) {
+      return (
+        <div className="w-full space-y-10 py-4">
+          <div className="flex flex-col items-center space-y-6 text-center">
+            <div
+              className="flex size-28 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-950/50"
+              aria-hidden
+            >
+              <span className="text-6xl leading-none">🏆</span>
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+                60 Day Challenge Complete!
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                You&apos;re now Ready for Interview
+              </p>
+              <p className="text-base text-muted-foreground">
+                Recruiters can now find your profile
               </p>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Days completed: {successDaysCompleted} / 60
+
+          <div className="flex justify-center">
+            <Link
+              href="/profile"
+              className={cn(
+                buttonVariants({ variant: "default", size: "lg" }),
+                "h-12 min-w-[220px] px-8 text-base font-medium",
+              )}
+            >
+              View Your Profile
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-full space-y-10 py-2">
+        <div className="flex flex-col items-center space-y-6 text-center">
+          <div
+            className="flex size-28 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-950/50"
+            aria-hidden
+          >
+            <CheckCircle2 className="size-20 text-emerald-500" strokeWidth={1.75} />
+          </div>
+          <div className="space-y-3">
+            <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+              Day {dayNumber} Complete! 🎉
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              You showed up. That&apos;s what counts.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Card className="border-border/50 p-0 shadow-sm">
+            <CardContent className="space-y-3 p-8">
+              <Flame
+                className="size-8 text-orange-500"
+                strokeWidth={2}
+                aria-hidden
+              />
+              <p className="font-display text-4xl font-bold tabular-nums">
+                {successStreak}
+              </p>
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                Day streak
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="border-border/50 p-0 shadow-sm">
+            <CardContent className="space-y-3 p-8">
+              <CheckCircle
+                className="size-8 text-emerald-500"
+                strokeWidth={2}
+                aria-hidden
+              />
+              <p className="font-display text-4xl font-bold tabular-nums">
+                {successDaysCompleted}
+                <span className="text-2xl font-semibold text-muted-foreground">
+                  {" "}
+                  / 60
+                </span>
+              </p>
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                Days completed
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="border-border/50 p-0 shadow-sm">
+            <CardContent className="space-y-3 p-8">
+              <Calendar
+                className="size-8 text-blue-500"
+                strokeWidth={2}
+                aria-hidden
+              />
+              <p className="font-display text-4xl font-bold tabular-nums">
+                {daysRemaining}
+              </p>
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                Days to go
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="space-y-2">
+          <div className="h-3 w-full overflow-hidden rounded-full bg-muted">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-primary to-primary-foreground transition-all duration-500"
+              style={{ width: `${journeyPct}%` }}
+            />
+          </div>
+          <p className="text-center text-sm text-muted-foreground">
+            {journeyPct}% of your 60-day journey
           </p>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <Link
             href="/dashboard"
             className={cn(
-              buttonVariants({ variant: "default" }),
-              "inline-flex w-full justify-center sm:w-auto",
+              buttonVariants({ variant: "default", size: "lg" }),
+              "h-12 min-w-[200px] px-8 text-base font-medium",
             )}
           >
-            Back to dashboard
+            Back to Dashboard
           </Link>
-        </CardContent>
-      </Card>
+          {dayNumber < 60 ? (
+            <Link
+              href={`/challenge/${dayNumber + 1}`}
+              className={cn(
+                buttonVariants({ variant: "secondary", size: "lg" }),
+                "h-12 min-w-[200px] px-8 text-base font-medium",
+              )}
+            >
+              View Day {dayNumber + 1}
+            </Link>
+          ) : null}
+        </div>
+      </div>
     );
   }
 

@@ -9,6 +9,14 @@ export type HeatmapCell = {
   dayNumber: number;
   date: string;
   status: HeatmapCellStatus;
+  /** Daily task metadata when the challenge defines this day */
+  taskTitle: string | null;
+  problemStatement: string | null;
+  /** Submission fields when this day was submitted (on_time / late) */
+  githubUrl: string | null;
+  linkedinUrl: string | null;
+  /** ISO timestamp for display */
+  submittedAt: string | null;
 };
 
 export async function getHeatmapData(
@@ -16,21 +24,60 @@ export async function getHeatmapData(
 ): Promise<HeatmapCell[]> {
   const enrollment = await prisma.enrollment.findUnique({
     where: { id: enrollmentId },
-    select: { startedAt: true },
+    select: { startedAt: true, challengeId: true },
   });
 
   if (!enrollment) {
     return [];
   }
 
-  const submissions = await prisma.submission.findMany({
-    where: { enrollmentId },
-    select: { dayNumber: true, status: true },
-  });
+  const [submissions, tasks] = await Promise.all([
+    prisma.submission.findMany({
+      where: { enrollmentId },
+      select: {
+        dayNumber: true,
+        status: true,
+        githubUrl: true,
+        linkedinUrl: true,
+        submittedAt: true,
+      },
+    }),
+    prisma.dailyTask.findMany({
+      where: {
+        challengeId: enrollment.challengeId,
+        dayNumber: { gte: 1, lte: 60 },
+      },
+      select: { dayNumber: true, title: true, problemStatement: true },
+    }),
+  ]);
 
-  const byDay = new Map<number, SubmissionStatus>();
+  const byDay = new Map<
+    number,
+    {
+      status: SubmissionStatus;
+      githubUrl: string;
+      linkedinUrl: string;
+      submittedAt: Date;
+    }
+  >();
   for (const s of submissions) {
-    byDay.set(s.dayNumber, s.status);
+    byDay.set(s.dayNumber, {
+      status: s.status,
+      githubUrl: s.githubUrl,
+      linkedinUrl: s.linkedinUrl,
+      submittedAt: s.submittedAt,
+    });
+  }
+
+  const taskByDay = new Map<
+    number,
+    { title: string; problemStatement: string }
+  >();
+  for (const t of tasks) {
+    taskByDay.set(t.dayNumber, {
+      title: t.title,
+      problemStatement: t.problemStatement,
+    });
   }
 
   const nowKey = formatInTimeZone(new Date(), IST, "yyyy-MM-dd");
@@ -38,12 +85,13 @@ export async function getHeatmapData(
 
   for (let dayNumber = 1; dayNumber <= 60; dayNumber++) {
     const date = getIstDateKeyForChallengeDay(enrollment.startedAt, dayNumber);
-    const sub = byDay.get(dayNumber);
+    const row = byDay.get(dayNumber);
+    const task = taskByDay.get(dayNumber);
 
     let status: HeatmapCellStatus;
-    if (sub === SubmissionStatus.ON_TIME) {
+    if (row?.status === SubmissionStatus.ON_TIME) {
       status = "on_time";
-    } else if (sub === SubmissionStatus.LATE) {
+    } else if (row?.status === SubmissionStatus.LATE) {
       status = "late";
     } else if (date > nowKey) {
       status = "pending";
@@ -53,7 +101,19 @@ export async function getHeatmapData(
       status = "pending";
     }
 
-    out.push({ dayNumber, date, status });
+    const hasSubmission = status === "on_time" || status === "late";
+
+    out.push({
+      dayNumber,
+      date,
+      status,
+      taskTitle: task?.title ?? null,
+      problemStatement: task?.problemStatement ?? null,
+      githubUrl: hasSubmission && row ? row.githubUrl : null,
+      linkedinUrl: hasSubmission && row ? row.linkedinUrl : null,
+      submittedAt:
+        hasSubmission && row ? row.submittedAt.toISOString() : null,
+    });
   }
 
   return out;

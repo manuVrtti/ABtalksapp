@@ -17,6 +17,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { SoundPreferences } from "@/components/profile/sound-preferences";
 import { ProfileForm } from "./profile-form";
 import type { ProfileFormValues } from "@/lib/validations/profile";
 
@@ -120,6 +121,8 @@ export default async function ProfilePage() {
       <AppHeader user={headerUser} domain={profile.domain} />
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8">
         <h1 className="font-display text-2xl font-semibold tracking-tight">Profile</h1>
+
+        <SoundPreferences />
 
         <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
           <Card>
