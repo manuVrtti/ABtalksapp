@@ -68,7 +68,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
-      <AppHeader user={headerUser} />
+      <AppHeader user={headerUser} domain={profile.domain as Domain} />
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card>

@@ -1,343 +1,276 @@
 [
   {
-    "dayNumber": 1,
-    "domain": "SE",
-    "title": "Your First Python Program",
-    "problemStatement": "Welcome to Day 1. Today we install Python and write your first program.\n\n**Context:** Every coder started where you are. Writing your first program — even something tiny — is a real accomplishment.\n\n**What to do:**\n- Install Python 3.10+ from python.org\n- Create a file called hello.py\n- Write one line: `print(\"Hello, my name is [YOUR NAME]\")`\n- Run it from your terminal: `python hello.py`\n\n**Expected output (example):**\n```\nHello, my name is Priya\n```\n\n**Submission:** Create a new GitHub repository called `abtalks-se-day-1` and push hello.py to it.",
-    "learningObjectives": [
-      "Install Python on your local machine",
-      "Run a Python file from the command line",
-      "Push code to a new GitHub repository"
-    ],
-    "resources": [
-      "https://www.python.org/downloads/",
-      "https://docs.github.com/en/get-started/quickstart/create-a-repo"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 5,
-    "linkedinTemplate": "Day 1 of my 60 Days of Code with ABtalks 🚀\n\nInstalled Python and wrote my first program today. A tiny step, but the hardest part is starting.\n\nGrateful to Anil Bajpai sir and the ABtalks community.\n\nRepo: {{github_link}}\n\n#ABtalks #60DaysOfCode #Python #LearningInPublic",
-    "solutionApproach": "Student installs Python, creates hello.py with a print statement, creates GitHub repo, pushes. Just verify environment works.",
-    "tags": ["python", "setup", "basics", "git", "github"]
+  "dayNumber": 1,
+  "domain": "SE",
+  "title": "Print Hello World",
+  "problemStatement": "Print 'Hello, ABtalks!' using Python and push to GitHub.",
+  "learningObjectives": ["Run Python code", "Use print()", "Setup GitHub"],
+  "resources": ["[https://colab.research.google.com/](https://colab.research.google.com/)", "[https://docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 5,
+  "linkedinTemplate": "Day 1 of ABtalks #60DaysOfCode 🚀 I wrote my first Python program and pushed it to GitHub. Excited to start this journey. Check it here: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #SoftwareEngineering",
+  "solutionApproach": "Use print() and push code.",
+  "tags": ["python", "beginner", "setup"]
   },
   {
-    "dayNumber": 1,
-    "domain": "DS",
-    "title": "Set Up Your ML Environment",
-    "problemStatement": "Welcome to Day 1 of ML. Before we do any machine learning, we need tools.\n\n**Context:** Machine Learning starts with Python and a few key libraries. Today we set up the environment.\n\n**What to do:**\n- Install Python 3.10+ if not already installed\n- Install numpy and pandas: `pip install numpy pandas`\n- Create a file called `day1.py`\n- Import both libraries and print their versions:\n```python\nimport numpy as np\nimport pandas as pd\nprint(f\"numpy version: {np.__version__}\")\nprint(f\"pandas version: {pd.__version__}\")\n```\n- Run the script\n\n**Expected output:**\n```\nnumpy version: 1.x.x\npandas version: 2.x.x\n```\n(Your versions may differ — that's fine.)\n\n**Submission:** Create a GitHub repo called `abtalks-ml-day-1` and push day1.py to it.",
-    "learningObjectives": [
-      "Install core ML Python libraries",
-      "Verify environment is working",
-      "Push a Python file to GitHub"
-    ],
-    "resources": [
-      "https://numpy.org/install/",
-      "https://pandas.pydata.org/getting_started.html"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 1 of my 60 Days of ML with ABtalks 🧠\n\nSet up Python, numpy, and pandas today. Every expert was once here.\n\nThanks to Anil Bajpai sir and the ABtalks community.\n\nRepo: {{github_link}}\n\n#ABtalks #MachineLearning #Python #LearningInPublic",
-    "solutionApproach": "Install numpy and pandas, write import script, print versions, push to GitHub.",
-    "tags": ["python", "numpy", "pandas", "setup", "ml-basics"]
+  "dayNumber": 2,
+  "domain": "SE",
+  "title": "User Input Greeting",
+  "problemStatement": "Take user name input and print greeting, then push to GitHub.",
+  "learningObjectives": ["Use input()", "String formatting", "Basic I/O"],
+  "resources": ["[https://www.w3schools.com/python/ref_func_input.asp](https://www.w3schools.com/python/ref_func_input.asp)", "[https://realpython.com/python-input-output/](https://realpython.com/python-input-output/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 7,
+  "linkedinTemplate": "Day 2 of ABtalks #60DaysOfCode 💻 Built a simple program using user input. Small progress but feels great. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #CodingJourney",
+  "solutionApproach": "Use input() and f-string.",
+  "tags": ["input", "python", "strings"]
   },
   {
-    "dayNumber": 1,
-    "domain": "DS",
-    "title": "Your First Dataset",
-    "problemStatement": "Welcome to Day 1 of Data Science.\n\n**Context:** Data Science begins with understanding data. Today we create and view our first dataset.\n\n**What to do:**\n- Install pandas if not installed: `pip install pandas`\n- Create a file `day1_ds.py`\n- Create a simple dataset with Name and Age\n- Print the dataset\n\n**Example code:**\n```python\nimport pandas as pd\n\ndata = {\n    \"Name\": [\"Rahul\", \"Priya\", \"Aman\"],\n    \"Age\": [20, 21, 19]\n}\n\ndf = pd.DataFrame(data)\nprint(df)\n```\n\n**Expected output:**\n```\n    Name  Age\n0  Rahul   20\n1  Priya   21\n2   Aman   19\n```\n\n**Submission:** Create a GitHub repo called `abtalks-ds-day-1` and push your file.",
-    "learningObjectives": [
-      "Understand structured data",
-      "Create a pandas DataFrame",
-      "Print and inspect data"
-    ],
-    "resources": [
-      "https://pandas.pydata.org/docs/"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 1 of my Data Science journey 📊\n\nCreated my first dataset using pandas today. Feels like unlocking a new superpower.\n\nRepo: {{github_link}}\n\n#ABtalks #DataScience #Python #LearningInPublic",
-    "solutionApproach": "Create dictionary, convert to DataFrame, print output, push to GitHub.",
-    "tags": ["pandas", "dataframe", "basics", "setup"]
+  "dayNumber": 3,
+  "domain": "SE",
+  "title": "Basic Calculator",
+  "problemStatement": "Take two numbers and print sum, difference, product, division, then push to GitHub.",
+  "learningObjectives": ["Arithmetic ops", "Type casting", "Output formatting"],
+  "resources": ["[https://docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/)", "[https://www.programiz.com/python-programming/operators](https://www.programiz.com/python-programming/operators)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 12,
+  "linkedinTemplate": "Day 3 of ABtalks #60DaysOfCode 🔥 Built a mini calculator in Python. Learning real logic now. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #SoftwareEngineering",
+  "solutionApproach": "Convert inputs and apply operations.",
+  "tags": ["calculator", "operators", "python"]
+  },
+  {
+  "dayNumber": 4,
+  "domain": "SE",
+  "title": "Even Odd Checker",
+  "problemStatement": "Check if a number is even or odd and push to GitHub.",
+  "learningObjectives": ["If-else", "Modulo", "Logic"],
+  "resources": ["[https://www.w3schools.com/python/python_conditions.asp](https://www.w3schools.com/python/python_conditions.asp)", "[https://realpython.com/python-conditional-statements/](https://realpython.com/python-conditional-statements/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 10,
+  "linkedinTemplate": "Day 4 of ABtalks #60DaysOfCode 🚀 Built an even-odd checker using Python. Improving logic daily. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #Logic",
+  "solutionApproach": "Use modulo operator.",
+  "tags": ["conditionals", "logic", "python"]
+  },
+  {
+  "dayNumber": 5,
+  "domain": "SE",
+  "title": "List Sum",
+  "problemStatement": "Create a list and print its sum, then push to GitHub.",
+  "learningObjectives": ["Lists", "sum()", "Basics"],
+  "resources": ["[https://www.w3schools.com/python/python_lists.asp](https://www.w3schools.com/python/python_lists.asp)", "[https://docs.python.org/3/tutorial/datastructures.html](https://docs.python.org/3/tutorial/datastructures.html)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 12,
+  "linkedinTemplate": "Day 5 of ABtalks #60DaysOfCode 💡 Worked with lists and computed sums. Strong basics building. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #DataStructures",
+  "solutionApproach": "Use list and sum().",
+  "tags": ["lists", "python", "iteration"]
+  },
+  {
+  "dayNumber": 6,
+  "domain": "SE",
+  "title": "Word Count",
+  "problemStatement": "Count number of words in a sentence and push to GitHub.",
+  "learningObjectives": ["Strings", "split()", "Counting"],
+  "resources": ["[https://www.w3schools.com/python/ref_string_split.asp](https://www.w3schools.com/python/ref_string_split.asp)", "[https://realpython.com/python-strings/](https://realpython.com/python-strings/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 20,
+  "linkedinTemplate": "Day 6 of ABtalks #60DaysOfCode 🚀 Built a word count tool. Solving real problems now. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #TextProcessing",
+  "solutionApproach": "Split string and count.",
+  "tags": ["strings", "text", "python"]
+  },
+  {
+  "dayNumber": 7,
+  "domain": "SE",
+  "title": "File Logger",
+  "problemStatement": "Save user input into a file and push to GitHub.",
+  "learningObjectives": ["File I/O", "Write mode", "Persistence"],
+  "resources": ["[https://docs.python.org/3/tutorial/inputoutput.html](https://docs.python.org/3/tutorial/inputoutput.html)", "[https://realpython.com/read-write-files-python/](https://realpython.com/read-write-files-python/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 25,
+  "linkedinTemplate": "Day 7 of ABtalks #60DaysOfCode 🔥 Built a file logger storing inputs. Programs now persist data. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #Python #FileHandling",
+  "solutionApproach": "Use open() and write().",
+  "tags": ["files", "python", "io"]
+  },
+  {
+  "dayNumber": 1,
+  "domain": "DS",
+  "title": "Create DataFrame",
+  "problemStatement": "Create a simple pandas DataFrame and push to GitHub.",
+  "learningObjectives": ["Pandas basics", "DataFrame", "Setup"],
+  "resources": ["[https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)", "[https://colab.research.google.com/](https://colab.research.google.com/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 5,
+  "linkedinTemplate": "Day 1 of ABtalks #60DaysOfCode 📊 Started with pandas and created my first dataset. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #Pandas",
+  "solutionApproach": "Use pandas DataFrame.",
+  "tags": ["pandas", "dataframe", "beginner"]
+  },
+  {
+  "dayNumber": 2,
+  "domain": "DS",
+  "title": "Mean with NumPy",
+  "problemStatement": "Calculate mean of a list using numpy and push to GitHub.",
+  "learningObjectives": ["NumPy", "Mean", "Stats"],
+  "resources": ["[https://numpy.org/doc/](https://numpy.org/doc/)", "[https://www.w3schools.com/python/numpy_intro.asp](https://www.w3schools.com/python/numpy_intro.asp)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 8,
+  "linkedinTemplate": "Day 2 of ABtalks #60DaysOfCode 📊 Computed mean using numpy. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #NumPy",
+  "solutionApproach": "Use numpy.mean().",
+  "tags": ["numpy", "statistics", "python"]
+  },
+  {
+  "dayNumber": 3,
+  "domain": "DS",
+  "title": "Load CSV",
+  "problemStatement": "Load a CSV file using pandas and push to GitHub.",
+  "learningObjectives": ["read_csv", "Data loading", "Basics"],
+  "resources": ["[https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)", "[https://www.kaggle.com/](https://www.kaggle.com/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 12,
+  "linkedinTemplate": "Day 3 of ABtalks #60DaysOfCode 📊 Loaded a CSV dataset using pandas. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #Pandas",
+  "solutionApproach": "Use pandas.read_csv().",
+  "tags": ["csv", "pandas", "data"]
+  },
+  {
+  "dayNumber": 4,
+  "domain": "DS",
+  "title": "Handle Missing Data",
+  "problemStatement": "Fill missing values in dataset and push to GitHub.",
+  "learningObjectives": ["fillna", "Cleaning", "Null handling"],
+  "resources": ["[https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)", "[https://realpython.com/](https://realpython.com/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 15,
+  "linkedinTemplate": "Day 4 of ABtalks #60DaysOfCode 📊 Cleaned data by handling missing values. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #DataCleaning",
+  "solutionApproach": "Use fillna().",
+  "tags": ["cleaning", "pandas", "data"]
+  },
+  {
+  "dayNumber": 5,
+  "domain": "DS",
+  "title": "Group and Aggregate",
+  "problemStatement": "Group dataset and calculate average, then push to GitHub.",
+  "learningObjectives": ["groupby", "Aggregation", "Analysis"],
+  "resources": ["[https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)", "[https://realpython.com/](https://realpython.com/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 20,
+  "linkedinTemplate": "Day 5 of ABtalks #60DaysOfCode 📊 Performed grouping and aggregation. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #Analytics",
+  "solutionApproach": "Use groupby().mean().",
+  "tags": ["groupby", "analysis", "pandas"]
+  },
+  {
+  "dayNumber": 6,
+  "domain": "DS",
+  "title": "Bar Chart Plot",
+  "problemStatement": "Create a bar chart using matplotlib and push to GitHub.",
+  "learningObjectives": ["Matplotlib", "Visualization", "Plotting"],
+  "resources": ["[https://matplotlib.org/](https://matplotlib.org/)", "[https://www.w3schools.com/python/matplotlib_intro.asp](https://www.w3schools.com/python/matplotlib_intro.asp)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 25,
+  "linkedinTemplate": "Day 6 of ABtalks #60DaysOfCode 📊 Created my first visualization. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #Visualization",
+  "solutionApproach": "Use plt.bar().",
+  "tags": ["visualization", "matplotlib", "python"]
+  },
+  {
+  "dayNumber": 7,
+  "domain": "DS",
+  "title": "Mini Analysis",
+  "problemStatement": "Load, clean, and analyze a dataset and push to GitHub.",
+  "learningObjectives": ["End-to-end", "Cleaning", "Insights"],
+  "resources": ["[https://kaggle.com/](https://kaggle.com/)", "[https://pandas.pydata.org/](https://pandas.pydata.org/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 30,
+  "linkedinTemplate": "Day 7 of ABtalks #60DaysOfCode 📊 Completed a mini data analysis project. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #DataScience #Project",
+  "solutionApproach": "Combine pandas and plotting.",
+  "tags": ["project", "analysis", "data"]
+  },
+  {
+  "dayNumber": 1,
+  "domain": "AI",
+  "title": "First LLM Call",
+  "problemStatement": "Call an LLM API with a simple prompt and push to GitHub.",
+  "learningObjectives": ["API call", "LLM basics", "Setup"],
+  "resources": ["[https://ai.google.dev/](https://ai.google.dev/)", "[https://console.groq.com/](https://console.groq.com/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 5,
+  "linkedinTemplate": "Day 1 of ABtalks #60DaysOfCode 🤖 Made my first LLM API call. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #LLM",
+  "solutionApproach": "Send basic prompt.",
+  "tags": ["llm", "api", "ai"]
+  },
+  {
+  "dayNumber": 2,
+  "domain": "AI",
+  "title": "Prompt Generator",
+  "problemStatement": "Generate a prompt dynamically from input and push to GitHub.",
+  "learningObjectives": ["Prompting", "Strings", "Logic"],
+  "resources": ["[https://platform.openai.com/docs/](https://platform.openai.com/docs/)", "[https://ai.google.dev/](https://ai.google.dev/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 10,
+  "linkedinTemplate": "Day 2 of ABtalks #60DaysOfCode 🤖 Built a prompt generator. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #PromptEngineering",
+  "solutionApproach": "Format string prompt.",
+  "tags": ["prompt", "ai", "strings"]
+  },
+  {
+  "dayNumber": 3,
+  "domain": "AI",
+  "title": "Text Summarizer",
+  "problemStatement": "Summarize input text using LLM and push to GitHub.",
+  "learningObjectives": ["Summarization", "LLM", "Prompting"],
+  "resources": ["[https://ai.google.dev/](https://ai.google.dev/)", "[https://console.groq.com/](https://console.groq.com/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 12,
+  "linkedinTemplate": "Day 3 of ABtalks #60DaysOfCode 🤖 Built a text summarizer. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #LLM",
+  "solutionApproach": "Use summarization prompt.",
+  "tags": ["summarization", "llm", "ai"]
+  },
+  {
+  "dayNumber": 4,
+  "domain": "AI",
+  "title": "QnA Bot",
+  "problemStatement": "Answer questions using LLM API and push to GitHub.",
+  "learningObjectives": ["QnA", "API", "LLM"],
+  "resources": ["[https://ai.google.dev/](https://ai.google.dev/)", "[https://console.groq.com/](https://console.groq.com/)"],
+  "difficulty": "Easy",
+  "estimatedMinutes": 15,
+  "linkedinTemplate": "Day 4 of ABtalks #60DaysOfCode 🤖 Built a QnA bot. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #Chatbot",
+  "solutionApproach": "Send question as prompt.",
+  "tags": ["qa", "chatbot", "ai"]
+  },
+  {
+  "dayNumber": 5,
+  "domain": "AI",
+  "title": "Tone Converter",
+  "problemStatement": "Convert text tone using LLM and push to GitHub.",
+  "learningObjectives": ["Prompting", "Tone", "LLM"],
+  "resources": ["[https://platform.openai.com/docs/](https://platform.openai.com/docs/)", "[https://ai.google.dev/](https://ai.google.dev/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 20,
+  "linkedinTemplate": "Day 5 of ABtalks #60DaysOfCode 🤖 Built a tone converter. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #PromptEngineering",
+  "solutionApproach": "Add tone instruction.",
+  "tags": ["prompt", "tone", "ai"]
+  },
+  {
+  "dayNumber": 6,
+  "domain": "AI",
+  "title": "LinkedIn Generator",
+  "problemStatement": "Generate LinkedIn post using LLM and push to GitHub.",
+  "learningObjectives": ["Generation", "Prompting", "LLM"],
+  "resources": ["[https://ai.google.dev/](https://ai.google.dev/)", "[https://console.groq.com/](https://console.groq.com/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 25,
+  "linkedinTemplate": "Day 6 of ABtalks #60DaysOfCode 🤖 Built a LinkedIn post generator. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #ContentAI",
+  "solutionApproach": "Use structured prompt.",
+  "tags": ["generation", "ai", "content"]
+  },
+  {
+  "dayNumber": 7,
+  "domain": "AI",
+  "title": "Mini AI Assistant",
+  "problemStatement": "Build simple AI assistant logic and push to GitHub.",
+  "learningObjectives": ["Routing", "LLM", "Logic"],
+  "resources": ["[https://ai.google.dev/](https://ai.google.dev/)", "[https://console.groq.com/](https://console.groq.com/)"],
+  "difficulty": "Medium",
+  "estimatedMinutes": 30,
+  "linkedinTemplate": "Day 7 of ABtalks #60DaysOfCode 🤖 Built a mini AI assistant. Repo: {{github_link}} Thanks Anil Bajpai! #ABtalks #60DaysOfCode #AI #LLM",
+  "solutionApproach": "Use conditions with API.",
+  "tags": ["assistant", "ai", "llm"]
   }
-  ,
-  {
-    "dayNumber": 2,
-    "domain": "SE",
-    "title": "Variables and Input",
-    "problemStatement": "Learn how to take input from a user and store it.\n\n**What to do:**\n- Create a file `input.py`\n- Ask the user for their name and age\n- Print: \"Hello [name], you are [age] years old\"\n\n**Expected output (example):**\n```\nHello Rahul, you are 20 years old\n```\n\n**Submission:** Push to GitHub repo `abtalks-day-2`",
-    "learningObjectives": [
-      "Understand variables",
-      "Take user input",
-      "Basic string formatting"
-    ],
-    "resources": [
-      "https://docs.python.org/3/tutorial/inputoutput.html"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 2 of #60DaysOfCode 🚀\n\nLearned how to take input and use variables in Python.\n\nRepo: {{github_link}}",
-    "solutionApproach": "Use input() and print formatted string",
-    "tags": ["python", "basics", "input"]
-  },
-  {
-    "dayNumber": 2,
-    "domain": "DS",
-    "title": "Create Your First Array",
-    "problemStatement": "Understand numpy arrays.\n\n**What to do:**\n- Create a numpy array of numbers 1 to 5\n- Print the array and its type\n\n**Expected output:**\n```\n[1 2 3 4 5]\n<class 'numpy.ndarray'>\n```",
-    "learningObjectives": [
-      "Understand numpy arrays",
-      "Basic data structures in ML"
-    ],
-    "resources": [
-      "https://numpy.org/doc/stable/user/quickstart.html"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 2 of ML 🧠\n\nCreated my first numpy array today.\n\nRepo: {{github_link}}",
-    "solutionApproach": "Use np.array()",
-    "tags": ["numpy", "ml-basics"]
-  },
-  {
-    "dayNumber": 2,
-    "domain": "DS",
-    "title": "Create a DataFrame",
-    "problemStatement": "Learn pandas basics.\n\n**What to do:**\n- Create a DataFrame with columns: Name, Age\n- Add 3 rows\n- Print the DataFrame",
-    "learningObjectives": [
-      "Understand pandas DataFrame",
-      "Create structured data"
-    ],
-    "resources": [
-      "https://pandas.pydata.org/docs/"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 2 of Data Science 📊\n\nCreated my first DataFrame.\n\nRepo: {{github_link}}",
-    "solutionApproach": "Use pd.DataFrame()",
-    "tags": ["pandas", "dataframe"]
-  },
-
-  {
-    "dayNumber": 3,
-    "domain": "SE",
-    "title": "If-Else Basics",
-    "problemStatement": "Learn decision making.\n\n**What to do:**\n- Take a number as input\n- Print \"Even\" or \"Odd\"",
-    "learningObjectives": [
-      "Conditional statements",
-      "Logic building"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 3 🚀 Learned if-else logic.\nRepo: {{github_link}}",
-    "solutionApproach": "Use if number % 2 == 0",
-    "tags": ["python", "conditions"]
-  },
-  {
-    "dayNumber": 3,
-    "domain": "DS",
-    "title": "Array Operations",
-    "problemStatement": "Perform operations on arrays.\n\n**What to do:**\n- Create array [1,2,3,4,5]\n- Print square of each element",
-    "learningObjectives": [
-      "Vector operations",
-      "Element-wise computation"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 3 ML 🧠 Array operations done.\nRepo: {{github_link}}",
-    "solutionApproach": "Use arr**2",
-    "tags": ["numpy"]
-  },
-  {
-    "dayNumber": 3,
-    "domain": "DS",
-    "title": "Read CSV File",
-    "problemStatement": "Load data from CSV.\n\n**What to do:**\n- Create a CSV file\n- Load using pandas\n- Print first 5 rows",
-    "learningObjectives": [
-      "Data loading",
-      "Working with CSV"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 3 DS 📊 Loaded my first dataset.\nRepo: {{github_link}}",
-    "solutionApproach": "Use pd.read_csv()",
-    "tags": ["pandas", "csv"]
-  },
-
-  {
-    "dayNumber": 4,
-    "domain": "SE",
-    "title": "Loops Practice",
-    "problemStatement": "Print numbers 1 to 10 using loop",
-    "learningObjectives": [
-      "For loop",
-      "Iteration"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 4 🚀 Practiced loops.\nRepo: {{github_link}}",
-    "solutionApproach": "Use for loop",
-    "tags": ["loops"]
-  },
-  {
-    "dayNumber": 4,
-    "domain": "DS",
-    "title": "Mean of Array",
-    "problemStatement": "Calculate mean of array",
-    "learningObjectives": [
-      "Basic statistics",
-      "numpy functions"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 4 ML 🧠 Learned mean.\nRepo: {{github_link}}",
-    "solutionApproach": "Use np.mean()",
-    "tags": ["numpy"]
-  },
-  {
-    "dayNumber": 4,
-    "domain": "DS",
-    "title": "Data Summary",
-    "problemStatement": "Use describe() on dataset",
-    "learningObjectives": [
-      "Data understanding",
-      "Summary stats"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 4 DS 📊 Data summary done.\nRepo: {{github_link}}",
-    "solutionApproach": "Use df.describe()",
-    "tags": ["pandas"]
-  },
-
-  {
-    "dayNumber": 5,
-    "domain": "SE",
-    "title": "Functions",
-    "problemStatement": "Create a function to add two numbers",
-    "learningObjectives": [
-      "Functions",
-      "Code reuse"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 5 🚀 Functions learned.\nRepo: {{github_link}}",
-    "solutionApproach": "Define function using def",
-    "tags": ["functions"]
-  },
-  {
-    "dayNumber": 5,
-    "domain": "DS",
-    "title": "Random Numbers",
-    "problemStatement": "Generate random numbers",
-    "learningObjectives": [
-      "Random data",
-      "numpy random"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 5 ML 🧠 Random numbers.\nRepo: {{github_link}}",
-    "solutionApproach": "Use np.random",
-    "tags": ["numpy"]
-  },
-  {
-    "dayNumber": 5,
-    "domain": "DS",
-    "title": "Filter Data",
-    "problemStatement": "Filter rows where age > 20",
-    "learningObjectives": [
-      "Filtering data",
-      "Boolean indexing"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 5 DS 📊 Filtering data.\nRepo: {{github_link}}",
-    "solutionApproach": "Use df[df['Age'] > 20]",
-    "tags": ["pandas"]
-  },
-
-  {
-    "dayNumber": 6,
-    "domain": "SE",
-    "title": "Lists",
-    "problemStatement": "Create a list and print all elements",
-    "learningObjectives": [
-      "Lists",
-      "Iteration"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 6 🚀 Lists explored.\nRepo: {{github_link}}",
-    "solutionApproach": "Use list and loop",
-    "tags": ["lists"]
-  },
-  {
-    "dayNumber": 6,
-    "domain": "DS",
-    "title": "Reshape Array",
-    "problemStatement": "Reshape array to 2x2",
-    "learningObjectives": [
-      "Array manipulation"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 6 ML 🧠 Reshaping arrays.\nRepo: {{github_link}}",
-    "solutionApproach": "Use reshape()",
-    "tags": ["numpy"]
-  },
-  {
-    "dayNumber": 6,
-    "domain": "DS",
-    "title": "Column Selection",
-    "problemStatement": "Select a single column",
-    "learningObjectives": [
-      "Column access"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 10,
-    "linkedinTemplate": "Day 6 DS 📊 Column selection.\nRepo: {{github_link}}",
-    "solutionApproach": "Use df['column']",
-    "tags": ["pandas"]
-  },
-
-  {
-    "dayNumber": 7,
-    "domain": "SE",
-    "title": "Mini Project",
-    "problemStatement": "Build a simple calculator using functions",
-    "learningObjectives": [
-      "Combine concepts",
-      "Problem solving"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 20,
-    "linkedinTemplate": "Day 7 🚀 Built a mini calculator.\nRepo: {{github_link}}",
-    "solutionApproach": "Use functions and input",
-    "tags": ["project"]
-  },
-  {
-    "dayNumber": 7,
-    "domain": "DS",
-    "title": "Simple Dataset Stats",
-    "problemStatement": "Find mean, max, min of array",
-    "learningObjectives": [
-      "Statistics basics"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 15,
-    "linkedinTemplate": "Day 7 ML 🧠 Stats basics done.\nRepo: {{github_link}}",
-    "solutionApproach": "Use numpy functions",
-    "tags": ["numpy"]
-  },
-  {
-    "dayNumber": 7,
-    "domain": "DS",
-    "title": "Group By",
-    "problemStatement": "Group data by column and find average",
-    "learningObjectives": [
-      "Grouping data"
-    ],
-    "difficulty": "Easy",
-    "estimatedMinutes": 15,
-    "linkedinTemplate": "Day 7 DS 📊 GroupBy learned.\nRepo: {{github_link}}",
-    "solutionApproach": "Use groupby()",
-    "tags": ["pandas"]
-  }
-]
+  ]
+  

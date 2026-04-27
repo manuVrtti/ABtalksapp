@@ -115,7 +115,7 @@ export default async function ProfilePage() {
 
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
-      <AppHeader user={headerUser} />
+      <AppHeader user={headerUser} domain={profile.domain} />
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8">
         <h1 className="text-2xl font-semibold tracking-tight">Profile</h1>
 

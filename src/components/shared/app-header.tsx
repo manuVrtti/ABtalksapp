@@ -1,5 +1,6 @@
 "use client";
 
+import { Domain } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth-actions";
@@ -24,6 +25,8 @@ export type AppHeaderUser = {
 
 type Props = {
   user: AppHeaderUser;
+  /** Student track; omit when user has no profile yet (e.g. OAuth before registration). */
+  domain?: Domain | null;
 };
 
 function displayLabel(user: AppHeaderUser): string {
@@ -38,19 +41,55 @@ function initials(name: string) {
   return name.slice(0, 2).toUpperCase() || "?";
 }
 
-export function AppHeader({ user }: Props) {
+function domainBadgeTitle(domain: Domain): string {
+  switch (domain) {
+    case Domain.AI:
+      return "Artificial Intelligence";
+    case Domain.DS:
+      return "Data Science";
+    case Domain.SE:
+      return "Software Engineering";
+    default:
+      return domain;
+  }
+}
+
+function domainBadgeClass(domain: Domain): string {
+  switch (domain) {
+    case Domain.AI:
+      return "bg-purple-500 text-white";
+    case Domain.DS:
+      return "bg-blue-500 text-white";
+    case Domain.SE:
+      return "bg-green-500 text-white";
+    default:
+      return "bg-muted text-foreground";
+  }
+}
+
+export function AppHeader({ user, domain }: Props) {
   const router = useRouter();
   const label = displayLabel(user);
 
   return (
     <header className="border-b bg-background">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
-        <Link
-          href="/dashboard"
-          className="text-base font-semibold tracking-tight text-foreground"
-        >
-          ABtalks
-        </Link>
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+          <Link
+            href="/dashboard"
+            className="shrink-0 text-base font-semibold tracking-tight text-foreground"
+          >
+            ABtalks
+          </Link>
+          {domain ? (
+            <span
+              className={`inline-flex shrink-0 items-center rounded-md px-2 py-1 text-xs font-semibold tracking-wide sm:px-2.5 sm:text-sm ${domainBadgeClass(domain)}`}
+              title={domainBadgeTitle(domain)}
+            >
+              {domain}
+            </span>
+          ) : null}
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger
             render={

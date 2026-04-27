@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import type { Domain } from "@prisma/client";
 import { auth } from "@/auth";
 import {
   getQuizWithQuestions,
@@ -37,7 +38,7 @@ export default async function QuizPage({ params }: PageProps) {
 
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
-      <AppHeader user={headerUser} />
+      <AppHeader user={headerUser} domain={data.quiz.domain as Domain} />
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
         <h1 className="mb-6 text-2xl font-semibold tracking-tight">
           {data.quiz.title}
