@@ -51,27 +51,29 @@ export default async function RegisterPage({ searchParams }: PageProps) {
   const initialName = session.user.name?.trim() ?? "";
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center p-6">
-      <Card className="w-full max-w-2xl shadow-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl font-semibold tracking-tight">
-            Welcome to ABtalks! Complete your profile to start your 60-day
-            journey.
-          </CardTitle>
-          <CardDescription>
-            You&apos;re signed in as{" "}
-            <span className="font-medium text-foreground">
-              {session.user.email ?? session.user.id}
-            </span>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <RegistrationForm
-            initialName={initialName}
-            initialRef={initialRef}
-          />
-        </CardContent>
-      </Card>
+    <div className="flex min-h-svh flex-col bg-gradient-to-br from-primary/5 via-background to-background">
+      <div className="flex flex-1 flex-col items-center justify-center p-6">
+        <Card className="w-full max-w-2xl border-border/60 shadow-md">
+          <CardHeader className="space-y-2">
+            <CardTitle className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+              Welcome to ABtalks 🚀
+            </CardTitle>
+            <CardDescription className="text-base">
+              Complete your profile to start your 60-day journey. You&apos;re
+              signed in as{" "}
+              <span className="font-medium text-foreground">
+                {session.user.email ?? session.user.id}
+              </span>
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <RegistrationForm
+              initialName={initialName}
+              initialRef={initialRef}
+            />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

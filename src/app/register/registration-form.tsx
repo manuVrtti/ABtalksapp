@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Domain } from "@prisma/client";
-import { Brain, Code2, Loader2, Sparkles, X } from "lucide-react";
+import { BarChart3, BrainCircuit, Code2, Loader2, X } from "lucide-react";
 import { type Resolver, Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { completeRegistrationAction } from "@/app/actions/registration-actions";
@@ -43,25 +43,29 @@ const domainCards: {
   title: string;
   description: string;
   icon: typeof Code2;
+  accent: string;
 }[] = [
   {
     value: Domain.AI,
     title: "Artificial Intelligence",
     description: "Foundations and applied AI alongside the community.",
-    icon: Sparkles,
+    icon: BrainCircuit,
+    accent: "border-l-domains-ai",
   },
   {
     value: Domain.DS,
     title: "Data Science",
     description:
       "Data, analysis, and practical workflows from exploration to modeling.",
-    icon: Brain,
+    icon: BarChart3,
+    accent: "border-l-domains-ds",
   },
   {
     value: Domain.SE,
     title: "Software Engineering",
     description: "Build systems, APIs, and full-stack apps over 60 days.",
     icon: Code2,
+    accent: "border-l-domains-se",
   },
 ];
 
@@ -217,8 +221,8 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
         <p className="text-sm text-muted-foreground">
           Choose your 60-day challenge track.
         </p>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {domainCards.map(({ value, title, description, icon: Icon }) => {
+        <div className="grid gap-4 sm:grid-cols-3">
+          {domainCards.map(({ value, title, description, icon: Icon, accent }) => {
             const selected = selectedDomain === value;
             return (
               <Card
@@ -235,22 +239,23 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
                   }
                 }}
                 className={cn(
-                  "cursor-pointer transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                  "cursor-pointer border-l-4 bg-card shadow-sm outline-none transition-transform hover:scale-[1.02] hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/25",
+                  accent,
                   selected
-                    ? "border-2 border-primary ring-1 ring-primary/20"
-                    : "border border-input hover:bg-muted/40",
+                    ? "ring-2 ring-primary ring-offset-2 ring-offset-background bg-primary/5"
+                    : "border-border/60",
                 )}
               >
-                <CardHeader className="pb-2">
+                <CardHeader className="gap-3 pb-6">
                   <Icon
                     className={cn(
-                      "size-8",
+                      "size-10",
                       selected ? "text-primary" : "text-muted-foreground",
                     )}
                     aria-hidden
                   />
-                  <CardTitle className="text-base">{title}</CardTitle>
-                  <CardDescription className="text-xs leading-snug">
+                  <CardTitle className="text-base leading-snug">{title}</CardTitle>
+                  <CardDescription className="text-sm leading-relaxed">
                     {description}
                   </CardDescription>
                 </CardHeader>

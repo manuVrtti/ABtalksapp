@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,6 +14,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 export type AppHeaderUser = {
   name: string | null;
@@ -54,16 +55,16 @@ function domainBadgeTitle(domain: Domain): string {
   }
 }
 
-function domainBadgeClass(domain: Domain): string {
+function domainBadgeClasses(domain: Domain): string {
   switch (domain) {
     case Domain.AI:
-      return "bg-purple-500 text-white";
+      return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
     case Domain.DS:
-      return "bg-blue-500 text-white";
+      return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
     case Domain.SE:
-      return "bg-green-500 text-white";
+      return "border-domains-se/50 bg-domains-se-bg text-domains-se";
     default:
-      return "bg-muted text-foreground";
+      return "border-border bg-muted text-muted-foreground";
   }
 }
 
@@ -72,73 +73,81 @@ export function AppHeader({ user, domain }: Props) {
   const label = displayLabel(user);
 
   return (
-    <header className="border-b bg-background">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
-        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-card/95 py-3 pr-6 pl-6 shadow-sm backdrop-blur-sm">
+      <div className="mx-auto flex max-w-6xl items-center gap-8">
+        <div className="flex min-w-0 shrink-0 items-center gap-3">
           <Link
             href="/dashboard"
-            className="shrink-0 text-base font-semibold tracking-tight text-foreground"
+            className="font-display text-xl font-bold tracking-tight text-foreground"
           >
-            ABtalks
+            <span className="text-primary">A</span>Btalks
           </Link>
           {domain ? (
             <span
-              className={`inline-flex shrink-0 items-center rounded-md px-2 py-1 text-xs font-semibold tracking-wide sm:px-2.5 sm:text-sm ${domainBadgeClass(domain)}`}
+              className={cn(
+                "inline-flex shrink-0 rounded-full border px-3 py-1 text-sm font-bold tracking-wide",
+                domainBadgeClasses(domain),
+              )}
               title={domainBadgeTitle(domain)}
             >
               {domain}
             </span>
           ) : null}
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <Button
-                variant="ghost"
-                type="button"
-                className="flex items-center gap-2 px-2"
-              />
-            }
-          >
-            <Avatar size="sm">
-              {user.image ? (
-                <AvatarImage src={user.image} alt="" />
-              ) : null}
-              <AvatarFallback>{initials(label)}</AvatarFallback>
-            </Avatar>
-            <span className="hidden max-w-[140px] truncate text-sm font-medium sm:inline">
-              {label}
-            </span>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="min-w-48">
-            <DropdownMenuGroup>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col gap-0.5">
-                  <span className="truncate text-sm font-medium">{label}</span>
-                  <span className="truncate text-xs text-muted-foreground">
-                    {user.email}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    Role: {user.role}
-                  </span>
-                </div>
-              </DropdownMenuLabel>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push("/profile")}>
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <form action={signOutAction} className="p-1">
-              <button
-                type="submit"
-                className="flex w-full rounded-md px-2 py-1.5 text-left text-sm text-destructive hover:bg-destructive/10"
-              >
-                Logout
-              </button>
-            </form>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex flex-1 items-center justify-end gap-2">
+          <ThemeToggle />
+          <span className="h-6 w-px shrink-0 bg-border" aria-hidden />
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              type="button"
+              className={cn(
+                "inline-flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm outline-none transition-colors",
+                "hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary/25 aria-expanded:bg-muted",
+              )}
+            >
+              <Avatar className="size-9 ring-2 ring-border/80">
+                {user.image ? (
+                  <AvatarImage src={user.image} alt="" />
+                ) : null}
+                <AvatarFallback>{initials(label)}</AvatarFallback>
+              </Avatar>
+              <span className="hidden min-w-0 flex-col items-start text-left sm:flex">
+                <span className="max-w-[160px] truncate font-medium">{label}</span>
+                <span className="max-w-[200px] truncate text-xs text-muted-foreground">
+                  {user.email}
+                </span>
+              </span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-48">
+              <DropdownMenuGroup>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col gap-0.5">
+                    <span className="truncate text-sm font-medium">{label}</span>
+                    <span className="truncate text-xs text-muted-foreground">
+                      {user.email}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      Role: {user.role}
+                    </span>
+                  </div>
+                </DropdownMenuLabel>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => router.push("/profile")}>
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <form action={signOutAction} className="p-1">
+                <button
+                  type="submit"
+                  className="flex w-full rounded-md px-2 py-1.5 text-left text-sm text-destructive hover:bg-destructive/10"
+                >
+                  Logout
+                </button>
+              </form>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   );

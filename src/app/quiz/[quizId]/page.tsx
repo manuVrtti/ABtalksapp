@@ -40,7 +40,7 @@ export default async function QuizPage({ params }: PageProps) {
     <div className="flex min-h-svh flex-col bg-muted/30">
       <AppHeader user={headerUser} domain={data.quiz.domain as Domain} />
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
-        <h1 className="mb-6 text-2xl font-semibold tracking-tight">
+        <h1 className="font-display mb-6 text-2xl font-semibold tracking-tight">
           {data.quiz.title}
         </h1>
         {data.existingAttempt ? (

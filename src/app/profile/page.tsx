@@ -73,7 +73,9 @@ export default async function ProfilePage() {
       <div className="flex min-h-svh flex-col">
         <AppHeader user={headerUser} />
         <main className="mx-auto flex max-w-lg flex-1 flex-col items-center justify-center px-4 py-12 text-center">
-          <h1 className="text-lg font-semibold">Complete your registration first</h1>
+          <h1 className="font-display text-lg font-semibold">
+            Complete your registration first
+          </h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Your student profile is not set up yet. Registration will be available
             soon — for now you can return to the dashboard.
@@ -117,7 +119,7 @@ export default async function ProfilePage() {
     <div className="flex min-h-svh flex-col bg-muted/30">
       <AppHeader user={headerUser} domain={profile.domain} />
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8">
-        <h1 className="text-2xl font-semibold tracking-tight">Profile</h1>
+        <h1 className="font-display text-2xl font-semibold tracking-tight">Profile</h1>
 
         <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
           <Card>

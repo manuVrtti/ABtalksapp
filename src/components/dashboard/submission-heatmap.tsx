@@ -9,10 +9,11 @@ type Props = {
 };
 
 const STATUS_CLASS: Record<HeatmapCell["status"], string> = {
-  on_time: "bg-green-500",
-  late: "bg-yellow-500",
+  on_time: "bg-emerald-500",
+  late: "bg-amber-400",
   missed: "bg-red-500",
-  pending: "bg-gray-200 dark:bg-gray-700",
+  pending:
+    "border border-dotted border-muted-foreground/40 bg-muted/20 dark:bg-muted/30",
 };
 
 function tooltipLabel(cell: HeatmapCell): string {
@@ -35,17 +36,18 @@ export function SubmissionHeatmap({ data }: Props) {
     <div className="w-full min-w-0">
       <div className="overflow-x-auto pb-1">
         <div
-          className="grid w-max max-w-full grid-cols-10 gap-1 sm:mx-auto"
+          className="grid w-max max-w-full grid-cols-10 gap-1.5 sm:mx-auto sm:gap-2"
           role="grid"
           aria-label="60-day submission heatmap"
         >
-          {data.map((cell) => (
+          {data.map((cell, index) => (
             <div
               key={cell.dayNumber}
               role="gridcell"
               title={tooltipLabel(cell)}
+              style={{ animationDelay: `${index * 22}ms` }}
               className={cn(
-                "size-6 shrink-0 rounded-sm md:size-8",
+                "size-7 shrink-0 rounded-md opacity-0 animate-heatmap-cell sm:size-9",
                 STATUS_CLASS[cell.status],
               )}
             />
@@ -53,31 +55,31 @@ export function SubmissionHeatmap({ data }: Props) {
         </div>
       </div>
 
-      <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground">
+      <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
         <li className="flex items-center gap-2">
           <span
-            className="size-4 shrink-0 rounded-sm bg-green-500"
+            className="size-3.5 shrink-0 rounded-sm bg-emerald-500"
             aria-hidden
           />
           On time
         </li>
         <li className="flex items-center gap-2">
           <span
-            className="size-4 shrink-0 rounded-sm bg-yellow-500"
+            className="size-3.5 shrink-0 rounded-sm bg-amber-400"
             aria-hidden
           />
           Late
         </li>
         <li className="flex items-center gap-2">
           <span
-            className="size-4 shrink-0 rounded-sm bg-red-500"
+            className="size-3.5 shrink-0 rounded-sm bg-red-500"
             aria-hidden
           />
           Missed
         </li>
         <li className="flex items-center gap-2">
           <span
-            className="size-4 shrink-0 rounded-sm bg-gray-200 dark:bg-gray-700"
+            className="inline-block size-3.5 shrink-0 rounded-sm border border-dotted border-muted-foreground/45 bg-muted/25 dark:bg-muted/35"
             aria-hidden
           />
           Pending

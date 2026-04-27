@@ -39,23 +39,30 @@ export default async function LoginPage({ searchParams }: Props) {
   const showDev = process.env.ENABLE_DEV_AUTH === "true";
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center p-6">
-      <Card className="w-full max-w-md shadow-sm">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-semibold tracking-tight">
-            ABtalks
-          </CardTitle>
-          <CardDescription>60 Days Challenge Platform</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <LoginClient
-            showGoogle={showGoogle}
-            showDev={showDev}
-            redirectTo={redirectTo}
-            referralRef={referralRef}
-          />
-        </CardContent>
-      </Card>
+    <div className="flex min-h-svh flex-col bg-gradient-to-br from-primary/5 via-background to-background">
+      <div className="flex flex-1 flex-col items-center justify-center p-6">
+        <Card className="w-full max-w-md border-border/60 shadow-md">
+          <CardHeader className="space-y-2 text-center">
+            <CardTitle className="font-display text-3xl font-bold tracking-tight">
+              <span className="text-primary">A</span>Btalks
+            </CardTitle>
+            <CardDescription className="text-base text-muted-foreground">
+              Build your coding habit. Get discovered.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <LoginClient
+              showGoogle={showGoogle}
+              showDev={showDev}
+              redirectTo={redirectTo}
+              referralRef={referralRef}
+            />
+          </CardContent>
+        </Card>
+        <p className="mt-8 max-w-md text-center text-xs text-muted-foreground">
+          Built by Anil Bajpai&apos;s ABtalks community
+        </p>
+      </div>
     </div>
   );
 }
