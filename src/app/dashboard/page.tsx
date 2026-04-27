@@ -14,7 +14,10 @@ import { auth } from "@/auth";
 import { AppHeader } from "@/components/shared/app-header";
 import { SubmissionHeatmap } from "@/components/dashboard/submission-heatmap";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { getDashboardData } from "@/features/dashboard/get-dashboard-data";
+import {
+  getDashboardData,
+  type DashboardDataWithEnrollment,
+} from "@/features/dashboard/get-dashboard-data";
 import { getHeatmapData } from "@/features/dashboard/get-heatmap-data";
 import { getLeaderboard } from "@/features/dashboard/get-leaderboard";
 import { getAvailableQuiz } from "@/features/quiz/get-available-quiz";
@@ -68,29 +71,28 @@ export default async function DashboardPage() {
 
   const data = await getDashboardData(session.user.id);
 
+  if (!data.profile || !data.enrollment) {
+    redirect("/register");
+  }
+
+  const dashboardData = data as DashboardDataWithEnrollment;
+
   const headerUser = {
-    name:
-      data.hasEnrollment === true
-        ? data.profile.fullName
-        : (session.user.name ?? null),
+    name: dashboardData.profile.fullName,
     email: session.user.email ?? "",
     image: session.user.image ?? null,
     role: session.user.role ?? "STUDENT",
   };
 
-  if (!data.hasEnrollment) {
-    redirect("/register");
-  }
-
   const [heatmapData, leaderboard, quizAvailability, quizHistory] =
     await Promise.all([
-      getHeatmapData(data.enrollment.id),
-      getLeaderboard(data.profile.domain as Domain, session.user.id),
-      getAvailableQuiz(session.user.id, data.enrollment.id),
-      getQuizAttemptHistory(session.user.id, data.enrollment.id),
+      getHeatmapData(dashboardData.enrollment.id),
+      getLeaderboard(dashboardData.profile.domain as Domain, session.user.id),
+      getAvailableQuiz(session.user.id, dashboardData.enrollment.id),
+      getQuizAttemptHistory(session.user.id, dashboardData.enrollment.id),
     ]);
 
-  const { enrollment, profile, todayTask, isTodayCompleted } = data;
+  const { enrollment, profile, todayTask, isTodayCompleted } = dashboardData;
   const progressPct = Math.min(
     100,
     Math.round((enrollment.currentDay / enrollment.totalDays) * 100),
@@ -169,7 +171,7 @@ export default async function DashboardPage() {
                 aria-hidden
               />
               <p className="font-display text-4xl font-bold tabular-nums">
-                {data.referralCount}
+                {dashboardData.referralCount}
               </p>
               <p className="mt-2 text-sm font-medium tracking-wide text-muted-foreground uppercase">
                 Referrals
@@ -458,13 +460,13 @@ export default async function DashboardPage() {
             <CardDescription>Last 7 submissions</CardDescription>
           </CardHeader>
           <CardContent>
-            {data.recentSubmissions.length === 0 ? (
+            {dashboardData.recentSubmissions.length === 0 ? (
               <p className="text-sm text-muted-foreground">
                 No submissions yet. Complete Day 1 to get started.
               </p>
             ) : (
               <ul className="space-y-2 text-sm">
-                {data.recentSubmissions.map((s) => (
+                {dashboardData.recentSubmissions.map((s) => (
                   <li key={s.id}>
                     <span className="font-medium">Day {s.dayNumber}</span>
                     <span className="text-muted-foreground">

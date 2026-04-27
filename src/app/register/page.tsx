@@ -21,20 +21,23 @@ export default async function RegisterPage({ searchParams }: PageProps) {
     redirect("/login");
   }
 
-  const user = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    select: {
-      studentProfile: { select: { id: true } },
-      enrollments: {
-        take: 1,
-        orderBy: { startedAt: "desc" },
-        select: { id: true },
-      },
-    },
+  const profile = await prisma.studentProfile.findUnique({
+    where: { userId: session.user.id },
+    select: { id: true },
+  });
+  const enrollment = await prisma.enrollment.findFirst({
+    where: { userId: session.user.id },
+    select: { id: true },
   });
 
-  if (user?.studentProfile && user.enrollments[0]) {
+  if (profile && enrollment) {
     redirect("/dashboard");
+  }
+
+  if (profile && !enrollment) {
+    await prisma.studentProfile.delete({
+      where: { userId: session.user.id },
+    });
   }
 
   const params = await searchParams;

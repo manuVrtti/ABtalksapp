@@ -17,12 +17,21 @@ export async function completeRegistration(
     where: { userId },
     select: { id: true },
   });
-  if (existingProfile) {
+  const existingEnrollment = await prisma.enrollment.findFirst({
+    where: { userId },
+    select: { id: true },
+  });
+
+  if (existingProfile && existingEnrollment) {
     return {
       ok: false,
       reason: "already_registered",
-      message: "You already have a profile.",
+      message: "You are already registered.",
     };
+  }
+
+  if (existingProfile && !existingEnrollment) {
+    await prisma.studentProfile.delete({ where: { userId } });
   }
 
   let referrerId: string | null = null;

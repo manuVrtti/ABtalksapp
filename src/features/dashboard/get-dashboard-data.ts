@@ -5,6 +5,8 @@ import { formatInTimeZone } from "date-fns-tz";
 
 export type DashboardDataNoEnrollment = {
   hasEnrollment: false;
+  profile: DashboardDataWithEnrollment["profile"] | null;
+  enrollment: DashboardDataWithEnrollment["enrollment"] | null;
 };
 
 export type DashboardDataWithEnrollment = {
@@ -91,13 +93,29 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
     },
   });
 
-  if (!user || !user.studentProfile) {
-    return { hasEnrollment: false };
+  if (!user) {
+    return { hasEnrollment: false, profile: null, enrollment: null };
   }
+
+  if (!user.studentProfile) {
+    return { hasEnrollment: false, profile: null, enrollment: null };
+  }
+
+  const profileSnapshot: DashboardDataWithEnrollment["profile"] = {
+    fullName: user.studentProfile.fullName,
+    domain: user.studentProfile.domain,
+    college: user.studentProfile.college,
+    referralCode: user.studentProfile.referralCode,
+    isReadyForInterview: user.studentProfile.isReadyForInterview,
+  };
 
   const enrollment = user.enrollments[0];
   if (!enrollment) {
-    return { hasEnrollment: false };
+    return {
+      hasEnrollment: false,
+      profile: profileSnapshot,
+      enrollment: null,
+    };
   }
 
   const now = new Date();
