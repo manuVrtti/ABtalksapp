@@ -67,6 +67,7 @@ export default async function ProfilePage() {
     email: session.user.email ?? "",
     image: session.user.image ?? null,
     role: session.user.role ?? "STUDENT",
+    isAdmin: session.user.isAdmin ?? false,
   };
 
   if (!bundle.profile) {

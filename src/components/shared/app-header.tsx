@@ -22,6 +22,7 @@ export type AppHeaderUser = {
   email: string;
   image: string | null;
   role: string;
+  isAdmin?: boolean;
 };
 
 type Props = {
@@ -95,6 +96,14 @@ export function AppHeader({ user, domain }: Props) {
           ) : null}
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">
+          {user.isAdmin ? (
+            <Link
+              href="/admin"
+              className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
+            >
+              Admin
+            </Link>
+          ) : null}
           <ThemeToggle />
           <span className="h-6 w-px shrink-0 bg-border" aria-hidden />
           <DropdownMenu>

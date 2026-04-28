@@ -82,6 +82,7 @@ export default async function DashboardPage() {
     email: session.user.email ?? "",
     image: session.user.image ?? null,
     role: session.user.role ?? "STUDENT",
+    isAdmin: session.user.isAdmin ?? false,
   };
 
   const [heatmapData, leaderboard, quizAvailability, quizHistory] =

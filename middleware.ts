@@ -4,7 +4,14 @@ import authConfig from "@/auth.config";
 
 const { auth } = NextAuth(authConfig);
 
-const protectedPaths = ["/dashboard", "/challenge", "/profile", "/quiz", "/register"];
+const protectedPaths = [
+  "/dashboard",
+  "/challenge",
+  "/profile",
+  "/quiz",
+  "/register",
+  "/admin",
+];
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;
@@ -33,6 +40,7 @@ export const config = {
     "/profile/:path*",
     "/quiz/:path*",
     "/register/:path*",
+    "/admin/:path*",
     "/login",
   ],
 };

@@ -34,6 +34,7 @@ export default async function QuizPage({ params }: PageProps) {
     email: session.user.email ?? "",
     image: session.user.image ?? null,
     role: session.user.role ?? "STUDENT",
+    isAdmin: session.user.isAdmin ?? false,
   };
 
   return (

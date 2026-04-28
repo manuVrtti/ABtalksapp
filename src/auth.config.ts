@@ -35,7 +35,15 @@ export default {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.email = user.email;
         token.role = (user as { role?: string }).role ?? "STUDENT";
+      }
+      if (token.email) {
+        const adminEmails = (process.env.ADMIN_EMAILS ?? "")
+          .split(",")
+          .map((e) => e.trim().toLowerCase())
+          .filter(Boolean);
+        token.isAdmin = adminEmails.includes(String(token.email).toLowerCase());
       }
       return token;
     },
@@ -43,6 +51,7 @@ export default {
       if (session.user) {
         session.user.id = token.id as string;
         (session.user as { role?: string }).role = token.role as string;
+        (session.user as { isAdmin?: boolean }).isAdmin = token.isAdmin as boolean;
       }
       return session;
     },
