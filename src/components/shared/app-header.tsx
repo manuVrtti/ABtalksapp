@@ -81,7 +81,7 @@ export function AppHeader({ user, domain }: Props) {
             href="/dashboard"
             className="font-display text-xl font-bold tracking-tight text-foreground"
           >
-            <span className="text-primary">A</span>Btalks
+            <span className="text-primary">A</span>BTalks
           </Link>
           {domain ? (
             <span

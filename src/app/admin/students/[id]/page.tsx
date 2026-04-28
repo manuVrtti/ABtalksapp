@@ -14,7 +14,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PlaceholderActionButtons } from "@/components/admin/placeholder-action-buttons";
+import { RejectSubmissionButton } from "@/components/admin/reject-submission-button";
+import { StudentActionPanel } from "@/components/admin/student-action-panel";
 import { formatDateIST, formatDateTimeIST } from "@/lib/date-utils";
 import { getStudentDetail } from "@/features/admin/get-student-detail";
 import { cn } from "@/lib/utils";
@@ -64,7 +65,12 @@ export default async function AdminStudentDetailPage({
             </div>
           </div>
         </div>
-        <PlaceholderActionButtons />
+        <StudentActionPanel
+          studentId={data.student.userId}
+          studentName={data.student.fullName}
+          isReadyForInterview={data.student.isReadyForInterview}
+          isActive={data.student.enrollmentStatus === "ACTIVE"}
+        />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -85,7 +91,7 @@ export default async function AdminStudentDetailPage({
               {data.profile.referralCode}
             </p>
             <div className="flex flex-wrap gap-2">
-              {data.profile.skills.map((skill) => (
+              {data.profile.skills.map((skill: string) => (
                 <Badge key={skill} variant="outline">
                   {skill}
                 </Badge>
@@ -155,10 +161,11 @@ export default async function AdminStudentDetailPage({
                   <TableHead>GitHub</TableHead>
                   <TableHead>LinkedIn</TableHead>
                   <TableHead>Submitted At</TableHead>
+                  <TableHead />
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {data.submissions.map((row) => (
+                {data.submissions.map((row: (typeof data.submissions)[number]) => (
                   <TableRow key={row.id}>
                     <TableCell>{row.dayNumber}</TableCell>
                     <TableCell>{row.status}</TableCell>
@@ -173,6 +180,12 @@ export default async function AdminStudentDetailPage({
                       </a>
                     </TableCell>
                     <TableCell>{formatDateTimeIST(row.submittedAt)}</TableCell>
+                    <TableCell className="text-right">
+                      <RejectSubmissionButton
+                        submissionId={row.id}
+                        dayNumber={row.dayNumber}
+                      />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -195,7 +208,7 @@ export default async function AdminStudentDetailPage({
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {data.quizAttempts.map((row) => (
+                  {data.quizAttempts.map((row: (typeof data.quizAttempts)[number]) => (
                     <TableRow key={row.id}>
                       <TableCell>{row.weekNumber}</TableCell>
                       <TableCell>{row.quizTitle}</TableCell>
@@ -214,7 +227,7 @@ export default async function AdminStudentDetailPage({
             <p className="text-sm text-muted-foreground">No admin actions for this user</p>
           ) : (
             <div className="space-y-2">
-              {data.adminActions.map((row) => (
+              {data.adminActions.map((row: (typeof data.adminActions)[number]) => (
                 <Card key={row.id}>
                   <CardContent className="space-y-1 pt-4 text-sm">
                     <p className="font-medium">

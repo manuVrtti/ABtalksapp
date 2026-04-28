@@ -72,6 +72,12 @@ export async function getStudentDetail(userId: string) {
     },
     profile: user.studentProfile,
     enrollment,
+    student: {
+      userId: user.id,
+      fullName: user.studentProfile.fullName,
+      isReadyForInterview: user.studentProfile.isReadyForInterview,
+      enrollmentStatus: enrollment?.status ?? null,
+    },
     progress: {
       totalDays: enrollment?.challenge.totalDays ?? 60,
       daysCompleted: enrollment?.daysCompleted ?? 0,
