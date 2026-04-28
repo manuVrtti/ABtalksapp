@@ -1,6 +1,7 @@
 "use client";
 
 import { Domain } from "@prisma/client";
+import { AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth-actions";
@@ -144,6 +145,15 @@ export function AppHeader({ user, domain }: Props) {
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => router.push("/profile")}>
                 Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  window.location.href =
+                    "mailto:sksohail.swaraj@gmail.com?subject=ABtalks Issue Report&body=Please describe the issue you're experiencing:%0D%0A%0D%0A";
+                }}
+              >
+                <AlertCircle className="mr-2 h-4 w-4" />
+                Report an Issue
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <form action={signOutAction} className="p-1">
