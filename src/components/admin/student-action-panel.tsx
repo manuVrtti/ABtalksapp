@@ -14,11 +14,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  markDayCompleteAction,
   removeFromChallengeAction,
   resetProgressAction,
   toggleReadyForInterviewAction,
@@ -87,29 +85,9 @@ export function StudentActionPanel({
 }: StudentActionPanelProps) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
-  const [dayNumber, setDayNumber] = useState("1");
-  const [markReason, setMarkReason] = useState("");
   const [resetReason, setResetReason] = useState("");
   const [toggleReason, setToggleReason] = useState("");
   const [removeReason, setRemoveReason] = useState("");
-
-  const handleMarkDay = async () => {
-    setPending(true);
-    const result = await markDayCompleteAction({
-      targetUserId: studentId,
-      dayNumber: Number(dayNumber),
-      reason: markReason || undefined,
-    });
-    setPending(false);
-
-    if (result.ok) {
-      toast.success(`Day ${dayNumber} marked complete for ${studentName}`);
-      router.refresh();
-      return;
-    }
-    toast.error(result.message);
-    throw new Error(result.message);
-  };
 
   const handleResetProgress = async () => {
     setPending(true);
@@ -168,41 +146,6 @@ export function StudentActionPanel({
 
   return (
     <div className="flex flex-wrap gap-2">
-      <ActionDialog
-        trigger={
-          <Button type="button" variant="outline" size="sm" disabled={!isActive}>
-            Mark Day Complete
-          </Button>
-        }
-        title="Mark day complete"
-        description={`Create a manual submission for ${studentName}. This is intended for support/admin corrections.`}
-        confirmLabel="Confirm"
-        onConfirm={handleMarkDay}
-        pending={pending}
-      >
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="mark-day">Day number</Label>
-            <Input
-              id="mark-day"
-              type="number"
-              min={1}
-              max={60}
-              value={dayNumber}
-              onChange={(e) => setDayNumber(e.target.value)}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="mark-reason">Reason (optional)</Label>
-            <Textarea
-              id="mark-reason"
-              value={markReason}
-              onChange={(e) => setMarkReason(e.target.value)}
-            />
-          </div>
-        </div>
-      </ActionDialog>
-
       <ActionDialog
         trigger={
           <Button type="button" variant="secondary" size="sm">

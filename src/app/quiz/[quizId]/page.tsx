@@ -6,6 +6,7 @@ import {
   type QuizWithQuestionsPayload,
 } from "@/features/quiz/get-quiz-with-questions";
 import { AppHeader } from "@/components/shared/app-header";
+import { prisma } from "@/lib/db";
 import { QuizForm } from "./quiz-form";
 import { ResultsView } from "./results-view";
 
@@ -20,6 +21,14 @@ export default async function QuizPage({ params }: PageProps) {
   const session = await auth();
   if (!session?.user?.id) {
     redirect("/login");
+  }
+
+  const abandonedEnrollment = await prisma.enrollment.findFirst({
+    where: { userId: session.user.id, status: "ABANDONED" },
+    select: { id: true },
+  });
+  if (abandonedEnrollment) {
+    redirect("/dashboard");
   }
 
   const { quizId } = await params;

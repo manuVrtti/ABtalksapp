@@ -3,7 +3,12 @@ import { prisma } from "@/lib/db";
 import { getIstDateKeyForChallengeDay, IST } from "@/lib/date-utils";
 import { formatInTimeZone } from "date-fns-tz";
 
-export type HeatmapCellStatus = "on_time" | "late" | "pending" | "missed";
+export type HeatmapCellStatus =
+  | "on_time"
+  | "late"
+  | "future"
+  | "missed"
+  | "rejected";
 
 export type HeatmapCell = {
   dayNumber: number;
@@ -17,7 +22,21 @@ export type HeatmapCell = {
   linkedinUrl: string | null;
   /** ISO timestamp for display */
   submittedAt: string | null;
+  adminName: string | null;
+  actionReason: string | null;
+  actionAt: string | null;
 };
+
+function readDayNumberFromMetadata(metadata: unknown): number | null {
+  if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return null;
+  const value = (metadata as Record<string, unknown>).dayNumber;
+  if (typeof value === "number" && Number.isInteger(value)) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isInteger(parsed) ? parsed : null;
+  }
+  return null;
+}
 
 export async function getHeatmapData(
   enrollmentId: string,
@@ -26,14 +45,14 @@ export async function getHeatmapData(
   const includeSubmissionDetails = options?.includeSubmissionDetails ?? true;
   const enrollment = await prisma.enrollment.findUnique({
     where: { id: enrollmentId },
-    select: { startedAt: true, challengeId: true },
+    select: { startedAt: true, challengeId: true, userId: true },
   });
 
   if (!enrollment) {
     return [];
   }
 
-  const [submissions, tasks] = await Promise.all([
+  const [submissions, tasks, adminActions] = await Promise.all([
     prisma.submission.findMany({
       where: { enrollmentId },
       select: {
@@ -50,6 +69,26 @@ export async function getHeatmapData(
         dayNumber: { gte: 1, lte: 60 },
       },
       select: { dayNumber: true, title: true, problemStatement: true },
+    }),
+    prisma.adminAction.findMany({
+      where: {
+        targetUserId: enrollment.userId,
+        actionType: "REJECT_SUBMISSION",
+      },
+      orderBy: { createdAt: "desc" },
+      select: {
+        actionType: true,
+        metadata: true,
+        reason: true,
+        createdAt: true,
+        admin: {
+          select: {
+            name: true,
+            email: true,
+            studentProfile: { select: { fullName: true } },
+          },
+        },
+      },
     }),
   ]);
 
@@ -82,6 +121,26 @@ export async function getHeatmapData(
     });
   }
 
+  const rejectActionByDay = new Map<
+    number,
+    { reason: string | null; createdAt: Date; adminName: string }
+  >();
+  for (const action of adminActions) {
+    const dayNumber = readDayNumberFromMetadata(action.metadata);
+    if (!dayNumber || dayNumber < 1 || dayNumber > 60) continue;
+    const adminName =
+      action.admin.studentProfile?.fullName?.trim() ||
+      action.admin.name?.trim() ||
+      action.admin.email;
+    if (!rejectActionByDay.has(dayNumber)) {
+      rejectActionByDay.set(dayNumber, {
+        reason: action.reason ?? null,
+        createdAt: action.createdAt,
+        adminName,
+      });
+    }
+  }
+
   const nowKey = formatInTimeZone(new Date(), IST, "yyyy-MM-dd");
   const out: HeatmapCell[] = [];
 
@@ -90,20 +149,21 @@ export async function getHeatmapData(
     const row = byDay.get(dayNumber);
     const task = taskByDay.get(dayNumber);
 
-    let status: HeatmapCellStatus;
-    if (row?.status === SubmissionStatus.ON_TIME) {
-      status = "on_time";
-    } else if (row?.status === SubmissionStatus.LATE) {
-      status = "late";
+    let status: HeatmapCellStatus = "future";
+    const rejectAction = rejectActionByDay.get(dayNumber);
+
+    if (row) {
+      status = row.status === SubmissionStatus.ON_TIME ? "on_time" : "late";
+    } else if (rejectAction) {
+      status = "rejected";
     } else if (date > nowKey) {
-      status = "pending";
-    } else if (date < nowKey) {
-      status = "missed";
+      status = "future";
     } else {
-      status = "pending";
+      status = "missed";
     }
 
     const hasSubmission = status === "on_time" || status === "late";
+    const action = status === "rejected" ? rejectAction : null;
 
     out.push({
       dayNumber,
@@ -117,6 +177,9 @@ export async function getHeatmapData(
         includeSubmissionDetails && hasSubmission && row ? row.linkedinUrl : null,
       submittedAt:
         hasSubmission && row ? row.submittedAt.toISOString() : null,
+      adminName: action?.adminName ?? null,
+      actionReason: action?.reason ?? null,
+      actionAt: action?.createdAt?.toISOString() ?? null,
     });
   }
 

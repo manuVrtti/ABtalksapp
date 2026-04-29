@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Domain } from "@prisma/client";
 import {
   ArrowRight,
   Calendar,
@@ -13,6 +12,7 @@ import {
 import { auth } from "@/auth";
 import { AppHeader } from "@/components/shared/app-header";
 import { CommunityLeaderboard } from "@/components/dashboard/community-leaderboard";
+import { EnrollmentEndedScreen } from "@/components/dashboard/enrollment-ended-screen";
 import { SubmissionHeatmap } from "@/components/dashboard/submission-heatmap";
 import {
   getDashboardData,
@@ -39,6 +39,7 @@ import {
 } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { formatDateIST } from "@/lib/date-utils";
+import { prisma } from "@/lib/db";
 
 function readQueryParam(
   query: Record<string, string | string[] | undefined>,
@@ -96,6 +97,47 @@ export default async function DashboardPage({
     role: session.user.role ?? "STUDENT",
     isAdmin: session.user.isAdmin ?? false,
   };
+  const { enrollment, profile, todayTask, isTodayCompleted } = dashboardData;
+
+  if (dashboardData.enrollment.status === "ABANDONED") {
+    const endedAction = await prisma.adminAction.findFirst({
+      where: {
+        targetUserId: session.user.id,
+        actionType: "REMOVE_FROM_CHALLENGE",
+      },
+      orderBy: { createdAt: "desc" },
+      select: {
+        reason: true,
+        createdAt: true,
+        admin: {
+          select: {
+            name: true,
+            email: true,
+            studentProfile: { select: { fullName: true } },
+          },
+        },
+      },
+    });
+    const adminName =
+      endedAction?.admin.studentProfile?.fullName?.trim() ||
+      endedAction?.admin.name?.trim() ||
+      endedAction?.admin.email ||
+      "An admin";
+
+    return (
+      <div className="flex min-h-svh flex-col bg-muted/30">
+        <AppHeader user={headerUser} />
+        <main className="mx-auto flex w-full max-w-6xl flex-1">
+          <EnrollmentEndedScreen
+            studentName={dashboardData.profile.fullName}
+            adminName={adminName}
+            reason={endedAction?.reason ?? null}
+            endedAt={endedAction?.createdAt ?? new Date()}
+          />
+        </main>
+      </div>
+    );
+  }
 
   const [heatmapData, leaderboard, colleges, quizAvailability, quizHistory] =
     await Promise.all([
@@ -111,7 +153,6 @@ export default async function DashboardPage({
       getQuizAttemptHistory(session.user.id, dashboardData.enrollment.id),
     ]);
 
-  const { enrollment, profile, todayTask, isTodayCompleted } = dashboardData;
   const progressPct = Math.min(
     100,
     Math.round((enrollment.currentDay / enrollment.totalDays) * 100),
@@ -122,14 +163,7 @@ export default async function DashboardPage({
 
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
-      <AppHeader
-        user={headerUser}
-        domain={
-          profile.domain === "AI" || profile.domain === "DS" || profile.domain === "SE"
-            ? (profile.domain as Domain)
-            : undefined
-        }
-      />
+      <AppHeader user={headerUser} />
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-6 sm:px-6">
         <Card>
           <CardHeader className="pb-3">

@@ -4,7 +4,6 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 const actions = [
-  "Mark Day Complete",
   "Reset Progress",
   "Toggle Ready for Interview",
   "Remove from Challenge",

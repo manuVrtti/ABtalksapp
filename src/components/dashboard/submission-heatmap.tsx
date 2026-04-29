@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { parseCalendarKeyToUtcDate, formatDateIST } from "@/lib/date-utils";
 import type { HeatmapCell } from "@/features/dashboard/get-heatmap-data";
@@ -22,8 +23,9 @@ type Props = {
 const STATUS_CLASS: Record<HeatmapCell["status"], string> = {
   on_time: "bg-emerald-500",
   late: "bg-amber-400",
+  rejected: "bg-purple-500 dark:bg-purple-600",
   missed: "bg-red-500",
-  pending:
+  future:
     "border border-dotted border-muted-foreground/40 bg-muted/20 dark:bg-muted/30",
 };
 
@@ -34,16 +36,22 @@ function tooltipLabel(cell: HeatmapCell): string {
       return `Day ${cell.dayNumber} — On time on ${displayDate}`;
     case "late":
       return `Day ${cell.dayNumber} — Late on ${displayDate}`;
+    case "rejected":
+      return `Day ${cell.dayNumber} — Rejected on ${displayDate}`;
     case "missed":
       return `Day ${cell.dayNumber} — Missed on ${displayDate}`;
-    case "pending":
+    case "future":
     default:
       return `Day ${cell.dayNumber} — Unlocks on ${displayDate}`;
   }
 }
 
 function isClickable(cell: HeatmapCell): boolean {
-  return cell.status === "on_time" || cell.status === "late";
+  return (
+    cell.status === "on_time" ||
+    cell.status === "late" ||
+    cell.status === "rejected"
+  );
 }
 
 export function SubmissionHeatmap({ data, interactive = true }: Props) {
@@ -110,6 +118,13 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
         </li>
         <li className="flex items-center gap-2">
           <span
+            className="size-3.5 shrink-0 rounded-sm bg-purple-500 dark:bg-purple-600"
+            aria-hidden
+          />
+          Rejected
+        </li>
+        <li className="flex items-center gap-2">
+          <span
             className="size-3.5 shrink-0 rounded-sm bg-red-500"
             aria-hidden
           />
@@ -120,7 +135,7 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
             className="inline-block size-3.5 shrink-0 rounded-sm border border-dotted border-muted-foreground/45 bg-muted/25 dark:bg-muted/35"
             aria-hidden
           />
-          Pending
+          Future
         </li>
       </ul>
 
@@ -142,18 +157,45 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
                     className={
                       active.status === "on_time"
                         ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
-                        : "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                        : active.status === "late"
+                          ? "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                          : "bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300"
                     }
                   >
-                    {active.status === "on_time" ? "On time" : "Late"}
+                    {active.status === "on_time"
+                      ? "On time"
+                      : active.status === "late"
+                        ? "Late"
+                        : "Rejected"}
                   </Badge>
-                  <p className="text-sm text-muted-foreground">
-                    Submitted {submittedLabel}
-                  </p>
+                  {active.status === "on_time" || active.status === "late" ? (
+                    <p className="text-sm text-muted-foreground">
+                      Submitted {submittedLabel}
+                    </p>
+                  ) : null}
+                  {active.status === "rejected" && active.actionAt ? (
+                    <p className="text-sm text-muted-foreground">
+                      {active.adminName ?? "An admin"} rejected this submission on{" "}
+                      {formatDateIST(new Date(active.actionAt))}
+                    </p>
+                  ) : null}
                 </div>
               </DialogHeader>
 
               <div className="min-h-0 flex-1 space-y-6 overflow-y-auto px-5 py-4">
+                {active.status === "rejected" ? (
+                  <section className="space-y-2 rounded-lg border border-border/60 bg-muted/30 p-3 text-sm">
+                    {active.actionReason ? (
+                      <p>
+                        <span className="font-medium">Reason: </span>
+                        {active.actionReason}
+                      </p>
+                    ) : (
+                      <p className="text-muted-foreground">No reason was provided.</p>
+                    )}
+                    <p className="text-muted-foreground">You can resubmit this day.</p>
+                  </section>
+                ) : null}
                 <section className="space-y-2">
                   <h3 className="text-sm font-semibold text-foreground">
                     Problem
@@ -169,46 +211,55 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
                   </div>
                 </section>
 
-                <section className="space-y-2">
-                  <h3 className="text-sm font-semibold text-foreground">
-                    Your submission
-                  </h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <span className="text-muted-foreground">GitHub: </span>
-                      {active.githubUrl ? (
-                        <a
-                          href={active.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium text-primary underline-offset-4 hover:underline"
-                        >
-                          {active.githubUrl}
-                        </a>
-                      ) : (
-                        "—"
-                      )}
-                    </li>
-                    <li>
-                      <span className="text-muted-foreground">LinkedIn: </span>
-                      {active.linkedinUrl ? (
-                        <a
-                          href={active.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium text-primary underline-offset-4 hover:underline"
-                        >
-                          {active.linkedinUrl}
-                        </a>
-                      ) : (
-                        "—"
-                      )}
-                    </li>
-                  </ul>
-                </section>
+                {active.status === "on_time" || active.status === "late" ? (
+                  <section className="space-y-2">
+                    <h3 className="text-sm font-semibold text-foreground">
+                      Your submission
+                    </h3>
+                    <ul className="space-y-2 text-sm">
+                      <li>
+                        <span className="text-muted-foreground">GitHub: </span>
+                        {active.githubUrl ? (
+                          <a
+                            href={active.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-primary underline-offset-4 hover:underline"
+                          >
+                            {active.githubUrl}
+                          </a>
+                        ) : (
+                          "—"
+                        )}
+                      </li>
+                      <li>
+                        <span className="text-muted-foreground">LinkedIn: </span>
+                        {active.linkedinUrl ? (
+                          <a
+                            href={active.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-primary underline-offset-4 hover:underline"
+                          >
+                            {active.linkedinUrl}
+                          </a>
+                        ) : (
+                          "—"
+                        )}
+                      </li>
+                    </ul>
+                  </section>
+                ) : null}
               </div>
 
-              <div className="flex shrink-0 justify-center border-t border-border/60 bg-muted/30 px-5 py-4">
+              <div className="flex shrink-0 flex-wrap justify-center gap-2 border-t border-border/60 bg-muted/30 px-5 py-4">
+                {active.status === "rejected" ? (
+                  <Link href={`/challenge/${active.dayNumber}`} className="inline-flex">
+                    <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+                      Resubmit
+                    </Button>
+                  </Link>
+                ) : null}
                 <Button type="button" variant="default" onClick={() => setOpen(false)}>
                   Close
                 </Button>

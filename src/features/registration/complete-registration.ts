@@ -116,6 +116,9 @@ export async function completeRegistration(
       }
 
       return profile.id;
+    }, {
+      maxWait: 10000,
+      timeout: 20000,
     });
 
     await clearReferralCookie();

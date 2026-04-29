@@ -27,8 +27,12 @@ export default async function RegisterPage({ searchParams }: PageProps) {
   });
   const enrollment = await prisma.enrollment.findFirst({
     where: { userId: session.user.id },
-    select: { id: true },
+    select: { id: true, status: true },
   });
+
+  if (enrollment?.status === "ABANDONED") {
+    redirect("/dashboard");
+  }
 
   if (profile && enrollment) {
     redirect("/dashboard");

@@ -1,9 +1,9 @@
-import type { Prisma } from "@prisma/client";
 import { EnrollmentStatus, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getCurrentDayNumber } from "@/lib/date-utils";
 import { normalizeGithubUrl, validateGithubUrl } from "./validate-github-url";
 import { validateLinkedinUrl } from "./validate-linkedin-url";
+import { computeStreakStats } from "./streak-utils";
 
 export type SubmitDayOk = {
   ok: true;
@@ -19,26 +19,6 @@ export type SubmitDayErr = {
 };
 
 export type SubmitDayResult = SubmitDayOk | SubmitDayErr;
-
-/** One query inside the transaction — avoids P2028 when many per-day round-trips exceed DB tx timeout (e.g. Neon). */
-async function computeOnTimeStreakEndingAt(
-  tx: Prisma.TransactionClient,
-  enrollmentId: string,
-  endDay: number,
-): Promise<number> {
-  const rows = await tx.submission.findMany({
-    where: { enrollmentId, dayNumber: { gte: 1, lte: endDay } },
-    select: { dayNumber: true, status: true },
-  });
-  const statusByDay = new Map(rows.map((r) => [r.dayNumber, r.status]));
-  let streak = 0;
-  for (let d = endDay; d >= 1; d--) {
-    const st = statusByDay.get(d);
-    if (!st || st !== SubmissionStatus.ON_TIME) break;
-    streak++;
-  }
-  return streak;
-}
 
 export async function submitDay(input: {
   userId: string;
@@ -131,13 +111,14 @@ export async function submitDay(input: {
         where: { enrollmentId: enrollment.id },
       });
 
-      const newStreak = await computeOnTimeStreakEndingAt(
+      const { currentStreak: newStreak, longestStreak: recomputedLongest } =
+        await computeStreakStats(
         tx,
-        enrollment.id,
-        dayNumber,
+        {
+          enrollmentId: enrollment.id,
+          endDay: currentDay,
+        },
       );
-
-      const newLongest = Math.max(enrollment.longestStreak, newStreak);
       const completed = daysCompleted >= 60;
 
       await tx.enrollment.update({
@@ -145,8 +126,8 @@ export async function submitDay(input: {
         data: {
           daysCompleted,
           currentStreak: newStreak,
-          longestStreak: newLongest,
-          lastSubmittedDay: dayNumber,
+          longestStreak: recomputedLongest,
+          lastSubmittedDay: Math.max(enrollment.lastSubmittedDay ?? 0, dayNumber),
           ...(completed
             ? {
                 status: EnrollmentStatus.COMPLETED,
@@ -175,6 +156,9 @@ export async function submitDay(input: {
         newStreak,
         daysCompleted,
       };
+    }, {
+      maxWait: 10000,
+      timeout: 20000,
     });
 
     return { ok: true, ...result };
