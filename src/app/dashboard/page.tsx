@@ -19,7 +19,6 @@ import {
   getDashboardData,
   type DashboardDataWithEnrollment,
 } from "@/features/dashboard/get-dashboard-data";
-import { getColleges } from "@/features/dashboard/get-colleges";
 import { getHeatmapData } from "@/features/dashboard/get-heatmap-data";
 import { getLeaderboard } from "@/features/dashboard/get-leaderboard";
 import { getAvailableQuiz } from "@/features/quiz/get-available-quiz";
@@ -80,7 +79,6 @@ export default async function DashboardPage({
   const leaderboardDomain = parseLeaderboardDomain(
     readQueryParam(query, "lb_domain"),
   );
-  const leaderboardCollege = readQueryParam(query, "lb_college");
   const leaderboardSearch = readQueryParam(query, "lb_search");
 
   const data = await getDashboardData(session.user.id);
@@ -140,16 +138,14 @@ export default async function DashboardPage({
     );
   }
 
-  const [heatmapData, leaderboard, colleges, quizAvailability, quizHistory] =
+  const [heatmapData, leaderboard, quizAvailability, quizHistory] =
     await Promise.all([
       getHeatmapData(dashboardData.enrollment.id),
       getLeaderboard({
         domain: leaderboardDomain,
-        college: leaderboardCollege,
         search: leaderboardSearch,
         viewerUserId: session.user.id,
       }),
-      getColleges(),
       getAvailableQuiz(session.user.id, dashboardData.enrollment.id),
       getQuizAttemptHistory(session.user.id, dashboardData.enrollment.id),
     ]);
@@ -373,10 +369,8 @@ export default async function DashboardPage({
             <CommunityLeaderboard
               rows={leaderboard.rows}
               totalCount={leaderboard.totalCount}
-              colleges={colleges}
               filters={{
                 domain: leaderboardDomain,
-                college: leaderboardCollege,
                 search: leaderboardSearch,
               }}
             />

@@ -34,10 +34,8 @@ type LeaderboardRow = {
 type Props = {
   rows: LeaderboardRow[];
   totalCount: number;
-  colleges: string[];
   filters: {
     domain: "AI" | "DS" | "SE" | "ALL";
-    college: string;
     search: string;
   };
 };
@@ -58,7 +56,6 @@ function domainBadgeClass(domain: "AI" | "DS" | "SE"): string {
 export function CommunityLeaderboard({
   rows,
   totalCount,
-  colleges,
   filters,
 }: Props) {
   const router = useRouter();
@@ -73,19 +70,14 @@ export function CommunityLeaderboard({
 
   function updateParams(next: {
     domain?: string | null;
-    college?: string | null;
     search?: string;
   }) {
     const params = new URLSearchParams(searchParams.toString());
     const domain = next.domain ?? filters.domain;
-    const college = next.college ?? filters.college;
     const searchValue = next.search ?? filters.search;
 
     if (!domain || domain === "ALL") params.delete("lb_domain");
     else params.set("lb_domain", domain);
-
-    if (!college) params.delete("lb_college");
-    else params.set("lb_college", college);
 
     if (!searchValue) params.delete("lb_search");
     else params.set("lb_search", searchValue);
@@ -107,8 +99,8 @@ export function CommunityLeaderboard({
   }, [search, filters.search]);
 
   const hasActiveFilters = useMemo(
-    () => filters.domain !== "ALL" || !!filters.college || !!filters.search,
-    [filters.college, filters.domain, filters.search],
+    () => filters.domain !== "ALL" || !!filters.search,
+    [filters.domain, filters.search],
   );
 
   return (
@@ -134,7 +126,7 @@ export function CommunityLeaderboard({
               />
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2 md:flex md:w-[340px] md:shrink-0">
+          <div className="md:w-[170px] md:shrink-0">
             <div className="space-y-1">
               <Label className="text-xs text-muted-foreground">Domain</Label>
               <Select
@@ -152,27 +144,6 @@ export function CommunityLeaderboard({
                 </SelectContent>
               </Select>
             </div>
-            <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">College</Label>
-              <Select
-                value={filters.college || "ALL"}
-                onValueChange={(value) =>
-                  updateParams({ college: value === "ALL" ? "" : value })
-                }
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="All Colleges" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="ALL">All Colleges</SelectItem>
-                  {colleges.map((college) => (
-                    <SelectItem key={college} value={college}>
-                      {college}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
           </div>
         </div>
         {hasActiveFilters ? (
@@ -183,7 +154,7 @@ export function CommunityLeaderboard({
               size="sm"
               onClick={() => {
                 setSearch("");
-                updateParams({ domain: "ALL", college: "", search: "" });
+                updateParams({ domain: "ALL", search: "" });
               }}
               className="h-7 px-2 text-xs"
             >
@@ -206,7 +177,7 @@ export function CommunityLeaderboard({
                 size="sm"
                 onClick={() => {
                   setSearch("");
-                  updateParams({ domain: "ALL", college: "", search: "" });
+                  updateParams({ domain: "ALL", search: "" });
                 }}
               >
                 Clear filters

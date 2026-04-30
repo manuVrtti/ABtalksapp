@@ -21,29 +21,18 @@ export type LeaderboardResult = {
 export async function getLeaderboard(
   input: {
     domain?: "AI" | "DS" | "SE" | "ALL";
-    college?: string;
     search?: string;
     limit?: number;
     viewerUserId?: string;
   },
 ): Promise<LeaderboardResult> {
   const domain = input.domain ?? "ALL";
-  const college = input.college?.trim() ?? "";
   const search = input.search?.trim() ?? "";
   const limit = Math.max(1, Math.min(input.limit ?? 100, 200));
 
   const where = {
     status: { not: "ABANDONED" as const },
     ...(domain !== "ALL" ? { domain } : {}),
-    ...(college
-      ? {
-          user: {
-            studentProfile: {
-              college: { contains: college, mode: "insensitive" as const },
-            },
-          },
-        }
-      : {}),
     ...(search
       ? {
           user: {
