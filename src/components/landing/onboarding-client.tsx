@@ -1,0 +1,132 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { WelcomeSlide } from "./slides/welcome-slide";
+import { AboutSlide } from "./slides/about-slide";
+import { RulesSlide } from "./slides/rules-slide";
+import { CommunitySlide } from "./slides/community-slide";
+import { CtaSlide } from "./slides/cta-slide";
+import { ProgressDots } from "./progress-dots";
+
+const SLIDES = ["welcome", "about", "rules", "community", "cta"] as const;
+type SlideKey = (typeof SLIDES)[number];
+
+const slideVariants = {
+  enter: (d: "next" | "prev") => ({
+    opacity: 0,
+    x: d === "next" ? 60 : -60,
+    scale: 0.96,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+  },
+  exit: (d: "next" | "prev") => ({
+    opacity: 0,
+    x: d === "next" ? -60 : 60,
+    scale: 0.96,
+  }),
+};
+
+export function OnboardingClient() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
+
+  const next = () => {
+    if (currentIndex < SLIDES.length - 1) {
+      setDirection("next");
+      setCurrentIndex((i) => i + 1);
+    }
+  };
+
+  const prev = () => {
+    if (currentIndex > 0) {
+      setDirection("prev");
+      setCurrentIndex((i) => i - 1);
+    }
+  };
+
+  const goTo = (index: number) => {
+    setDirection(index > currentIndex ? "next" : "prev");
+    setCurrentIndex(index);
+  };
+
+  const slide: SlideKey = SLIDES[currentIndex];
+
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+      <BackgroundBlobs slideIndex={currentIndex} />
+
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <header className="px-6 py-4">
+          <div className="font-display text-xl font-bold">ABtalks</div>
+        </header>
+
+        <main className="flex flex-1 items-center justify-center px-6 py-8">
+          <div className="w-full max-w-2xl">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={slide}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {slide === "welcome" && <WelcomeSlide onNext={next} />}
+                {slide === "about" && <AboutSlide onNext={next} onPrev={prev} />}
+                {slide === "rules" && <RulesSlide onNext={next} onPrev={prev} />}
+                {slide === "community" && (
+                  <CommunitySlide onNext={next} onPrev={prev} />
+                )}
+                {slide === "cta" && <CtaSlide onPrev={prev} />}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main>
+
+        <footer className="px-6 py-6">
+          <ProgressDots
+            total={SLIDES.length}
+            current={currentIndex}
+            onSelect={goTo}
+          />
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+function BackgroundBlobs({ slideIndex }: { slideIndex: number }) {
+  return (
+    <div className="pointer-events-none absolute inset-0">
+      <motion.div
+        animate={{
+          x: slideIndex * 20,
+          y: -slideIndex * 10,
+        }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl"
+      />
+      <motion.div
+        animate={{
+          x: -slideIndex * 30,
+          y: slideIndex * 20,
+        }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="absolute -right-32 top-60 h-80 w-80 rounded-full bg-violet-500/15 blur-3xl"
+      />
+      <motion.div
+        animate={{
+          x: slideIndex * 15,
+          y: -slideIndex * 25,
+        }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="absolute bottom-20 left-1/3 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl"
+      />
+    </div>
+  );
+}
