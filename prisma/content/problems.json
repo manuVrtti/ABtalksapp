@@ -465,5 +465,23 @@
     "tags": [
       "arrays"
     ]
+  },
+  {
+    "dayNumber": 8,
+    "domain": "SE",
+    "title": "Mini Project: Stock Profit Analyzer",
+    "problemStatement": "Given stock prices, find max profit.\n\nBonus: show buy/sell day.",
+    "learningObjectives": [
+      "Optimization",
+      "arrays"
+    ],
+    "resources": [],
+    "difficulty": "Easy-Medium",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 7 🔥 Built stock analyzer.\nRepo: {{github_link}}",
+    "solutionApproach": "Track min and max profit",
+    "tags": [
+      "arrays"
+    ]
   }
 ]

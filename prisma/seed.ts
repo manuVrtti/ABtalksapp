@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { pathToFileURL } from "node:url";
 import { addDays, subDays } from "date-fns";
 import {
   Domain,
@@ -215,40 +216,34 @@ async function seedPlaceholderWeekQuiz(
   }
 }
 
-async function main() {
-  await prisma.user.deleteMany({
-    where: { email: { endsWith: TEST_EMAIL_SUFFIX } },
-  });
+const challengeSpecs: { domain: Domain; title: string; description: string }[] = [
+  {
+    domain: Domain.SE,
+    title: "60 Days of Code — Software Engineering",
+    description:
+      "Placeholder SE challenge. Real curriculum content coming soon.",
+  },
+  {
+    domain: Domain.DS,
+    title: "60 Days of Code — Data Science",
+    description:
+      "Placeholder Data Science challenge. Real curriculum content coming soon.",
+  },
+  {
+    domain: Domain.AI,
+    title: "60 Days of Code — Artificial Intelligence",
+    description:
+      "Placeholder AI challenge. Real curriculum content coming soon.",
+  },
+];
 
+export async function seedContent() {
   const problemsRaw = loadJsonFile<ProblemJson[]>("problems.json");
   const problemLookup = buildProblemLookup(
     Array.isArray(problemsRaw) ? problemsRaw : null,
   );
   const quizzesRaw = loadJsonFile<QuizJson[]>("quizzes.json");
   const quizEntries = Array.isArray(quizzesRaw) ? quizzesRaw : [];
-
-  const challengeSpecs: { domain: Domain; title: string; description: string }[] =
-    [
-      {
-        domain: Domain.SE,
-        title: "60 Days of Code — Software Engineering",
-        description:
-          "Placeholder SE challenge. Real curriculum content coming soon.",
-      },
-      {
-        domain: Domain.DS,
-        title: "60 Days of Code — Data Science",
-        description:
-          "Placeholder Data Science challenge. Real curriculum content coming soon.",
-      },
-      {
-        domain: Domain.AI,
-        title: "60 Days of Code — Artificial Intelligence",
-        description:
-          "Placeholder AI challenge. Real curriculum content coming soon.",
-      },
-    ];
-
   const challengeByDomain = new Map<Domain, { id: string }>();
   const quizWeek1IdByDomain = new Map<Domain, string>();
   const quizSeededFromJson = new Set<string>();
@@ -322,6 +317,52 @@ async function main() {
       );
     }
   }
+}
+
+async function loadChallengeIdByDomain(): Promise<Map<Domain, { id: string }>> {
+  const challengeByDomain = new Map<Domain, { id: string }>();
+  for (const spec of challengeSpecs) {
+    const challenge = await prisma.challenge.findUnique({
+      where: { domain: spec.domain },
+      select: { id: true },
+    });
+    if (!challenge) {
+      throw new Error(
+        `Missing challenge for ${spec.domain}. Run content seed first.`,
+      );
+    }
+    challengeByDomain.set(spec.domain, { id: challenge.id });
+  }
+  return challengeByDomain;
+}
+
+async function loadQuizWeek1IdByDomain(
+  challengeByDomain: Map<Domain, { id: string }>,
+): Promise<Map<Domain, string>> {
+  const quizWeek1IdByDomain = new Map<Domain, string>();
+  for (const spec of challengeSpecs) {
+    const challengeId = challengeByDomain.get(spec.domain)?.id;
+    if (!challengeId) continue;
+    const quiz = await prisma.quiz.findUnique({
+      where: {
+        challengeId_weekNumber: { challengeId, weekNumber: 1 },
+      },
+      select: { id: true },
+    });
+    if (quiz) {
+      quizWeek1IdByDomain.set(spec.domain, quiz.id);
+    }
+  }
+  return quizWeek1IdByDomain;
+}
+
+export async function seedTestUsers() {
+  await prisma.user.deleteMany({
+    where: { email: { endsWith: TEST_EMAIL_SUFFIX } },
+  });
+
+  const challengeByDomain = await loadChallengeIdByDomain();
+  const quizWeek1IdByDomain = await loadQuizWeek1IdByDomain(challengeByDomain);
 
   type EnrollSpec = {
     daysCompleted: number;
@@ -631,14 +672,27 @@ async function main() {
   });
 }
 
-main()
-  .then(() => {
-    console.log("Seed completed.");
-  })
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+async function main() {
+  await seedContent();
+  await seedTestUsers();
+  console.log("Full seed completed");
+}
+
+const invokedScriptPath = process.argv[1];
+const isDirectExecution =
+  typeof invokedScriptPath === "string" &&
+  import.meta.url === pathToFileURL(invokedScriptPath).href;
+
+if (isDirectExecution) {
+  main()
+    .then(() => {
+      console.log("Seed completed.");
+    })
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}
