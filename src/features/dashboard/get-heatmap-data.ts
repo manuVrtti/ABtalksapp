@@ -1,8 +1,10 @@
 import { SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
-import { getIstDateKeyForChallengeDay, IST } from "@/lib/date-utils";
-import { formatInTimeZone } from "date-fns-tz";
+import {
+  getCurrentDayNumber,
+  getIstDateKeyForChallengeDay,
+} from "@/lib/date-utils";
 
 export type HeatmapCellStatus =
   | "on_time"
@@ -158,7 +160,7 @@ export async function getHeatmapData(
     }
   }
 
-  const nowKey = formatInTimeZone(new Date(), IST, "yyyy-MM-dd");
+  const currentDay = getCurrentDayNumber(enrollment.startedAt);
   const out: HeatmapCell[] = [];
 
   for (let dayNumber = 1; dayNumber <= 60; dayNumber++) {
@@ -173,7 +175,8 @@ export async function getHeatmapData(
       status = row.status === SubmissionStatus.ON_TIME ? "on_time" : "late";
     } else if (rejectAction) {
       status = "rejected";
-    } else if (date > nowKey) {
+    } else if (dayNumber >= currentDay) {
+      // Strictly future days, OR today with no submission yet (same gray as future)
       status = "future";
     } else {
       status = "missed";
