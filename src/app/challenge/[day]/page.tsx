@@ -100,6 +100,14 @@ export default async function ChallengeDayPage({ params }: PageProps) {
     );
   }
 
+  if (
+    !data.existingSubmission &&
+    day < data.currentDayNumber &&
+    !data.hasRejectResubmit
+  ) {
+    redirect("/dashboard?toast=past-missed");
+  }
+
   if (data.existingSubmission) {
     const sub = data.existingSubmission;
     return (

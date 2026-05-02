@@ -1,9 +1,47 @@
 import { EnrollmentStatus, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
 import { getCurrentDayNumber } from "@/lib/date-utils";
 import { normalizeGithubUrl, validateGithubUrl } from "./validate-github-url";
 import { validateLinkedinUrl } from "./validate-linkedin-url";
 import { computeStreakStats } from "./streak-utils";
+
+/** Blocks backfill for past calendar days with no submission, unless admin reject resubmit applies. */
+export async function assertPastDaySubmittable(
+  enrollment: { id: string; userId: string; startedAt: Date },
+  dayNumber: number,
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  if (dayNumber >= currentDay) return { ok: true };
+
+  const existing = await prisma.submission.findUnique({
+    where: {
+      enrollmentId_dayNumber: { enrollmentId: enrollment.id, dayNumber },
+    },
+    select: { id: true },
+  });
+  if (existing) return { ok: true };
+
+  const actions = await prisma.adminAction.findMany({
+    where: {
+      targetUserId: enrollment.userId,
+      actionType: "REJECT_SUBMISSION",
+    },
+    orderBy: { createdAt: "desc" },
+    select: { metadata: true },
+    take: 120,
+  });
+  const hasRejectResubmit = actions.some(
+    (a) => readDayNumberFromMetadata(a.metadata) === dayNumber,
+  );
+  if (hasRejectResubmit) return { ok: true };
+
+  return {
+    ok: false,
+    message:
+      "Past missed days cannot be submitted. Open the day from your dashboard heatmap to review the problem.",
+  };
+}
 
 export type SubmitDayOk = {
   ok: true;
@@ -61,6 +99,15 @@ export async function submitDay(input: {
       ok: false,
       reason: "locked",
       message: "This day is not yet unlocked",
+    };
+  }
+
+  const pastCheck = await assertPastDaySubmittable(enrollment, dayNumber);
+  if (!pastCheck.ok) {
+    return {
+      ok: false,
+      reason: "past_missed",
+      message: pastCheck.message,
     };
   }
 

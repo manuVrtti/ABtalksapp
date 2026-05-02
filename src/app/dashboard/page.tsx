@@ -14,6 +14,7 @@ import { AppHeader } from "@/components/shared/app-header";
 import { CommunityLeaderboard } from "@/components/dashboard/community-leaderboard";
 import { EnrollmentEndedScreen } from "@/components/dashboard/enrollment-ended-screen";
 import { QuizUnlockBanner } from "@/components/dashboard/quiz-unlock-banner";
+import { PastMissedChallengeToast } from "@/components/dashboard/past-missed-challenge-toast";
 import { SubmissionHeatmap } from "@/components/dashboard/submission-heatmap";
 import {
   getDashboardData,
@@ -48,6 +49,26 @@ function readQueryParam(
   const raw = query[key];
   if (Array.isArray(raw)) return raw[0]?.trim() ?? "";
   return raw?.trim() ?? "";
+}
+
+function stripQueryKeys(
+  query: Record<string, string | string[] | undefined>,
+  keys: string[],
+): string {
+  const remove = new Set(keys);
+  const sp = new URLSearchParams();
+  for (const [k, v] of Object.entries(query)) {
+    if (remove.has(k)) continue;
+    if (Array.isArray(v)) {
+      for (const item of v) {
+        if (item) sp.append(k, item);
+      }
+    } else if (typeof v === "string" && v.trim() !== "") {
+      sp.append(k, v);
+    }
+  }
+  const s = sp.toString();
+  return s ? `?${s}` : "";
 }
 
 function parseLeaderboardDomain(
@@ -86,6 +107,9 @@ export default async function DashboardPage({
   }
 
   const query = await searchParams;
+  const showPastMissedToast =
+    readQueryParam(query, "toast") === "past-missed";
+  const dashboardPathWithoutToast = `/dashboard${stripQueryKeys(query, ["toast"])}`;
   const leaderboardDomain = parseLeaderboardDomain(
     readQueryParam(query, "lb_domain"),
   );
@@ -171,6 +195,12 @@ export default async function DashboardPage({
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
       <AppHeader user={headerUser} />
+      {showPastMissedToast ? (
+        <PastMissedChallengeToast
+          trigger={showPastMissedToast}
+          cleanPath={dashboardPathWithoutToast}
+        />
+      ) : null}
       <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-6 sm:px-6">
         {dashboardData.availableQuiz ? (
           <div className="mb-6">

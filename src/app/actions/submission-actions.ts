@@ -6,7 +6,10 @@ import { prisma } from "@/lib/db";
 import { getCurrentDayNumber } from "@/lib/date-utils";
 import { EnrollmentStatus } from "@prisma/client";
 import { normalizeGithubUrl, validateGithubUrl } from "@/features/submission/validate-github-url";
-import { submitDay } from "@/features/submission/submit-day";
+import {
+  assertPastDaySubmittable,
+  submitDay,
+} from "@/features/submission/submit-day";
 
 const githubStepSchema = z.object({
   githubUrl: z.string().min(1, "GitHub URL is required"),
@@ -56,7 +59,7 @@ export async function submitGithubStepAction(
       status: { not: EnrollmentStatus.ABANDONED },
     },
     orderBy: { startedAt: "desc" },
-    select: { id: true, challengeId: true, startedAt: true },
+    select: { id: true, userId: true, challengeId: true, startedAt: true },
   });
 
   if (!enrollment) {
@@ -66,6 +69,11 @@ export async function submitGithubStepAction(
   const currentDay = getCurrentDayNumber(enrollment.startedAt);
   if (dayNumber > currentDay) {
     return { ok: false, message: "This day is not yet unlocked" };
+  }
+
+  const pastCheck = await assertPastDaySubmittable(enrollment, dayNumber);
+  if (!pastCheck.ok) {
+    return { ok: false, message: pastCheck.message };
   }
 
   const task = await prisma.dailyTask.findUnique({

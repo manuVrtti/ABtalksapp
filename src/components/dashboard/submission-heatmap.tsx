@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { parseCalendarKeyToUtcDate, formatDateIST } from "@/lib/date-utils";
 import type { HeatmapCell } from "@/features/dashboard/get-heatmap-data";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -50,8 +50,96 @@ function isClickable(cell: HeatmapCell): boolean {
   return (
     cell.status === "on_time" ||
     cell.status === "late" ||
-    cell.status === "rejected"
+    cell.status === "rejected" ||
+    cell.status === "missed"
   );
+}
+
+const markdownClass =
+  "max-w-none text-sm leading-relaxed text-foreground [&_p]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5";
+
+function TaskMetaSections({ cell }: { cell: HeatmapCell }) {
+  const hasObjectives = cell.learningObjectives.length > 0;
+  const hasResources = cell.resources.length > 0;
+  const hasTags = cell.tags.length > 0;
+  const hasMetaPill =
+    cell.difficulty != null && cell.difficulty !== "" && cell.estimatedMinutes != null;
+
+  if (!hasObjectives && !hasResources && !hasTags && !hasMetaPill) return null;
+
+  return (
+    <div className="space-y-4 border-t border-border/50 pt-4">
+      {hasMetaPill ? (
+        <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+          <Badge variant="secondary">{cell.difficulty}</Badge>
+          <span className="self-center tabular-nums">
+            ~{cell.estimatedMinutes} min
+          </span>
+        </div>
+      ) : null}
+
+      {hasObjectives ? (
+        <section className="space-y-2">
+          <h3 className="text-sm font-semibold text-foreground">
+            Learning objectives
+          </h3>
+          <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+            {cell.learningObjectives.map((o) => (
+              <li key={o}>{o}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {hasResources ? (
+        <section className="space-y-2">
+          <h3 className="text-sm font-semibold text-foreground">Resources</h3>
+          <ul className="space-y-1.5 text-sm">
+            {cell.resources.map((url) => (
+              <li key={url}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-all font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  {url}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {hasTags ? (
+        <section className="space-y-2">
+          <h3 className="text-sm font-semibold text-foreground">Tags</h3>
+          <div className="flex flex-wrap gap-1.5">
+            {cell.tags.map((t) => (
+              <Badge key={t} variant="outline" className="font-normal">
+                {t}
+              </Badge>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </div>
+  );
+}
+
+function dialogTitle(cell: HeatmapCell): string {
+  switch (cell.status) {
+    case "missed":
+      return `Day ${cell.dayNumber} — Missed`;
+    case "on_time":
+      return `Day ${cell.dayNumber} — On Time`;
+    case "late":
+      return `Day ${cell.dayNumber} — Late`;
+    case "rejected":
+      return `Day ${cell.dayNumber} — Submission Rejected`;
+    default:
+      return `Day ${cell.dayNumber}`;
+  }
 }
 
 export function SubmissionHeatmap({ data, interactive = true }: Props) {
@@ -79,6 +167,7 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
         >
           {data.map((cell, index) => {
             const clickable = interactive && isClickable(cell);
+            const isFuture = cell.status === "future";
             return (
               <button
                 key={cell.dayNumber}
@@ -93,7 +182,8 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
                   STATUS_CLASS[cell.status],
                   clickable &&
                     "cursor-pointer transition-[box-shadow,transform] hover:z-10 hover:ring-2 hover:ring-primary hover:ring-offset-2 hover:ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                  !clickable && "cursor-default",
+                  isFuture && "cursor-not-allowed",
+                  !clickable && !isFuture && "cursor-default",
                 )}
               />
             );
@@ -148,26 +238,44 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
             <>
               <DialogHeader className="shrink-0 border-b border-border/60 px-5 pt-5 pb-3">
                 <DialogTitle className="font-display text-lg leading-snug sm:text-xl">
-                  Day {active.dayNumber}
-                  {active.taskTitle ? ` — ${active.taskTitle}` : ""}
+                  {dialogTitle(active)}
                 </DialogTitle>
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  <Badge
-                    variant="secondary"
-                    className={
-                      active.status === "on_time"
-                        ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
+                {active.taskTitle &&
+                active.status !== "missed" &&
+                active.status !== "rejected" ? (
+                  <p className="pt-1 text-sm font-medium text-muted-foreground">
+                    {active.taskTitle}
+                  </p>
+                ) : null}
+                {active.status === "rejected" && active.taskTitle ? (
+                  <p className="pt-1 text-sm font-medium text-muted-foreground">
+                    {active.taskTitle}
+                  </p>
+                ) : null}
+
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  {active.status === "missed" ? (
+                    <Badge variant="secondary" className="bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200">
+                      Missed
+                    </Badge>
+                  ) : (
+                    <Badge
+                      variant="secondary"
+                      className={
+                        active.status === "on_time"
+                          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
+                          : active.status === "late"
+                            ? "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                            : "bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300"
+                      }
+                    >
+                      {active.status === "on_time"
+                        ? "On Time"
                         : active.status === "late"
-                          ? "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
-                          : "bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300"
-                    }
-                  >
-                    {active.status === "on_time"
-                      ? "On time"
-                      : active.status === "late"
-                        ? "Late"
-                        : "Rejected"}
-                  </Badge>
+                          ? "Late"
+                          : "Rejected"}
+                    </Badge>
+                  )}
                   {active.status === "on_time" || active.status === "late" ? (
                     <p className="text-sm text-muted-foreground">
                       Submitted {submittedLabel}
@@ -183,6 +291,13 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
               </DialogHeader>
 
               <div className="min-h-0 flex-1 space-y-6 overflow-y-auto px-5 py-4">
+                {active.status === "missed" ? (
+                  <p className="rounded-lg border border-border/60 bg-muted/40 p-3 text-sm text-muted-foreground">
+                    You missed this day. Submissions are no longer accepted, but you
+                    can review the problem statement to help with later tasks.
+                  </p>
+                ) : null}
+
                 {active.status === "rejected" ? (
                   <section className="space-y-2 rounded-lg border border-border/60 bg-muted/30 p-3 text-sm">
                     {active.actionReason ? (
@@ -196,11 +311,10 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
                     <p className="text-muted-foreground">You can resubmit this day.</p>
                   </section>
                 ) : null}
+
                 <section className="space-y-2">
-                  <h3 className="text-sm font-semibold text-foreground">
-                    Problem
-                  </h3>
-                  <div className="max-w-none text-sm leading-relaxed text-foreground [&_p]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5">
+                  <h3 className="text-sm font-semibold text-foreground">Problem</h3>
+                  <div className={markdownClass}>
                     {active.problemStatement ? (
                       <ReactMarkdown>{active.problemStatement}</ReactMarkdown>
                     ) : (
@@ -211,8 +325,15 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
                   </div>
                 </section>
 
+                {active.status === "missed" ||
+                active.status === "on_time" ||
+                active.status === "late" ||
+                active.status === "rejected" ? (
+                  <TaskMetaSections cell={active} />
+                ) : null}
+
                 {active.status === "on_time" || active.status === "late" ? (
-                  <section className="space-y-2">
+                  <section className="space-y-2 border-t border-border/50 pt-4">
                     <h3 className="text-sm font-semibold text-foreground">
                       Your submission
                     </h3>
@@ -254,10 +375,12 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
 
               <div className="flex shrink-0 flex-wrap justify-center gap-2 border-t border-border/60 bg-muted/30 px-5 py-4">
                 {active.status === "rejected" ? (
-                  <Link href={`/challenge/${active.dayNumber}`} className="inline-flex">
-                    <Button type="button" variant="outline" onClick={() => setOpen(false)}>
-                      Resubmit
-                    </Button>
+                  <Link
+                    href={`/challenge/${active.dayNumber}`}
+                    className={cn(buttonVariants({ variant: "outline" }))}
+                    onClick={() => setOpen(false)}
+                  >
+                    Resubmit
                   </Link>
                 ) : null}
                 <Button type="button" variant="default" onClick={() => setOpen(false)}>

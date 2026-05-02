@@ -2,6 +2,7 @@ import type { DailyTask, Domain, SubmissionStatus } from "@prisma/client";
 import { EnrollmentStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getCurrentDayNumber } from "@/lib/date-utils";
+import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
 
 export type DayData = {
   task: DailyTask;
@@ -13,6 +14,8 @@ export type DayData = {
   } | null;
   currentDayNumber: number;
   isUnlocked: boolean;
+  /** Admin rejected this day’s submission (row deleted); user may still resubmit via /challenge/[day]. */
+  hasRejectResubmit: boolean;
   enrollment: { domain: Domain };
 };
 
@@ -28,6 +31,7 @@ export async function getDayData(
     orderBy: { startedAt: "desc" },
     select: {
       id: true,
+      userId: true,
       challengeId: true,
       domain: true,
       startedAt: true,
@@ -66,6 +70,19 @@ export async function getDayData(
     },
   });
 
+  const rejectActions = await prisma.adminAction.findMany({
+    where: {
+      targetUserId: enrollment.userId,
+      actionType: "REJECT_SUBMISSION",
+    },
+    orderBy: { createdAt: "desc" },
+    select: { metadata: true },
+    take: 120,
+  });
+  const hasRejectResubmit = rejectActions.some(
+    (a) => readDayNumberFromMetadata(a.metadata) === dayNumber,
+  );
+
   const currentDayNumber = getCurrentDayNumber(enrollment.startedAt);
   const isUnlocked = dayNumber <= currentDayNumber;
 
@@ -74,6 +91,7 @@ export async function getDayData(
     existingSubmission: submission,
     currentDayNumber,
     isUnlocked,
+    hasRejectResubmit,
     enrollment: { domain: enrollment.domain },
   };
 }

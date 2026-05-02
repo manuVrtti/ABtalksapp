@@ -1,5 +1,6 @@
 import { SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
 import { getIstDateKeyForChallengeDay, IST } from "@/lib/date-utils";
 import { formatInTimeZone } from "date-fns-tz";
 
@@ -17,6 +18,11 @@ export type HeatmapCell = {
   /** Daily task metadata when the challenge defines this day */
   taskTitle: string | null;
   problemStatement: string | null;
+  learningObjectives: string[];
+  resources: string[];
+  tags: string[];
+  difficulty: string | null;
+  estimatedMinutes: number | null;
   /** Submission fields when this day was submitted (on_time / late) */
   githubUrl: string | null;
   linkedinUrl: string | null;
@@ -26,17 +32,6 @@ export type HeatmapCell = {
   actionReason: string | null;
   actionAt: string | null;
 };
-
-function readDayNumberFromMetadata(metadata: unknown): number | null {
-  if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return null;
-  const value = (metadata as Record<string, unknown>).dayNumber;
-  if (typeof value === "number" && Number.isInteger(value)) return value;
-  if (typeof value === "string") {
-    const parsed = Number.parseInt(value, 10);
-    return Number.isInteger(parsed) ? parsed : null;
-  }
-  return null;
-}
 
 export async function getHeatmapData(
   enrollmentId: string,
@@ -68,7 +63,16 @@ export async function getHeatmapData(
         challengeId: enrollment.challengeId,
         dayNumber: { gte: 1, lte: 60 },
       },
-      select: { dayNumber: true, title: true, problemStatement: true },
+      select: {
+        dayNumber: true,
+        title: true,
+        problemStatement: true,
+        learningObjectives: true,
+        resources: true,
+        tags: true,
+        difficulty: true,
+        estimatedMinutes: true,
+      },
     }),
     prisma.adminAction.findMany({
       where: {
@@ -112,12 +116,25 @@ export async function getHeatmapData(
 
   const taskByDay = new Map<
     number,
-    { title: string; problemStatement: string }
+    {
+      title: string;
+      problemStatement: string;
+      learningObjectives: string[];
+      resources: string[];
+      tags: string[];
+      difficulty: string;
+      estimatedMinutes: number;
+    }
   >();
   for (const t of tasks) {
     taskByDay.set(t.dayNumber, {
       title: t.title,
       problemStatement: t.problemStatement,
+      learningObjectives: t.learningObjectives ?? [],
+      resources: t.resources ?? [],
+      tags: t.tags ?? [],
+      difficulty: t.difficulty,
+      estimatedMinutes: t.estimatedMinutes,
     });
   }
 
@@ -171,6 +188,11 @@ export async function getHeatmapData(
       status,
       taskTitle: task?.title ?? null,
       problemStatement: task?.problemStatement ?? null,
+      learningObjectives: task?.learningObjectives ?? [],
+      resources: task?.resources ?? [],
+      tags: task?.tags ?? [],
+      difficulty: task?.difficulty ?? null,
+      estimatedMinutes: task?.estimatedMinutes ?? null,
       githubUrl:
         includeSubmissionDetails && hasSubmission && row ? row.githubUrl : null,
       linkedinUrl:
