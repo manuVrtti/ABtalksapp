@@ -406,14 +406,14 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
         <CardHeader>
           <CardTitle className="text-base">Submit your solution</CardTitle>
           <CardDescription>
-            Paste the URL of your public GitHub repository for this day&apos;s
+            Paste the URL of your public GitHub Commit File for this day&apos;s
             work.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleGithubSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="githubUrl">GitHub repository URL</Label>
+              <Label htmlFor="githubUrl">GitHub Commit URL</Label>
               <Input
                 id="githubUrl"
                 name="githubUrl"
