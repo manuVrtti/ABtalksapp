@@ -24,3 +24,13 @@ export const phoneSchema = z
 export const optionalPhoneSchema = z
   .union([z.literal(""), phoneSchema])
   .default("");
+
+/** Non-empty phone using the same rules as `phoneSchema`. */
+export const requiredPhoneSchema = z
+  .string()
+  .min(1, "Phone is required")
+  .transform((val) => val.replace(/[\s\-()]/g, ""))
+  .refine(
+    (val) => /^\+?\d{7,15}$/.test(val),
+    "Enter a valid phone number (7-15 digits, optional + prefix)",
+  );

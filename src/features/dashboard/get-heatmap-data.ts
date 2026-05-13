@@ -42,7 +42,12 @@ export async function getHeatmapData(
   const includeSubmissionDetails = options?.includeSubmissionDetails ?? true;
   const enrollment = await prisma.enrollment.findUnique({
     where: { id: enrollmentId },
-    select: { startedAt: true, challengeId: true, userId: true },
+    select: {
+      startedAt: true,
+      challengeId: true,
+      userId: true,
+      challenge: { select: { startsAt: true } },
+    },
   });
 
   if (!enrollment) {
@@ -160,11 +165,15 @@ export async function getHeatmapData(
     }
   }
 
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  const currentDay = getCurrentDayNumber(enrollment, enrollment.challenge);
   const out: HeatmapCell[] = [];
 
   for (let dayNumber = 1; dayNumber <= 60; dayNumber++) {
-    const date = getIstDateKeyForChallengeDay(enrollment.startedAt, dayNumber);
+    const date = getIstDateKeyForChallengeDay(
+      enrollment,
+      dayNumber,
+      enrollment.challenge,
+    );
     const row = byDay.get(dayNumber);
     const task = taskByDay.get(dayNumber);
 

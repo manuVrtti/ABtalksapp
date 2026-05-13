@@ -5,7 +5,8 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
 import { getCurrentDayNumber } from "@/lib/date-utils";
 import { EnrollmentStatus } from "@prisma/client";
-import { normalizeGithubUrl, validateGithubUrl } from "@/features/submission/validate-github-url";
+import { normalizeGithubUrl } from "@/features/submission/validate-github-url";
+import { validateSubmissionUrl } from "@/lib/validations/submission";
 import {
   assertPastDaySubmittable,
   submitDay,
@@ -59,19 +60,30 @@ export async function submitGithubStepAction(
       status: { not: EnrollmentStatus.ABANDONED },
     },
     orderBy: { startedAt: "desc" },
-    select: { id: true, userId: true, challengeId: true, startedAt: true },
+    select: {
+      id: true,
+      userId: true,
+      challengeId: true,
+      startedAt: true,
+      domain: true,
+      challenge: { select: { startsAt: true } },
+    },
   });
 
   if (!enrollment) {
     return { ok: false, message: "No active enrollment" };
   }
 
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  const currentDay = getCurrentDayNumber(enrollment, enrollment.challenge);
   if (dayNumber > currentDay) {
     return { ok: false, message: "This day is not yet unlocked" };
   }
 
-  const pastCheck = await assertPastDaySubmittable(enrollment, dayNumber);
+  const pastCheck = await assertPastDaySubmittable(
+    enrollment,
+    dayNumber,
+    enrollment.challenge,
+  );
   if (!pastCheck.ok) {
     return { ok: false, message: pastCheck.message };
   }
@@ -90,7 +102,11 @@ export async function submitGithubStepAction(
     return { ok: false, message: "Day not found" };
   }
 
-  const ghCheck = await validateGithubUrl(githubUrl.trim(), userId);
+  const ghCheck = await validateSubmissionUrl(
+    githubUrl.trim(),
+    enrollment.domain,
+    userId,
+  );
   if (!ghCheck.ok) {
     return { ok: false, message: ghCheck.message };
   }

@@ -48,8 +48,8 @@ export async function getPublicProfile(userId: string): Promise<{
   return {
     fullName: user.studentProfile.fullName,
     domain: user.studentProfile.domain,
-    college: user.studentProfile.college,
-    graduationYear: user.studentProfile.graduationYear,
+    college: user.studentProfile.college ?? "",
+    graduationYear: user.studentProfile.graduationYear ?? 2026,
     skills: user.studentProfile.skills,
     joinedAt: user.createdAt,
     daysCompleted: latestEnrollment?.daysCompleted ?? 0,

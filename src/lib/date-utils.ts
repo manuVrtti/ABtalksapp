@@ -14,28 +14,54 @@ export function getNowInIST(): string {
   return formatInTimeZone(new Date(), IST, "EEEE, d MMM yyyy, h:mm a zzz");
 }
 
-/**
- * Challenge day 1 = IST calendar day of `startedAt`.
- * Each subsequent IST calendar day increments by 1. Capped at 60, minimum 1.
- */
-/** IST calendar date string for challenge day `dayNumber` (1 = first IST day of enrollment). */
-export function getIstDateKeyForChallengeDay(
+type EnrollmentDayAnchor = { startedAt: Date };
+type ChallengeSyncStart = { startsAt?: Date | null };
+
+function referenceStartDate(
   startedAt: Date,
+  challenge?: ChallengeSyncStart,
+): Date {
+  return challenge?.startsAt != null ? challenge.startsAt : startedAt;
+}
+
+/**
+ * Challenge day 1 = IST calendar day of the reference start
+ * (`challenge.startsAt` when set, otherwise `enrollment.startedAt`).
+ * Each subsequent IST calendar day increments by 1. Capped at 60.
+ * Before a synchronized `startsAt` (IST), returns 0 so callers treat all days as locked.
+ */
+/** IST calendar date string for challenge day `dayNumber` (1 = first IST day of the reference start). */
+export function getIstDateKeyForChallengeDay(
+  enrollment: EnrollmentDayAnchor | Date,
   dayNumber: number,
+  challenge?: ChallengeSyncStart,
 ): string {
-  const startKey = formatInTimeZone(startedAt, IST, "yyyy-MM-dd");
+  const startedAt =
+    enrollment instanceof Date ? enrollment : enrollment.startedAt;
+  const ref = referenceStartDate(startedAt, challenge);
+  const startKey = formatInTimeZone(ref, IST, "yyyy-MM-dd");
   const base = parseCalendarKeyToUtcDate(startKey);
   const dayDate = addDays(base, dayNumber - 1);
   return formatInTimeZone(dayDate, IST, "yyyy-MM-dd");
 }
 
-export function getCurrentDayNumber(startedAt: Date): number {
-  const startKey = formatInTimeZone(startedAt, IST, "yyyy-MM-dd");
+export function getCurrentDayNumber(
+  enrollment: EnrollmentDayAnchor | Date,
+  challenge?: ChallengeSyncStart,
+): number {
+  const startedAt =
+    enrollment instanceof Date ? enrollment : enrollment.startedAt;
+  const ref = referenceStartDate(startedAt, challenge);
+  const startKey = formatInTimeZone(ref, IST, "yyyy-MM-dd");
   const nowKey = formatInTimeZone(new Date(), IST, "yyyy-MM-dd");
-  const diff = differenceInCalendarDays(
-    parseCalendarKeyToUtcDate(nowKey),
-    parseCalendarKeyToUtcDate(startKey),
-  );
+  const startUtc = parseCalendarKeyToUtcDate(startKey);
+  const nowUtc = parseCalendarKeyToUtcDate(nowKey);
+
+  if (challenge?.startsAt != null && nowUtc < startUtc) {
+    return 0;
+  }
+
+  const diff = differenceInCalendarDays(nowUtc, startUtc);
   const day = diff + 1;
   return Math.min(60, Math.max(1, day));
 }

@@ -2,7 +2,8 @@ import { EnrollmentStatus, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
 import { getCurrentDayNumber } from "@/lib/date-utils";
-import { normalizeGithubUrl, validateGithubUrl } from "./validate-github-url";
+import { normalizeGithubUrl } from "./validate-github-url";
+import { validateSubmissionUrl } from "@/lib/validations/submission";
 import { validateLinkedinUrl } from "./validate-linkedin-url";
 import { computeStreakStats } from "./streak-utils";
 
@@ -10,9 +11,10 @@ import { computeStreakStats } from "./streak-utils";
 export async function assertPastDaySubmittable(
   enrollment: { id: string; userId: string; startedAt: Date },
   dayNumber: number,
+  challenge?: { startsAt: Date | null },
 ): Promise<{ ok: true } | { ok: false; message: string }> {
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
-  if (dayNumber >= currentDay) return { ok: true };
+  const currentDay = getCurrentDayNumber(enrollment, challenge);
+  if (currentDay > 0 && dayNumber >= currentDay) return { ok: true };
 
   const existing = await prisma.submission.findUnique({
     where: {
@@ -73,11 +75,16 @@ export async function submitDay(input: {
       status: { not: EnrollmentStatus.ABANDONED },
     },
     orderBy: { startedAt: "desc" },
+    include: {
+      challenge: { select: { startsAt: true } },
+    },
   });
 
   if (!enrollment) {
     return { ok: false, reason: "no_enrollment", message: "No active enrollment" };
   }
+
+  const challengeAnchor = enrollment.challenge;
 
   const task = await prisma.dailyTask.findUnique({
     where: {
@@ -93,7 +100,7 @@ export async function submitDay(input: {
     return { ok: false, reason: "day_not_found", message: "Day not found" };
   }
 
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  const currentDay = getCurrentDayNumber(enrollment, challengeAnchor);
   if (dayNumber > currentDay) {
     return {
       ok: false,
@@ -102,7 +109,7 @@ export async function submitDay(input: {
     };
   }
 
-  const pastCheck = await assertPastDaySubmittable(enrollment, dayNumber);
+  const pastCheck = await assertPastDaySubmittable(enrollment, dayNumber, challengeAnchor);
   if (!pastCheck.ok) {
     return {
       ok: false,
@@ -111,10 +118,15 @@ export async function submitDay(input: {
     };
   }
 
-  const gh = await validateGithubUrl(githubNormalized, userId, {
-    enrollmentId: enrollment.id,
-    dayNumber,
-  });
+  const gh = await validateSubmissionUrl(
+    githubNormalized,
+    enrollment.domain,
+    userId,
+    {
+      enrollmentId: enrollment.id,
+      dayNumber,
+    },
+  );
   if (!gh.ok) {
     return { ok: false, reason: gh.reason, message: gh.message };
   }

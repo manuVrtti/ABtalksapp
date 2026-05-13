@@ -20,7 +20,7 @@ export type DashboardDataWithEnrollment = {
   profile: {
     fullName: string;
     domain: string;
-    college: string;
+    college: string | null;
     referralCode: string;
     isReadyForInterview: boolean;
   };
@@ -140,7 +140,7 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
           currentStreak: true,
           longestStreak: true,
           status: true,
-          challenge: { select: { totalDays: true } },
+          challenge: { select: { totalDays: true, startsAt: true } },
         },
       },
     },
@@ -185,7 +185,7 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
     sameIstCalendarDay(s.submittedAt, now),
   );
 
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  const currentDay = getCurrentDayNumber(enrollment, enrollment.challenge);
   const totalDays = enrollment.challenge.totalDays;
 
   let todayTask: DashboardDataWithEnrollment["todayTask"] = null;

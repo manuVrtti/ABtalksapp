@@ -1,8 +1,9 @@
 "use server";
 
 import { auth } from "@/auth";
+import { UserType } from "@prisma/client";
 import { completeRegistration } from "@/features/registration/complete-registration";
-import { registerSchema } from "@/lib/validations/register";
+import { registerPayloadSchema } from "@/lib/validations/register";
 
 export async function completeRegistrationAction(formData: FormData) {
   const session = await auth();
@@ -23,14 +24,31 @@ export async function completeRegistrationAction(formData: FormData) {
 
   const yearRaw = formData.get("graduationYear");
   const graduationYear =
-    typeof yearRaw === "string"
+    typeof yearRaw === "string" && yearRaw.trim() !== ""
       ? Number.parseInt(yearRaw, 10)
       : Number(yearRaw);
 
-  const parsed = registerSchema.safeParse({
+  const userTypeRaw = formData.get("userType");
+  const userType =
+    typeof userTypeRaw === "string" &&
+    userTypeRaw.trim().toUpperCase() === UserType.PROFESSIONAL
+      ? UserType.PROFESSIONAL
+      : UserType.STUDENT;
+
+  const yearsExpRaw = formData.get("yearsExperience");
+  const yearsExperience =
+    typeof yearsExpRaw === "string" && yearsExpRaw.trim() !== ""
+      ? Number.parseInt(yearsExpRaw, 10)
+      : Number(yearsExpRaw);
+
+  const parsed = registerPayloadSchema.safeParse({
     fullName: formData.get("fullName"),
     college: formData.get("college"),
-    graduationYear,
+    graduationYear: Number.isFinite(graduationYear) ? graduationYear : undefined,
+    userType,
+    organization: formData.get("organization"),
+    role: formData.get("role"),
+    yearsExperience: Number.isFinite(yearsExperience) ? yearsExperience : undefined,
     domain: formData.get("domain"),
     skills,
     linkedinUrl: formData.get("linkedinUrl") || "",

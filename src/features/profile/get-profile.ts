@@ -57,6 +57,12 @@ export async function getProfile(userId: string): Promise<{
 
   return {
     user: userFields,
-    profile: studentProfile,
+    profile: studentProfile
+      ? {
+          ...studentProfile,
+          college: studentProfile.college ?? "",
+          graduationYear: studentProfile.graduationYear ?? 2026,
+        }
+      : null,
   };
 }

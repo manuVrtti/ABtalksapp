@@ -35,6 +35,7 @@ export async function getDayData(
       challengeId: true,
       domain: true,
       startedAt: true,
+      challenge: { select: { startsAt: true } },
     },
   });
 
@@ -83,7 +84,7 @@ export async function getDayData(
     (a) => readDayNumberFromMetadata(a.metadata) === dayNumber,
   );
 
-  const currentDayNumber = getCurrentDayNumber(enrollment.startedAt);
+  const currentDayNumber = getCurrentDayNumber(enrollment, enrollment.challenge);
   const isUnlocked = dayNumber <= currentDayNumber;
 
   return {
