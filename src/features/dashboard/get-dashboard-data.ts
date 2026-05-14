@@ -111,6 +111,25 @@ async function resolveAvailableQuizForBanner(
   return null;
 }
 
+const enrollmentSelect = {
+  id: true,
+  challengeId: true,
+  domain: true,
+  startedAt: true,
+  daysCompleted: true,
+  currentStreak: true,
+  longestStreak: true,
+  status: true,
+  challenge: {
+    select: {
+      id: true,
+      domain: true,
+      totalDays: true,
+      startsAt: true,
+    },
+  },
+} as const;
+
 export async function getDashboardData(userId: string): Promise<DashboardData> {
   const user = await prisma.user.findUnique({
     where: { id: userId },
@@ -126,21 +145,6 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
           college: true,
           referralCode: true,
           isReadyForInterview: true,
-        },
-      },
-      enrollments: {
-        take: 1,
-        orderBy: { startedAt: "desc" },
-        select: {
-          id: true,
-          challengeId: true,
-          domain: true,
-          startedAt: true,
-          daysCompleted: true,
-          currentStreak: true,
-          longestStreak: true,
-          status: true,
-          challenge: { select: { totalDays: true, startsAt: true } },
         },
       },
     },
@@ -162,7 +166,23 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
     isReadyForInterview: user.studentProfile.isReadyForInterview,
   };
 
-  const enrollment = user.enrollments[0];
+  let enrollment = await prisma.enrollment.findFirst({
+    where: {
+      userId,
+      domain: user.studentProfile.domain,
+    },
+    orderBy: { startedAt: "desc" },
+    select: enrollmentSelect,
+  });
+
+  if (!enrollment) {
+    enrollment = await prisma.enrollment.findFirst({
+      where: { userId },
+      orderBy: { startedAt: "desc" },
+      select: enrollmentSelect,
+    });
+  }
+
   if (!enrollment) {
     return {
       hasEnrollment: false,

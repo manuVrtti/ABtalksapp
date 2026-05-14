@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 
 type Input = {
   search?: string;
-  domain?: "AI" | "DS" | "SE" | "ALL";
+  domain?: "AI" | "DS" | "SE" | "CLAUDE" | "ALL";
   status?: "ALL" | "ACTIVE" | "COMPLETED";
 };
 
@@ -11,6 +11,7 @@ export async function getStudents(
   input: Input,
 ): Promise<
   Array<{
+    enrollmentId: string;
     userId: string;
     fullName: string;
     email: string;
@@ -72,10 +73,11 @@ export async function getStudents(
   return rows
     .filter((row) => !!row.user.studentProfile)
     .map((row) => ({
+      enrollmentId: row.id,
       userId: row.user.id,
       fullName: row.user.studentProfile?.fullName || row.user.email || "Unknown",
       email: row.user.email,
-      domain: row.user.studentProfile?.domain || row.domain,
+      domain: row.domain,
       daysCompleted: row.daysCompleted,
       currentStreak: row.currentStreak,
       status: row.status,

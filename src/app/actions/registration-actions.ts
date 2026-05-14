@@ -41,13 +41,30 @@ export async function completeRegistrationAction(formData: FormData) {
       ? Number.parseInt(yearsExpRaw, 10)
       : Number(yearsExpRaw);
 
+  const fullNameRaw = formData.get("fullName");
+  const fullName =
+    typeof fullNameRaw === "string" ? fullNameRaw.trim() : fullNameRaw;
+
+  const collegeRaw = formData.get("college");
+  const college =
+    typeof collegeRaw === "string" ? collegeRaw.trim() : collegeRaw;
+
+  const organizationRaw = formData.get("organization");
+  const organization =
+    typeof organizationRaw === "string"
+      ? organizationRaw.trim()
+      : organizationRaw;
+
+  const roleRaw = formData.get("role");
+  const role = typeof roleRaw === "string" ? roleRaw.trim() : roleRaw;
+
   const parsed = registerPayloadSchema.safeParse({
-    fullName: formData.get("fullName"),
-    college: formData.get("college"),
+    fullName,
+    college,
     graduationYear: Number.isFinite(graduationYear) ? graduationYear : undefined,
     userType,
-    organization: formData.get("organization"),
-    role: formData.get("role"),
+    organization,
+    role,
     yearsExperience: Number.isFinite(yearsExperience) ? yearsExperience : undefined,
     domain: formData.get("domain"),
     skills,

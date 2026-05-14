@@ -273,6 +273,22 @@ export async function seedContent() {
     );
   }
 
+  await prisma.challenge.upsert({
+    where: { domain: Domain.CLAUDE },
+    update: {
+      startsAt: new Date("2026-06-01T00:00:00+05:30"),
+    },
+    create: {
+      domain: Domain.CLAUDE,
+      title: "60-Day Claude AI Mastery Challenge",
+      description:
+        "Master Claude AI in 60 days — for students and working professionals.",
+      totalDays: 60,
+      isActive: true,
+      startsAt: new Date("2026-06-01T00:00:00+05:30"),
+    },
+  });
+
   for (const entry of quizEntries) {
     if (entry.domain !== "SE" && entry.domain !== "DS" && entry.domain !== "AI") {
       continue;

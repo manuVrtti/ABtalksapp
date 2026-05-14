@@ -16,26 +16,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { Domain } from "@prisma/client";
+import type { LeaderboardRow } from "@/features/dashboard/get-leaderboard";
 import { cn } from "@/lib/utils";
-
-type LeaderboardRow = {
-  userId: string;
-  fullName: string;
-  college: string;
-  domain: "AI" | "DS" | "SE";
-  daysCompleted: number;
-  currentStreak: number;
-  longestStreak: number;
-  isReadyForInterview: boolean;
-  rank: number;
-  isViewer: boolean;
-};
 
 type Props = {
   rows: LeaderboardRow[];
   totalCount: number;
   filters: {
-    domain: "AI" | "DS" | "SE" | "ALL";
+    domain: "AI" | "DS" | "SE" | "CLAUDE" | "ALL";
     search: string;
   };
 };
@@ -47,9 +36,11 @@ function rankDisplay(rank: number) {
   return rank;
 }
 
-function domainBadgeClass(domain: "AI" | "DS" | "SE"): string {
+function domainBadgeClass(domain: Domain): string {
   if (domain === "AI") return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
   if (domain === "DS") return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
+  if (domain === "CLAUDE")
+    return "border-violet-500/40 bg-violet-50 text-violet-800 dark:bg-violet-950/40 dark:text-violet-200";
   return "border-domains-se/50 bg-domains-se-bg text-domains-se";
 }
 
@@ -141,6 +132,7 @@ export function CommunityLeaderboard({
                   <SelectItem value="AI">AI</SelectItem>
                   <SelectItem value="DS">DS</SelectItem>
                   <SelectItem value="SE">SE</SelectItem>
+                  <SelectItem value="CLAUDE">Claude</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -188,7 +180,7 @@ export function CommunityLeaderboard({
               {rows.map((row) => {
                 const href = row.isViewer ? "/profile" : `/students/${row.userId}`;
                 return (
-                  <li key={row.userId}>
+                  <li key={row.enrollmentId ?? `${row.userId}-${row.domain}`}>
                     <Link
                       href={href}
                       className={cn(

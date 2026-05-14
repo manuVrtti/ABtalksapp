@@ -41,6 +41,8 @@ import {
 import { cn } from "@/lib/utils";
 import { formatDateIST } from "@/lib/date-utils";
 import { prisma } from "@/lib/db";
+import { Domain } from "@prisma/client";
+import { ClaudeChallengeModal } from "@/components/dashboard/claude-challenge-modal";
 
 function readQueryParam(
   query: Record<string, string | string[] | undefined>,
@@ -73,8 +75,15 @@ function stripQueryKeys(
 
 function parseLeaderboardDomain(
   value: string,
-): "AI" | "DS" | "SE" | "ALL" {
-  if (value === "AI" || value === "DS" || value === "SE") return value;
+): "AI" | "DS" | "SE" | "CLAUDE" | "ALL" {
+  if (
+    value === "AI" ||
+    value === "DS" ||
+    value === "SE" ||
+    value === "CLAUDE"
+  ) {
+    return value;
+  }
   return "ALL";
 }
 
@@ -172,6 +181,28 @@ export default async function DashboardPage({
     );
   }
 
+  let showClaudeModal = false;
+  let claudeModalStartsAt: Date | null = null;
+
+  const claudeEnrollmentCheck = await prisma.enrollment.findFirst({
+    where: {
+      userId: session.user.id,
+      domain: Domain.CLAUDE,
+    },
+    select: { id: true },
+  });
+
+  if (!claudeEnrollmentCheck) {
+    const claudeChallengeRow = await prisma.challenge.findUnique({
+      where: { domain: Domain.CLAUDE },
+      select: { startsAt: true },
+    });
+    if (claudeChallengeRow?.startsAt) {
+      showClaudeModal = true;
+      claudeModalStartsAt = claudeChallengeRow.startsAt;
+    }
+  }
+
   const [heatmapData, leaderboard, quizAvailability, quizHistory] =
     await Promise.all([
       getHeatmapData(dashboardData.enrollment.id),
@@ -195,6 +226,9 @@ export default async function DashboardPage({
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
       <AppHeader user={headerUser} />
+      {showClaudeModal && claudeModalStartsAt ? (
+        <ClaudeChallengeModal startsAt={claudeModalStartsAt} />
+      ) : null}
       {showPastMissedToast ? (
         <PastMissedChallengeToast
           trigger={showPastMissedToast}
