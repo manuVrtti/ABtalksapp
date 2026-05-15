@@ -1,4 +1,4 @@
-import { AnalyticsDashboard } from "@/components/admin/analytics-dashboard";
+import { AnalyticsDashboardLoader } from "@/components/admin/analytics-dashboard-loader";
 import { AnalyticsRangeFilter } from "@/components/admin/analytics-range-filter";
 import {
   getAnalyticsData,
@@ -30,7 +30,7 @@ export default async function AdminAnalyticsPage({
         </p>
       </div>
       <AnalyticsRangeFilter value={range} />
-      <AnalyticsDashboard data={data} />
+      <AnalyticsDashboardLoader data={data} />
     </div>
   );
 }
