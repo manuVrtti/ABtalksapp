@@ -7,6 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserType {
+  STUDENT
+  PROFESSIONAL
+}
+
+enum Domain {
+  SE
+  DS
+  AI
+  CLAUDE
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -33,6 +45,8 @@ model Challenge {
   description String
   totalDays   Int          @default(60)
   isActive    Boolean      @default(true)
+  /** When set, challenge days are synchronized from this IST calendar anchor (e.g. Claude cohort). Null = rolling start from enrollment.startedAt. */
+  startsAt    DateTime?
   createdAt   DateTime     @default(now())
   dailyTasks  DailyTask[]
   enrollments Enrollment[]
@@ -153,8 +167,12 @@ model StudentProfile {
   id                  String   @id @default(cuid())
   userId              String   @unique
   fullName            String
-  college             String
-  graduationYear      Int
+  userType            UserType @default(STUDENT)
+  college             String?
+  graduationYear      Int?
+  organization        String?
+  role                String?
+  yearsExperience     Int?
   domain              Domain
   skills              String[] @default([])
   resumeUrl           String?
@@ -230,12 +248,6 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-enum Domain {
-  SE
-  DS
-  AI
 }
 
 enum EnrollmentStatus {

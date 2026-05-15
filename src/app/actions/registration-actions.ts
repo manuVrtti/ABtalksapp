@@ -1,8 +1,9 @@
 "use server";
 
 import { auth } from "@/auth";
+import { UserType } from "@prisma/client";
 import { completeRegistration } from "@/features/registration/complete-registration";
-import { registerSchema } from "@/lib/validations/register";
+import { registerPayloadSchema } from "@/lib/validations/register";
 
 export async function completeRegistrationAction(formData: FormData) {
   const session = await auth();
@@ -23,14 +24,48 @@ export async function completeRegistrationAction(formData: FormData) {
 
   const yearRaw = formData.get("graduationYear");
   const graduationYear =
-    typeof yearRaw === "string"
+    typeof yearRaw === "string" && yearRaw.trim() !== ""
       ? Number.parseInt(yearRaw, 10)
       : Number(yearRaw);
 
-  const parsed = registerSchema.safeParse({
-    fullName: formData.get("fullName"),
-    college: formData.get("college"),
-    graduationYear,
+  const userTypeRaw = formData.get("userType");
+  const userType =
+    typeof userTypeRaw === "string" &&
+    userTypeRaw.trim().toUpperCase() === UserType.PROFESSIONAL
+      ? UserType.PROFESSIONAL
+      : UserType.STUDENT;
+
+  const yearsExpRaw = formData.get("yearsExperience");
+  const yearsExperience =
+    typeof yearsExpRaw === "string" && yearsExpRaw.trim() !== ""
+      ? Number.parseInt(yearsExpRaw, 10)
+      : Number(yearsExpRaw);
+
+  const fullNameRaw = formData.get("fullName");
+  const fullName =
+    typeof fullNameRaw === "string" ? fullNameRaw.trim() : fullNameRaw;
+
+  const collegeRaw = formData.get("college");
+  const college =
+    typeof collegeRaw === "string" ? collegeRaw.trim() : collegeRaw;
+
+  const organizationRaw = formData.get("organization");
+  const organization =
+    typeof organizationRaw === "string"
+      ? organizationRaw.trim()
+      : organizationRaw;
+
+  const roleRaw = formData.get("role");
+  const role = typeof roleRaw === "string" ? roleRaw.trim() : roleRaw;
+
+  const parsed = registerPayloadSchema.safeParse({
+    fullName,
+    college,
+    graduationYear: Number.isFinite(graduationYear) ? graduationYear : undefined,
+    userType,
+    organization,
+    role,
+    yearsExperience: Number.isFinite(yearsExperience) ? yearsExperience : undefined,
     domain: formData.get("domain"),
     skills,
     linkedinUrl: formData.get("linkedinUrl") || "",

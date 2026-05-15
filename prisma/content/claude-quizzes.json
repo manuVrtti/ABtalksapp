@@ -1,0 +1,858 @@
+[
+  {
+    "weekNumber": 1,
+    "domain": "CLAUDE",
+    "title": "Week 1: Foundation & Prompt Setup",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 1: Foundation & Prompt Setup — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 1 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "domain": "CLAUDE",
+    "title": "Week 2: Prompt Engineering Patterns",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 2: Prompt Engineering Patterns — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "domain": "CLAUDE",
+    "title": "Week 3: Content, Writing & Office",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 3: Content, Writing & Office — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 3: Content, Writing & Office — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 3: Content, Writing & Office — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 3: Content, Writing & Office — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 3: Content, Writing & Office — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 3: Content, Writing & Office — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 3: Content, Writing & Office — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 3: Content, Writing & Office — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 3: Content, Writing & Office — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 3: Content, Writing & Office — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "domain": "CLAUDE",
+    "title": "Week 4: Code & Developer Workflow",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 4: Code & Developer Workflow — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 4: Code & Developer Workflow — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 4: Code & Developer Workflow — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 4: Code & Developer Workflow — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 4: Code & Developer Workflow — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 4: Code & Developer Workflow — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 4: Code & Developer Workflow — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 4: Code & Developer Workflow — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 4: Code & Developer Workflow — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 4: Code & Developer Workflow — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "domain": "CLAUDE",
+    "title": "Week 5: Research, Data & Ecosystem",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 5: Research, Data & Ecosystem — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "domain": "CLAUDE",
+    "title": "Week 6: Artifacts, Projects & Automation",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 6: Artifacts, Projects & Automation — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 6 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "domain": "CLAUDE",
+    "title": "Week 7: MCP, Plugins & Agentic Flows",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 7: MCP, Plugins & Agentic Flows — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "domain": "CLAUDE",
+    "title": "Week 8: Capstone, Advanced Techniques & Launch",
+    "questions": [
+      {
+        "questionOrder": 1,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 1: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 2,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 2: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 3,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 3: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 4,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 4: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 5,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 5: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 6,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 6: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 7,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 7: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 8,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 8: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 9,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 9: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      },
+      {
+        "questionOrder": 10,
+        "questionText": "Week 8: Capstone, Advanced Techniques & Launch — Question 10: What is the best default habit when using Claude for serious work?",
+        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
+        "optionB": "Paste sensitive credentials so Claude can debug faster",
+        "optionC": "Ship external content without reading for speed",
+        "optionD": "Avoid saving reusable prompts or templates",
+        "correctAnswer": "A",
+        "explanation": "Week 8 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+      }
+    ]
+  }
+]

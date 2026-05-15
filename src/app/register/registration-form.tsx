@@ -1,10 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Domain } from "@prisma/client";
-import { BarChart3, BrainCircuit, Code2, Loader2, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  BarChart3,
+  BrainCircuit,
+  Code2,
+  Loader2,
+  Sparkles,
+  X,
+} from "lucide-react";
 import { type Resolver, Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { completeRegistrationAction } from "@/app/actions/registration-actions";
@@ -18,6 +25,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -27,33 +35,65 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import {
-  type RegisterInput,
-  registerSchema,
+  type RegisterPayloadInput,
+  registerPayloadSchema,
 } from "@/lib/validations/register";
 
-const GRADUATION_YEARS = [2025, 2026, 2027, 2028, 2029, 2030] as const;
+/** RHF model includes fields from both branches; Zod still validates via `registerPayloadSchema`. */
+type RegistrationFormValues = {
+  userType: "STUDENT" | "PROFESSIONAL";
+  fullName: string;
+  college: string;
+  graduationYear: number;
+  organization: string;
+  role: string;
+  yearsExperience: number;
+  domain: RegisterPayloadInput["domain"];
+  skills: string[];
+  linkedinUrl: string;
+  phone: string;
+  githubUsername: string;
+  referralCode: string;
+};
+
+const GRADUATION_YEARS = [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035] as const;
 
 type Props = {
   initialName: string;
   initialRef: string;
+  claudeEnabled: boolean;
+  /** When set (e.g. from `/register?domain=CLAUDE`), pre-select this track. */
+  initialDomain?: "CLAUDE";
 };
 
+type RegistrationDomain = RegisterPayloadInput["domain"];
+
 const domainCards: {
-  value: Domain;
+  value: RegistrationDomain;
   title: string;
   description: string;
   icon: typeof Code2;
   accent: string;
+  featured?: boolean;
 }[] = [
   {
-    value: Domain.AI,
-    title: "Artificial Intelligence",
-    description: "Foundations and applied AI alongside the community.",
-    icon: BrainCircuit,
-    accent: "border-l-domains-ai",
+    value: "CLAUDE",
+    title: "Claude AI Mastery — New!",
+    description:
+      "Our newest track — synchronized cohort start for everyone.",
+    icon: Sparkles,
+    accent: "border-l-primary",
+    featured: true,
   },
   {
-    value: Domain.DS,
+    value: "SE",
+    title: "Software Engineering",
+    description: "Build systems, APIs, and full-stack apps over 60 days.",
+    icon: Code2,
+    accent: "border-l-domains-se",
+  },
+  {
+    value: "DS",
     title: "Data Science",
     description:
       "Data, analysis, and practical workflows from exploration to modeling.",
@@ -61,28 +101,49 @@ const domainCards: {
     accent: "border-l-domains-ds",
   },
   {
-    value: Domain.SE,
-    title: "Software Engineering",
-    description: "Build systems, APIs, and full-stack apps over 60 days.",
-    icon: Code2,
-    accent: "border-l-domains-se",
+    value: "AI",
+    title: "Artificial Intelligence",
+    description: "Foundations and applied AI alongside the community.",
+    icon: BrainCircuit,
+    accent: "border-l-domains-ai",
   },
 ];
 
-export function RegistrationForm({ initialName, initialRef }: Props) {
+export function RegistrationForm({
+  initialName,
+  initialRef,
+  claudeEnabled,
+  initialDomain,
+}: Props) {
   const router = useRouter();
   const [skillDraft, setSkillDraft] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<RegisterInput>({
-    resolver: zodResolver(
-      registerSchema,
-    ) as Resolver<RegisterInput>,
+  const domainCardList = useMemo(
+    () =>
+      claudeEnabled
+        ? domainCards
+        : domainCards.filter((c) => c.value !== "CLAUDE"),
+    [claudeEnabled],
+  );
+
+  const form = useForm<RegistrationFormValues>({
+    resolver: zodResolver(registerPayloadSchema) as unknown as Resolver<RegistrationFormValues>,
+    shouldUnregister: true,
     defaultValues: {
+      userType: "STUDENT",
       fullName: initialName,
       college: "",
       graduationYear: 2026,
-      domain: Domain.SE,
+      organization: "",
+      role: "",
+      yearsExperience: 0,
+      domain:
+        initialDomain === "CLAUDE" && claudeEnabled
+          ? "CLAUDE"
+          : claudeEnabled
+            ? "CLAUDE"
+            : "SE",
       skills: [],
       linkedinUrl: "",
       phone: "",
@@ -97,11 +158,27 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
     handleSubmit,
     watch,
     setValue,
+    clearErrors,
     formState: { errors },
   } = form;
 
   const skills = watch("skills") ?? [];
   const selectedDomain = watch("domain");
+  const userType = watch("userType");
+
+  function handleUserTypeChange(next: "STUDENT" | "PROFESSIONAL") {
+    setValue("userType", next, { shouldValidate: false });
+    if (next === "PROFESSIONAL") {
+      setValue("organization", "");
+      setValue("role", "");
+      setValue("yearsExperience", 0);
+      clearErrors(["college", "graduationYear"]);
+    } else {
+      setValue("college", "");
+      setValue("graduationYear", 2026);
+      clearErrors(["organization", "role", "yearsExperience"]);
+    }
+  }
 
   function addSkillsFromDraft() {
     const parts = skillDraft
@@ -127,19 +204,32 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
     );
   }
 
-  async function onSubmit(values: RegisterInput) {
+  const domainHelperText =
+    selectedDomain === "CLAUDE"
+      ? "🚀 The newest challenge — 60-Day Claude AI Mastery. Synchronized June 1, 2026 start."
+      : "Choose your domain — your daily challenges will be tailored to this area.";
+
+  async function onSubmit(values: RegistrationFormValues) {
     setIsSubmitting(true);
     try {
       const fd = new FormData();
       fd.append("fullName", values.fullName);
-      fd.append("college", values.college);
-      fd.append("graduationYear", String(values.graduationYear));
+      fd.append("userType", values.userType);
       fd.append("domain", values.domain);
       fd.append("skills", values.skills.join(","));
       fd.append("linkedinUrl", values.linkedinUrl ?? "");
       fd.append("phone", values.phone ?? "");
       fd.append("githubUsername", values.githubUsername ?? "");
       fd.append("referralCode", values.referralCode ?? "");
+
+      if (values.userType === "STUDENT") {
+        fd.append("college", values.college);
+        fd.append("graduationYear", String(values.graduationYear));
+      } else {
+        fd.append("organization", values.organization);
+        fd.append("role", values.role);
+        fd.append("yearsExperience", String(values.yearsExperience));
+      }
 
       const res = await completeRegistrationAction(fd);
       if (!res.ok) {
@@ -156,6 +246,87 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+      <div className="space-y-3">
+        <Label className="text-base font-semibold">I am a…</Label>
+        <p className="text-sm text-muted-foreground">
+          Choose one option so we can collect the right details.
+        </p>
+        <Controller
+          name="userType"
+          control={control}
+          render={({ field }) => (
+            <RadioGroup
+              value={field.value}
+              onValueChange={(v) => {
+                const next = v === "PROFESSIONAL" ? "PROFESSIONAL" : "STUDENT";
+                field.onChange(next);
+                handleUserTypeChange(next);
+              }}
+              className="grid max-w-full grid-cols-1 gap-3 sm:grid-cols-2"
+              required
+            >
+              <Label
+                htmlFor="user-type-student"
+                className="min-w-0 cursor-pointer"
+              >
+                <Card
+                  className={cn(
+                    "h-full p-4 transition-colors",
+                    field.value === "STUDENT" &&
+                      "border-primary bg-primary/5 ring-2 ring-primary/20",
+                  )}
+                >
+                  <div className="flex items-start gap-3">
+                    <RadioGroupItem
+                      value="STUDENT"
+                      id="user-type-student"
+                      className="mt-1"
+                    />
+                    <div className="min-w-0 space-y-1">
+                      <div className="font-display font-semibold">Student</div>
+                      <div className="text-sm text-muted-foreground">
+                        Currently in college or university
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </Label>
+              <Label
+                htmlFor="user-type-professional"
+                className="min-w-0 cursor-pointer"
+              >
+                <Card
+                  className={cn(
+                    "h-full p-4 transition-colors",
+                    field.value === "PROFESSIONAL" &&
+                      "border-primary bg-primary/5 ring-2 ring-primary/20",
+                  )}
+                >
+                  <div className="flex items-start gap-3">
+                    <RadioGroupItem
+                      value="PROFESSIONAL"
+                      id="user-type-professional"
+                      className="mt-1"
+                    />
+                    <div className="min-w-0 space-y-1">
+                      <div className="font-display font-semibold">
+                        Working Professional
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Currently employed
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </Label>
+            </RadioGroup>
+          )}
+        />
+        {errors.userType ? (
+          <p className="text-sm text-destructive">{errors.userType.message}</p>
+        ) : null}
+      </div>
+
       <div className="space-y-2">
         <Label htmlFor="fullName">Full name</Label>
         <Input
@@ -169,62 +340,149 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
         ) : null}
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="college">College</Label>
-        <Input
-          id="college"
-          placeholder="e.g. IIT Delhi"
-          {...register("college")}
-          aria-invalid={!!errors.college}
-        />
-        {errors.college ? (
-          <p className="text-sm text-destructive">{errors.college.message}</p>
-        ) : null}
-      </div>
+      <AnimatePresence mode="wait">
+        {userType === "STUDENT" ? (
+          <motion.div
+            key="student-fields"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-6"
+          >
+            <div className="space-y-2">
+              <Label htmlFor="college">College</Label>
+              <Input
+                id="college"
+                placeholder="e.g. IIT Delhi"
+                {...register("college")}
+                aria-invalid={!!errors.college}
+              />
+              {errors.college ? (
+                <p className="text-sm text-destructive">
+                  {errors.college.message}
+                </p>
+              ) : null}
+            </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="graduationYear">Graduation year</Label>
-        <Controller
-          name="graduationYear"
-          control={control}
-          render={({ field }) => (
-            <Select
-              value={String(field.value)}
-              onValueChange={(v) => {
-                if (v != null) field.onChange(Number(v));
-              }}
-            >
-              <SelectTrigger
-                id="graduationYear"
-                className="w-full min-w-0"
-                aria-invalid={!!errors.graduationYear}
-              >
-                <SelectValue placeholder="Select year" />
-              </SelectTrigger>
-              <SelectContent>
-                {GRADUATION_YEARS.map((y) => (
-                  <SelectItem key={y} value={String(y)}>
-                    {y}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
-        />
-        {errors.graduationYear ? (
-          <p className="text-sm text-destructive">
-            {errors.graduationYear.message}
-          </p>
-        ) : null}
-      </div>
+            <div className="space-y-2">
+              <Label htmlFor="graduationYear">Graduation year</Label>
+              <Controller
+                name="graduationYear"
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    value={String(field.value)}
+                    onValueChange={(v) => {
+                      if (v != null) field.onChange(Number(v));
+                    }}
+                  >
+                    <SelectTrigger
+                      id="graduationYear"
+                      className="w-full min-w-0"
+                      aria-invalid={!!errors.graduationYear}
+                    >
+                      <SelectValue placeholder="Select year" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {GRADUATION_YEARS.map((y) => (
+                        <SelectItem key={y} value={String(y)}>
+                          {y}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+              {errors.graduationYear ? (
+                <p className="text-sm text-destructive">
+                  {errors.graduationYear.message}
+                </p>
+              ) : null}
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="professional-fields"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-6"
+          >
+            <div className="space-y-2">
+              <Label htmlFor="organization">Organization</Label>
+              <Input
+                id="organization"
+                placeholder="Company or institution name"
+                maxLength={200}
+                {...register("organization")}
+                aria-invalid={!!errors.organization}
+              />
+              {errors.organization ? (
+                <p className="text-sm text-destructive">
+                  {errors.organization.message}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="role">Role</Label>
+              <p className="text-xs text-muted-foreground">
+                e.g., Software Engineer, Product Manager
+              </p>
+              <Input
+                id="role"
+                placeholder="Your current role"
+                maxLength={200}
+                {...register("role")}
+                aria-invalid={!!errors.role}
+              />
+              {errors.role ? (
+                <p className="text-sm text-destructive">{errors.role.message}</p>
+              ) : null}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="yearsExperience">Years of experience</Label>
+              <Controller
+                name="yearsExperience"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    id="yearsExperience"
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    max={60}
+                    className="max-w-[12rem]"
+                    value={field.value}
+                    onChange={(e) => {
+                      const n = Number.parseInt(e.target.value, 10);
+                      field.onChange(Number.isFinite(n) ? n : 0);
+                    }}
+                    onBlur={field.onBlur}
+                    ref={field.ref}
+                    aria-invalid={!!errors.yearsExperience}
+                  />
+                )}
+              />
+              {errors.yearsExperience ? (
+                <p className="text-sm text-destructive">
+                  {errors.yearsExperience.message}
+                </p>
+              ) : null}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="space-y-3">
         <Label>Domain</Label>
-        <p className="text-sm text-muted-foreground">
-          Choose your 60-day challenge track.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {domainCards.map(({ value, title, description, icon: Icon, accent }) => {
+        <p className="mt-1 text-sm text-muted-foreground">{domainHelperText}</p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {domainCardList.map(
+            ({ value, title, description, icon: Icon, accent, featured }) => {
             const selected = selectedDomain === value;
             return (
               <Card
@@ -241,29 +499,59 @@ export function RegistrationForm({ initialName, initialRef }: Props) {
                   }
                 }}
                 className={cn(
-                  "cursor-pointer border-l-4 bg-card shadow-sm outline-none transition-transform hover:scale-[1.02] hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/25",
+                  "min-w-0 cursor-pointer border-l-4 bg-card shadow-sm outline-none transition-transform hover:scale-[1.02] hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/25",
                   accent,
+                  featured &&
+                    "bg-gradient-to-br from-primary/15 via-primary/5 to-card",
+                  featured &&
+                    !selected &&
+                    "ring-2 ring-primary/40 ring-offset-0",
                   selected
                     ? "ring-2 ring-primary ring-offset-2 ring-offset-background bg-primary/5"
-                    : "border-border/60",
+                    : !featured && "border-border/60",
                 )}
               >
                 <CardHeader className="gap-3 pb-6">
                   <Icon
                     className={cn(
-                      "size-10",
+                      "size-10 shrink-0",
                       selected ? "text-primary" : "text-muted-foreground",
                     )}
                     aria-hidden
                   />
-                  <CardTitle className="text-base leading-snug">{title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
-                    {description}
-                  </CardDescription>
+                  {featured ? (
+                    <>
+                      <CardTitle className="flex flex-wrap items-center gap-2 text-base leading-snug">
+                        <span className="text-lg leading-none" aria-hidden>
+                          ✨
+                        </span>
+                        <span className="font-display font-semibold">
+                          Claude AI Mastery
+                        </span>
+                        <Badge
+                          variant="default"
+                          className="text-[10px] font-semibold uppercase tracking-wide"
+                        >
+                          New
+                        </Badge>
+                      </CardTitle>
+                      <CardDescription className="text-sm leading-relaxed">
+                        {description}
+                      </CardDescription>
+                    </>
+                  ) : (
+                    <>
+                      <CardTitle className="text-base leading-snug">{title}</CardTitle>
+                      <CardDescription className="text-sm leading-relaxed">
+                        {description}
+                      </CardDescription>
+                    </>
+                  )}
                 </CardHeader>
               </Card>
             );
-          })}
+          },
+          )}
         </div>
         {errors.domain ? (
           <p className="text-sm text-destructive">{errors.domain.message}</p>

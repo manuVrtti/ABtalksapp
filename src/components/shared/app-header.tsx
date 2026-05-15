@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { Domain } from "@prisma/client";
 import { AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -16,6 +17,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
+import {
+  ChallengeSwitcher,
+  type ChallengeSwitcherEnrollment,
+} from "@/components/shared/challenge-switcher";
 import { cn } from "@/lib/utils";
 
 export type AppHeaderUser = {
@@ -28,8 +33,12 @@ export type AppHeaderUser = {
 
 type Props = {
   user: AppHeaderUser;
-  /** Student track; omit when user has no profile yet (e.g. OAuth before registration). */
+  /** Student profile primary track; use `headerDomain` when showing selected challenge. */
   domain?: Domain | null;
+  /** Selected challenge domain (e.g. when multi-enrolled); falls back to `domain`. */
+  headerDomain?: Domain | null;
+  userEnrollments?: ChallengeSwitcherEnrollment[];
+  activeEnrollmentId?: string;
 };
 
 function displayLabel(user: AppHeaderUser): string {
@@ -52,6 +61,8 @@ function domainBadgeTitle(domain: Domain): string {
       return "Data Science";
     case Domain.SE:
       return "Software Engineering";
+    case Domain.CLAUDE:
+      return "Claude AI Mastery";
     default:
       return domain;
   }
@@ -65,14 +76,27 @@ function domainBadgeClasses(domain: Domain): string {
       return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
     case Domain.SE:
       return "border-domains-se/50 bg-domains-se-bg text-domains-se";
+    case Domain.CLAUDE:
+      return "border-violet-500/40 bg-violet-50 text-violet-800 dark:bg-violet-950/40 dark:text-violet-200";
     default:
       return "border-border bg-muted text-muted-foreground";
   }
 }
 
-export function AppHeader({ user, domain }: Props) {
+export function AppHeader({
+  user,
+  domain,
+  headerDomain,
+  userEnrollments,
+  activeEnrollmentId,
+}: Props) {
   const router = useRouter();
   const label = displayLabel(user);
+  const badgeDomain = headerDomain ?? domain;
+  const showChallengeSwitcher =
+    (userEnrollments?.length ?? 0) >= 2 &&
+    !!activeEnrollmentId &&
+    (userEnrollments?.some((e) => e.id === activeEnrollmentId) ?? false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-card/95 py-3 pr-6 pl-6 shadow-sm backdrop-blur-sm">
@@ -84,19 +108,27 @@ export function AppHeader({ user, domain }: Props) {
           >
             <span className="text-primary">A</span>BTalks
           </Link>
-          {domain ? (
+          {badgeDomain ? (
             <span
               className={cn(
                 "inline-flex shrink-0 rounded-full border px-3 py-1 text-sm font-bold tracking-wide",
-                domainBadgeClasses(domain),
+                domainBadgeClasses(badgeDomain),
               )}
-              title={domainBadgeTitle(domain)}
+              title={domainBadgeTitle(badgeDomain)}
             >
-              {domain}
+              {badgeDomain}
             </span>
           ) : null}
         </div>
-        <div className="flex flex-1 items-center justify-end gap-2">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+          {showChallengeSwitcher ? (
+            <Suspense fallback={null}>
+              <ChallengeSwitcher
+                enrollments={userEnrollments!}
+                activeEnrollmentId={activeEnrollmentId!}
+              />
+            </Suspense>
+          ) : null}
           {user.isAdmin ? (
             <Link
               href="/admin"

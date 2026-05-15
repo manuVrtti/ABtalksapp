@@ -31,11 +31,18 @@ import {
 
 type Props = {
   dayNumber: number;
+  /** When set, submissions target this enrollment (multi-track users). */
+  enrollmentId?: string;
   task: Pick<DailyTask, "title" | "problemStatement">;
   userDomain: Domain;
 };
 
-export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
+export function SubmissionFlow({
+  dayNumber,
+  enrollmentId,
+  task,
+  userDomain,
+}: Props) {
   const [step, setStep] = useState<"github" | "linkedin" | "success">("github");
   const [githubUrl, setGithubUrl] = useState("");
   /** Snapshot from server when entering step 2 — used for reset only. */
@@ -86,6 +93,10 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
     };
   }, [step]);
 
+  const challengeQs = enrollmentId
+    ? `?challenge=${encodeURIComponent(enrollmentId)}`
+    : "";
+
   async function handleGithubSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
@@ -94,6 +105,7 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
       const fd = new FormData();
       fd.append("githubUrl", githubUrl);
       fd.append("dayNumber", String(dayNumber));
+      if (enrollmentId) fd.append("enrollmentId", enrollmentId);
       const res = await submitGithubStepAction(fd);
       if (!res.ok) {
         setError(res.message);
@@ -118,6 +130,7 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
       fd.append("githubUrl", githubUrl);
       fd.append("linkedinUrl", linkedinUrl);
       fd.append("dayNumber", String(dayNumber));
+      if (enrollmentId) fd.append("enrollmentId", enrollmentId);
       const res = await submitLinkedinStepAction(fd);
       if (!res.ok) {
         setError(res.message);
@@ -272,7 +285,7 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
 
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <Link
-            href="/dashboard"
+            href={`/dashboard${challengeQs}`}
             className={cn(
               buttonVariants({ variant: "default", size: "lg" }),
               "h-12 min-w-[200px] px-8 text-base font-medium",
@@ -282,7 +295,7 @@ export function SubmissionFlow({ dayNumber, task, userDomain }: Props) {
           </Link>
           {dayNumber < 60 ? (
             <Link
-              href={`/challenge/${dayNumber + 1}`}
+              href={`/challenge/${dayNumber + 1}${challengeQs}`}
               className={cn(
                 buttonVariants({ variant: "secondary", size: "lg" }),
                 "h-12 min-w-[200px] px-8 text-base font-medium",

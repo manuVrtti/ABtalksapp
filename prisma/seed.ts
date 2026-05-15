@@ -94,7 +94,37 @@ function buildProblemLookup(entries: ProblemJson[] | null): Map<string, ProblemJ
   return map;
 }
 
+function buildClaudeProblemLookup(entries: ProblemJson[] | null): Map<string, ProblemJson> {
+  const map = new Map<string, ProblemJson>();
+  if (!entries) return map;
+  for (const p of entries) {
+    if (p.domain !== "CLAUDE") continue;
+    map.set(`CLAUDE:${p.dayNumber}`, p);
+  }
+  return map;
+}
+
 function placeholderDailyTaskData(domain: Domain, dayNumber: number) {
+  if (domain === Domain.CLAUDE) {
+    const estimatedMinutes = Math.min(60, 25 + dayNumber * 2);
+    const tier =
+      dayNumber <= 15 ? "Beginner" : dayNumber <= 45 ? "Intermediate" : "Advanced";
+    return {
+      domain,
+      title: `Day ${dayNumber} — Claude Challenge (placeholder)`,
+      problemStatement: `Placeholder Claude curriculum for day ${dayNumber}. Run \`npm run db:seed:content\` after adding prisma/content/claude-problems.json for full tasks.`,
+      learningObjectives: [
+        "Map one real workflow Claude could accelerate for you",
+        "Practice structured prompting with clear success criteria",
+      ],
+      resources: ["https://claude.ai", "https://docs.anthropic.com"],
+      difficulty: tier,
+      estimatedMinutes,
+      linkedinTemplate: `Day ${dayNumber}/60 #60DayClaudeChallenge #ABtalks 🚀\n\nPlaceholder update — full story template ships before June 1, 2026.`,
+      solutionApproach: "Share a Claude conversation or artifact URL that reflects your work.",
+      tags: ["placeholder", "claude", `day-${dayNumber}`],
+    };
+  }
   const difficulty = dayNumber <= 7 ? "Easy" : "Medium";
   const estimatedMinutes = Math.min(60, 5 + dayNumber * 2);
   return {
@@ -273,6 +303,37 @@ export async function seedContent() {
     );
   }
 
+  const claudeChallenge = await prisma.challenge.upsert({
+    where: { domain: Domain.CLAUDE },
+    update: {
+      title: "60-Day Claude AI Mastery Challenge",
+      description:
+        "Master Claude AI in 60 days — for students and working professionals.",
+      totalDays: 60,
+      isActive: true,
+      startsAt: new Date("2026-06-01T00:00:00+05:30"),
+    },
+    create: {
+      domain: Domain.CLAUDE,
+      title: "60-Day Claude AI Mastery Challenge",
+      description:
+        "Master Claude AI in 60 days — for students and working professionals.",
+      totalDays: 60,
+      isActive: true,
+      startsAt: new Date("2026-06-01T00:00:00+05:30"),
+    },
+  });
+
+  const claudeProblemsRaw = loadJsonFile<ProblemJson[]>("claude-problems.json");
+  const claudeProblemLookup = buildClaudeProblemLookup(
+    Array.isArray(claudeProblemsRaw) ? claudeProblemsRaw : null,
+  );
+  await upsertDailyTasksForChallenge(
+    claudeChallenge.id,
+    Domain.CLAUDE,
+    claudeProblemLookup,
+  );
+
   for (const entry of quizEntries) {
     if (entry.domain !== "SE" && entry.domain !== "DS" && entry.domain !== "AI") {
       continue;
@@ -298,6 +359,28 @@ export async function seedContent() {
     if (entry.weekNumber === 1) {
       quizWeek1IdByDomain.set(domain, quiz.id);
     }
+    await replaceQuizQuestionsFromJson(quiz.id, entry.questions);
+  }
+
+  const claudeQuizzesRaw = loadJsonFile<QuizJson[]>("claude-quizzes.json");
+  const claudeQuizEntries = Array.isArray(claudeQuizzesRaw) ? claudeQuizzesRaw : [];
+  for (const entry of claudeQuizEntries) {
+    if (entry.domain !== "CLAUDE") continue;
+    const quiz = await prisma.quiz.upsert({
+      where: {
+        challengeId_weekNumber: {
+          challengeId: claudeChallenge.id,
+          weekNumber: entry.weekNumber,
+        },
+      },
+      create: {
+        challengeId: claudeChallenge.id,
+        domain: Domain.CLAUDE,
+        weekNumber: entry.weekNumber,
+        title: entry.title,
+      },
+      update: { title: entry.title },
+    });
     await replaceQuizQuestionsFromJson(quiz.id, entry.questions);
   }
 

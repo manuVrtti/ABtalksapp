@@ -18,6 +18,8 @@ import { cn } from "@/lib/utils";
 type Props = {
   data: HeatmapCell[];
   interactive?: boolean;
+  /** Current dashboard enrollment — preserves ?challenge= when opening /challenge/[day] */
+  challengeEnrollmentId?: string;
 };
 
 const STATUS_CLASS: Record<HeatmapCell["status"], string> = {
@@ -142,7 +144,11 @@ function dialogTitle(cell: HeatmapCell): string {
   }
 }
 
-export function SubmissionHeatmap({ data, interactive = true }: Props) {
+export function SubmissionHeatmap({
+  data,
+  interactive = true,
+  challengeEnrollmentId,
+}: Props) {
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState<HeatmapCell | null>(null);
 
@@ -376,7 +382,11 @@ export function SubmissionHeatmap({ data, interactive = true }: Props) {
               <div className="flex shrink-0 flex-wrap justify-center gap-2 border-t border-border/60 bg-muted/30 px-5 py-4">
                 {active.status === "rejected" ? (
                   <Link
-                    href={`/challenge/${active.dayNumber}`}
+                    href={
+                      challengeEnrollmentId
+                        ? `/challenge/${active.dayNumber}?challenge=${encodeURIComponent(challengeEnrollmentId)}`
+                        : `/challenge/${active.dayNumber}`
+                    }
                     className={cn(buttonVariants({ variant: "outline" }))}
                     onClick={() => setOpen(false)}
                   >

@@ -4,12 +4,13 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
 import { getCurrentDayNumber } from "@/lib/date-utils";
-import { EnrollmentStatus } from "@prisma/client";
-import { normalizeGithubUrl, validateGithubUrl } from "@/features/submission/validate-github-url";
+import { normalizeGithubUrl } from "@/features/submission/validate-github-url";
+import { validateSubmissionUrl } from "@/lib/validations/submission";
 import {
   assertPastDaySubmittable,
   submitDay,
 } from "@/features/submission/submit-day";
+import { resolveChallengeEnrollment } from "@/features/enrollment/resolve-dashboard-enrollment";
 
 const githubStepSchema = z.object({
   githubUrl: z.string().min(1, "GitHub URL is required"),
@@ -53,25 +54,28 @@ export async function submitGithubStepAction(
   const userId = session.user.id;
   const { githubUrl, dayNumber } = parsed.data;
 
-  const enrollment = await prisma.enrollment.findFirst({
-    where: {
-      userId,
-      status: { not: EnrollmentStatus.ABANDONED },
-    },
-    orderBy: { startedAt: "desc" },
-    select: { id: true, userId: true, challengeId: true, startedAt: true },
-  });
+  const enrollmentIdRaw = formData.get("enrollmentId");
+  const enrollmentId =
+    typeof enrollmentIdRaw === "string" && enrollmentIdRaw.trim() !== ""
+      ? enrollmentIdRaw.trim()
+      : undefined;
+
+  const enrollment = await resolveChallengeEnrollment(userId, enrollmentId);
 
   if (!enrollment) {
     return { ok: false, message: "No active enrollment" };
   }
 
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  const currentDay = getCurrentDayNumber(enrollment, enrollment.challenge);
   if (dayNumber > currentDay) {
     return { ok: false, message: "This day is not yet unlocked" };
   }
 
-  const pastCheck = await assertPastDaySubmittable(enrollment, dayNumber);
+  const pastCheck = await assertPastDaySubmittable(
+    enrollment,
+    dayNumber,
+    enrollment.challenge,
+  );
   if (!pastCheck.ok) {
     return { ok: false, message: pastCheck.message };
   }
@@ -90,7 +94,11 @@ export async function submitGithubStepAction(
     return { ok: false, message: "Day not found" };
   }
 
-  const ghCheck = await validateGithubUrl(githubUrl.trim(), userId);
+  const ghCheck = await validateSubmissionUrl(
+    githubUrl.trim(),
+    enrollment.domain,
+    userId,
+  );
   if (!ghCheck.ok) {
     return { ok: false, message: ghCheck.message };
   }
@@ -129,10 +137,17 @@ export async function submitLinkedinStepAction(formData: FormData) {
     };
   }
 
+  const enrollmentIdRaw = formData.get("enrollmentId");
+  const enrollmentId =
+    typeof enrollmentIdRaw === "string" && enrollmentIdRaw.trim() !== ""
+      ? enrollmentIdRaw.trim()
+      : undefined;
+
   return submitDay({
     userId: session.user.id,
     githubUrl: parsed.data.githubUrl,
     linkedinUrl: parsed.data.linkedinUrl,
     dayNumber: parsed.data.dayNumber,
+    enrollmentId,
   });
 }

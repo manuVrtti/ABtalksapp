@@ -16,6 +16,8 @@ import { getStudents } from "@/features/admin/get-students";
 function domainBadgeClass(domain: string): string {
   if (domain === "AI") return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
   if (domain === "DS") return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
+  if (domain === "CLAUDE")
+    return "border-violet-500/40 bg-violet-50 text-violet-800 dark:bg-violet-950/40 dark:text-violet-200";
   return "border-domains-se/50 bg-domains-se-bg text-domains-se";
 }
 
@@ -28,7 +30,11 @@ function statusBadgeClass(status: string): string {
 export default async function AdminStudentsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; domain?: "AI" | "DS" | "SE" | "ALL"; status?: "ALL" | "ACTIVE" | "COMPLETED" }>;
+  searchParams: Promise<{
+    q?: string;
+    domain?: "AI" | "DS" | "SE" | "CLAUDE" | "ALL";
+    status?: "ALL" | "ACTIVE" | "COMPLETED";
+  }>;
 }) {
   const sp = await searchParams;
   const students = await getStudents({
@@ -60,7 +66,7 @@ export default async function AdminStudentsPage({
           </TableHeader>
           <TableBody>
             {students.map((student) => (
-              <TableRow key={student.userId}>
+              <TableRow key={student.enrollmentId}>
                 <TableCell>
                   <Link href={`/admin/students/${student.userId}`} className="font-medium underline">
                     {student.fullName}

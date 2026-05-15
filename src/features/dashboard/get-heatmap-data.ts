@@ -37,13 +37,30 @@ export type HeatmapCell = {
 
 export async function getHeatmapData(
   enrollmentId: string,
-  options?: { includeSubmissionDetails?: boolean },
+  options?: { includeSubmissionDetails?: boolean; viewerUserId?: string },
 ): Promise<HeatmapCell[]> {
   const includeSubmissionDetails = options?.includeSubmissionDetails ?? true;
-  const enrollment = await prisma.enrollment.findUnique({
-    where: { id: enrollmentId },
-    select: { startedAt: true, challengeId: true, userId: true },
-  });
+  const viewerUserId = options?.viewerUserId;
+
+  const enrollment = viewerUserId
+    ? await prisma.enrollment.findFirst({
+        where: { id: enrollmentId, userId: viewerUserId },
+        select: {
+          startedAt: true,
+          challengeId: true,
+          userId: true,
+          challenge: { select: { startsAt: true } },
+        },
+      })
+    : await prisma.enrollment.findUnique({
+        where: { id: enrollmentId },
+        select: {
+          startedAt: true,
+          challengeId: true,
+          userId: true,
+          challenge: { select: { startsAt: true } },
+        },
+      });
 
   if (!enrollment) {
     return [];
@@ -160,11 +177,15 @@ export async function getHeatmapData(
     }
   }
 
-  const currentDay = getCurrentDayNumber(enrollment.startedAt);
+  const currentDay = getCurrentDayNumber(enrollment, enrollment.challenge);
   const out: HeatmapCell[] = [];
 
   for (let dayNumber = 1; dayNumber <= 60; dayNumber++) {
-    const date = getIstDateKeyForChallengeDay(enrollment.startedAt, dayNumber);
+    const date = getIstDateKeyForChallengeDay(
+      enrollment,
+      dayNumber,
+      enrollment.challenge,
+    );
     const row = byDay.get(dayNumber);
     const task = taskByDay.get(dayNumber);
 

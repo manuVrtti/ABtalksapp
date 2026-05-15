@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
-const domainOptions = ["ALL", "SE", "DS", "AI"] as const;
+const domainOptions = ["ALL", "SE", "DS", "AI", "CLAUDE"] as const;
 const statusOptions = ["ALL", "ACTIVE", "COMPLETED"] as const;
 
 export function StudentsFilters() {

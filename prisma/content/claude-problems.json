@@ -1,0 +1,1560 @@
+[
+  {
+    "dayNumber": 1,
+    "domain": "CLAUDE",
+    "title": "Day 1: Set Up Claude & Build Your AIY Framework",
+    "problemStatement": "Welcome to Day 1! Today you'll set up your Claude account, explore the interface, and start building your personal AIY (AI for You) framework.\n\n**Tasks:**\n1. Sign up for Claude at claude.ai\n2. Explore Projects, Memory, and Settings\n3. Identify 5 areas where Claude could help you daily\n4. Document your AIY framework — a personal map of how you'll use Claude\n\n**Submission:** Share notes, a Claude conversation link, or a short doc that captures your framework.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Understand Claude's core features",
+      "Identify personal use cases for AI",
+      "Set up your workspace"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 1 of #60DayClaudeChallenge with @AnilBajpai's @ABtalks 🚀\n\nToday I set up my Claude account and started mapping my AIY (AI for You) framework — identifying 5 daily areas where AI can make me more productive.\n\nWhat would YOUR top 5 use cases be? Drop them in the comments 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Share your AIY framework. Could be a Claude conversation, a doc, or a screenshot of your notes.",
+    "tags": [
+      "setup",
+      "foundation",
+      "framework"
+    ]
+  },
+  {
+    "dayNumber": 2,
+    "domain": "CLAUDE",
+    "title": "Day 2: Projects, Memory & Workspace Hygiene",
+    "problemStatement": "Welcome to **Day 2** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering (Orientation)\n\n**Today's focus:** Projects, Memory & Workspace Hygiene\n\n**Tasks:**\n1. Use Claude for structured thinking; save useful threads.\n2. Document what worked in a simple prompt log.\n3. Prepare your share link or notes for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 2 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 2/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Projects, Memory & Workspace Hygiene): Phase 1 — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-2",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 3,
+    "domain": "CLAUDE",
+    "title": "Day 3: Claude Skills — Install & First Automations",
+    "problemStatement": "Welcome to **Day 3** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering (Orientation)\n\n**Today's focus:** Claude Skills — Install & First Automations\n\n**Tasks:**\n1. Use Claude for structured thinking; save useful threads.\n2. Document what worked in a simple prompt log.\n3. Prepare your share link or notes for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 3 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 3/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Claude Skills — Install & First Automations): Phase 1 — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-3",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 4,
+    "domain": "CLAUDE",
+    "title": "Day 4: 10 Real Prompts Across Domains (Bank)",
+    "problemStatement": "Welcome to **Day 4** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering (Orientation)\n\n**Today's focus:** 10 Real Prompts Across Domains (Bank)\n\n**Tasks:**\n1. Use Claude for structured thinking; save useful threads.\n2. Document what worked in a simple prompt log.\n3. Prepare your share link or notes for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 4 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 4/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (10 Real Prompts Across Domains (Bank)): Phase 1 — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-4",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 5,
+    "domain": "CLAUDE",
+    "title": "Day 5: Weekly Review — Tune Your Defaults",
+    "problemStatement": "Welcome to **Day 5** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering (Orientation)\n\n**Today's focus:** Weekly Review — Tune Your Defaults\n\n**Tasks:**\n1. Use Claude for structured thinking; save useful threads.\n2. Document what worked in a simple prompt log.\n3. Prepare your share link or notes for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 5 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 5/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Weekly Review — Tune Your Defaults): Phase 1 — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-5",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 6,
+    "domain": "CLAUDE",
+    "title": "Day 6: Prompt Engineering Lab — Day 6",
+    "problemStatement": "Welcome to **Day 6** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Role prompts, chain-of-thought, few-shot, XML tags\n\n**Today's focus:** Prompt Engineering Lab — Day 6\n\n**Tasks:**\n1. Practice one technique end-to-end with a real work example.\n2. Compare a naive vs structured prompt; note quality delta.\n3. Add constraints and negative instructions where helpful.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 6 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Prompt Engineering Lab — Day 6): Role prompts, chain-of-thought, few-shot, XML tags — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-6",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 7,
+    "domain": "CLAUDE",
+    "title": "Day 7: Prompt Engineering Lab — Day 7",
+    "problemStatement": "Welcome to **Day 7** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Role prompts, chain-of-thought, few-shot, XML tags\n\n**Today's focus:** Prompt Engineering Lab — Day 7\n\n**Tasks:**\n1. Practice one technique end-to-end with a real work example.\n2. Compare a naive vs structured prompt; note quality delta.\n3. Add constraints and negative instructions where helpful.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 7 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 7/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Prompt Engineering Lab — Day 7): Role prompts, chain-of-thought, few-shot, XML tags — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-7",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 8,
+    "domain": "CLAUDE",
+    "title": "Day 8: Prompt Engineering Lab — Day 8",
+    "problemStatement": "Welcome to **Day 8** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Role prompts, chain-of-thought, few-shot, XML tags\n\n**Today's focus:** Prompt Engineering Lab — Day 8\n\n**Tasks:**\n1. Practice one technique end-to-end with a real work example.\n2. Compare a naive vs structured prompt; note quality delta.\n3. Add constraints and negative instructions where helpful.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 8 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 8/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Prompt Engineering Lab — Day 8): Role prompts, chain-of-thought, few-shot, XML tags — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-8",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 9,
+    "domain": "CLAUDE",
+    "title": "Day 9: Prompt Engineering Lab — Day 9",
+    "problemStatement": "Welcome to **Day 9** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Role prompts, chain-of-thought, few-shot, XML tags\n\n**Today's focus:** Prompt Engineering Lab — Day 9\n\n**Tasks:**\n1. Practice one technique end-to-end with a real work example.\n2. Compare a naive vs structured prompt; note quality delta.\n3. Add constraints and negative instructions where helpful.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 9 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 9/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Prompt Engineering Lab — Day 9): Role prompts, chain-of-thought, few-shot, XML tags — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-9",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 10,
+    "domain": "CLAUDE",
+    "title": "Day 10: Prompt Engineering Lab — Day 10",
+    "problemStatement": "Welcome to **Day 10** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Role prompts, chain-of-thought, few-shot, XML tags\n\n**Today's focus:** Prompt Engineering Lab — Day 10\n\n**Tasks:**\n1. Practice one technique end-to-end with a real work example.\n2. Compare a naive vs structured prompt; note quality delta.\n3. Add constraints and negative instructions where helpful.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 10 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 10/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Prompt Engineering Lab — Day 10): Role prompts, chain-of-thought, few-shot, XML tags — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-10",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 11,
+    "domain": "CLAUDE",
+    "title": "Day 11: Content & Office Stack — Day 11",
+    "problemStatement": "Welcome to **Day 11** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Blogs, LinkedIn, email, SOPs, tone control\n\n**Today's focus:** Content & Office Stack — Day 11\n\n**Tasks:**\n1. Draft one asset (post, email, or SOP outline) with tone variants.\n2. Build a mini content calendar snippet in Claude.\n3. Export or screenshot your best output for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 11 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 11/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Content & Office Stack — Day 11): Blogs, LinkedIn, email, SOPs, tone control — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-11",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 12,
+    "domain": "CLAUDE",
+    "title": "Day 12: Content & Office Stack — Day 12",
+    "problemStatement": "Welcome to **Day 12** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Blogs, LinkedIn, email, SOPs, tone control\n\n**Today's focus:** Content & Office Stack — Day 12\n\n**Tasks:**\n1. Draft one asset (post, email, or SOP outline) with tone variants.\n2. Build a mini content calendar snippet in Claude.\n3. Export or screenshot your best output for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 12 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 12/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Content & Office Stack — Day 12): Blogs, LinkedIn, email, SOPs, tone control — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-12",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 13,
+    "domain": "CLAUDE",
+    "title": "Day 13: Content & Office Stack — Day 13",
+    "problemStatement": "Welcome to **Day 13** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Blogs, LinkedIn, email, SOPs, tone control\n\n**Today's focus:** Content & Office Stack — Day 13\n\n**Tasks:**\n1. Draft one asset (post, email, or SOP outline) with tone variants.\n2. Build a mini content calendar snippet in Claude.\n3. Export or screenshot your best output for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 13 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 13/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Content & Office Stack — Day 13): Blogs, LinkedIn, email, SOPs, tone control — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-13",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 14,
+    "domain": "CLAUDE",
+    "title": "Day 14: Content & Office Stack — Day 14",
+    "problemStatement": "Welcome to **Day 14** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Blogs, LinkedIn, email, SOPs, tone control\n\n**Today's focus:** Content & Office Stack — Day 14\n\n**Tasks:**\n1. Draft one asset (post, email, or SOP outline) with tone variants.\n2. Build a mini content calendar snippet in Claude.\n3. Export or screenshot your best output for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 14 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 14/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Content & Office Stack — Day 14): Blogs, LinkedIn, email, SOPs, tone control — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-14",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 15,
+    "domain": "CLAUDE",
+    "title": "Day 15: Content & Office Stack — Day 15",
+    "problemStatement": "Welcome to **Day 15** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Blogs, LinkedIn, email, SOPs, tone control\n\n**Today's focus:** Content & Office Stack — Day 15\n\n**Tasks:**\n1. Draft one asset (post, email, or SOP outline) with tone variants.\n2. Build a mini content calendar snippet in Claude.\n3. Export or screenshot your best output for submission.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 15 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 15/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Content & Office Stack — Day 15): Blogs, LinkedIn, email, SOPs, tone control — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-15",
+      "beginner"
+    ]
+  },
+  {
+    "dayNumber": 16,
+    "domain": "CLAUDE",
+    "title": "Day 16: Code & Developer Workflow — Day 16",
+    "problemStatement": "Welcome to **Day 16** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Code gen, debugging, tests, IDE integration\n\n**Today's focus:** Code & Developer Workflow — Day 16\n\n**Tasks:**\n1. Solve one coding task with Claude (explain + implement).\n2. Optional: try Claude in VS Code / CLI patterns from your setup.\n3. Capture a Claude artifact or share link showing the result.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 16 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 16/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Code & Developer Workflow — Day 16): Code gen, debugging, tests, IDE integration — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-16",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 17,
+    "domain": "CLAUDE",
+    "title": "Day 17: Code & Developer Workflow — Day 17",
+    "problemStatement": "Welcome to **Day 17** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Code gen, debugging, tests, IDE integration\n\n**Today's focus:** Code & Developer Workflow — Day 17\n\n**Tasks:**\n1. Solve one coding task with Claude (explain + implement).\n2. Optional: try Claude in VS Code / CLI patterns from your setup.\n3. Capture a Claude artifact or share link showing the result.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 17 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 17/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Code & Developer Workflow — Day 17): Code gen, debugging, tests, IDE integration — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-17",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 18,
+    "domain": "CLAUDE",
+    "title": "Day 18: Code & Developer Workflow — Day 18",
+    "problemStatement": "Welcome to **Day 18** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Code gen, debugging, tests, IDE integration\n\n**Today's focus:** Code & Developer Workflow — Day 18\n\n**Tasks:**\n1. Solve one coding task with Claude (explain + implement).\n2. Optional: try Claude in VS Code / CLI patterns from your setup.\n3. Capture a Claude artifact or share link showing the result.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 18 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 18/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Code & Developer Workflow — Day 18): Code gen, debugging, tests, IDE integration — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-18",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 19,
+    "domain": "CLAUDE",
+    "title": "Day 19: Code & Developer Workflow — Day 19",
+    "problemStatement": "Welcome to **Day 19** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Code gen, debugging, tests, IDE integration\n\n**Today's focus:** Code & Developer Workflow — Day 19\n\n**Tasks:**\n1. Solve one coding task with Claude (explain + implement).\n2. Optional: try Claude in VS Code / CLI patterns from your setup.\n3. Capture a Claude artifact or share link showing the result.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 19 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 19/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Code & Developer Workflow — Day 19): Code gen, debugging, tests, IDE integration — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-19",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 20,
+    "domain": "CLAUDE",
+    "title": "Day 20: Code & Developer Workflow — Day 20",
+    "problemStatement": "Welcome to **Day 20** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Code gen, debugging, tests, IDE integration\n\n**Today's focus:** Code & Developer Workflow — Day 20\n\n**Tasks:**\n1. Solve one coding task with Claude (explain + implement).\n2. Optional: try Claude in VS Code / CLI patterns from your setup.\n3. Capture a Claude artifact or share link showing the result.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 20 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 20/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Code & Developer Workflow — Day 20): Code gen, debugging, tests, IDE integration — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-20",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 21,
+    "domain": "CLAUDE",
+    "title": "Day 21: Research & Ecosystem — Day 21",
+    "problemStatement": "Welcome to **Day 21** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Research workflows, NotebookLM, competitive scans\n\n**Today's focus:** Research & Ecosystem — Day 21\n\n**Tasks:**\n1. Run a structured research brief (sources + synthesis).\n2. Compare approaches (e.g. general search vs Claude-led synthesis).\n3. Summarize insights as bullets you could present to a manager.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 21 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 21/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Research & Ecosystem — Day 21): Research workflows, NotebookLM, competitive scans — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-21",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 22,
+    "domain": "CLAUDE",
+    "title": "Day 22: Research & Ecosystem — Day 22",
+    "problemStatement": "Welcome to **Day 22** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Research workflows, NotebookLM, competitive scans\n\n**Today's focus:** Research & Ecosystem — Day 22\n\n**Tasks:**\n1. Run a structured research brief (sources + synthesis).\n2. Compare approaches (e.g. general search vs Claude-led synthesis).\n3. Summarize insights as bullets you could present to a manager.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 22 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 22/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Research & Ecosystem — Day 22): Research workflows, NotebookLM, competitive scans — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-22",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 23,
+    "domain": "CLAUDE",
+    "title": "Day 23: Research & Ecosystem — Day 23",
+    "problemStatement": "Welcome to **Day 23** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Research workflows, NotebookLM, competitive scans\n\n**Today's focus:** Research & Ecosystem — Day 23\n\n**Tasks:**\n1. Run a structured research brief (sources + synthesis).\n2. Compare approaches (e.g. general search vs Claude-led synthesis).\n3. Summarize insights as bullets you could present to a manager.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 23 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 23/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Research & Ecosystem — Day 23): Research workflows, NotebookLM, competitive scans — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-23",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 24,
+    "domain": "CLAUDE",
+    "title": "Day 24: Research & Ecosystem — Day 24",
+    "problemStatement": "Welcome to **Day 24** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Research workflows, NotebookLM, competitive scans\n\n**Today's focus:** Research & Ecosystem — Day 24\n\n**Tasks:**\n1. Run a structured research brief (sources + synthesis).\n2. Compare approaches (e.g. general search vs Claude-led synthesis).\n3. Summarize insights as bullets you could present to a manager.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 24 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 24/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Research & Ecosystem — Day 24): Research workflows, NotebookLM, competitive scans — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-24",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 25,
+    "domain": "CLAUDE",
+    "title": "Day 25: Research & Ecosystem — Day 25",
+    "problemStatement": "Welcome to **Day 25** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Research workflows, NotebookLM, competitive scans\n\n**Today's focus:** Research & Ecosystem — Day 25\n\n**Tasks:**\n1. Run a structured research brief (sources + synthesis).\n2. Compare approaches (e.g. general search vs Claude-led synthesis).\n3. Summarize insights as bullets you could present to a manager.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 25 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 25/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Research & Ecosystem — Day 25): Research workflows, NotebookLM, competitive scans — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-25",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 26,
+    "domain": "CLAUDE",
+    "title": "Day 26: Artifacts, Projects & Web — Day 26",
+    "problemStatement": "Welcome to **Day 26** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** HTML/React/SVG/Mermaid, dashboards, landing pages\n\n**Today's focus:** Artifacts, Projects & Web — Day 26\n\n**Tasks:**\n1. Create a small interactive artifact or page scaffold.\n2. Use Projects to keep context tight across iterations.\n3. Polish UX copy and layout in one pass before sharing.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 26 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 26/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Artifacts, Projects & Web — Day 26): HTML/React/SVG/Mermaid, dashboards, landing pages — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-26",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 27,
+    "domain": "CLAUDE",
+    "title": "Day 27: Artifacts, Projects & Web — Day 27",
+    "problemStatement": "Welcome to **Day 27** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** HTML/React/SVG/Mermaid, dashboards, landing pages\n\n**Today's focus:** Artifacts, Projects & Web — Day 27\n\n**Tasks:**\n1. Create a small interactive artifact or page scaffold.\n2. Use Projects to keep context tight across iterations.\n3. Polish UX copy and layout in one pass before sharing.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 27 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 27/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Artifacts, Projects & Web — Day 27): HTML/React/SVG/Mermaid, dashboards, landing pages — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-27",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 28,
+    "domain": "CLAUDE",
+    "title": "Day 28: Artifacts, Projects & Web — Day 28",
+    "problemStatement": "Welcome to **Day 28** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** HTML/React/SVG/Mermaid, dashboards, landing pages\n\n**Today's focus:** Artifacts, Projects & Web — Day 28\n\n**Tasks:**\n1. Create a small interactive artifact or page scaffold.\n2. Use Projects to keep context tight across iterations.\n3. Polish UX copy and layout in one pass before sharing.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 28 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 28/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Artifacts, Projects & Web — Day 28): HTML/React/SVG/Mermaid, dashboards, landing pages — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-28",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 29,
+    "domain": "CLAUDE",
+    "title": "Day 29: Artifacts, Projects & Web — Day 29",
+    "problemStatement": "Welcome to **Day 29** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** HTML/React/SVG/Mermaid, dashboards, landing pages\n\n**Today's focus:** Artifacts, Projects & Web — Day 29\n\n**Tasks:**\n1. Create a small interactive artifact or page scaffold.\n2. Use Projects to keep context tight across iterations.\n3. Polish UX copy and layout in one pass before sharing.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 29 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 29/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Artifacts, Projects & Web — Day 29): HTML/React/SVG/Mermaid, dashboards, landing pages — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-29",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 30,
+    "domain": "CLAUDE",
+    "title": "Day 30: Artifacts, Projects & Web — Day 30",
+    "problemStatement": "Welcome to **Day 30** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** HTML/React/SVG/Mermaid, dashboards, landing pages\n\n**Today's focus:** Artifacts, Projects & Web — Day 30\n\n**Tasks:**\n1. Create a small interactive artifact or page scaffold.\n2. Use Projects to keep context tight across iterations.\n3. Polish UX copy and layout in one pass before sharing.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 30 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 30/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Artifacts, Projects & Web — Day 30): HTML/React/SVG/Mermaid, dashboards, landing pages — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-30",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 31,
+    "domain": "CLAUDE",
+    "title": "Day 31: Workflow Automation — Day 31",
+    "problemStatement": "Welcome to **Day 31** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Zapier/Make patterns, APIs, daily briefing bots\n\n**Today's focus:** Workflow Automation — Day 31\n\n**Tasks:**\n1. Map one repetitive workflow and automate the draft step.\n2. Sketch triggers, inputs, and outputs (even if partially mocked).\n3. Document failure modes and human review checkpoints.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 31 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 31/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Workflow Automation — Day 31): Zapier/Make patterns, APIs, daily briefing bots — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-31",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 32,
+    "domain": "CLAUDE",
+    "title": "Day 32: Workflow Automation — Day 32",
+    "problemStatement": "Welcome to **Day 32** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Zapier/Make patterns, APIs, daily briefing bots\n\n**Today's focus:** Workflow Automation — Day 32\n\n**Tasks:**\n1. Map one repetitive workflow and automate the draft step.\n2. Sketch triggers, inputs, and outputs (even if partially mocked).\n3. Document failure modes and human review checkpoints.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 32 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 32/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Workflow Automation — Day 32): Zapier/Make patterns, APIs, daily briefing bots — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-32",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 33,
+    "domain": "CLAUDE",
+    "title": "Day 33: Workflow Automation — Day 33",
+    "problemStatement": "Welcome to **Day 33** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Zapier/Make patterns, APIs, daily briefing bots\n\n**Today's focus:** Workflow Automation — Day 33\n\n**Tasks:**\n1. Map one repetitive workflow and automate the draft step.\n2. Sketch triggers, inputs, and outputs (even if partially mocked).\n3. Document failure modes and human review checkpoints.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 33 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 33/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Workflow Automation — Day 33): Zapier/Make patterns, APIs, daily briefing bots — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-33",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 34,
+    "domain": "CLAUDE",
+    "title": "Day 34: Workflow Automation — Day 34",
+    "problemStatement": "Welcome to **Day 34** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Zapier/Make patterns, APIs, daily briefing bots\n\n**Today's focus:** Workflow Automation — Day 34\n\n**Tasks:**\n1. Map one repetitive workflow and automate the draft step.\n2. Sketch triggers, inputs, and outputs (even if partially mocked).\n3. Document failure modes and human review checkpoints.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 34 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 34/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Workflow Automation — Day 34): Zapier/Make patterns, APIs, daily briefing bots — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-34",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 35,
+    "domain": "CLAUDE",
+    "title": "Day 35: Workflow Automation — Day 35",
+    "problemStatement": "Welcome to **Day 35** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Zapier/Make patterns, APIs, daily briefing bots\n\n**Today's focus:** Workflow Automation — Day 35\n\n**Tasks:**\n1. Map one repetitive workflow and automate the draft step.\n2. Sketch triggers, inputs, and outputs (even if partially mocked).\n3. Document failure modes and human review checkpoints.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 35 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 35/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Workflow Automation — Day 35): Zapier/Make patterns, APIs, daily briefing bots — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-35",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 36,
+    "domain": "CLAUDE",
+    "title": "Day 36: MCP Connectors & Plugins — Day 36",
+    "problemStatement": "Welcome to **Day 36** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Drive, Gmail, Calendar, GitHub, Slack, spreadsheets\n\n**Today's focus:** MCP Connectors & Plugins — Day 36\n\n**Tasks:**\n1. Design one connector-assisted flow (read-only is fine).\n2. List permissions and privacy considerations explicitly.\n3. Show the prompt chain or checklist you would run in production.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 36 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 36/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (MCP Connectors & Plugins — Day 36): Drive, Gmail, Calendar, GitHub, Slack, spreadsheets — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-36",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 37,
+    "domain": "CLAUDE",
+    "title": "Day 37: MCP Connectors & Plugins — Day 37",
+    "problemStatement": "Welcome to **Day 37** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Drive, Gmail, Calendar, GitHub, Slack, spreadsheets\n\n**Today's focus:** MCP Connectors & Plugins — Day 37\n\n**Tasks:**\n1. Design one connector-assisted flow (read-only is fine).\n2. List permissions and privacy considerations explicitly.\n3. Show the prompt chain or checklist you would run in production.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 37 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 37/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (MCP Connectors & Plugins — Day 37): Drive, Gmail, Calendar, GitHub, Slack, spreadsheets — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-37",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 38,
+    "domain": "CLAUDE",
+    "title": "Day 38: MCP Connectors & Plugins — Day 38",
+    "problemStatement": "Welcome to **Day 38** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Drive, Gmail, Calendar, GitHub, Slack, spreadsheets\n\n**Today's focus:** MCP Connectors & Plugins — Day 38\n\n**Tasks:**\n1. Design one connector-assisted flow (read-only is fine).\n2. List permissions and privacy considerations explicitly.\n3. Show the prompt chain or checklist you would run in production.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 38 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 38/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (MCP Connectors & Plugins — Day 38): Drive, Gmail, Calendar, GitHub, Slack, spreadsheets — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-38",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 39,
+    "domain": "CLAUDE",
+    "title": "Day 39: MCP Connectors & Plugins — Day 39",
+    "problemStatement": "Welcome to **Day 39** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Drive, Gmail, Calendar, GitHub, Slack, spreadsheets\n\n**Today's focus:** MCP Connectors & Plugins — Day 39\n\n**Tasks:**\n1. Design one connector-assisted flow (read-only is fine).\n2. List permissions and privacy considerations explicitly.\n3. Show the prompt chain or checklist you would run in production.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 39 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 39/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (MCP Connectors & Plugins — Day 39): Drive, Gmail, Calendar, GitHub, Slack, spreadsheets — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-39",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 40,
+    "domain": "CLAUDE",
+    "title": "Day 40: MCP Connectors & Plugins — Day 40",
+    "problemStatement": "Welcome to **Day 40** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Drive, Gmail, Calendar, GitHub, Slack, spreadsheets\n\n**Today's focus:** MCP Connectors & Plugins — Day 40\n\n**Tasks:**\n1. Design one connector-assisted flow (read-only is fine).\n2. List permissions and privacy considerations explicitly.\n3. Show the prompt chain or checklist you would run in production.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 40 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 40/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (MCP Connectors & Plugins — Day 40): Drive, Gmail, Calendar, GitHub, Slack, spreadsheets — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-40",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 41,
+    "domain": "CLAUDE",
+    "title": "Day 41: Agentic Claude — Day 41",
+    "problemStatement": "Welcome to **Day 41** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Multi-step agents, autonomy boundaries, system prompts\n\n**Today's focus:** Agentic Claude — Day 41\n\n**Tasks:**\n1. Contrast agentic vs interactive use on the same task.\n2. Define stop conditions and escalation to human review.\n3. Capture a transcript or artifact that proves the multi-step run.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 41 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 41/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Agentic Claude — Day 41): Multi-step agents, autonomy boundaries, system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-41",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 42,
+    "domain": "CLAUDE",
+    "title": "Day 42: Agentic Claude — Day 42",
+    "problemStatement": "Welcome to **Day 42** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Multi-step agents, autonomy boundaries, system prompts\n\n**Today's focus:** Agentic Claude — Day 42\n\n**Tasks:**\n1. Contrast agentic vs interactive use on the same task.\n2. Define stop conditions and escalation to human review.\n3. Capture a transcript or artifact that proves the multi-step run.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 42 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 42/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Agentic Claude — Day 42): Multi-step agents, autonomy boundaries, system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-42",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 43,
+    "domain": "CLAUDE",
+    "title": "Day 43: Agentic Claude — Day 43",
+    "problemStatement": "Welcome to **Day 43** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Multi-step agents, autonomy boundaries, system prompts\n\n**Today's focus:** Agentic Claude — Day 43\n\n**Tasks:**\n1. Contrast agentic vs interactive use on the same task.\n2. Define stop conditions and escalation to human review.\n3. Capture a transcript or artifact that proves the multi-step run.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 43 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 43/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Agentic Claude — Day 43): Multi-step agents, autonomy boundaries, system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-43",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 44,
+    "domain": "CLAUDE",
+    "title": "Day 44: Agentic Claude — Day 44",
+    "problemStatement": "Welcome to **Day 44** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Multi-step agents, autonomy boundaries, system prompts\n\n**Today's focus:** Agentic Claude — Day 44\n\n**Tasks:**\n1. Contrast agentic vs interactive use on the same task.\n2. Define stop conditions and escalation to human review.\n3. Capture a transcript or artifact that proves the multi-step run.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 44 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 44/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Agentic Claude — Day 44): Multi-step agents, autonomy boundaries, system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-44",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 45,
+    "domain": "CLAUDE",
+    "title": "Day 45: Agentic Claude — Day 45",
+    "problemStatement": "Welcome to **Day 45** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Multi-step agents, autonomy boundaries, system prompts\n\n**Today's focus:** Agentic Claude — Day 45\n\n**Tasks:**\n1. Contrast agentic vs interactive use on the same task.\n2. Define stop conditions and escalation to human review.\n3. Capture a transcript or artifact that proves the multi-step run.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 45 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 45/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Agentic Claude — Day 45): Multi-step agents, autonomy boundaries, system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-45",
+      "intermediate"
+    ]
+  },
+  {
+    "dayNumber": 46,
+    "domain": "CLAUDE",
+    "title": "Day 46: Domain Deep Dive (Track A/B) — Day 46",
+    "problemStatement": "Welcome to **Day 46** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Personas, domain packs, custom system prompts\n\n**Today's focus:** Domain Deep Dive (Track A/B) — Day 46\n\n**Tasks:**\n1. Pick a domain track and deepen prompts for that context.\n2. Iterate a persona card (role, constraints, output format).\n3. Save a reusable template for your next 90 days.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 46 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 46/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Domain Deep Dive (Track A/B) — Day 46): Personas, domain packs, custom system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-46",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 47,
+    "domain": "CLAUDE",
+    "title": "Day 47: Domain Deep Dive (Track A/B) — Day 47",
+    "problemStatement": "Welcome to **Day 47** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Personas, domain packs, custom system prompts\n\n**Today's focus:** Domain Deep Dive (Track A/B) — Day 47\n\n**Tasks:**\n1. Pick a domain track and deepen prompts for that context.\n2. Iterate a persona card (role, constraints, output format).\n3. Save a reusable template for your next 90 days.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 47 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 47/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Domain Deep Dive (Track A/B) — Day 47): Personas, domain packs, custom system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-47",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 48,
+    "domain": "CLAUDE",
+    "title": "Day 48: Domain Deep Dive (Track A/B) — Day 48",
+    "problemStatement": "Welcome to **Day 48** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Personas, domain packs, custom system prompts\n\n**Today's focus:** Domain Deep Dive (Track A/B) — Day 48\n\n**Tasks:**\n1. Pick a domain track and deepen prompts for that context.\n2. Iterate a persona card (role, constraints, output format).\n3. Save a reusable template for your next 90 days.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 48 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 48/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Domain Deep Dive (Track A/B) — Day 48): Personas, domain packs, custom system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-48",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 49,
+    "domain": "CLAUDE",
+    "title": "Day 49: Domain Deep Dive (Track A/B) — Day 49",
+    "problemStatement": "Welcome to **Day 49** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Personas, domain packs, custom system prompts\n\n**Today's focus:** Domain Deep Dive (Track A/B) — Day 49\n\n**Tasks:**\n1. Pick a domain track and deepen prompts for that context.\n2. Iterate a persona card (role, constraints, output format).\n3. Save a reusable template for your next 90 days.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 49 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 49/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Domain Deep Dive (Track A/B) — Day 49): Personas, domain packs, custom system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-49",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 50,
+    "domain": "CLAUDE",
+    "title": "Day 50: Domain Deep Dive (Track A/B) — Day 50",
+    "problemStatement": "Welcome to **Day 50** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Personas, domain packs, custom system prompts\n\n**Today's focus:** Domain Deep Dive (Track A/B) — Day 50\n\n**Tasks:**\n1. Pick a domain track and deepen prompts for that context.\n2. Iterate a persona card (role, constraints, output format).\n3. Save a reusable template for your next 90 days.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 50 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 50/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Domain Deep Dive (Track A/B) — Day 50): Personas, domain packs, custom system prompts — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-50",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 51,
+    "domain": "CLAUDE",
+    "title": "Day 51: Advanced Prompting — Day 51",
+    "problemStatement": "Welcome to **Day 51** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Opus vs Sonnet, libraries, edge cases\n\n**Today's focus:** Advanced Prompting — Day 51\n\n**Tasks:**\n1. Stress-test one complex prompt with variants and edge inputs.\n2. Document when to escalate model tier vs refine instructions.\n3. Share one 'golden prompt' you will reuse.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 51 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 51/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Advanced Prompting — Day 51): Opus vs Sonnet, libraries, edge cases — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-51",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 52,
+    "domain": "CLAUDE",
+    "title": "Day 52: Advanced Prompting — Day 52",
+    "problemStatement": "Welcome to **Day 52** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Opus vs Sonnet, libraries, edge cases\n\n**Today's focus:** Advanced Prompting — Day 52\n\n**Tasks:**\n1. Stress-test one complex prompt with variants and edge inputs.\n2. Document when to escalate model tier vs refine instructions.\n3. Share one 'golden prompt' you will reuse.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 52 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 52/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Advanced Prompting — Day 52): Opus vs Sonnet, libraries, edge cases — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-52",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 53,
+    "domain": "CLAUDE",
+    "title": "Day 53: Advanced Prompting — Day 53",
+    "problemStatement": "Welcome to **Day 53** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Opus vs Sonnet, libraries, edge cases\n\n**Today's focus:** Advanced Prompting — Day 53\n\n**Tasks:**\n1. Stress-test one complex prompt with variants and edge inputs.\n2. Document when to escalate model tier vs refine instructions.\n3. Share one 'golden prompt' you will reuse.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 53 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 53/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Advanced Prompting — Day 53): Opus vs Sonnet, libraries, edge cases — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-53",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 54,
+    "domain": "CLAUDE",
+    "title": "Day 54: Advanced Prompting — Day 54",
+    "problemStatement": "Welcome to **Day 54** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Opus vs Sonnet, libraries, edge cases\n\n**Today's focus:** Advanced Prompting — Day 54\n\n**Tasks:**\n1. Stress-test one complex prompt with variants and edge inputs.\n2. Document when to escalate model tier vs refine instructions.\n3. Share one 'golden prompt' you will reuse.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 54 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 54/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Advanced Prompting — Day 54): Opus vs Sonnet, libraries, edge cases — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-54",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 55,
+    "domain": "CLAUDE",
+    "title": "Day 55: Advanced Prompting — Day 55",
+    "problemStatement": "Welcome to **Day 55** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Opus vs Sonnet, libraries, edge cases\n\n**Today's focus:** Advanced Prompting — Day 55\n\n**Tasks:**\n1. Stress-test one complex prompt with variants and edge inputs.\n2. Document when to escalate model tier vs refine instructions.\n3. Share one 'golden prompt' you will reuse.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 55 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 55/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Advanced Prompting — Day 55): Opus vs Sonnet, libraries, edge cases — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-55",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 56,
+    "domain": "CLAUDE",
+    "title": "Day 56: Capstone & Closeout — Day 56",
+    "problemStatement": "Welcome to **Day 56** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Finalize capstone, journey doc, community showcase\n\n**Today's focus:** Capstone & Closeout — Day 56\n\n**Tasks:**\n1. Consolidate artifacts from Days 46–55 into a capstone package.\n2. Draft your public LinkedIn recap (honest wins + learnings).\n3. Plan next 90 days — 3 habits, 3 prompts, 1 automation to ship.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 56 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 56/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Capstone & Closeout — Day 56): Finalize capstone, journey doc, community showcase — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-56",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 57,
+    "domain": "CLAUDE",
+    "title": "Day 57: Capstone & Closeout — Day 57",
+    "problemStatement": "Welcome to **Day 57** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Finalize capstone, journey doc, community showcase\n\n**Today's focus:** Capstone & Closeout — Day 57\n\n**Tasks:**\n1. Consolidate artifacts from Days 46–55 into a capstone package.\n2. Draft your public LinkedIn recap (honest wins + learnings).\n3. Plan next 90 days — 3 habits, 3 prompts, 1 automation to ship.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 57 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 40,
+    "linkedinTemplate": "Day 57/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Capstone & Closeout — Day 57): Finalize capstone, journey doc, community showcase — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-57",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 58,
+    "domain": "CLAUDE",
+    "title": "Day 58: Capstone & Closeout — Day 58",
+    "problemStatement": "Welcome to **Day 58** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Finalize capstone, journey doc, community showcase\n\n**Today's focus:** Capstone & Closeout — Day 58\n\n**Tasks:**\n1. Consolidate artifacts from Days 46–55 into a capstone package.\n2. Draft your public LinkedIn recap (honest wins + learnings).\n3. Plan next 90 days — 3 habits, 3 prompts, 1 automation to ship.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 58 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 58/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Capstone & Closeout — Day 58): Finalize capstone, journey doc, community showcase — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-58",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 59,
+    "domain": "CLAUDE",
+    "title": "Day 59: Capstone & Closeout — Day 59",
+    "problemStatement": "Welcome to **Day 59** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Finalize capstone, journey doc, community showcase\n\n**Today's focus:** Capstone & Closeout — Day 59\n\n**Tasks:**\n1. Consolidate artifacts from Days 46–55 into a capstone package.\n2. Draft your public LinkedIn recap (honest wins + learnings).\n3. Plan next 90 days — 3 habits, 3 prompts, 1 automation to ship.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 59 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 59/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Capstone & Closeout — Day 59): Finalize capstone, journey doc, community showcase — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-59",
+      "advanced"
+    ]
+  },
+  {
+    "dayNumber": 60,
+    "domain": "CLAUDE",
+    "title": "Day 60: Capstone & Closeout — Day 60",
+    "problemStatement": "Welcome to **Day 60** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Finalize capstone, journey doc, community showcase\n\n**Today's focus:** Capstone & Closeout — Day 60\n\n**Tasks:**\n1. Consolidate artifacts from Days 46–55 into a capstone package.\n2. Draft your public LinkedIn recap (honest wins + learnings).\n3. Plan next 90 days — 3 habits, 3 prompts, 1 automation to ship.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "learningObjectives": [
+      "Apply Day 60 concepts to your real role or studies",
+      "Build repeatable prompts you can reuse after the challenge",
+      "Practice safe, reviewable AI workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/claude"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 60/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Capstone & Closeout — Day 60): Finalize capstone, journey doc, community showcase — building real skills, not just hype.\n\nWhat did you automate or clarify with Claude today? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "tags": [
+      "claude",
+      "placeholder",
+      "day-60",
+      "advanced"
+    ]
+  }
+]

@@ -214,6 +214,7 @@ export async function rejectSubmissionAction(input: {
             select: {
               id: true,
               startedAt: true,
+              challenge: { select: { startsAt: true } },
             },
           },
         },
@@ -246,7 +247,10 @@ export async function rejectSubmissionAction(input: {
 
       const { currentStreak, longestStreak } = await computeStreakStats(tx, {
         enrollmentId: submission.enrollmentId,
-        endDay: getCurrentDayNumber(submission.enrollment.startedAt),
+        endDay: getCurrentDayNumber(
+          submission.enrollment,
+          submission.enrollment.challenge,
+        ),
       });
 
       await tx.enrollment.update({

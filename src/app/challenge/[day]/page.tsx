@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { EnrollmentStatus } from "@prisma/client";
 import { ExternalLink } from "lucide-react";
 import { auth } from "@/auth";
-import { prisma } from "@/lib/db";
 import { getDayData } from "@/features/challenge/get-day-data";
 import { formatDateIST } from "@/lib/date-utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -17,34 +15,39 @@ import {
 } from "@/components/ui/card";
 import { SubmissionFlow } from "./submission-flow";
 
-type PageProps = { params: Promise<{ day: string }> };
+type PageProps = {
+  params: Promise<{ day: string }>;
+  searchParams: Promise<{ challenge?: string | string[] }>;
+};
 
-export default async function ChallengeDayPage({ params }: PageProps) {
+function readChallengeParam(
+  sp: Record<string, string | string[] | undefined>,
+): string | undefined {
+  const raw = sp.challenge;
+  const v = Array.isArray(raw) ? raw[0] : raw;
+  const t = typeof v === "string" ? v.trim() : "";
+  return t || undefined;
+}
+
+export default async function ChallengeDayPage({ params, searchParams }: PageProps) {
   const session = await auth();
   if (!session?.user?.id) {
     redirect("/login");
   }
 
   const { day: dayParam } = await params;
+  const sp = await searchParams;
+  const challengeEnrollmentId = readChallengeParam(sp);
   const day = Number.parseInt(dayParam, 10);
   if (!Number.isFinite(day) || day < 1 || day > 60) {
     notFound();
   }
 
-  const enrollment = await prisma.enrollment.findFirst({
-    where: {
-      userId: session.user.id,
-      status: { not: EnrollmentStatus.ABANDONED },
-    },
-    orderBy: { startedAt: "desc" },
-    select: { id: true },
-  });
-
-  if (!enrollment) {
-    redirect("/dashboard");
-  }
-
-  const data = await getDayData(session.user.id, day);
+  const data = await getDayData(
+    session.user.id,
+    day,
+    challengeEnrollmentId,
+  );
 
   if (!data) {
     return (
@@ -71,6 +74,7 @@ export default async function ChallengeDayPage({ params }: PageProps) {
   }
 
   if (!data.isUnlocked) {
+    const enc = encodeURIComponent(data.enrollment.id);
     return (
       <div className="mx-auto flex min-h-svh max-w-2xl flex-col px-4 py-8">
         <Card>
@@ -83,13 +87,13 @@ export default async function ChallengeDayPage({ params }: PageProps) {
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
             <Link
-              href={`/challenge/${data.currentDayNumber}`}
+              href={`/challenge/${data.currentDayNumber}?challenge=${enc}`}
               className={cn(buttonVariants({ variant: "default" }))}
             >
               Go to today&apos;s challenge
             </Link>
             <Link
-              href="/dashboard"
+              href={`/dashboard?challenge=${enc}`}
               className={cn(buttonVariants({ variant: "outline" }))}
             >
               Dashboard
@@ -105,7 +109,9 @@ export default async function ChallengeDayPage({ params }: PageProps) {
     day < data.currentDayNumber &&
     !data.hasRejectResubmit
   ) {
-    redirect("/dashboard?toast=past-missed");
+    redirect(
+      `/dashboard?toast=past-missed&challenge=${encodeURIComponent(data.enrollment.id)}`,
+    );
   }
 
   if (data.existingSubmission) {
@@ -146,7 +152,7 @@ export default async function ChallengeDayPage({ params }: PageProps) {
               </a>
             </div>
             <Link
-              href="/dashboard"
+              href={`/dashboard?challenge=${encodeURIComponent(data.enrollment.id)}`}
               className={cn(buttonVariants({ variant: "secondary" }))}
             >
               Back to dashboard
@@ -161,7 +167,7 @@ export default async function ChallengeDayPage({ params }: PageProps) {
     <div className="mx-auto flex min-h-svh max-w-5xl flex-col px-4 py-8">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <Link
-          href="/dashboard"
+          href={`/dashboard?challenge=${encodeURIComponent(data.enrollment.id)}`}
           className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
         >
           ← Dashboard
@@ -172,6 +178,7 @@ export default async function ChallengeDayPage({ params }: PageProps) {
       </div>
       <SubmissionFlow
         dayNumber={day}
+        enrollmentId={data.enrollment.id}
         task={{
           title: data.task.title,
           problemStatement: data.task.problemStatement,

@@ -41,6 +41,10 @@ import {
 import { cn } from "@/lib/utils";
 import { formatDateIST } from "@/lib/date-utils";
 import { prisma } from "@/lib/db";
+import { Domain } from "@prisma/client";
+import { ClaudeChallengeModal } from "@/components/dashboard/claude-challenge-modal";
+import { getUserActiveEnrollments } from "@/features/enrollment/get-user-enrollments";
+import { isClaudeEnabled } from "@/lib/feature-flags";
 
 function readQueryParam(
   query: Record<string, string | string[] | undefined>,
@@ -71,10 +75,23 @@ function stripQueryKeys(
   return s ? `?${s}` : "";
 }
 
+function challengeHref(enrollmentId: string, path: string): string {
+  const q = new URLSearchParams();
+  q.set("challenge", enrollmentId);
+  return `${path}?${q.toString()}`;
+}
+
 function parseLeaderboardDomain(
   value: string,
-): "AI" | "DS" | "SE" | "ALL" {
-  if (value === "AI" || value === "DS" || value === "SE") return value;
+): "AI" | "DS" | "SE" | "CLAUDE" | "ALL" {
+  if (
+    value === "AI" ||
+    value === "DS" ||
+    value === "SE" ||
+    value === "CLAUDE"
+  ) {
+    return value;
+  }
   return "ALL";
 }
 
@@ -110,12 +127,22 @@ export default async function DashboardPage({
   const showPastMissedToast =
     readQueryParam(query, "toast") === "past-missed";
   const dashboardPathWithoutToast = `/dashboard${stripQueryKeys(query, ["toast"])}`;
-  const leaderboardDomain = parseLeaderboardDomain(
+  const claudeEnabled = isClaudeEnabled();
+  let leaderboardDomain = parseLeaderboardDomain(
     readQueryParam(query, "lb_domain"),
   );
+  if (!claudeEnabled && leaderboardDomain === "CLAUDE") {
+    leaderboardDomain = "ALL";
+  }
   const leaderboardSearch = readQueryParam(query, "lb_search");
 
-  const data = await getDashboardData(session.user.id);
+  const selectedEnrollmentId =
+    readQueryParam(query, "challenge") || undefined;
+
+  const [allEnrollments, data] = await Promise.all([
+    getUserActiveEnrollments(session.user.id),
+    getDashboardData(session.user.id, selectedEnrollmentId),
+  ]);
 
   if (!data.profile || !data.enrollment) {
     redirect("/register");
@@ -159,7 +186,13 @@ export default async function DashboardPage({
 
     return (
       <div className="flex min-h-svh flex-col bg-muted/30">
-        <AppHeader user={headerUser} />
+        <AppHeader
+          user={headerUser}
+          userEnrollments={allEnrollments}
+          activeEnrollmentId={dashboardData.enrollment.id}
+          headerDomain={dashboardData.enrollment.domain}
+          domain={dashboardData.profile.domain as Domain}
+        />
         <main className="mx-auto flex w-full max-w-6xl flex-1">
           <EnrollmentEndedScreen
             studentName={dashboardData.profile.fullName}
@@ -172,13 +205,40 @@ export default async function DashboardPage({
     );
   }
 
+  let showClaudeModal = false;
+  let claudeModalStartsAt: Date | null = null;
+
+  if (claudeEnabled) {
+    const claudeEnrollmentCheck = await prisma.enrollment.findFirst({
+      where: {
+        userId: session.user.id,
+        domain: Domain.CLAUDE,
+      },
+      select: { id: true },
+    });
+
+    if (!claudeEnrollmentCheck) {
+      const claudeChallengeRow = await prisma.challenge.findUnique({
+        where: { domain: Domain.CLAUDE },
+        select: { startsAt: true },
+      });
+      if (claudeChallengeRow?.startsAt) {
+        showClaudeModal = true;
+        claudeModalStartsAt = claudeChallengeRow.startsAt;
+      }
+    }
+  }
+
   const [heatmapData, leaderboard, quizAvailability, quizHistory] =
     await Promise.all([
-      getHeatmapData(dashboardData.enrollment.id),
+      getHeatmapData(dashboardData.enrollment.id, {
+        viewerUserId: session.user.id,
+      }),
       getLeaderboard({
         domain: leaderboardDomain,
         search: leaderboardSearch,
         viewerUserId: session.user.id,
+        claudeLeaderboardEnabled: claudeEnabled,
       }),
       getAvailableQuiz(session.user.id, dashboardData.enrollment.id),
       getQuizAttemptHistory(session.user.id, dashboardData.enrollment.id),
@@ -194,7 +254,16 @@ export default async function DashboardPage({
 
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
-      <AppHeader user={headerUser} />
+      <AppHeader
+        user={headerUser}
+        userEnrollments={allEnrollments}
+        activeEnrollmentId={dashboardData.enrollment.id}
+        headerDomain={dashboardData.enrollment.domain}
+        domain={dashboardData.profile.domain as Domain}
+      />
+      {showClaudeModal && claudeModalStartsAt ? (
+        <ClaudeChallengeModal startsAt={claudeModalStartsAt} />
+      ) : null}
       {showPastMissedToast ? (
         <PastMissedChallengeToast
           trigger={showPastMissedToast}
@@ -222,7 +291,10 @@ export default async function DashboardPage({
             </CardDescription>
           </CardHeader>
           <CardContent className="min-w-0 px-5 pb-6">
-            <SubmissionHeatmap data={heatmapData} />
+            <SubmissionHeatmap
+              data={heatmapData}
+              challengeEnrollmentId={enrollment.id}
+            />
           </CardContent>
         </Card>
 
@@ -310,7 +382,7 @@ export default async function DashboardPage({
               <CardHeader>
                 <CardTitle>Today&apos;s task</CardTitle>
                 <CardDescription>
-                  {profile.domain} challenge · IST day {enrollment.currentDay}
+                  {enrollment.domain} challenge · IST day {enrollment.currentDay}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -346,7 +418,10 @@ export default async function DashboardPage({
                       the next calendar day.
                     </p>
                     <Link
-                      href="/challenge/today"
+                      href={challengeHref(
+                        enrollment.id,
+                        "/challenge/today",
+                      )}
                       className={cn(
                         buttonVariants({ variant: "outline", size: "default" }),
                         "w-full justify-center sm:w-auto",
@@ -384,7 +459,10 @@ export default async function DashboardPage({
                         {todayTask.title}
                       </h3>
                       <Link
-                        href="/challenge/today"
+                        href={challengeHref(
+                          enrollment.id,
+                          "/challenge/today",
+                        )}
                         className={cn(
                           buttonVariants({ variant: "default" }),
                           "inline-flex h-11 w-full items-center justify-center gap-2 font-medium sm:w-auto sm:px-8",
@@ -409,6 +487,7 @@ export default async function DashboardPage({
             <CommunityLeaderboard
               rows={leaderboard.rows}
               totalCount={leaderboard.totalCount}
+              claudeEnabled={claudeEnabled}
               filters={{
                 domain: leaderboardDomain,
                 search: leaderboardSearch,

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getReferralCookie } from "@/app/actions/referral-actions";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
+import { isClaudeEnabled } from "@/lib/feature-flags";
 import {
   Card,
   CardContent,
@@ -12,7 +13,7 @@ import {
 import { RegistrationForm } from "./registration-form";
 
 type PageProps = {
-  searchParams: Promise<{ ref?: string }>;
+  searchParams: Promise<{ ref?: string; domain?: string }>;
 };
 
 export default async function RegisterPage({ searchParams }: PageProps) {
@@ -54,6 +55,8 @@ export default async function RegisterPage({ searchParams }: PageProps) {
   }
 
   const params = await searchParams;
+  const initialDomain =
+    params.domain === "CLAUDE" ? ("CLAUDE" as const) : undefined;
   const refParam = params.ref;
   const refFromUrlNormalized =
     typeof refParam === "string"
@@ -65,6 +68,7 @@ export default async function RegisterPage({ searchParams }: PageProps) {
   const initialRef = refFromUrl ?? refFromCookie ?? "";
 
   const initialName = session.user.name?.trim() ?? "";
+  const claudeEnabled = isClaudeEnabled();
 
   return (
     <div className="flex min-h-svh flex-col bg-gradient-to-br from-primary/5 via-background to-background">
@@ -86,6 +90,8 @@ export default async function RegisterPage({ searchParams }: PageProps) {
             <RegistrationForm
               initialName={initialName}
               initialRef={initialRef}
+              claudeEnabled={claudeEnabled}
+              initialDomain={initialDomain}
             />
           </CardContent>
         </Card>

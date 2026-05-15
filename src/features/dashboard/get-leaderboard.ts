@@ -1,11 +1,13 @@
+import { Domain } from "@prisma/client";
 import { prisma } from "@/lib/db";
 
 export type LeaderboardRow = {
   rank: number;
+  enrollmentId: string;
   userId: string;
   fullName: string;
   college: string;
-  domain: "AI" | "DS" | "SE";
+  domain: Domain;
   daysCompleted: number;
   currentStreak: number;
   longestStreak: number;
@@ -20,18 +22,24 @@ export type LeaderboardResult = {
 
 export async function getLeaderboard(
   input: {
-    domain?: "AI" | "DS" | "SE" | "ALL";
+    domain?: "AI" | "DS" | "SE" | "CLAUDE" | "ALL";
     search?: string;
     limit?: number;
     viewerUserId?: string;
+    /** When false and domain is ALL, CLAUDE rows are hidden (feature flag off). */
+    claudeLeaderboardEnabled?: boolean;
   },
 ): Promise<LeaderboardResult> {
   const domain = input.domain ?? "ALL";
   const search = input.search?.trim() ?? "";
   const limit = Math.max(1, Math.min(input.limit ?? 100, 200));
 
+  const claudeLeaderboardEnabled = input.claudeLeaderboardEnabled ?? true;
+  const hideClaudeFromAll = !claudeLeaderboardEnabled && domain === "ALL";
+
   const where = {
     status: { not: "ABANDONED" as const },
+    ...(hideClaudeFromAll ? { domain: { not: Domain.CLAUDE } } : {}),
     ...(domain !== "ALL" ? { domain } : {}),
     ...(search
       ? {
@@ -55,7 +63,9 @@ export async function getLeaderboard(
       ],
       take: limit,
       select: {
+        id: true,
         userId: true,
+        domain: true,
         daysCompleted: true,
         currentStreak: true,
         longestStreak: true,
@@ -65,7 +75,6 @@ export async function getLeaderboard(
               select: {
                 fullName: true,
                 college: true,
-                domain: true,
                 isReadyForInterview: true,
               },
             },
@@ -80,10 +89,11 @@ export async function getLeaderboard(
     .filter((e) => !!e.user.studentProfile)
     .map((e, index) => ({
       rank: index + 1,
+      enrollmentId: e.id,
       userId: e.userId,
       fullName: e.user.studentProfile?.fullName ?? "Unknown",
-      college: e.user.studentProfile?.college ?? "Unknown",
-      domain: (e.user.studentProfile?.domain ?? "SE") as "AI" | "DS" | "SE",
+      college: e.user.studentProfile?.college || "Unknown",
+      domain: e.domain,
       daysCompleted: e.daysCompleted,
       currentStreak: e.currentStreak,
       longestStreak: e.longestStreak,

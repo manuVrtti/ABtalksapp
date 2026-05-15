@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { Domain } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
@@ -15,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 type Problem = {
   id: string;
-  domain: "AI" | "DS" | "SE";
+  domain: Domain;
   dayNumber: number;
   title: string;
   difficulty: string;
@@ -29,7 +30,7 @@ type Problem = {
 
 type Quiz = {
   id: string;
-  domain: "AI" | "DS" | "SE";
+  domain: Domain;
   weekNumber: number;
   title: string;
   quizQuestions: Array<{
@@ -45,10 +46,11 @@ type Quiz = {
   }>;
 };
 
-function domainChipClass(domain: string) {
+function domainChipClass(domain: Domain) {
   if (domain === "AI") return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
   if (domain === "DS") return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
-  return "border-domains-se/50 bg-domains-se-bg text-domains-se";
+  if (domain === "SE") return "border-domains-se/50 bg-domains-se-bg text-domains-se";
+  return "border-border bg-muted text-muted-foreground";
 }
 
 export function ContentViewer({

@@ -1,6 +1,7 @@
-import { EnrollmentStatus } from "@prisma/client";
+import { EnrollmentStatus, UserType } from "@prisma/client";
 import { clearReferralCookie } from "@/app/actions/referral-actions";
-import type { RegisterInput } from "@/lib/validations/register";
+import { isClaudeEnabled } from "@/lib/feature-flags";
+import type { RegisterPayloadInput } from "@/lib/validations/register";
 import { prisma } from "@/lib/db";
 import { generateUniqueReferralCode } from "./generate-referral-code";
 
@@ -11,7 +12,7 @@ export type CompleteRegistrationResult =
 
 export async function completeRegistration(
   userId: string,
-  input: RegisterInput,
+  input: RegisterPayloadInput,
 ): Promise<CompleteRegistrationResult> {
   const userExists = await prisma.user.findUnique({
     where: { id: userId },
@@ -45,6 +46,14 @@ export async function completeRegistration(
 
   if (existingProfile && !existingEnrollment) {
     await prisma.studentProfile.delete({ where: { userId } });
+  }
+
+  if (input.domain === "CLAUDE" && !isClaudeEnabled()) {
+    return {
+      ok: false,
+      reason: "internal_error",
+      message: "The Claude challenge is not available yet.",
+    };
   }
 
   let referrerId: string | null = null;
@@ -95,18 +104,40 @@ export async function completeRegistration(
   try {
     const profileId = await prisma.$transaction(async (tx) => {
       const profile = await tx.studentProfile.create({
-        data: {
-          userId,
-          fullName: input.fullName,
-          college: input.college,
-          graduationYear: input.graduationYear,
-          domain: input.domain,
-          skills: input.skills ?? [],
-          linkedinUrl,
-          phone,
-          githubUsername,
-          referralCode: newReferralCode,
-        },
+        data:
+          input.userType === UserType.STUDENT
+            ? {
+                userId,
+                fullName: input.fullName,
+                userType: UserType.STUDENT,
+                college: input.college,
+                graduationYear: input.graduationYear,
+                organization: null,
+                role: null,
+                yearsExperience: null,
+                domain: input.domain,
+                skills: input.skills ?? [],
+                linkedinUrl,
+                phone,
+                githubUsername,
+                referralCode: newReferralCode,
+              }
+            : {
+                userId,
+                fullName: input.fullName,
+                userType: UserType.PROFESSIONAL,
+                college: null,
+                graduationYear: null,
+                organization: input.organization,
+                role: input.role,
+                yearsExperience: input.yearsExperience,
+                domain: input.domain,
+                skills: input.skills ?? [],
+                linkedinUrl,
+                phone,
+                githubUsername,
+                referralCode: newReferralCode,
+              },
       });
 
       await tx.enrollment.create({
