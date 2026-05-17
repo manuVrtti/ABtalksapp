@@ -56,7 +56,8 @@ const GRADUATION_YEARS = [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 
 type Props = {
   initialName: string;
   initialRef: string;
-  claudeEnabled: boolean;
+  /** When true, domain is locked to CLAUDE and the picker is hidden. */
+  forceClaudeDomain: boolean;
   /** When set (e.g. from `/register?domain=CLAUDE`), pre-select this track. */
   initialDomain?: "CLAUDE";
 };
@@ -100,20 +101,16 @@ const domainCards: {
 export function RegistrationForm({
   initialName,
   initialRef,
-  claudeEnabled,
+  forceClaudeDomain,
   initialDomain,
 }: Props) {
   const router = useRouter();
   const [skillDraft, setSkillDraft] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const isClaudeContext = claudeEnabled;
 
   const domainCardList = useMemo(
-    () =>
-      claudeEnabled
-        ? domainCards
-        : domainCards.filter((c) => c.value !== "CLAUDE"),
-    [claudeEnabled],
+    () => (forceClaudeDomain ? [] : domainCards),
+    [forceClaudeDomain],
   );
 
   const form = useForm<RegistrationFormValues>({
@@ -127,7 +124,7 @@ export function RegistrationForm({
       organization: "",
       role: "",
       yearsExperience: undefined,
-      domain: claudeEnabled ? "CLAUDE" : "SE",
+      domain: forceClaudeDomain ? "CLAUDE" : (initialDomain ?? "SE"),
       skills: [],
       linkedinUrl: "",
       phone: "",
@@ -151,10 +148,10 @@ export function RegistrationForm({
   const userType = watch("userType");
 
   useEffect(() => {
-    if (claudeEnabled) {
+    if (forceClaudeDomain) {
       setValue("domain", "CLAUDE", { shouldValidate: true });
     }
-  }, [claudeEnabled, setValue]);
+  }, [forceClaudeDomain, setValue]);
 
   function handleUserTypeChange(next: "STUDENT" | "PROFESSIONAL") {
     setValue("userType", next, { shouldValidate: false });
@@ -421,35 +418,29 @@ export function RegistrationForm({
 
             <div className="space-y-2">
               <Label htmlFor="yearsExperience">Years of experience</Label>
-              <Controller
-                name="yearsExperience"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    id="yearsExperience"
-                    type="number"
-                    inputMode="numeric"
-                    min={0}
-                    max={60}
-                    placeholder="5"
-                    className="max-w-[12rem]"
-                    value={field.value ?? ""}
-                    onChange={(e) => {
-                      const raw = e.target.value;
-                      if (raw === "") {
-                        field.onChange(undefined);
-                        return;
-                      }
-                      const n = Number.parseInt(raw, 10);
-                      if (Number.isFinite(n)) {
-                        field.onChange(Math.min(60, Math.max(0, n)));
-                      }
-                    }}
-                    onBlur={field.onBlur}
-                    ref={field.ref}
-                    aria-invalid={!!errors.yearsExperience}
-                  />
-                )}
+              <Input
+                id="yearsExperience"
+                type="number"
+                inputMode="numeric"
+                min={0}
+                max={60}
+                placeholder="5"
+                className="max-w-[12rem]"
+                aria-invalid={!!errors.yearsExperience}
+                {...register("yearsExperience", {
+                  setValueAs: (v) => {
+                    if (v === "" || v === null || v === undefined) {
+                      return undefined;
+                    }
+                    const n =
+                      typeof v === "number"
+                        ? v
+                        : Number.parseInt(String(v), 10);
+                    return Number.isFinite(n)
+                      ? Math.min(60, Math.max(0, n))
+                      : undefined;
+                  },
+                })}
               />
               {errors.yearsExperience ? (
                 <p className="text-sm text-destructive">
@@ -461,14 +452,13 @@ export function RegistrationForm({
         )}
       </AnimatePresence>
 
-      {isClaudeContext ? (
-        <div className="flex items-center gap-2 rounded-lg border bg-primary/5 p-3">
-          <Sparkles className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+      {forceClaudeDomain ? (
+        <div className="flex items-center gap-2 rounded-lg border border-orange-500/20 bg-orange-500/5 p-3">
+          <Sparkles className="h-4 w-4 shrink-0 text-orange-500" aria-hidden />
           <div>
             <p className="text-sm font-medium">Claude AI Mastery Challenge</p>
             <p className="text-xs text-muted-foreground">
-              You&apos;re registering for the 60-Day Claude challenge starting June
-              1, 2026
+              Synchronized June 1, 2026 start · 60 days
             </p>
           </div>
         </div>

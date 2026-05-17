@@ -1,35 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Sparkles } from "lucide-react";
 
-interface Props {
-  onNext: () => void;
-}
-
-export function ClaudeWelcomeSlide({ onNext }: Props) {
+export function ClaudeWelcomeSlide() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1, duration: 0.5 }}
-      className="rounded-3xl border bg-card/80 p-8 text-center shadow-lg backdrop-blur-sm md:p-12"
+      className="rounded-3xl border bg-card/80 p-6 text-center shadow-lg backdrop-blur-sm md:p-8"
     >
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
         transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-        className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-orange-500/10"
+        className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500/10 md:mb-5 md:h-20 md:w-20"
       >
-        <Sparkles className="h-10 w-10 text-orange-500" />
+        <Sparkles className="h-8 w-8 text-orange-500 md:h-10 md:w-10" />
       </motion.div>
 
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="font-display text-3xl font-bold tracking-tight md:text-5xl"
+        className="font-display text-2xl font-bold tracking-tight md:text-3xl"
       >
         Master Claude AI
         <br />
@@ -42,37 +37,20 @@ export function ClaudeWelcomeSlide({ onNext }: Props) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="mt-4 text-base text-muted-foreground md:text-lg"
+        className="mt-3 text-sm text-muted-foreground md:text-base"
       >
-        From Zero to Hero — for Students, Developers, BAs, PMs, Architects &
-        Leaders.
+        A structured journey to master Claude AI, build real projects, and
+        future-proof your career. Not a course. A build challenge.
       </motion.p>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="mt-2 text-sm text-muted-foreground"
+        className="mt-2 text-xs text-muted-foreground md:text-sm"
       >
-        Launching June 1, 2026 · By Anil Bajpai&apos;s ABtalks
+        Launching June 1, 2026
       </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-        className="mt-8"
-      >
-        <Button
-          type="button"
-          onClick={onNext}
-          size="lg"
-          className="group bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600"
-        >
-          Discover the Challenge
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Button>
-      </motion.div>
     </motion.div>
   );
 }

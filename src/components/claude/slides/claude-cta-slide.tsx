@@ -1,74 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft, Rocket } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Rocket } from "lucide-react";
 
-interface Props {
-  onPrev: () => void;
-}
-
-const LOGIN_HREF = `/login?from=${encodeURIComponent("/register?domain=CLAUDE")}`;
-
-export function ClaudeCtaSlide({ onPrev }: Props) {
+export function ClaudeCtaSlide() {
   return (
-    <motion.div className="rounded-3xl border bg-card/80 p-8 text-center shadow-lg backdrop-blur-sm md:p-12">
+    <motion.div className="rounded-3xl border bg-card/80 p-6 text-center shadow-lg backdrop-blur-sm md:p-8">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-        className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-orange-500/10"
+        className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500/10 md:mb-5 md:h-20 md:w-20"
       >
-        <Rocket className="h-10 w-10 text-orange-500" />
+        <Rocket className="h-8 w-8 text-orange-500 md:h-10 md:w-10" />
       </motion.div>
 
-      <h2 className="font-display text-3xl font-bold md:text-5xl">
+      <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
         Ready to Master Claude?
       </h2>
-      <p className="mt-4 text-base text-muted-foreground md:text-lg">
+      <p className="mt-3 text-sm text-muted-foreground md:text-base">
         60 days. Real skills. Real outcomes.
         <br />
         Starting June 1, 2026.
       </p>
 
-      <div className="mt-6 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 text-left">
-        <h3 className="mb-2 text-sm font-semibold">📋 Challenge Rules</h3>
-        <ul className="space-y-1 text-xs text-muted-foreground">
+      <motion.div className="mt-5 rounded-lg border border-amber-500/20 bg-amber-500/5 p-3 text-left md:p-4">
+        <h3 className="mb-2 font-display font-semibold text-sm md:text-base">
+          📋 Challenge Rules
+        </h3>
+        <ul className="space-y-1 text-xs text-muted-foreground md:text-sm">
           <li>• 60 days = 60 individual daily posts on LinkedIn</li>
           <li>• Each day requires its own submission (no batching)</li>
           <li>• Posting 3 days of work in one post doesn&apos;t count as 3 days</li>
           <li>• Consistency is the win — missed days break your streak</li>
         </ul>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-        className="mt-8"
-      >
-        <Link
-          href={LOGIN_HREF}
-          className={cn(
-            buttonVariants({ size: "lg" }),
-            "group inline-flex min-h-11 bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500 text-white hover:opacity-90",
-          )}
-        >
-          <Rocket className="mr-2 h-5 w-5" />
-          Reserve My Spot
-        </Link>
       </motion.div>
 
-      <p className="mt-4 text-xs text-muted-foreground">
+      <p className="mt-4 text-xs text-muted-foreground md:text-sm">
         FREE to join · Open to all roles & students
       </p>
-
-      <Button type="button" variant="ghost" onClick={onPrev} className="mt-4 min-h-11">
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back
-      </Button>
     </motion.div>
   );
 }

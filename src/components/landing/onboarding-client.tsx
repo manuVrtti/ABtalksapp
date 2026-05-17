@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Rocket } from "lucide-react";
 import { WelcomeSlide } from "./slides/welcome-slide";
 import { AboutSlide } from "./slides/about-slide";
 import { RulesSlide } from "./slides/rules-slide";
 import { CommunitySlide } from "./slides/community-slide";
 import { CtaSlide } from "./slides/cta-slide";
 import { ProgressDots } from "./progress-dots";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const SLIDES = ["welcome", "about", "rules", "community", "cta"] as const;
 type SlideKey = (typeof SLIDES)[number];
@@ -29,6 +33,27 @@ const slideVariants = {
     scale: 0.96,
   }),
 };
+
+function renderSlide(slide: SlideKey) {
+  switch (slide) {
+    case "welcome":
+      return <WelcomeSlide />;
+    case "about":
+      return <AboutSlide />;
+    case "rules":
+      return <RulesSlide />;
+    case "community":
+      return <CommunitySlide />;
+    case "cta":
+      return <CtaSlide />;
+    default:
+      return null;
+  }
+}
+
+function continueLabel(slide: SlideKey): string {
+  return slide === "rules" ? "I Agree" : "Continue";
+}
 
 export function OnboardingClient() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,17 +79,18 @@ export function OnboardingClient() {
   };
 
   const slide: SlideKey = SLIDES[currentIndex];
+  const isLast = currentIndex === SLIDES.length - 1;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="relative min-h-svh overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
       <BackgroundBlobs slideIndex={currentIndex} />
 
-      <div className="relative z-10 flex min-h-screen flex-col">
-        <header className="px-6 py-4">
+      <div className="relative z-10 flex min-h-svh flex-col">
+        <header className="shrink-0 px-6 py-4">
           <div className="font-display text-xl font-bold">ABTalks</div>
         </header>
 
-        <main className="flex flex-1 items-center justify-center px-6 py-8">
+        <main className="flex min-h-0 flex-1 items-center justify-center overflow-hidden px-6 py-4">
           <div className="w-full max-w-2xl">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
@@ -75,25 +101,54 @@ export function OnboardingClient() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="max-h-full overflow-y-auto"
               >
-                {slide === "welcome" && <WelcomeSlide onNext={next} />}
-                {slide === "about" && <AboutSlide onNext={next} onPrev={prev} />}
-                {slide === "rules" && <RulesSlide onNext={next} onPrev={prev} />}
-                {slide === "community" && (
-                  <CommunitySlide onNext={next} onPrev={prev} />
-                )}
-                {slide === "cta" && <CtaSlide onPrev={prev} />}
+                {renderSlide(slide)}
               </motion.div>
             </AnimatePresence>
           </div>
         </main>
 
-        <footer className="px-6 py-6">
-          <ProgressDots
-            total={SLIDES.length}
-            current={currentIndex}
-            onSelect={goTo}
-          />
+        <footer className="shrink-0 border-t bg-background/50 px-6 py-4 backdrop-blur-sm">
+          <div className="mx-auto flex max-w-2xl items-center justify-between gap-3">
+            {currentIndex > 0 ? (
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={prev}
+                className="gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back
+              </Button>
+            ) : (
+              <div className="w-[88px]" aria-hidden />
+            )}
+
+            <ProgressDots
+              total={SLIDES.length}
+              current={currentIndex}
+              onSelect={goTo}
+            />
+
+            {!isLast ? (
+              <Button type="button" onClick={next} className="gap-2">
+                {continueLabel(slide)}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            ) : (
+              <Link
+                href="/login"
+                className={cn(
+                  buttonVariants(),
+                  "gap-2 bg-gradient-to-r from-primary to-violet-500 text-primary-foreground hover:from-primary/90 hover:to-violet-500/90",
+                )}
+              >
+                <Rocket className="h-4 w-4" />
+                Begin Your Journey
+              </Link>
+            )}
+          </div>
         </footer>
       </div>
     </div>

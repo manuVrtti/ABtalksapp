@@ -92,7 +92,7 @@ export default async function RegisterPage({ searchParams }: PageProps) {
             <RegistrationForm
               initialName={initialName}
               initialRef={initialRef}
-              claudeEnabled={claudeEnabled}
+              forceClaudeDomain={claudeEnabled}
               initialDomain={initialDomain}
             />
           </CardContent>

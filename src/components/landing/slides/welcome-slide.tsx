@@ -1,35 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-interface WelcomeSlideProps {
-  onNext: () => void;
-}
-
-export function WelcomeSlide({ onNext }: WelcomeSlideProps) {
+export function WelcomeSlide() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1, duration: 0.5 }}
-      className="rounded-3xl border bg-card/80 p-8 text-center shadow-lg backdrop-blur-sm md:p-12"
+      className="rounded-3xl border bg-card/80 p-6 text-center shadow-lg backdrop-blur-sm md:p-8"
     >
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
         transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-        className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10"
+        className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 md:mb-5 md:h-20 md:w-20"
       >
-        <Sparkles className="h-10 w-10 text-primary" />
+        <Sparkles className="h-8 w-8 text-primary md:h-10 md:w-10" />
       </motion.div>
 
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="font-display text-3xl font-bold tracking-tight md:text-5xl"
+        className="font-display text-2xl font-bold tracking-tight md:text-3xl"
       >
         Welcome to the
         <br />
@@ -42,7 +37,7 @@ export function WelcomeSlide({ onNext }: WelcomeSlideProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="mt-4 text-base text-muted-foreground md:text-lg"
+        className="mt-3 text-sm text-muted-foreground md:text-base"
       >
         Code consistently. Post publicly. Get noticed.
       </motion.p>
@@ -51,22 +46,10 @@ export function WelcomeSlide({ onNext }: WelcomeSlideProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="mt-2 text-sm text-muted-foreground"
+        className="mt-2 text-xs text-muted-foreground md:text-sm"
       >
-        By Anil Bajpai's ABTalks community.
+        By Anil Bajpai&apos;s ABTalks community.
       </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-        className="mt-8"
-      >
-        <Button onClick={onNext} size="lg" className="group min-h-11">
-          Get Started
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Button>
-      </motion.div>
     </motion.div>
   );
 }
