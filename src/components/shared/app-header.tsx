@@ -33,9 +33,7 @@ export type AppHeaderUser = {
 
 type Props = {
   user: AppHeaderUser;
-  /** Student profile primary track; use `headerDomain` when showing selected challenge. */
   domain?: Domain | null;
-  /** Selected challenge domain (e.g. when multi-enrolled); falls back to `domain`. */
   headerDomain?: Domain | null;
   userEnrollments?: ChallengeSwitcherEnrollment[];
   activeEnrollmentId?: string;
@@ -53,74 +51,31 @@ function initials(name: string) {
   return name.slice(0, 2).toUpperCase() || "?";
 }
 
-function domainBadgeTitle(domain: Domain): string {
-  switch (domain) {
-    case Domain.AI:
-      return "Artificial Intelligence";
-    case Domain.DS:
-      return "Data Science";
-    case Domain.SE:
-      return "Software Engineering";
-    case Domain.CLAUDE:
-      return "Claude AI Mastery";
-    default:
-      return domain;
-  }
-}
-
-function domainBadgeClasses(domain: Domain): string {
-  switch (domain) {
-    case Domain.AI:
-      return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
-    case Domain.DS:
-      return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
-    case Domain.SE:
-      return "border-domains-se/50 bg-domains-se-bg text-domains-se";
-    case Domain.CLAUDE:
-      return "border-violet-500/40 bg-violet-50 text-violet-800 dark:bg-violet-950/40 dark:text-violet-200";
-    default:
-      return "border-border bg-muted text-muted-foreground";
-  }
-}
-
 export function AppHeader({
   user,
-  domain,
-  headerDomain,
   userEnrollments,
   activeEnrollmentId,
 }: Props) {
   const router = useRouter();
   const label = displayLabel(user);
-  const badgeDomain = headerDomain ?? domain;
   const showChallengeSwitcher =
     (userEnrollments?.length ?? 0) >= 2 &&
     !!activeEnrollmentId &&
     (userEnrollments?.some((e) => e.id === activeEnrollmentId) ?? false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-card/95 py-3 pr-6 pl-6 shadow-sm backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center gap-8">
-        <div className="flex min-w-0 shrink-0 items-center gap-3">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-card/95 shadow-sm backdrop-blur-sm">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="flex min-w-0 items-center gap-3">
           <Link
             href="/dashboard"
-            className="font-display text-xl font-bold tracking-tight text-foreground"
+            className="shrink-0 font-display text-xl font-bold tracking-tight text-foreground"
           >
             <span className="text-primary">A</span>BTalks
           </Link>
-          {badgeDomain ? (
-            <span
-              className={cn(
-                "inline-flex shrink-0 rounded-full border px-3 py-1 text-sm font-bold tracking-wide",
-                domainBadgeClasses(badgeDomain),
-              )}
-              title={domainBadgeTitle(badgeDomain)}
-            >
-              {badgeDomain}
-            </span>
-          ) : null}
         </div>
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+
+        <div className="flex shrink-0 items-center gap-2">
           {showChallengeSwitcher ? (
             <Suspense fallback={null}>
               <ChallengeSwitcher
@@ -132,30 +87,32 @@ export function AppHeader({
           {user.isAdmin ? (
             <Link
               href="/admin"
-              className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
+              className="inline-flex shrink-0 items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
             >
               Admin
             </Link>
           ) : null}
           <ThemeToggle />
-          <span className="h-6 w-px shrink-0 bg-border" aria-hidden />
+          <span className="hidden h-6 w-px shrink-0 bg-border sm:block" aria-hidden />
           <DropdownMenu>
             <DropdownMenuTrigger
               type="button"
               className={cn(
-                "inline-flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm outline-none transition-colors",
+                "inline-flex shrink-0 items-center gap-2 rounded-lg px-1.5 py-1.5 text-sm outline-none transition-colors sm:gap-3 sm:px-2",
                 "hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary/25 aria-expanded:bg-muted",
               )}
             >
-              <Avatar className="size-9 ring-2 ring-border/80">
+              <Avatar className="size-8 ring-2 ring-border/80 sm:size-9">
                 {user.image ? (
                   <AvatarImage src={user.image} alt="" />
                 ) : null}
                 <AvatarFallback>{initials(label)}</AvatarFallback>
               </Avatar>
-              <span className="hidden min-w-0 flex-col items-start text-left sm:flex">
-                <span className="max-w-[160px] truncate font-medium">{label}</span>
-                <span className="max-w-[200px] truncate text-xs text-muted-foreground">
+              <span className="hidden min-w-0 flex-col items-start text-left md:flex">
+                <span className="max-w-[140px] truncate font-medium lg:max-w-[160px]">
+                  {label}
+                </span>
+                <span className="max-w-[180px] truncate text-xs text-muted-foreground lg:max-w-[200px]">
                   {user.email}
                 </span>
               </span>

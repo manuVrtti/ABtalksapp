@@ -62,8 +62,9 @@ export function ChallengeSwitcher({ enrollments, activeEnrollmentId }: Props) {
         type="button"
         className={cn(
           buttonVariants({ variant: "outline", size: "sm" }),
-          "inline-flex h-9 max-w-[220px] items-center gap-2 px-2 sm:max-w-[240px]",
+          "inline-flex h-8 min-w-0 shrink-0 items-center gap-1.5 px-2 max-w-[120px] md:h-9 md:max-w-[200px] md:gap-2",
         )}
+        aria-label={`Switch challenge: ${DOMAIN_LABELS[active.domain] ?? active.domain}`}
       >
         <span
           className={cn(
@@ -73,7 +74,7 @@ export function ChallengeSwitcher({ enrollments, activeEnrollmentId }: Props) {
         >
           {active.domain}
         </span>
-        <span className="hidden min-w-0 flex-1 truncate text-sm sm:inline">
+        <span className="hidden min-w-0 flex-1 truncate text-sm md:inline">
           {DOMAIN_LABELS[active.domain] ?? active.domain}
         </span>
         <ChevronDown className="size-4 shrink-0 opacity-50" aria-hidden />
