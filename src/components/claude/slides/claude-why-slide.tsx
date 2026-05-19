@@ -3,7 +3,27 @@
 import { motion } from "framer-motion";
 import { Clock, TrendingUp, Zap } from "lucide-react";
 
-export function ClaudeWhySlide() {
+interface Props {
+  totalCount: number;
+}
+
+function BuildersBadge({ totalCount }: { totalCount: number }) {
+  const isEarly = totalCount < 50;
+  const displayCount = Math.max(50, Math.floor(totalCount / 50) * 50);
+  const badgeText = isEarly
+    ? "🔥 Be among the first 100 builders"
+    : `🔥 Join ${displayCount}+ builders already enrolled`;
+
+  return (
+    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-1">
+      <span className="text-xs font-semibold text-orange-600 dark:text-orange-400">
+        {badgeText}
+      </span>
+    </div>
+  );
+}
+
+export function ClaudeWhySlide({ totalCount }: Props) {
   const items = [
     {
       icon: Clock,
@@ -33,6 +53,7 @@ export function ClaudeWhySlide() {
 
   return (
     <motion.div className="rounded-3xl border bg-card/80 p-6 shadow-lg backdrop-blur-sm md:p-8">
+      <BuildersBadge totalCount={totalCount} />
       <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
         Why Claude AI Mastery?
       </h2>

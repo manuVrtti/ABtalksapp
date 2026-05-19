@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Rocket } from "lucide-react";
+import { toast } from "sonner";
 import { ClaudeWelcomeSlide } from "@/components/claude/slides/claude-welcome-slide";
 import { ClaudeWhySlide } from "@/components/claude/slides/claude-why-slide";
 import { ClaudeRoadmapSlide } from "@/components/claude/slides/claude-roadmap-slide";
@@ -13,11 +14,19 @@ import { ProgressDots } from "@/components/landing/progress-dots";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const SLIDES = ["welcome", "why", "roadmap", "audience", "cta"] as const;
+const SLIDES = ["welcome", "why", "audience", "roadmap", "cta"] as const;
 
 const LOGIN_HREF = `/login?from=${encodeURIComponent("/register?domain=CLAUDE")}`;
 
 const CHALLENGE_START = new Date("2026-06-01T00:00:00+05:30");
+
+const TRANSITION_MS = 600;
+
+interface Signup {
+  firstName: string;
+  context: string;
+  joinedAt: string;
+}
 
 const slideVariants = {
   initial: (dir: "next" | "prev") => ({
@@ -65,44 +74,67 @@ function CountdownDisplay() {
   return (
     <>
       <div
-        className="hidden items-center gap-3 rounded-full border bg-card/80 px-4 py-1.5 text-xs backdrop-blur-sm sm:flex"
+        className="hidden items-center gap-3 rounded-2xl border bg-card/80 px-5 py-2.5 backdrop-blur-sm md:flex"
         aria-live="polite"
       >
-        <span className="text-muted-foreground">Starts in</span>
-        <motion.div className="flex items-center gap-2 font-mono font-semibold">
-          <span>{String(time.days).padStart(2, "0")}d</span>
-          <span>{String(time.hours).padStart(2, "0")}h</span>
-          <span>{String(time.minutes).padStart(2, "0")}m</span>
-          <span className="text-orange-500">
-            {String(time.seconds).padStart(2, "0")}s
-          </span>
-        </motion.div>
+        <div className="text-xs font-medium text-muted-foreground">Starts in</div>
+        <div className="flex items-center gap-3 font-display font-bold tabular-nums">
+          <div className="flex flex-col items-center">
+            <span className="text-lg md:text-xl">
+              {String(time.days).padStart(2, "0")}
+            </span>
+            <span className="text-[9px] font-normal tracking-wider text-muted-foreground">
+              DAYS
+            </span>
+          </div>
+          <span className="text-muted-foreground">:</span>
+          <div className="flex flex-col items-center">
+            <span className="text-lg md:text-xl">
+              {String(time.hours).padStart(2, "0")}
+            </span>
+            <span className="text-[9px] font-normal tracking-wider text-muted-foreground">
+              HRS
+            </span>
+          </div>
+          <span className="text-muted-foreground">:</span>
+          <div className="flex flex-col items-center">
+            <span className="text-lg md:text-xl">
+              {String(time.minutes).padStart(2, "0")}
+            </span>
+            <span className="text-[9px] font-normal tracking-wider text-muted-foreground">
+              MIN
+            </span>
+          </div>
+          <span className="text-muted-foreground">:</span>
+          <div className="flex flex-col items-center">
+            <span className="text-lg md:text-xl text-orange-500">
+              {String(time.seconds).padStart(2, "0")}
+            </span>
+            <span className="text-[9px] font-normal tracking-wider text-muted-foreground">
+              SEC
+            </span>
+          </div>
+        </div>
       </div>
-      <motion.div
-        className="rounded-full border bg-card/80 px-3 py-1 text-xs backdrop-blur-sm sm:hidden"
-        aria-live="polite"
-      >
-        <span className="text-muted-foreground">Starts in </span>
-        <span className="font-mono font-semibold text-orange-500">
-          {time.days}d
-        </span>
-      </motion.div>
+      <div className="text-xs text-muted-foreground md:hidden" aria-live="polite">
+        Starts in {time.days}d {time.hours}h
+      </div>
     </>
   );
 }
 
-function renderSlide(slide: (typeof SLIDES)[number]) {
+function renderSlide(slide: (typeof SLIDES)[number], totalCount: number) {
   switch (slide) {
     case "welcome":
       return <ClaudeWelcomeSlide />;
     case "why":
-      return <ClaudeWhySlide />;
-    case "roadmap":
-      return <ClaudeRoadmapSlide />;
+      return <ClaudeWhySlide totalCount={totalCount} />;
     case "audience":
       return <ClaudeAudienceSlide />;
+    case "roadmap":
+      return <ClaudeRoadmapSlide />;
     case "cta":
-      return <ClaudeCtaSlide />;
+      return <ClaudeCtaSlide totalCount={totalCount} />;
     default:
       return null;
   }
@@ -111,24 +143,81 @@ function renderSlide(slide: (typeof SLIDES)[number]) {
 export function ClaudeOnboardingClient() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [signups, setSignups] = useState<Signup[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const toastIndexRef = useRef(0);
+
+  useEffect(() => {
+    const fetchSignups = async () => {
+      try {
+        const res = await fetch("/api/claude-recent-signups");
+        const data = await res.json();
+        setSignups(data.signups ?? []);
+        setTotalCount(data.totalCount ?? 0);
+      } catch {
+        // Silent fail — toasts just don't show
+      }
+    };
+
+    fetchSignups();
+    const interval = setInterval(fetchSignups, 60_000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (signups.length === 0) return;
+
+    const showNext = () => {
+      if (isTransitioning) return;
+
+      const signup = signups[toastIndexRef.current % signups.length];
+      toastIndexRef.current += 1;
+
+      const message = signup.context
+        ? `${signup.firstName} from ${signup.context} just joined`
+        : `${signup.firstName} just joined`;
+
+      toast(message, {
+        duration: 4000,
+        position: "bottom-left",
+        icon: "👋",
+        className: "border-orange-500/30",
+      });
+    };
+
+    const initialTimer = setTimeout(showNext, 3000);
+    const interval = setInterval(showNext, 8000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
+  }, [signups, isTransitioning]);
+
+  function beginTransition(newIndex: number) {
+    setIsTransitioning(true);
+    setDirection(newIndex > currentIndex ? "next" : "prev");
+    setCurrentIndex(newIndex);
+    setTimeout(() => setIsTransitioning(false), TRANSITION_MS);
+  }
 
   function next() {
     if (currentIndex < SLIDES.length - 1) {
-      setDirection("next");
-      setCurrentIndex((i) => i + 1);
+      beginTransition(currentIndex + 1);
     }
   }
 
   function prev() {
     if (currentIndex > 0) {
-      setDirection("prev");
-      setCurrentIndex((i) => i - 1);
+      beginTransition(currentIndex - 1);
     }
   }
 
   function goTo(index: number) {
-    setDirection(index > currentIndex ? "next" : "prev");
-    setCurrentIndex(index);
+    if (index !== currentIndex) {
+      beginTransition(index);
+    }
   }
 
   const slide = SLIDES[currentIndex];
@@ -141,15 +230,17 @@ export function ClaudeOnboardingClient() {
       <div className="relative z-10 flex min-h-svh flex-col">
         <header className="shrink-0 px-6 py-4">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <div className="font-display text-xl font-bold tracking-tight">
-                <span className="text-primary">A</span>Btalks
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <div className="font-display text-xl font-bold tracking-tight">
+                  <span className="text-primary">A</span>Btalks
+                </div>
+                <span className="rounded bg-orange-500/10 px-2 py-0.5 text-[10px] font-bold text-orange-600 dark:text-orange-400">
+                  CLAUDE
+                </span>
               </div>
-              <span className="rounded bg-orange-500/10 px-2 py-0.5 text-[10px] font-bold text-orange-600 dark:text-orange-400">
-                CLAUDE
-              </span>
+              <CountdownDisplay />
             </div>
-            <CountdownDisplay />
           </div>
         </header>
 
@@ -166,7 +257,7 @@ export function ClaudeOnboardingClient() {
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="max-h-full overflow-y-auto"
               >
-                {renderSlide(slide)}
+                {renderSlide(slide, totalCount)}
               </motion.div>
             </AnimatePresence>
           </div>
