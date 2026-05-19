@@ -35,37 +35,37 @@ const PHASES = [
 
 export function ClaudeRoadmapSlide() {
   return (
-    <motion.div className="rounded-3xl border bg-card/80 p-6 shadow-lg backdrop-blur-sm md:p-8">
-      <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+    <motion.div className="rounded-3xl border bg-card/80 p-5 shadow-lg backdrop-blur-sm md:p-6">
+      <h2 className="font-display text-xl font-bold tracking-tight md:text-2xl">
         The 4-Phase Roadmap
       </h2>
-      <p className="mt-3 text-sm text-muted-foreground md:text-base">
+      <p className="mt-2 text-sm text-muted-foreground">
         Each phase builds on the last. By Day 60, you&apos;ll have shipped a
         capstone.
       </p>
 
-      <motion.div className="mt-5 space-y-2.5">
+      <motion.div className="mt-4 space-y-2">
         {PHASES.map((phase, i) => (
           <motion.div
             key={phase.number}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 + i * 0.1, duration: 0.4 }}
-            className={`flex items-start gap-3 rounded-xl border p-3 md:gap-4 md:p-4 ${phase.color}`}
+            className={`flex items-start gap-3 rounded-xl border p-4 ${phase.color}`}
           >
             <motion.div className="shrink-0 font-display text-3xl font-bold text-muted-foreground/60 md:text-4xl">
               {phase.number}
             </motion.div>
             <motion.div className="min-w-0 flex-1">
               <motion.div className="flex flex-wrap items-baseline gap-2">
-                <h3 className="font-display font-semibold text-sm md:text-base">
+                <h3 className="font-display text-sm font-semibold md:text-base">
                   {phase.title}
                 </h3>
-                <span className="text-xs text-muted-foreground md:text-sm">
+                <span className="text-xs text-muted-foreground">
                   {phase.days}
                 </span>
               </motion.div>
-              <p className="mt-1 text-xs text-muted-foreground md:text-sm">
+              <p className="mt-0.5 text-xs text-muted-foreground">
                 {phase.desc}
               </p>
             </motion.div>

@@ -164,29 +164,39 @@ export function ClaudeOnboardingClient() {
     return () => clearInterval(interval);
   }, []);
 
-  function beginTransition(newIndex: number) {
-    setIsTransitioning(true);
-    setDirection(newIndex > currentIndex ? "next" : "prev");
-    setCurrentIndex(newIndex);
-    setTimeout(() => setIsTransitioning(false), TRANSITION_MS);
-  }
+  const scrollToTop = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   function next() {
     if (currentIndex < SLIDES.length - 1) {
-      beginTransition(currentIndex + 1);
+      setIsTransitioning(true);
+      setDirection("next");
+      setCurrentIndex((i) => i + 1);
+      scrollToTop();
+      setTimeout(() => setIsTransitioning(false), TRANSITION_MS);
     }
   }
 
   function prev() {
     if (currentIndex > 0) {
-      beginTransition(currentIndex - 1);
+      setIsTransitioning(true);
+      setDirection("prev");
+      setCurrentIndex((i) => i - 1);
+      scrollToTop();
+      setTimeout(() => setIsTransitioning(false), TRANSITION_MS);
     }
   }
 
   function goTo(index: number) {
-    if (index !== currentIndex) {
-      beginTransition(index);
-    }
+    if (index === currentIndex) return;
+    setIsTransitioning(true);
+    setDirection(index > currentIndex ? "next" : "prev");
+    setCurrentIndex(index);
+    scrollToTop();
+    setTimeout(() => setIsTransitioning(false), TRANSITION_MS);
   }
 
   const slide = SLIDES[currentIndex];

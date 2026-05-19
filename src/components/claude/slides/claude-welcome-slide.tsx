@@ -9,15 +9,15 @@ export function ClaudeWelcomeSlide() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1, duration: 0.5 }}
-      className="rounded-3xl border bg-card/80 p-6 text-center shadow-lg backdrop-blur-sm md:p-8"
+      className="rounded-3xl border bg-card/80 p-5 text-center shadow-lg backdrop-blur-sm md:p-6"
     >
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
         transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-        className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500/10 md:mb-5 md:h-20 md:w-20"
+        className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500/10"
       >
-        <Sparkles className="h-8 w-8 text-orange-500 md:h-10 md:w-10" />
+        <Sparkles className="h-8 w-8 text-orange-500" />
       </motion.div>
 
       <motion.h1
@@ -37,7 +37,7 @@ export function ClaudeWelcomeSlide() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="mt-3 text-sm text-muted-foreground md:text-base"
+        className="mt-2 text-sm text-muted-foreground md:text-base"
       >
         A structured journey to master Claude AI, build real projects, and
         future-proof your career. Not a course. A build challenge.

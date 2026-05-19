@@ -59,10 +59,17 @@ export function OnboardingClient() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
 
+  const scrollToTop = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const next = () => {
     if (currentIndex < SLIDES.length - 1) {
       setDirection("next");
       setCurrentIndex((i) => i + 1);
+      scrollToTop();
     }
   };
 
@@ -70,12 +77,14 @@ export function OnboardingClient() {
     if (currentIndex > 0) {
       setDirection("prev");
       setCurrentIndex((i) => i - 1);
+      scrollToTop();
     }
   };
 
   const goTo = (index: number) => {
     setDirection(index > currentIndex ? "next" : "prev");
     setCurrentIndex(index);
+    scrollToTop();
   };
 
   const slide: SlideKey = SLIDES[currentIndex];
