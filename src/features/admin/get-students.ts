@@ -7,6 +7,11 @@ type Input = {
   status?: "ALL" | "ACTIVE" | "COMPLETED";
 };
 
+export type StudentDomainCounts = Record<
+  "ALL" | "SE" | "DS" | "AI" | "CLAUDE",
+  number
+>;
+
 export async function getStudents(
   input: Input,
 ): Promise<
@@ -41,6 +46,7 @@ export async function getStudents(
         ? {
             user: {
               OR: [
+                { name: { contains: q, mode: "insensitive" } },
                 { email: { contains: q, mode: "insensitive" } },
                 {
                   studentProfile: {
@@ -75,23 +81,53 @@ export async function getStudents(
     },
   });
 
-  return rows
-    .filter((row) => !!row.user.studentProfile)
-    .map((row) => ({
-      enrollmentId: row.id,
-      userId: row.user.id,
-      fullName: row.user.studentProfile?.fullName || row.user.email || "Unknown",
-      email: row.user.email,
-      domain: row.domain,
-      daysCompleted: row.daysCompleted,
-      currentStreak: row.currentStreak,
-      status: row.status,
-      joinedAt: row.user.createdAt,
-      isReadyForInterview: row.user.studentProfile?.isReadyForInterview ?? false,
-      userType: row.user.studentProfile?.userType ?? "STUDENT",
-      affiliation:
-        row.user.studentProfile?.userType === "PROFESSIONAL"
-          ? row.user.studentProfile.organization ?? "—"
-          : row.user.studentProfile?.college ?? "—",
-    }));
+  return rows.map((row) => ({
+    enrollmentId: row.id,
+    userId: row.user.id,
+    fullName:
+      row.user.studentProfile?.fullName?.trim() ||
+      row.user.email ||
+      "Unknown",
+    email: row.user.email,
+    domain: row.domain,
+    daysCompleted: row.daysCompleted,
+    currentStreak: row.currentStreak,
+    status: row.status,
+    joinedAt: row.user.createdAt,
+    isReadyForInterview: row.user.studentProfile?.isReadyForInterview ?? false,
+    userType: row.user.studentProfile?.userType ?? "STUDENT",
+    affiliation:
+      row.user.studentProfile?.userType === "PROFESSIONAL"
+        ? (row.user.studentProfile?.organization ?? "—")
+        : (row.user.studentProfile?.college ?? "—"),
+  }));
+}
+
+export async function getStudentDomainCounts(
+  status?: "ALL" | "ACTIVE" | "COMPLETED",
+): Promise<StudentDomainCounts> {
+  const statusFilter =
+    status && status !== "ALL" ? (status as EnrollmentStatus) : undefined;
+
+  const grouped = await prisma.enrollment.groupBy({
+    by: ["domain"],
+    where: statusFilter ? { status: statusFilter } : undefined,
+    _count: { _all: true },
+  });
+
+  const counts: StudentDomainCounts = {
+    ALL: 0,
+    SE: 0,
+    DS: 0,
+    AI: 0,
+    CLAUDE: 0,
+  };
+
+  for (const row of grouped) {
+    const n = row._count._all;
+    counts[row.domain] = n;
+    counts.ALL += n;
+  }
+
+  return counts;
 }

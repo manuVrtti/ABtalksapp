@@ -11,13 +11,13 @@ import {
 import { StudentsFilters } from "@/components/admin/students-filters";
 import { formatDateIST } from "@/lib/date-utils";
 import { cn } from "@/lib/utils";
-import { getStudents } from "@/features/admin/get-students";
+import { getStudentDomainCounts, getStudents } from "@/features/admin/get-students";
 
 function domainBadgeClass(domain: string): string {
   if (domain === "AI") return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
   if (domain === "DS") return "border-domains-ds/50 bg-domains-ds-bg text-domains-ds";
   if (domain === "CLAUDE")
-    return "border-violet-500/40 bg-violet-50 text-violet-800 dark:bg-violet-950/40 dark:text-violet-200";
+    return "border-orange-500/40 bg-orange-50 text-orange-800 dark:bg-orange-950/40 dark:text-orange-200";
   return "border-domains-se/50 bg-domains-se-bg text-domains-se";
 }
 
@@ -37,20 +37,31 @@ export default async function AdminStudentsPage({
   }>;
 }) {
   const sp = await searchParams;
-  const students = await getStudents({
-    search: sp.q,
-    domain: sp.domain ?? "ALL",
-    status: sp.status ?? "ALL",
-  });
+  const [students, domainCounts] = await Promise.all([
+    getStudents({
+      search: sp.q,
+      domain: sp.domain ?? "ALL",
+      status: sp.status ?? "ALL",
+    }),
+    getStudentDomainCounts(sp.status ?? "ALL"),
+  ]);
+
+  const filteredCount =
+    sp.domain && sp.domain !== "ALL"
+      ? domainCounts[sp.domain]
+      : domainCounts.ALL;
 
   return (
     <div className="space-y-4">
       <div>
         <h1 className="font-display text-3xl font-bold">Students</h1>
-        <p className="text-sm text-muted-foreground">Showing up to 100 students</p>
+        <p className="text-sm text-muted-foreground">
+          Showing {Math.min(students.length, 100)} of {filteredCount} matching enrollments
+          {students.length >= 100 ? " (max 100)" : ""}
+        </p>
       </div>
 
-      <StudentsFilters />
+      <StudentsFilters domainCounts={domainCounts} />
 
       <div className="rounded-xl border">
         <Table>

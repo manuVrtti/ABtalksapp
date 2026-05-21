@@ -84,7 +84,7 @@ export async function getAnalyticsData(range: TimeRange = "daily") {
   const [
     rangedProfiles,
     rangedSubmissions,
-    domainGrouped,
+    enrollmentByDomain,
     allEnrollments,
     allSubmissions,
     topPerformersRaw,
@@ -97,9 +97,9 @@ export async function getAnalyticsData(range: TimeRange = "daily") {
       where: { submittedAt: { gte: start } },
       select: { submittedAt: true },
     }),
-    prisma.studentProfile.groupBy({
+    prisma.enrollment.groupBy({
       by: ["domain"],
-      _count: { domain: true },
+      _count: { _all: true },
     }),
     prisma.enrollment.findMany({
       select: { daysCompleted: true },
@@ -147,9 +147,11 @@ export async function getAnalyticsData(range: TimeRange = "daily") {
     count: submissionsCountByKey.get(bucket.key) ?? 0,
   }));
 
-  const domainDistribution = ["AI", "DS", "SE"].map((domain) => ({
+  const domainOrder = ["SE", "DS", "AI", "CLAUDE"] as const;
+  const domainDistribution = domainOrder.map((domain) => ({
     name: domain,
-    value: domainGrouped.find((row) => row.domain === domain)?._count.domain ?? 0,
+    value:
+      enrollmentByDomain.find((row) => row.domain === domain)?._count._all ?? 0,
   }));
 
   const milestones = [1, 7, 14, 30, 45, 60];
