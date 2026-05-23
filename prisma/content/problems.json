@@ -462,6 +462,171 @@
     ]
   },
   {
+    "dayNumber": 22,
+    "domain": "SE",
+    "title": "The Theme Park FastPass Simulator",
+    "problemStatement": "**Phase:** Queues & Scheduling Systems\n\nA futuristic theme park has thousands of visitors waiting for rides. Your mission is to build the ride scheduling system.\n\nVisitors join a queue, but VIP users can enter a priority lane.\n\nCan you design a system that processes visitors in the correct order without chaos?\n\n**Real-World Impact:** Queue systems power ticket booking apps, operating systems, customer support systems, and cloud task schedulers.\n\n**What to do:**\n- Implement a normal queue system\n- Add VIP priority handling\n- Process users in correct order\n- Visualize queue operations step-by-step\n\n**Submission:**\n- Working queue simulator\n- README explanation\n- GitHub repository\n- LinkedIn reflection",
+    "learningObjectives": [
+      "Understand FIFO behavior",
+      "Learn queue operations",
+      "Simulate scheduling systems"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/implement-queue-using-stacks/",
+      "https://visualgo.net/en/list"
+    ],
+    "difficulty": "Medium",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 22/60 🚀 | Theme Park FastPass Simulator\n\n🎢 Built a ride scheduling system using queues.\n\n💻 What I explored:\n• FIFO scheduling\n• VIP priority handling\n• Real-world queue systems\n\n🧠 Biggest realization:\nQueues silently power many systems we use daily.\n\nGitHub Repo: {{github_link}}\n\n#Queues #SoftwareEngineering #DSA",
+    "solutionApproach": "Use queue/deque structures to simulate processing order.",
+    "tags": [
+      "queue",
+      "scheduling",
+      "simulation"
+    ]
+  },
+  {
+    "dayNumber": 23,
+    "domain": "SE",
+    "title": "Train Carriage Reversal Challenge",
+    "problemStatement": "**Phase:** Linked Lists\n\nA railway company accidentally connected train carriages in the wrong order.\n\nYour mission is to reverse the train without creating a collision.\n\nEach carriage is connected like a linked list node.\n\n**Real-World Impact:** Linked lists are used in memory management, browser history systems, and real-time applications.\n\n**What to do:**\n- Build a linked list representation of train carriages\n- Reverse the linked list\n- Print original and reversed train order\n- Explain pointer manipulation\n\n**Submission:**\n- Code implementation\n- Visualization diagram\n- GitHub repository",
+    "learningObjectives": [
+      "Understand linked list structure",
+      "Manipulate pointers safely",
+      "Visualize node connections"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/reverse-linked-list/",
+      "https://visualgo.net/en/list"
+    ],
+    "difficulty": "Medium",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 23/60 🚀 | Train Carriage Reversal Challenge\n\n🚂 Reversed a train system using linked lists.\n\n🧠 Key learning:\nPointers feel confusing until you visualize them.\n\nGitHub Repo: {{github_link}}\n\n#LinkedList #SoftwareEngineering",
+    "solutionApproach": "Iteratively reverse next pointers node-by-node.",
+    "tags": [
+      "linked-list",
+      "pointers",
+      "visualization"
+    ]
+  },
+  {
+    "dayNumber": 24,
+    "domain": "SE",
+    "title": "The Kingdom Alliance Merger",
+    "problemStatement": "**Phase:** Merging Systems\n\nTwo kingdoms maintain sorted records of their soldiers.\n\nYour mission is to merge both armies into one perfectly sorted master list without losing order.\n\n**Real-World Impact:** Merge operations are heavily used in databases, distributed systems, and search engines.\n\n**What to do:**\n- Create two sorted linked lists\n- Merge them into one sorted list\n- Handle duplicate values\n- Document merge strategy\n\n**Submission:**\n- Working implementation\n- README explanation\n- GitHub repository",
+    "learningObjectives": [
+      "Merge sorted structures efficiently",
+      "Work with pointer traversal",
+      "Understand system integration logic"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/merge-two-sorted-lists/"
+    ],
+    "difficulty": "Medium",
+    "estimatedMinutes": 55,
+    "linkedinTemplate": "Day 24/60 🚀 | Kingdom Alliance Merger\n\n⚔️ Merged two sorted armies using linked lists.\n\n💡 Realization:\nLarge systems constantly merge structured data.\n\nGitHub Repo: {{github_link}}\n\n#LinkedLists #Algorithms #SoftwareEngineering",
+    "solutionApproach": "Use pointer comparison to merge lists efficiently.",
+    "tags": [
+      "merge",
+      "linked-list",
+      "sorting"
+    ]
+  },
+  {
+    "dayNumber": 25,
+    "domain": "SE",
+    "title": "The Infinite Maze Trap",
+    "problemStatement": "**Phase:** Cycle Detection\n\nA game developer accidentally created a maze where some paths loop forever.\n\nYour mission is to detect whether players are trapped inside an infinite cycle before the game launches.\n\n**Real-World Impact:** Cycle detection prevents infinite loops in operating systems, dependency graphs, and distributed systems.\n\n**What to do:**\n- Simulate maze paths using linked lists\n- Detect cycles using fast and slow pointers\n- Test multiple maze configurations\n- Explain why cycle detection matters\n\n**Submission:**\n- Cycle detection system\n- README explanation\n- GitHub repository",
+    "learningObjectives": [
+      "Understand Floyd’s Cycle Detection",
+      "Use two-pointer techniques",
+      "Prevent infinite execution paths"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/linked-list-cycle/",
+      "https://visualgo.net/en/cyclefinding"
+    ],
+    "difficulty": "Medium",
+    "estimatedMinutes": 65,
+    "linkedinTemplate": "Day 25/60 🚀 | Infinite Maze Trap\n\n🌀 Built a system to detect infinite loops in maze paths.\n\n🧠 Biggest learning:\nSmall logic mistakes can trap systems forever.\n\nGitHub Repo: {{github_link}}\n\n#CycleDetection #SoftwareEngineering",
+    "solutionApproach": "Use slow and fast pointers to detect loops efficiently.",
+    "tags": [
+      "cycle-detection",
+      "linked-list",
+      "two-pointers"
+    ]
+  },
+  {
+    "dayNumber": 26,
+    "domain": "SE",
+    "title": "The Secret Message Decoder",
+    "problemStatement": "**Phase:** Two Pointer Optimization\n\nAn encrypted communication system stores secret messages in a linked chain.\n\nOne corrupted message must be removed from the chain before the message is transmitted.\n\nYour task: remove the nth message from the end without counting the entire chain twice.\n\n**Real-World Impact:** Optimized traversal systems reduce latency in networking and real-time applications.\n\n**What to do:**\n- Build a linked list message chain\n- Remove nth node from end\n- Optimize using two pointers\n- Explain why single-pass traversal matters\n\n**Submission:**\n- Working implementation\n- README explanation\n- GitHub repository",
+    "learningObjectives": [
+      "Master two-pointer traversal",
+      "Reduce redundant operations",
+      "Optimize linked list processing"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+    ],
+    "difficulty": "Medium",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 26/60 🚀 | Secret Message Decoder\n\n📡 Removed corrupted messages using optimized traversal.\n\n💡 Key realization:\nSingle-pass solutions scale much better.\n\nGitHub Repo: {{github_link}}\n\n#TwoPointers #LinkedLists #SoftwareEngineering",
+    "solutionApproach": "Maintain distance between two pointers to remove target node.",
+    "tags": [
+      "two-pointers",
+      "optimization",
+      "linked-list"
+    ]
+  },
+  {
+    "dayNumber": 27,
+    "domain": "SE",
+    "title": "The Social Media Fraud Detector",
+    "problemStatement": "**Phase:** Hashing Systems\n\nA social media platform suspects bots are repeatedly posting duplicate content.\n\nYour mission is to detect suspicious repeated activity within a limited time window.\n\n**Real-World Impact:** Hashing powers fraud detection, spam filtering, and cybersecurity systems.\n\n**What to do:**\n- Track repeated activity using hashing\n- Detect duplicates within K distance\n- Simulate social media events\n- Explain why hashing improves performance\n\n**Submission:**\n- Fraud detection script\n- README explanation\n- GitHub repository",
+    "learningObjectives": [
+      "Use hashing for fast lookups",
+      "Track state efficiently",
+      "Apply algorithms to real systems"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/contains-duplicate-ii/",
+      "https://www.geeksforgeeks.org/hashing-data-structure/"
+    ],
+    "difficulty": "Medium",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 27/60 🚀 | Social Media Fraud Detector\n\n🕵️ Built a bot detection system using hashing.\n\n💡 Realization:\nHashing quietly powers modern internet systems.\n\nGitHub Repo: {{github_link}}\n\n#Hashing #CyberSecurity #SoftwareEngineering",
+    "solutionApproach": "Use hashmap to track previously seen elements and indices.",
+    "tags": [
+      "hashing",
+      "fraud-detection",
+      "optimization"
+    ]
+  },
+  {
+    "dayNumber": 28,
+    "domain": "SE",
+    "title": "The Lost Treasure Coordinates",
+    "problemStatement": "**Phase:** Pattern Recognition\n\nA pirate captain left behind a treasure map with hidden coordinate pairs.\n\nYour mission is to find two coordinates that combine to reveal the treasure location.\n\nThe faster you find the pair, the more treasure you keep.\n\n**Real-World Impact:** Pair matching systems are used in financial transactions, recommendation systems, and search optimization.\n\n**What to do:**\n- Solve the Two Sum problem\n- Build brute-force and optimized solutions\n- Compare execution times\n- Visualize lookup process\n\n**Submission:**\n- Both implementations\n- Performance comparison\n- GitHub repository\n- LinkedIn reflection",
+    "learningObjectives": [
+      "Recognize algorithmic patterns",
+      "Optimize pair searching",
+      "Understand hashmap-based lookup"
+    ],
+    "resources": [
+      "https://leetcode.com/problems/two-sum/"
+    ],
+    "difficulty": "Easy-Medium",
+    "estimatedMinutes": 50,
+    "linkedinTemplate": "Day 28/60 🚀 | Lost Treasure Coordinates\n\n🏴‍☠️ Used hashing to discover hidden treasure coordinates.\n\n🧠 Biggest realization:\nPattern recognition matters more than memorizing solutions.\n\nGitHub Repo: {{github_link}}\n\n#Hashing #Algorithms #SoftwareEngineering",
+    "solutionApproach": "Store complements in hashmap for fast pair lookup.",
+    "tags": [
+      "hashmap",
+      "two-sum",
+      "patterns"
+    ]
+  },
+  {
     "dayNumber": 1,
     "domain": "DS",
     "title": "Python Fundamentals Bootcamp (Core Syntax)",
