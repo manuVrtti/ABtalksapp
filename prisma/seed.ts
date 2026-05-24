@@ -5,6 +5,7 @@ import { addDays, subDays } from "date-fns";
 import {
   Domain,
   EnrollmentStatus,
+  Prisma,
   Role,
   SubmissionStatus,
 } from "@prisma/client";
@@ -50,6 +51,7 @@ type ProblemJson = {
   linkedinTemplate: string;
   solutionApproach: string;
   tags: string[];
+  dayContent?: unknown;
 };
 
 type QuizQuestionJson = {
@@ -153,6 +155,9 @@ function dailyTaskFromJson(domain: Domain, row: ProblemJson) {
     linkedinTemplate: row.linkedinTemplate,
     solutionApproach: row.solutionApproach,
     tags: row.tags,
+    dayContent: row.dayContent
+      ? (row.dayContent as Prisma.InputJsonValue)
+      : Prisma.DbNull,
   };
 }
 
@@ -166,7 +171,10 @@ async function upsertDailyTasksForChallenge(
     const fromJson = problemLookup.get(key);
     const body = fromJson
       ? dailyTaskFromJson(domain, fromJson)
-      : placeholderDailyTaskData(domain, dayNumber);
+      : {
+          ...placeholderDailyTaskData(domain, dayNumber),
+          dayContent: Prisma.DbNull,
+        };
 
     await prisma.dailyTask.upsert({
       where: {

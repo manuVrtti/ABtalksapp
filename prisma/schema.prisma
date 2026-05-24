@@ -67,6 +67,7 @@ model DailyTask {
   linkedinTemplate   String
   solutionApproach   String?
   tags               String[]     @default([])
+  dayContent         Json?
   createdAt          DateTime     @default(now())
   challenge          Challenge    @relation(fields: [challengeId], references: [id], onDelete: Cascade)
   submissions        Submission[]
