@@ -426,20 +426,6 @@
           }
         ]
       },
-      "tool": {
-        "name": "Before vs After",
-        "type": "Engagement Technique",
-        "description": "Write one email yourself first, then improve it with AI. Compare clarity, professionalism, tone, and time saved.",
-        "setupTitle": "How to run the Before vs After",
-        "setupSteps": [
-          "Pick one real email you need to send this week.",
-          "Write the “before” version yourself, no AI. Save it.",
-          "Generate an improved “after” version with the prompt template.",
-          "Put them side by side and note what improved: clarity, tone, professionalism, time saved."
-        ],
-        "linkUrl": "",
-        "linkLabel": ""
-      },
       "task": {
         "title": "Your Task",
         "steps": [
@@ -510,20 +496,6 @@
           }
         ]
       },
-      "tool": {
-        "name": "Before vs After",
-        "type": "Engagement Technique",
-        "description": "Share the outreach message you'd normally send vs the AI-improved sequence.",
-        "setupTitle": "How to run the Before vs After",
-        "setupSteps": [
-          "Choose a real person or company you'd genuinely like to reach.",
-          "Write your normal cold message first. Save the “before.”",
-          "Generate a full 3-touch sequence with the prompt template.",
-          "Compare your single message vs the structured sequence side by side."
-        ],
-        "linkUrl": "",
-        "linkLabel": ""
-      },
       "task": {
         "title": "Your Task",
         "steps": [
@@ -592,20 +564,6 @@
             "text": "how to generate a slide-style proposal you can later turn into a deck."
           }
         ]
-      },
-      "tool": {
-        "name": "Showcase",
-        "type": "Engagement Technique",
-        "description": "Share the proposal you created and walk people through how AI helped you build it fast.",
-        "setupTitle": "How to run the Showcase",
-        "setupSteps": [
-          "Invent or use a real service you could offer (design, tutoring, web dev, consulting).",
-          "Generate a full proposal with the prompt template.",
-          "Refine pricing and timeline until they feel realistic.",
-          "Share the finished proposal (blur private details) and how long it would have taken without AI."
-        ],
-        "linkUrl": "",
-        "linkLabel": ""
       },
       "task": {
         "title": "Your Task",
@@ -676,20 +634,6 @@
           }
         ]
       },
-      "tool": {
-        "name": "Showcase",
-        "type": "Engagement Technique",
-        "description": "Share the polished MoM you generated from rough notes.",
-        "setupTitle": "How to run the Showcase",
-        "setupSteps": [
-          "Use notes from any real or sample meeting (a class group project works great).",
-          "Paste the raw notes into Claude with the prompt template.",
-          "Generate a clean MoM with an action-item table.",
-          "Share the messy notes next to the clean MoM — a powerful “AI saved me time” moment."
-        ],
-        "linkUrl": "",
-        "linkLabel": ""
-      },
       "task": {
         "title": "Your Task",
         "steps": [
@@ -758,20 +702,6 @@
             "text": "how to end with a clear recommendation and next steps."
           }
         ]
-      },
-      "tool": {
-        "name": "Showcase",
-        "type": "Engagement Technique",
-        "description": "Share your executive summary and the topic it covers.",
-        "setupTitle": "How to run the Showcase",
-        "setupSteps": [
-          "Choose a topic you understand (a project, a trend, a business idea).",
-          "Generate a 500-word board-ready summary with the prompt template.",
-          "Tighten it until every sentence earns its place.",
-          "Share it and ask: would a busy executive get the point in 30 seconds?"
-        ],
-        "linkUrl": "",
-        "linkLabel": ""
       },
       "task": {
         "title": "Your Task",
