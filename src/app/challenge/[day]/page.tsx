@@ -15,8 +15,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SubmissionFlow } from "./submission-flow";
+import {
+  DayPage,
+  type DayContent,
+} from "@/components/challenge/day-page";
 import { AppHeader } from "@/components/shared/app-header";
-import { isClaudeEnabled } from "@/lib/feature-flags";
+import { isClaudeEnabled, isDayLockBypassEnabled } from "@/lib/feature-flags";
 import { shouldShowClaudeBanner } from "@/features/user/check-claude-enrollment";
 import { ClaudeEnrollmentBanner } from "@/components/shared/claude-enrollment-banner";
 import { prisma } from "@/lib/db";
@@ -134,7 +138,9 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
     );
   }
 
-  if (!data.isUnlocked) {
+  const bypassEnabled = isDayLockBypassEnabled();
+
+  if (!bypassEnabled && !data.isUnlocked) {
     const enc = encodeURIComponent(data.enrollment.id);
     return (
       <ChallengePageShell
@@ -232,32 +238,61 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
     );
   }
 
+  const dayContent = data.task.dayContent as DayContent | null;
+
   return (
     <ChallengePageShell
       headerUser={headerUser}
       claudeBanner={claudeBanner}
-      mainClassName="mx-auto w-full max-w-5xl px-4 py-8"
+      mainClassName={
+        dayContent
+          ? "flex flex-1 flex-col"
+          : "mx-auto w-full max-w-5xl px-4 py-8"
+      }
     >
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
-        <Link
-          href={`/dashboard?challenge=${encodeURIComponent(data.enrollment.id)}`}
-          className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
-        >
-          ← Dashboard
-        </Link>
-        <p className="text-sm text-muted-foreground">
-          Today (IST): day {data.currentDayNumber}
-        </p>
-      </div>
-      <SubmissionFlow
-        dayNumber={day}
-        enrollmentId={data.enrollment.id}
-        task={{
-          title: data.task.title,
-          problemStatement: data.task.problemStatement,
-        }}
-        userDomain={data.enrollment.domain}
-      />
+      {dayContent ? (
+        <>
+          <div className="container mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-4 pt-4 md:px-6">
+            <Link
+              href={`/dashboard?challenge=${encodeURIComponent(data.enrollment.id)}`}
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            >
+              ← Dashboard
+            </Link>
+            <p className="text-sm text-muted-foreground">
+              Today (IST): day {data.currentDayNumber}
+            </p>
+          </div>
+          <DayPage
+            dayNumber={day}
+            content={dayContent}
+            enrollmentId={data.enrollment.id}
+          />
+        </>
+      ) : (
+        <>
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
+            <Link
+              href={`/dashboard?challenge=${encodeURIComponent(data.enrollment.id)}`}
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            >
+              ← Dashboard
+            </Link>
+            <p className="text-sm text-muted-foreground">
+              Today (IST): day {data.currentDayNumber}
+            </p>
+          </div>
+          <SubmissionFlow
+            dayNumber={day}
+            enrollmentId={data.enrollment.id}
+            task={{
+              title: data.task.title,
+              problemStatement: data.task.problemStatement,
+            }}
+            userDomain={data.enrollment.domain}
+          />
+        </>
+      )}
     </ChallengePageShell>
   );
 }

@@ -5,3 +5,7 @@
 export function isClaudeEnabled(): boolean {
   return process.env.ENABLE_CLAUDE_CHALLENGE === "true";
 }
+
+export function isDayLockBypassEnabled(): boolean {
+  return process.env.BYPASS_DAY_LOCKS === "true";
+}
