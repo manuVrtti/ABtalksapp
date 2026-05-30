@@ -16,6 +16,11 @@ export default async function AdminLayout({
     { href: "/admin/submissions", label: "Submissions", icon: "submissions" as const },
     { href: "/admin/content", label: "Content", icon: "content" as const },
     { href: "/admin/analytics", label: "Analytics", icon: "analytics" as const },
+    {
+      href: "/admin/campus-ambassadors",
+      label: "Campus Ambassadors",
+      icon: "ambassadors" as const,
+    },
   ];
 
   return (

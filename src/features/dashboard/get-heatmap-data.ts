@@ -193,7 +193,11 @@ export async function getHeatmapData(
     const rejectAction = rejectActionByDay.get(dayNumber);
 
     if (row) {
-      status = row.status === SubmissionStatus.ON_TIME ? "on_time" : "late";
+      status =
+        row.status === SubmissionStatus.ON_TIME ||
+        row.status === SubmissionStatus.LATE
+          ? "on_time"
+          : "late";
     } else if (rejectAction) {
       status = "rejected";
     } else if (dayNumber >= currentDay) {

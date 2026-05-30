@@ -24,7 +24,7 @@ type Props = {
 
 const STATUS_CLASS: Record<HeatmapCell["status"], string> = {
   on_time: "bg-emerald-500",
-  late: "bg-amber-400",
+  late: "bg-emerald-500",
   rejected: "bg-purple-500 dark:bg-purple-600",
   missed: "bg-red-500",
   future:
@@ -37,7 +37,7 @@ function tooltipLabel(cell: HeatmapCell): string {
     case "on_time":
       return `Day ${cell.dayNumber} — On time on ${displayDate}`;
     case "late":
-      return `Day ${cell.dayNumber} — Late on ${displayDate}`;
+      return `Day ${cell.dayNumber} — On time on ${displayDate}`;
     case "rejected":
       return `Day ${cell.dayNumber} — Rejected on ${displayDate}`;
     case "missed":
@@ -136,7 +136,7 @@ function dialogTitle(cell: HeatmapCell): string {
     case "on_time":
       return `Day ${cell.dayNumber} — On Time`;
     case "late":
-      return `Day ${cell.dayNumber} — Late`;
+      return `Day ${cell.dayNumber} — On Time`;
     case "rejected":
       return `Day ${cell.dayNumber} — Submission Rejected`;
     default:
@@ -207,13 +207,6 @@ export function SubmissionHeatmap({
         </li>
         <li className="flex items-center gap-2">
           <span
-            className="size-3.5 shrink-0 rounded-sm bg-amber-400"
-            aria-hidden
-          />
-          Late
-        </li>
-        <li className="flex items-center gap-2">
-          <span
             className="size-3.5 shrink-0 rounded-sm bg-purple-500 dark:bg-purple-600"
             aria-hidden
           />
@@ -268,18 +261,14 @@ export function SubmissionHeatmap({
                     <Badge
                       variant="secondary"
                       className={
-                        active.status === "on_time"
+                        active.status === "on_time" || active.status === "late"
                           ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
-                          : active.status === "late"
-                            ? "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
-                            : "bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300"
+                          : "bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300"
                       }
                     >
-                      {active.status === "on_time"
+                      {active.status === "on_time" || active.status === "late"
                         ? "On Time"
-                        : active.status === "late"
-                          ? "Late"
-                          : "Rejected"}
+                        : "Rejected"}
                     </Badge>
                   )}
                   {active.status === "on_time" || active.status === "late" ? (

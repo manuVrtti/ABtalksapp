@@ -1,5 +1,5 @@
 import { EnrollmentStatus, UserType } from "@prisma/client";
-import { clearReferralCookie } from "@/app/actions/referral-actions";
+import { clearRefCookie } from "@/lib/cookies";
 import { isClaudeEnabled } from "@/lib/feature-flags";
 import type { RegisterPayloadInput } from "@/lib/validations/register";
 import { prisma } from "@/lib/db";
@@ -149,23 +149,27 @@ export async function completeRegistration(
         },
       });
 
-      if (referrerId) {
-        await tx.referral.create({
-          data: {
-            referrerId,
-            referredId: userId,
-            rewardGiven: false,
-          },
-        });
-      }
-
       return profile.id;
     }, {
       maxWait: 10000,
       timeout: 20000,
     });
 
-    await clearReferralCookie();
+    if (referrerId) {
+      try {
+        await prisma.referral.create({
+          data: {
+            referrerId,
+            referredId: userId,
+            rewardGiven: false,
+          },
+        });
+      } catch (error) {
+        console.error("[registration] referral creation failed:", error);
+      }
+    }
+
+    await clearRefCookie();
 
     return { ok: true, profileId };
   } catch (e) {

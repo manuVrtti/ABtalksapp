@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getReferralCookie } from "@/app/actions/referral-actions";
+import { getRefCookie } from "@/lib/cookies";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
 import { isClaudeEnabled } from "@/lib/feature-flags";
@@ -67,7 +67,17 @@ export default async function RegisterPage({ searchParams }: PageProps) {
       : "";
   const refFromUrl =
     refFromUrlNormalized.length > 0 ? refFromUrlNormalized : undefined;
-  const refFromCookie = await getReferralCookie();
+  const refFromCookieRaw = await getRefCookie();
+  const refFromCookieNormalized =
+    typeof refFromCookieRaw === "string"
+      ? refFromCookieRaw
+          .trim()
+          .toUpperCase()
+          .replace(/[^A-Z0-9]/g, "")
+          .slice(0, 6)
+      : "";
+  const refFromCookie =
+    refFromCookieNormalized.length > 0 ? refFromCookieNormalized : undefined;
   const initialRef = refFromUrl ?? refFromCookie ?? "";
 
   const initialName = session.user.name?.trim() ?? "";

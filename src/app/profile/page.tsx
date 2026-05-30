@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Domain } from "@prisma/client";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Users } from "lucide-react";
 import { auth } from "@/auth";
 import { getProfile } from "@/features/profile/get-profile";
 import { AppHeader } from "@/components/shared/app-header";
-import { ReferralCard } from "@/components/profile/referral-card";
+import { CopyReferralLinkButton } from "@/components/profile/copy-referral-link-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -107,6 +108,12 @@ export default async function ProfilePage() {
   }
 
   const { user, profile } = bundle;
+
+  const headersList = await headers();
+  const host = headersList.get("host") ?? "abtalks.in";
+  const protocol = host.includes("localhost") ? "http" : "https";
+  const baseUrl = `${protocol}://${host}`;
+  const referralLink = `${baseUrl}/?ref=${profile.referralCode}`;
 
   const commonFields = {
     fullName: profile.fullName,
@@ -225,10 +232,47 @@ export default async function ProfilePage() {
               </CardContent>
             </Card>
 
-            <ReferralCard
-              referralCode={profile.referralCode}
-              referralCount={profile.referralCount}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Refer &amp; Earn</CardTitle>
+                <CardDescription>
+                  Share your link with friends. When they sign up using it, they
+                  show up here.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center gap-2 rounded-lg border bg-muted/30 p-3">
+                  <code className="flex-1 truncate font-mono text-xs md:text-sm">
+                    {referralLink}
+                  </code>
+                  <CopyReferralLinkButton link={referralLink} />
+                </div>
+
+                <div className="text-xs text-muted-foreground">
+                  Or share your code:{" "}
+                  <code className="font-mono font-semibold">
+                    {profile.referralCode}
+                  </code>
+                </div>
+
+                <div className="flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 p-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                    <Users className="h-5 w-5 text-primary" aria-hidden />
+                  </div>
+                  <div>
+                    <div className="font-display text-xl font-bold">
+                      {profile.referralCount}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {profile.referralCount === 1
+                        ? "person signed up"
+                        : "people signed up"}{" "}
+                      using your link
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>

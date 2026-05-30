@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Users } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -9,9 +10,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { StudentsFilters } from "@/components/admin/students-filters";
+import { StudentsSortSelect } from "@/components/admin/students-sort-select";
 import { formatDateIST } from "@/lib/date-utils";
 import { cn } from "@/lib/utils";
 import { getStudentDomainCounts, getStudents } from "@/features/admin/get-students";
+
+function isSortBy(
+  value: string | undefined,
+): value is "recent" | "days" | "streak" | "referrals" {
+  return (
+    value === "recent" ||
+    value === "days" ||
+    value === "streak" ||
+    value === "referrals"
+  );
+}
 
 function domainBadgeClass(domain: string): string {
   if (domain === "AI") return "border-domains-ai/50 bg-domains-ai-bg text-domains-ai";
@@ -34,14 +47,17 @@ export default async function AdminStudentsPage({
     q?: string;
     domain?: "AI" | "DS" | "SE" | "CLAUDE" | "ALL";
     status?: "ALL" | "ACTIVE" | "COMPLETED";
+    sort?: string;
   }>;
 }) {
   const sp = await searchParams;
+  const sortBy = isSortBy(sp.sort) ? sp.sort : "recent";
   const [students, domainCounts] = await Promise.all([
     getStudents({
       search: sp.q,
       domain: sp.domain ?? "ALL",
       status: sp.status ?? "ALL",
+      sortBy,
     }),
     getStudentDomainCounts(sp.status ?? "ALL"),
   ]);
@@ -63,6 +79,15 @@ export default async function AdminStudentsPage({
 
       <StudentsFilters domainCounts={domainCounts} />
 
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <StudentsSortSelect />
+        {sortBy === "referrals" ? (
+          <Badge variant="secondary" className="text-xs">
+            Ranked by referrals
+          </Badge>
+        ) : null}
+      </div>
+
       <div className="rounded-xl border">
         <Table>
           <TableHeader>
@@ -73,6 +98,7 @@ export default async function AdminStudentsPage({
               <TableHead>Domain</TableHead>
               <TableHead>Day</TableHead>
               <TableHead>Streak</TableHead>
+              <TableHead>Referrals</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Joined</TableHead>
             </TableRow>
@@ -99,6 +125,12 @@ export default async function AdminStudentsPage({
                 </TableCell>
                 <TableCell>{student.daysCompleted}</TableCell>
                 <TableCell>{student.currentStreak}</TableCell>
+                <TableCell>
+                  <span className="inline-flex items-center gap-1">
+                    <Users className="h-3 w-3" aria-hidden />
+                    {student.referralCount}
+                  </span>
+                </TableCell>
                 <TableCell>
                   <Badge className={cn("border-0", statusBadgeClass(student.status))}>
                     {student.status}

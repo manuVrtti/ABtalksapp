@@ -1,7 +1,12 @@
+import { formatInTimeZone } from "date-fns-tz";
 import { EnrollmentStatus, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
-import { getCurrentDayNumber } from "@/lib/date-utils";
+import {
+  getCurrentDayNumber,
+  getIstDateKeyForChallengeDay,
+  IST,
+} from "@/lib/date-utils";
 import { normalizeGithubUrl } from "./validate-github-url";
 import { validateSubmissionUrl } from "@/lib/validations/submission";
 import { validateLinkedinUrl } from "./validate-linkedin-url";
@@ -132,8 +137,21 @@ export async function submitDay(input: {
     return { ok: false, reason: li.reason, message: li.message };
   }
 
-  const newStatus =
-    dayNumber === currentDay ? SubmissionStatus.ON_TIME : SubmissionStatus.LATE;
+  const submittedAtIst = formatInTimeZone(new Date(), IST, "yyyy-MM-dd");
+  const expectedDate = getIstDateKeyForChallengeDay(
+    enrollment,
+    dayNumber,
+    challengeAnchor,
+  );
+  if (submittedAtIst !== expectedDate) {
+    return {
+      ok: false,
+      reason: "wrong_day",
+      message: `Day ${dayNumber} can only be submitted on its scheduled IST date (${expectedDate}).`,
+    };
+  }
+
+  const newStatus = SubmissionStatus.ON_TIME;
 
   try {
     const result = await prisma.$transaction(async (tx) => {

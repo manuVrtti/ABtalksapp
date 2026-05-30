@@ -5,6 +5,7 @@ type Input = {
   search?: string;
   domain?: "AI" | "DS" | "SE" | "CLAUDE" | "ALL";
   status?: "ALL" | "ACTIVE" | "COMPLETED";
+  sortBy?: "recent" | "days" | "streak" | "referrals";
 };
 
 export type StudentDomainCounts = Record<
@@ -28,6 +29,7 @@ export async function getStudents(
     isReadyForInterview: boolean;
     userType: string;
     affiliation: string;
+    referralCount: number;
   }>
 > {
   const q = input.search?.trim();
@@ -37,6 +39,16 @@ export async function getStudents(
     input.status && input.status !== "ALL"
       ? (input.status as EnrollmentStatus)
       : undefined;
+  const sortBy = input.sortBy ?? "recent";
+
+  const orderBy =
+    sortBy === "days"
+      ? [{ lastSubmittedDay: "desc" as const }, { createdAt: "desc" as const }]
+      : sortBy === "streak"
+        ? [{ currentStreak: "desc" as const }, { createdAt: "desc" as const }]
+        : sortBy === "referrals"
+          ? [{ createdAt: "desc" as const }]
+          : [{ createdAt: "desc" as const }];
 
   const rows = await prisma.enrollment.findMany({
     where: {
@@ -58,7 +70,7 @@ export async function getStudents(
           }
         : {}),
     },
-    orderBy: [{ lastSubmittedDay: "desc" }, { createdAt: "desc" }],
+    orderBy,
     take: 100,
     include: {
       user: {
@@ -81,7 +93,16 @@ export async function getStudents(
     },
   });
 
-  return rows.map((row) => ({
+  const referralCounts = await prisma.referral.groupBy({
+    by: ["referrerId"],
+    _count: true,
+  });
+
+  const countMap = new Map(
+    referralCounts.map((r) => [r.referrerId, r._count]),
+  );
+
+  const students = rows.map((row) => ({
     enrollmentId: row.id,
     userId: row.user.id,
     fullName:
@@ -100,7 +121,14 @@ export async function getStudents(
       row.user.studentProfile?.userType === "PROFESSIONAL"
         ? (row.user.studentProfile?.organization ?? "—")
         : (row.user.studentProfile?.college ?? "—"),
+    referralCount: countMap.get(row.user.id) ?? 0,
   }));
+
+  if (sortBy === "referrals") {
+    students.sort((a, b) => b.referralCount - a.referralCount);
+  }
+
+  return students;
 }
 
 export async function getStudentDomainCounts(

@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, BookOpen, FileText, LayoutDashboard, Users } from "lucide-react";
+import { BarChart3, BookOpen, FileText, LayoutDashboard, Megaphone, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type IconName = "overview" | "students" | "submissions" | "content" | "analytics";
+type IconName =
+  | "overview"
+  | "students"
+  | "submissions"
+  | "content"
+  | "analytics"
+  | "ambassadors";
 
 const iconMap = {
   overview: LayoutDashboard,
@@ -13,6 +19,7 @@ const iconMap = {
   submissions: FileText,
   content: BookOpen,
   analytics: BarChart3,
+  ambassadors: Megaphone,
 } as const;
 
 type NavItem = {
