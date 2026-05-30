@@ -182,8 +182,8 @@ export default async function AdminStudentDetailPage({
               {data.progress.longestStreak}
             </p>
             <p>
-              <span className="text-muted-foreground">On Time vs Late:</span>{" "}
-              {data.progress.onTimeCount} / {data.progress.lateCount}
+              <span className="text-muted-foreground">On-time submissions:</span>{" "}
+              {data.progress.onTimeCount}
             </p>
             <p>
               <span className="text-muted-foreground">Last Submitted Day:</span>{" "}

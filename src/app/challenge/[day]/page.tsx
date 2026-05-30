@@ -198,7 +198,10 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
             <CardTitle>{data.task.title}</CardTitle>
             <CardDescription>
               You completed this day on {formatDateIST(sub.submittedAt)} ·
-              Status: {sub.status === "ON_TIME" ? "On time" : "Late"}
+              Status:{" "}
+              {sub.status === "ON_TIME" || sub.status === "LATE"
+                ? "On time"
+                : "Late"}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

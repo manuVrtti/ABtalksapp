@@ -75,12 +75,12 @@ export default async function AdminSubmissionsPage({
                   <Badge
                     className={cn(
                       "border-0",
-                      row.status === "ON_TIME"
+                      row.status === "ON_TIME" || row.status === "LATE"
                         ? "bg-emerald-100 text-emerald-700"
                         : "bg-amber-100 text-amber-700",
                     )}
                   >
-                    {row.status}
+                    {row.status === "LATE" ? "ON_TIME" : row.status}
                   </Badge>
                 </TableCell>
                 <TableCell>

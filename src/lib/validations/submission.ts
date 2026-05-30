@@ -6,12 +6,11 @@ import {
   validateGithubUrl,
 } from "@/features/submission/validate-github-url";
 
-const CLAUDE_ARTIFACT =
-  /^https:\/\/claude\.ai\/(share|chat|artifact|public\/artifacts)\/[a-zA-Z0-9_-]+/;
+const GITHUB_COMMIT =
+  /^https:\/\/github\.com\/[^/]+\/[^/]+\/commit\/[a-f0-9]{7,40}(\/.*)?$/i;
 
 /**
- * GitHub repo URLs for SE/DS/AI (unchanged). Claude artifact / public URLs for CLAUDE.
- * Claude URLs skip HEAD checks (often auth-gated); duplicate detection still applies.
+ * GitHub repo URLs for SE/DS/AI (unchanged). GitHub commit URLs for CLAUDE.
  */
 export async function validateSubmissionUrl(
   url: string,
@@ -20,50 +19,45 @@ export async function validateSubmissionUrl(
   allowSlot?: { enrollmentId: string; dayNumber: number },
 ): Promise<ValidateGithubResult> {
   if (domain === "CLAUDE") {
-    return validateClaudeArtifactUrl(url, currentUserId, allowSlot);
+    return validateClaudeCommitUrl(url, currentUserId, allowSlot);
   }
   return validateGithubUrl(url, currentUserId, allowSlot);
 }
 
-async function validateClaudeArtifactUrl(
+async function validateClaudeCommitUrl(
   url: string,
   _currentUserId: string,
   allowSlot?: { enrollmentId: string; dayNumber: number },
 ): Promise<ValidateGithubResult> {
   const trimmed = url.trim();
-  if (!CLAUDE_ARTIFACT.test(trimmed)) {
+  if (!GITHUB_COMMIT.test(trimmed)) {
     return {
       ok: false,
       reason: "invalid_format",
       message:
-        "Must be a Claude artifact URL (e.g., https://claude.ai/share/...)",
+        "Submit a GitHub commit URL — must look like https://github.com/your-username/your-repo/commit/abc123... (any repo name works, but it must be a specific commit URL, not just the repo)",
     };
   }
 
   const normalized = normalizeGithubUrl(trimmed);
 
-  const rows = await prisma.submission.findMany({
-    where: { githubUrl: normalized },
-    select: {
-      userId: true,
-      enrollmentId: true,
-      dayNumber: true,
-    },
-  });
+  if (allowSlot) {
+    const existing = await prisma.submission.findFirst({
+      where: {
+        enrollmentId: allowSlot.enrollmentId,
+        githubUrl: normalized,
+        dayNumber: { not: allowSlot.dayNumber },
+      },
+      select: { dayNumber: true },
+    });
 
-  const blocking = rows.filter(
-    (r) =>
-      !allowSlot ||
-      r.enrollmentId !== allowSlot.enrollmentId ||
-      r.dayNumber !== allowSlot.dayNumber,
-  );
-
-  if (blocking.length > 0) {
-    return {
-      ok: false,
-      reason: "duplicate",
-      message: "This URL has been submitted by another student",
-    };
+    if (existing) {
+      return {
+        ok: false,
+        reason: "duplicate",
+        message: `This commit URL was already submitted for Day ${existing.dayNumber}. Push a new commit for this day.`,
+      };
+    }
   }
 
   return { ok: true };

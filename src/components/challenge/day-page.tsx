@@ -156,7 +156,7 @@ export function DayPage({
   };
 
   return (
-    <div className="min-h-screen pb-32">
+    <div className="min-h-screen">
       <main className="container mx-auto max-w-3xl space-y-6 px-4 py-6 md:px-6 md:py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -493,10 +493,12 @@ export function DayPage({
             </ul>
           </motion.section>
         ) : null}
-      </main>
 
-      <div className="fixed right-0 bottom-0 left-0 z-30 border-t bg-background/95 backdrop-blur-md">
-        <div className="container mx-auto max-w-3xl px-4 py-3 md:px-6 md:py-4">
+        <div className="rounded-2xl border bg-card p-6">
+          <p className="mb-2 text-xs text-muted-foreground">
+            Push your day&apos;s work to your GitHub repo, then paste the commit
+            URL here. Each day needs a new commit — same URL can&apos;t be reused.
+          </p>
           <div className="flex flex-col gap-2 md:flex-row md:gap-3">
             <div className="min-w-0 flex-1">
               <Input
@@ -511,7 +513,8 @@ export function DayPage({
             <div className="min-w-0 flex-1">
               <Input
                 type="url"
-                placeholder="Claude artifact URL"
+                placeholder="https://github.com/your-username/your-repo/commit/abc123..."
+                aria-label="GitHub commit URL"
                 value={artifactUrl}
                 onChange={(e) => setArtifactUrl(e.target.value)}
                 className="text-sm"
@@ -528,7 +531,7 @@ export function DayPage({
             </Button>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

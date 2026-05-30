@@ -32,6 +32,8 @@ export type DashboardDataWithEnrollment = {
     role: string | null;
     referralCode: string;
     isReadyForInterview: boolean;
+    isCampusAmbassadorCandidate: boolean;
+    ambassadorDismissedAt: Date | null;
   };
   enrollment: {
     id: string;
@@ -147,6 +149,8 @@ export async function getDashboardData(
           role: true,
           referralCode: true,
           isReadyForInterview: true,
+          isCampusAmbassadorCandidate: true,
+          ambassadorDismissedAt: true,
         },
       },
     },
@@ -169,6 +173,8 @@ export async function getDashboardData(
     role: user.studentProfile.role,
     referralCode: user.studentProfile.referralCode,
     isReadyForInterview: user.studentProfile.isReadyForInterview,
+    isCampusAmbassadorCandidate: user.studentProfile.isCampusAmbassadorCandidate,
+    ambassadorDismissedAt: user.studentProfile.ambassadorDismissedAt,
   };
 
   const enrollment = await resolveDashboardEnrollment(
@@ -270,6 +276,8 @@ export async function getDashboardData(
       role: user.studentProfile.role,
       referralCode: user.studentProfile.referralCode,
       isReadyForInterview: user.studentProfile.isReadyForInterview,
+      isCampusAmbassadorCandidate: user.studentProfile.isCampusAmbassadorCandidate,
+      ambassadorDismissedAt: user.studentProfile.ambassadorDismissedAt,
     },
     enrollment: {
       id: enrollment.id,

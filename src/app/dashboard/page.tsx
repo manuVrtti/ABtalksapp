@@ -48,6 +48,7 @@ import { getUserActiveEnrollments } from "@/features/enrollment/get-user-enrollm
 import { isClaudeEnabled } from "@/lib/feature-flags";
 import { shouldShowClaudeBanner } from "@/features/user/check-claude-enrollment";
 import { ClaudeEnrollmentBanner } from "@/components/shared/claude-enrollment-banner";
+import { CampusAmbassadorBanner } from "@/components/dashboard/campus-ambassador-banner";
 
 function readQueryParam(
   query: Record<string, string | string[] | undefined>,
@@ -162,6 +163,12 @@ export default async function DashboardPage({
   };
   const { enrollment, profile, todayTask, isTodayCompleted } = dashboardData;
 
+  const hasClaudeEnrollment = allEnrollments.some((e) => e.domain === "CLAUDE");
+  const shouldShowAmbassadorBanner =
+    profile.userType === "STUDENT" &&
+    !profile.isCampusAmbassadorCandidate &&
+    !profile.ambassadorDismissedAt;
+
   const isPreStart = isEnrollmentPreStart(
     dashboardData.enrollment,
     dashboardData.enrollment.challenge,
@@ -205,11 +212,14 @@ export default async function DashboardPage({
           headerDomain={dashboardData.enrollment.domain}
           domain={dashboardData.profile.domain as Domain}
         />
-        {claudeBanner.show && claudeBanner.startsAt ? (
+        {!hasClaudeEnrollment && claudeBanner.show && claudeBanner.startsAt ? (
           <ClaudeEnrollmentBanner
             claudeStartsAt={claudeBanner.startsAt}
             useSharedModal
           />
+        ) : null}
+        {hasClaudeEnrollment && shouldShowAmbassadorBanner ? (
+          <CampusAmbassadorBanner />
         ) : null}
         <main className="mx-auto flex w-full max-w-6xl flex-1">
           <EnrollmentEndedScreen
@@ -236,11 +246,14 @@ export default async function DashboardPage({
           headerDomain={dashboardData.enrollment.domain}
           domain={dashboardData.profile.domain as Domain}
         />
-        {claudeBanner.show && claudeBanner.startsAt ? (
+        {!hasClaudeEnrollment && claudeBanner.show && claudeBanner.startsAt ? (
           <ClaudeEnrollmentBanner
             claudeStartsAt={claudeBanner.startsAt}
             useSharedModal
           />
+        ) : null}
+        {hasClaudeEnrollment && shouldShowAmbassadorBanner ? (
+          <CampusAmbassadorBanner />
         ) : null}
         {showPastMissedToast ? (
           <PastMissedChallengeToast
@@ -294,11 +307,14 @@ export default async function DashboardPage({
         headerDomain={dashboardData.enrollment.domain}
         domain={dashboardData.profile.domain as Domain}
       />
-      {claudeBanner.show && claudeBanner.startsAt ? (
+      {!hasClaudeEnrollment && claudeBanner.show && claudeBanner.startsAt ? (
         <ClaudeEnrollmentBanner
           claudeStartsAt={claudeBanner.startsAt}
           useSharedModal
         />
+      ) : null}
+      {hasClaudeEnrollment && shouldShowAmbassadorBanner ? (
+        <CampusAmbassadorBanner />
       ) : null}
       {showClaudeModal && claudeModalStartsAt ? (
         <ClaudeChallengeModal startsAt={claudeModalStartsAt} />
@@ -334,6 +350,110 @@ export default async function DashboardPage({
               data={heatmapData}
               challengeEnrollmentId={enrollment.id}
             />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Today&apos;s task</CardTitle>
+            <CardDescription>
+              {enrollment.domain} challenge · IST day {enrollment.currentDay}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {isChallengeComplete ? (
+              <div className="rounded-xl border border-dashed border-border/80 bg-muted/30 p-6 text-center">
+                <p className="font-display text-lg font-semibold">
+                  🎉 Challenge complete — you&apos;re ready for interview!
+                </p>
+                {profile.isReadyForInterview ? (
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Your profile is marked ready for interview opportunities.
+                  </p>
+                ) : null}
+              </div>
+            ) : isTodayCompleted ? (
+              <div className="flex flex-col gap-4 rounded-xl border border-border/60 bg-muted/25 p-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                    <CheckCircle2 className="size-6 shrink-0" aria-hidden />
+                    <span className="font-display text-lg font-semibold">
+                      Completed
+                    </span>
+                  </div>
+                  <Badge
+                    variant="secondary"
+                    className="bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
+                  >
+                    Done for today
+                  </Badge>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  You&apos;ve submitted for today (IST). Next task unlocks on
+                  the next calendar day.
+                </p>
+                <Link
+                  href={challengeHref(
+                    enrollment.id,
+                    "/challenge/today",
+                  )}
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "default" }),
+                    "w-full justify-center sm:w-auto",
+                  )}
+                >
+                  View submission
+                </Link>
+              </div>
+            ) : todayTask ? (
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-stretch">
+                <div className="flex shrink-0 items-start justify-center sm:w-24 sm:flex-col sm:items-center sm:justify-start">
+                  <span className="font-display text-5xl font-bold leading-none text-primary tabular-nums">
+                    {todayTask.dayNumber}
+                  </span>
+                  <span className="mt-1 text-xs font-medium tracking-wide text-muted-foreground uppercase sm:text-center">
+                    Day
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1 space-y-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span
+                      className={cn(
+                        "rounded-full px-3 py-1 text-xs font-semibold tracking-wide",
+                        difficultyPillClass(todayTask.difficulty),
+                      )}
+                    >
+                      {todayTask.difficulty}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                      <Clock className="size-4 shrink-0" aria-hidden />~
+                      {todayTask.estimatedMinutes} min
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
+                    {todayTask.title}
+                  </h3>
+                  <Link
+                    href={challengeHref(
+                      enrollment.id,
+                      "/challenge/today",
+                    )}
+                    className={cn(
+                      buttonVariants({ variant: "default" }),
+                      "inline-flex h-11 w-full items-center justify-center gap-2 font-medium sm:w-auto sm:px-8",
+                    )}
+                  >
+                    Start Today&apos;s Challenge
+                    <ArrowRight className="size-4" aria-hidden />
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                No task found for this day. If this looks wrong, contact
+                support.
+              </p>
+            )}
           </CardContent>
         </Card>
 
@@ -415,125 +535,15 @@ export default async function DashboardPage({
           </Card>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3 lg:gap-6">
-          <div className="space-y-6 lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Today&apos;s task</CardTitle>
-                <CardDescription>
-                  {enrollment.domain} challenge · IST day {enrollment.currentDay}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {isChallengeComplete ? (
-                  <div className="rounded-xl border border-dashed border-border/80 bg-muted/30 p-6 text-center">
-                    <p className="font-display text-lg font-semibold">
-                      🎉 Challenge complete — you&apos;re ready for interview!
-                    </p>
-                    {profile.isReadyForInterview ? (
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Your profile is marked ready for interview opportunities.
-                      </p>
-                    ) : null}
-                  </div>
-                ) : isTodayCompleted ? (
-                  <div className="flex flex-col gap-4 rounded-xl border border-border/60 bg-muted/25 p-6">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
-                        <CheckCircle2 className="size-6 shrink-0" aria-hidden />
-                        <span className="font-display text-lg font-semibold">
-                          Completed
-                        </span>
-                      </div>
-                      <Badge
-                        variant="secondary"
-                        className="bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
-                      >
-                        Done for today
-                      </Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      You&apos;ve submitted for today (IST). Next task unlocks on
-                      the next calendar day.
-                    </p>
-                    <Link
-                      href={challengeHref(
-                        enrollment.id,
-                        "/challenge/today",
-                      )}
-                      className={cn(
-                        buttonVariants({ variant: "outline", size: "default" }),
-                        "w-full justify-center sm:w-auto",
-                      )}
-                    >
-                      View submission
-                    </Link>
-                  </div>
-                ) : todayTask ? (
-                  <div className="flex flex-col gap-6 sm:flex-row sm:items-stretch">
-                    <div className="flex shrink-0 items-start justify-center sm:w-24 sm:flex-col sm:items-center sm:justify-start">
-                      <span className="font-display text-5xl font-bold leading-none text-primary tabular-nums">
-                        {todayTask.dayNumber}
-                      </span>
-                      <span className="mt-1 text-xs font-medium tracking-wide text-muted-foreground uppercase sm:text-center">
-                        Day
-                      </span>
-                    </div>
-                    <div className="min-w-0 flex-1 space-y-4">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span
-                          className={cn(
-                            "rounded-full px-3 py-1 text-xs font-semibold tracking-wide",
-                            difficultyPillClass(todayTask.difficulty),
-                          )}
-                        >
-                          {todayTask.difficulty}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-                          <Clock className="size-4 shrink-0" aria-hidden />~
-                          {todayTask.estimatedMinutes} min
-                        </span>
-                      </div>
-                      <h3 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
-                        {todayTask.title}
-                      </h3>
-                      <Link
-                        href={challengeHref(
-                          enrollment.id,
-                          "/challenge/today",
-                        )}
-                        className={cn(
-                          buttonVariants({ variant: "default" }),
-                          "inline-flex h-11 w-full items-center justify-center gap-2 font-medium sm:w-auto sm:px-8",
-                        )}
-                      >
-                        Start Today&apos;s Challenge
-                        <ArrowRight className="size-4" aria-hidden />
-                      </Link>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-sm text-muted-foreground">
-                    No task found for this day. If this looks wrong, contact
-                    support.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-
-          <div>
-            <CommunityLeaderboard
-              rows={leaderboard.rows}
-              totalCount={leaderboard.totalCount}
-              claudeEnabled={claudeEnabled}
-              filters={{
-                domain: leaderboardDomain,
-                search: leaderboardSearch,
-              }}
-            />
-          </div>
-        </div>
+        <CommunityLeaderboard
+          rows={leaderboard.rows}
+          totalCount={leaderboard.totalCount}
+          claudeEnabled={claudeEnabled}
+          filters={{
+            domain: leaderboardDomain,
+            search: leaderboardSearch,
+          }}
+        />
 
         {quizAvailability.reason === "ready" &&
         quizAvailability.quiz &&
@@ -640,7 +650,9 @@ export default async function DashboardPage({
                       · completed on {formatDateIST(s.submittedAt)} ·{" "}
                     </span>
                     <span className="text-muted-foreground">
-                      {s.status === "ON_TIME" ? "on time" : "late"}
+                      {s.status === "ON_TIME" || s.status === "LATE"
+                        ? "on time"
+                        : "late"}
                     </span>
                   </li>
                 ))}

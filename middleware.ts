@@ -2,6 +2,9 @@ import NextAuth from "next-auth";
 import { NextResponse } from "next/server";
 import authConfig from "@/auth.config";
 
+const REF_COOKIE_NAME = "abtalks_ref";
+const REF_COOKIE_MAX_AGE = 7 * 24 * 60 * 60;
+
 const { auth } = NextAuth(authConfig);
 
 const protectedPaths = [
@@ -13,9 +16,26 @@ const protectedPaths = [
   "/admin",
 ];
 
+function applyRefCookie(response: NextResponse, ref: string | null) {
+  if (!ref || ref.length > 32 || !/^[a-zA-Z0-9_-]+$/.test(ref)) {
+    return response;
+  }
+
+  response.cookies.set(REF_COOKIE_NAME, ref, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: REF_COOKIE_MAX_AGE,
+    path: "/",
+  });
+
+  return response;
+}
+
 export default auth((req) => {
   const { pathname } = req.nextUrl;
   const isLoggedIn = !!req.auth;
+  const ref = req.nextUrl.searchParams.get("ref");
 
   const isProtected = protectedPaths.some((p) => pathname.startsWith(p));
   const isAuthPage = pathname === "/login";
@@ -23,24 +43,21 @@ export default auth((req) => {
   if (isProtected && !isLoggedIn) {
     const url = new URL("/login", req.nextUrl);
     url.searchParams.set("from", pathname);
-    return NextResponse.redirect(url);
+    return applyRefCookie(NextResponse.redirect(url), ref);
   }
 
   if (isAuthPage && isLoggedIn) {
-    return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+    return applyRefCookie(
+      NextResponse.redirect(new URL("/dashboard", req.nextUrl)),
+      ref,
+    );
   }
 
-  return NextResponse.next();
+  return applyRefCookie(NextResponse.next(), ref);
 });
 
 export const config = {
   matcher: [
-    "/dashboard/:path*",
-    "/challenge/:path*",
-    "/profile/:path*",
-    "/quiz/:path*",
-    "/register/:path*",
-    "/admin/:path*",
-    "/login",
+    "/((?!_next/static|_next/image|favicon.ico|api/auth).*)",
   ],
 };

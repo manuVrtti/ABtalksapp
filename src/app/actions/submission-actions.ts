@@ -98,6 +98,7 @@ export async function submitGithubStepAction(
     githubUrl.trim(),
     enrollment.domain,
     userId,
+    { enrollmentId: enrollment.id, dayNumber },
   );
   if (!ghCheck.ok) {
     return { ok: false, message: ghCheck.message };

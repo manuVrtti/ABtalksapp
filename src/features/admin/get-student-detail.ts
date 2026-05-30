@@ -59,8 +59,10 @@ export async function getStudentDetail(userId: string) {
   }
 
   const enrollment = user.enrollments[0] ?? null;
-  const onTimeCount = submissions.filter((s) => s.status === "ON_TIME").length;
-  const lateCount = submissions.filter((s) => s.status === "LATE").length;
+  const onTimeCount = submissions.filter(
+    (s) => s.status === "ON_TIME" || s.status === "LATE",
+  ).length;
+  const lateCount = 0;
 
   return {
     user: {
