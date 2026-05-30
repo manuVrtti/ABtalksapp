@@ -239,18 +239,26 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
   }
 
   const dayContent = data.task.dayContent as DayContent | null;
+  const enrichedDayContent = dayContent
+    ? {
+        ...dayContent,
+        solutionVideoUrl:
+          dayContent.solutionVideoUrl ?? dayContent.task.solutionVideoUrl,
+        resources: dayContent.resources ?? data.task.resources,
+      }
+    : null;
 
   return (
     <ChallengePageShell
       headerUser={headerUser}
       claudeBanner={claudeBanner}
       mainClassName={
-        dayContent
+        enrichedDayContent
           ? "flex flex-1 flex-col"
           : "mx-auto w-full max-w-5xl px-4 py-8"
       }
     >
-      {dayContent ? (
+      {enrichedDayContent ? (
         <>
           <div className="container mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-4 pt-4 md:px-6">
             <Link
@@ -265,7 +273,8 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
           </div>
           <DayPage
             dayNumber={day}
-            content={dayContent}
+            content={enrichedDayContent}
+            resources={data.task.resources}
             enrollmentId={data.enrollment.id}
           />
         </>

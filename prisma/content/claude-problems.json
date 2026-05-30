@@ -30,9 +30,9 @@
       "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
       "difficulty": "Beginner",
       "estimatedMinutes": 40,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Two things on Day 1: get Claude set up so you can use it daily, and run a fun first prompt that gives you a cinematic “AI Personality Profile” — a great first post for your 60-day journey.",
+        "summary": "",
         "bullets": [
           {
             "label": "Desktop access",
@@ -59,19 +59,23 @@
           "Create a Claude Project named “60 Days of AI” — you’ll save every challenge chat here.",
           "Open a new chat and paste the AI Personality Profile prompt below. Replace the brackets with details that fit you.",
           "Let Claude generate your profile AND the cinematic AI portrait in the same response.",
-          "Save the result to your portfolio and share it on LinkedIn to mark Day 1."
+          "Save the result to your portfolio and share it on LinkedIn to mark Day 1.",
+          "Create a public GitHub repository — you can name it anything (e.g., '60-day-claude-challenge', 'my-claude-journey', whatever you like)",
+          "On Day 1, push a README.md to your repo introducing yourself and your goals for the next 60 days",
+          "Each day going forward: take a screenshot of your Claude work, save it to your repo, and push a new commit"
         ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=jGg_1h0qzaM&t=9043s"
       },
       "promptTemplate": "Based on:\n* how I use AI\n* the prompts I ask\n* my work, goals, mindset, and personality\n* my strengths, weaknesses, curiosity, and communication style\n\nCreate a deeply personalized “AI Personality Profile” for me.\n\nMake it accurate, modern, cinematic, internet-native, realistic but fun.\n\nInclude:\n1. My AI working style\n2. My strengths & weaknesses\n3. What type of AI user I am\n4. Best future career paths for me\n5. My learning & decision-making style\n6. What makes me different from most AI users\n7. What I need to improve to become elite with AI\n8. A fun AI title for me\n9. A short cinematic AI character description\n\nThen, generate a hyper-realistic cinematic AI portrait of me based on everything above.\n\nThe image should capture: startup founder / AI engineer energy, futuristic workspace & AI screens, coding + research vibe, dark cinematic lighting, modern Gen-Z builder aesthetic, realistic details with subtle cyberpunk accents.\n\nIMPORTANT: don’t just write the image prompt — generate the actual image directly in chat. Make it professional, futuristic, cinematic, and LinkedIn-shareable.",
       "engagement": {
         "type": "Kickoff Post",
-        "description": "Share your AI Personality Profile + cinematic portrait on LinkedIn. Tag @ABtalks and use #60DayClaudeChallenge to mark Day 1.",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Share your AI Personality Profile + cinematic portrait on LinkedIn. Tag @ABtalks and use #60DayClaudeChallenge to mark Day 1. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "Your AI Personality Profile + cinematic AI portrait",
-        "format": "DOCX"
+        "description": "Your initial commit pushing README.md to your new GitHub repo (include your AI Personality Profile + portrait screenshot)",
+        "format": "GitHub commit URL"
       },
       "tool": {
         "name": "Claude Desktop App",
@@ -121,7 +125,7 @@
       "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
       "difficulty": "Beginner",
       "estimatedMinutes": 30,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Prompt Engineering is the skill of writing smart, structured prompts to get more accurate answers, better creativity, expert-level outputs, fewer hallucinations, and faster workflows. Just like Googling well is a skill, prompting well is now a modern tech skill.",
         "bullets": [
@@ -156,12 +160,13 @@
       "promptTemplate": "Compare these two prompts on the same task:\n\nNORMAL PROMPT:\n[paste your lazy one-liner]\n\nENGINEERED PROMPT:\nRole: You are a [profession] with strong experience.\nContext: I need this for [audience] because [goal]. Constraints: [tone, length, must-include].\nInstruction: [the single task].\nOutput Format: [bullets / table / 150-word paragraph].\n\nGenerate both outputs and label them clearly so I can compare.",
       "engagement": {
         "type": "Before vs After",
-        "description": "Post your normal vs engineered prompt side by side and the two different outputs. Caption it: what surprised you most about the difference?",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Post your normal vs engineered prompt side by side and the two different outputs. Caption it: what surprised you most about the difference? Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A before/after prompt comparison sheet",
-        "format": "DOCX"
+        "description": "Push your before/after prompt comparison to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       },
       "tool": {
         "name": "MetaPrompt",
@@ -211,7 +216,7 @@
       "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
       "difficulty": "Beginner",
       "estimatedMinutes": 35,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "“Act-as” personas. By assigning Claude a specific professional identity — senior consultant, software developer, analyst — you instantly get sharper, domain-aware answers.",
         "bullets": [
@@ -246,12 +251,13 @@
       "promptTemplate": "=== NON-TECH (general expert) ===\nAct as a [senior role] with deep experience in [industry].\nYour communication style is [direct / supportive / analytical].\nYour audience is [who will read this].\n\nTask: [what you need].\nGive me your expert recommendation, then list the 3 risks a less experienced person would miss.\n\n=== TECH (software/engineering) ===\nAct as a senior software developer at a top tech company with experience building scalable, production-ready systems.\nCommunication style: professional, analytical, concise. Audience: a manager, tech lead, or stakeholder.\n\nTask: [insert task]\n\nProvide:\n1. Your recommended solution or approach\n2. Technical reasoning and implementation strategy\n3. Key trade-offs, risks, or bottlenecks the team should consider\n4. Three critical mistakes less experienced developers commonly miss\n\nFocus on clean architecture, scalability, maintainability, performance, and real-world execution.",
       "engagement": {
         "type": "Persona Comparison",
-        "description": "Share two answers to the same question generated with different role-based prompts. Which expert gave the most useful answer — and why?",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Share two answers to the same question generated with different role-based prompts. Which expert gave the most useful answer — and why? Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A role-based prompting comparison sheet",
-        "format": "DOCX"
+        "description": "Push your role-based prompting comparison to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       }
     }
   },
@@ -286,7 +292,7 @@
       "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
       "difficulty": "Intermediate",
       "estimatedMinutes": 40,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Multi-step reasoning prompts. Instead of asking for an answer, you ask Claude to think through a problem in stages — understand, decompose, solve, verify, conclude. Dramatically better accuracy on anything complex.",
         "bullets": [
@@ -321,12 +327,13 @@
       "promptTemplate": "I need help solving this complex problem:\n\n[Insert problem/task]\n\nThink through it step by step:\n\n1. Understand the problem\n   * What do we know?\n   * What needs to be solved?\n\n2. Break it into smaller parts\n   * Explain each part briefly.\n\n3. Solve systematically\n   * Show your reasoning clearly.\n   * Consider edge cases or alternatives if needed.\n\n4. Verify the solution\n   * Double-check the logic/calculations.\n\n5. FINAL ANSWER\n   * Give a concise, clearly labeled final answer with key takeaways.\n\nImportant:\n* Don’t skip reasoning steps.\n* Prioritize accuracy over speed.\n* Mention uncertainties if any.",
       "engagement": {
         "type": "Reasoning Comparison",
-        "description": "Share the normal answer vs the step-by-step answer to the same problem. Which one would you trust more, and why?",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Share the normal answer vs the step-by-step answer to the same problem. Which one would you trust more, and why? Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A reasoning comparison document",
-        "format": "DOCX"
+        "description": "Push your reasoning comparison to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       },
       "tool": {
         "name": "Claude Usage Tracker",
@@ -375,7 +382,7 @@
       "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
       "difficulty": "Intermediate",
       "estimatedMinutes": 40,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Strong context = strong output. By telling Claude exactly who you are, what you want, and what your constraints are (time, current level, daily life), you get a realistic plan — not a generic listicle.",
         "bullets": [
@@ -410,12 +417,13 @@
       "promptTemplate": "Act as an expert mentor, strategist, and coach for a [student / working professional] who wants to achieve [goal].\nCreate a practical and realistic step-by-step plan while considering limited time, workload, current skill level, and daily responsibilities.\n\nInclude:\n* Clear roadmap with phases and milestones\n* Top priority actions to start immediately\n* Weekly and monthly execution plan\n* Important skills / tools / resources to learn\n* Beginner-to-advanced project or practice ideas\n* Productivity and time-management strategies\n* Common mistakes to avoid\n* Tips for consistency, growth, and avoiding burnout\n* Career, portfolio, networking, and personal branding advice where relevant\n\nKeep the response structured, actionable, beginner-friendly, and focused on real-world results rather than just theory.",
       "engagement": {
         "type": "Roadmap Share",
-        "description": "Share the phase titles + the first 3 actions from your roadmap. Tag the role you’re building toward.",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Share the phase titles + the first 3 actions from your roadmap. Tag the role you’re building toward. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A personalized career roadmap with phases, weekly plan, and first actions",
-        "format": "DOCX"
+        "description": "Push your personalized career roadmap to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       },
       "tool": {
         "name": "Caveman Skill",
@@ -465,7 +473,7 @@
       "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
       "difficulty": "Beginner",
       "estimatedMinutes": 25,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Today is a review day. No new technique — just consolidation. You’ll take a short MCQ on everything from setup through context management, then revisit the topics you got wrong.",
         "bullets": [
@@ -504,12 +512,13 @@
       "promptTemplate": "I just finished Days 1–5 of the 60-Day Claude AI Challenge: setup, prompt engineering, role-based prompting, chain-of-thought, and context management.\n\nQuiz me with 5 mixed multiple-choice questions covering these topics. Make 2 of them tricky.\nAfter my answers, give me:\n1. Which I got right / wrong\n2. A 1-line explanation of every concept I missed\n3. One practical exercise to reinforce my weakest area.",
       "engagement": {
         "type": "Week-1 Reflection",
-        "description": "Post one prompt habit you’ve built in the first 5 days that you wouldn’t have had a week ago.",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Post one prompt habit you’ve built in the first 5 days that you wouldn’t have had a week ago. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A short Week-1 reflection note with your weakest topic and how you’ll fix it",
-        "format": "DOCX"
+        "description": "Push your Week-1 reflection note to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       }
     }
   },
@@ -545,7 +554,7 @@
       "module": "Module 2 — Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 50,
-      "deliverableFormat": "PDF",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "ATS (Applicant Tracking System) software scans your resume before any human sees it. Today you’ll learn to write a CV that survives the scan AND impresses the recruiter — with the right keywords, measurable impact, and clean formatting.",
         "bullets": [
@@ -580,12 +589,13 @@
       "promptTemplate": "=== FRESHER / STUDENT VERSION ===\nAct as an expert resume writer and ATS optimization specialist.\nCreate an ATS-friendly one-page CV for a fresher/student targeting software engineering, AI/ML, or data science roles.\nHighlight projects, internships, certifications, technical skills, and academic achievements using strong action verbs and measurable impact.\nInclude ATS-friendly keywords, a professional summary, clean formatting, and recruiter-friendly bullet points.\nKeep the layout simple, modern, and optimized for internship and entry-level hiring.\n\n=== EXPERIENCED / MID-SENIOR VERSION ===\nAct as a senior resume strategist and ATS optimization expert.\nCreate a professional ATS-friendly CV for an experienced candidate targeting mid/senior-level roles in software engineering, AI engineering, or data science.\nEmphasize work experience, leadership, technical expertise, business impact, achievements, and measurable results using quantified bullet points.\nInclude industry-relevant keywords, a strong professional summary, core competencies, project highlights, certifications, and ATS-safe formatting optimized for recruiter screening and high interview conversion.",
       "engagement": {
         "type": "Resume Showcase",
-        "description": "Share a snippet of your new resume (blur the personal details) and one bullet you rewrote with measurable impact.",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Share a snippet of your new resume (blur the personal details) and one bullet you rewrote with measurable impact. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "An ATS-friendly one-page resume (Fresher or Experienced)",
-        "format": "PDF"
+        "description": "Push your ATS-friendly resume to your repo (PDF or markdown). Submit the commit URL.",
+        "format": "GitHub commit URL"
       }
     }
   },
@@ -621,7 +631,7 @@
       "module": "Module 2 — Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 40,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Cold outreach works when you lead with something about the recipient, keep it under 80 words, and ask for one specific small thing. You’ll generate two flavors today: one for freshers (seeking guidance/internships) and one for experienced folks (seeking peer-level conversation or roles).",
         "bullets": [
@@ -656,12 +666,13 @@
       "promptTemplate": "=== FRESHER VERSION ===\nAct as an expert LinkedIn outreach coach. Write a 3-message cold outreach sequence from a fresher/student to a [recruiter / hiring manager / leader] at [company].\nGoal: [a 15-minute intro call / a referral / advice on breaking in].\nRecipient context: [paste 1-2 lines about them — their role, a recent post, an achievement].\nAbout me: [1 line — who I am, what I’m studying, the role I want].\n\nConstraints: each message under 80 words; the first line must be about them, not me; one clear, polite ask only.\n\nOutput:\n1. Initial message\n2. Follow-up after 3 days (new angle, not a nag)\n3. Final nudge after 5 more days (short, polite, easy yes)\n\n=== EXPERIENCED VERSION ===\nAct as an expert LinkedIn outreach coach. Write a 3-message cold outreach sequence from an experienced professional to a [hiring manager / VP / founder] at [company].\nGoal: [a peer-level conversation / a mid-senior role conversation / a partnership chat].\nRecipient context: [paste 1-2 lines about them and their work].\nAbout me: [1 line — my current role, the unique value I bring, the role/conversation I want].\n\nConstraints: each message under 80 words; the opener must reference something specific about them; one clear ask only.\n\nOutput:\n1. Initial message (peer-to-peer tone, confident not desperate)\n2. Follow-up after 3 days\n3. Final nudge after 5 more days",
       "engagement": {
         "type": "Template Share",
-        "description": "Post the reusable version of your outreach template (no personal details). Add 1-2 lines on what made the personalization work for you.",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Post the reusable version of your outreach template (no personal details). Add 1-2 lines on what made the personalization work for you. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A 3-message cold outreach sequence (Fresher or Experienced)",
-        "format": "DOCX"
+        "description": "Push your 3-message cold outreach sequence to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       }
     }
   },
@@ -697,7 +708,7 @@
       "module": "Module 2 — Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 45,
-      "deliverableFormat": "DOCX",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Your LinkedIn profile is a search engine result. Today you’ll rewrite the three sections that matter most — headline, About, and top experience bullets — with the keywords for the role you actually want.",
         "bullets": [
@@ -732,12 +743,13 @@
       "promptTemplate": "Act as an expert LinkedIn profile strategist and personal branding coach.\n\nMy current LinkedIn:\n* Headline: [paste current]\n* About section: [paste current]\n* Top role + 3 experience bullets: [paste current]\n\nThe role I want: [target role]\nKeywords from 3 job postings: [paste keywords]\nMy biggest wins / proof points: [list 3-5 measurable wins]\n\nRewrite my profile to be ATS-friendly AND human-friendly:\n1. A scroll-stopping headline (under 220 chars)\n2. An About section that opens with the role I want and earns trust by line 3\n3. Top 3 experience bullets rewritten with measurable impact and the right keywords\n4. A list of 10 skills I should add and 5 I should remove\n\nMake every line specific. No buzzwords.",
       "engagement": {
         "type": "Profile Refresh Announcement",
-        "description": "Post a short note announcing your refreshed LinkedIn and what you’re focused on for the next 60 days.",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Post a short note announcing your refreshed LinkedIn and what you’re focused on for the next 60 days. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A LinkedIn rewrite document (headline, About, top experience, skills)",
-        "format": "DOCX"
+        "description": "Push your LinkedIn rewrite document (headline, About, top experience, skills) to your repo as a markdown file. Submit the commit URL.",
+        "format": "GitHub commit URL"
       }
     }
   },
@@ -773,7 +785,7 @@
       "module": "Module 2 — Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 60,
-      "deliverableFormat": "HTML",
+      "deliverableFormat": "GitHub commit URL",
       "learning": {
         "summary": "Today you’ll use Claude to generate a complete single-file portfolio site — hero, About, projects, contact — and host it on a free platform. No frameworks, no build step.",
         "bullets": [
@@ -808,12 +820,13 @@
       "promptTemplate": "Act as a senior frontend engineer + designer.\n\nBuild me a single-file responsive one-page portfolio site (index.html with inline CSS, no frameworks, no external assets).\n\nStyle: dark theme, premium and modern (Linear / Vercel / Apple keynote vibe), bold sans-serif type, subtle gradient accents, generous whitespace, soft hover effects.\n\nSections:\n1. Hero — my name [name], a one-line value prop: “[what I do for whom and the outcome]”, and a CTA button to my email.\n2. About — 3 short paragraphs based on: [paste a few lines about you].\n3. Projects — 3 cards. Each has: project name, 1-line outcome, link. Data: [paste 3 projects].\n4. Contact — email + LinkedIn + GitHub links.\n\nConstraints:\n* Mobile responsive\n* Smooth scroll, anchor nav\n* Accessible color contrast\n* Self-contained: I should be able to open the .html file and it just works.\n\nOutput ONLY the full HTML in one code block.",
       "engagement": {
         "type": "Live Site Share",
-        "description": "Post your live portfolio link. Tell us how long it took you from “I should build one” to “it’s live.”",
-        "hashtag": "#ABTalks60DaysOfAI"
+        "description": "Post your live portfolio link. Tell us how long it took you from “I should build one” to “it’s live.” Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
       },
       "deliverable": {
-        "description": "A live one-page portfolio site (hosted link + the index.html file)",
-        "format": "HTML"
+        "description": "Push your portfolio files (index.html + screenshot) to your repo. Submit the commit URL.",
+        "format": "GitHub commit URL"
       }
     }
   }

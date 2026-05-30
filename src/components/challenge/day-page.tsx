@@ -16,6 +16,8 @@ import {
   Clock,
   Award,
   Tag,
+  PlayCircle,
+  BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,7 +56,10 @@ export interface DayContent {
   task: {
     title: string;
     steps: string[];
+    solutionVideoUrl?: string;
   };
+  solutionVideoUrl?: string;
+  resources?: string[];
   promptTemplate: string;
   engagement: {
     type: string;
@@ -71,6 +76,8 @@ interface Props {
   dayNumber: number;
   content: DayContent;
   enrollmentId: string;
+  /** Seeded from DailyTask.resources when passed by the parent page */
+  resources?: string[];
   existingSubmission?: { githubUrl: string; linkedinUrl: string } | null;
 }
 
@@ -78,6 +85,7 @@ export function DayPage({
   dayNumber,
   content,
   enrollmentId,
+  resources: resourcesProp,
   existingSubmission,
 }: Props) {
   const router = useRouter();
@@ -89,6 +97,10 @@ export function DayPage({
   );
   const [submitting, setSubmitting] = useState(false);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
+
+  const solutionVideoUrl =
+    content.solutionVideoUrl ?? content.task.solutionVideoUrl;
+  const resources = resourcesProp ?? content.resources ?? [];
 
   const handleCopyPrompt = async () => {
     try {
@@ -305,7 +317,7 @@ export function DayPage({
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.4 }}
+          transition={{ delay: 0.28, duration: 0.4 }}
           className="rounded-2xl border bg-card p-6"
         >
           <div className="mb-4 flex items-center justify-between">
@@ -348,7 +360,7 @@ export function DayPage({
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.4 }}
+          transition={{ delay: 0.32, duration: 0.4 }}
           className="rounded-2xl border bg-card p-6"
         >
           <div className="mb-4 flex items-center gap-2">
@@ -378,7 +390,7 @@ export function DayPage({
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.4 }}
+          transition={{ delay: 0.36, duration: 0.4 }}
           className="rounded-2xl border-2 border-dashed border-muted-foreground/20 bg-muted/20 p-5"
         >
           <div className="flex items-start gap-3">
@@ -398,6 +410,89 @@ export function DayPage({
             </div>
           </div>
         </motion.section>
+
+        {solutionVideoUrl ? (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.22, duration: 0.4 }}
+            className="rounded-2xl border bg-card p-6"
+          >
+            <div className="mb-4 flex items-center gap-2">
+              <div className="rounded-lg bg-red-500/10 p-2">
+                <PlayCircle className="h-5 w-5 text-red-500" />
+              </div>
+              <div>
+                <h2 className="font-display text-lg font-semibold">
+                  Solution Walkthrough
+                </h2>
+                <p className="text-xs text-muted-foreground">
+                  Step-by-step video guide
+                </p>
+              </div>
+            </div>
+
+            {solutionVideoUrl.includes("REPLACE_WITH") ? (
+              <p className="text-sm text-muted-foreground">
+                Solution walkthrough video coming soon — check back shortly.
+              </p>
+            ) : (
+              <a
+                href={solutionVideoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-600"
+              >
+                <PlayCircle className="h-4 w-4" />
+                Watch on YouTube
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </motion.section>
+        ) : null}
+
+        {resources.length > 0 ? (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.24, duration: 0.4 }}
+            className="rounded-2xl border bg-card p-6"
+          >
+            <div className="mb-4 flex items-center gap-2">
+              <div className="rounded-lg bg-sky-500/10 p-2">
+                <BookOpen className="h-5 w-5 text-sky-500" />
+              </div>
+              <h2 className="font-display text-lg font-semibold">Resources</h2>
+            </div>
+
+            <ul className="space-y-2">
+              {resources.map((url, i) => {
+                let label = url;
+                try {
+                  const u = new URL(url);
+                  label = u.hostname.replace("www.", "") + u.pathname;
+                  if (label.endsWith("/")) label = label.slice(0, -1);
+                } catch {
+                  // fall back to raw URL if parsing fails
+                }
+
+                return (
+                  <li key={i}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-sky-600 hover:underline dark:text-sky-400"
+                    >
+                      <ExternalLink className="h-3 w-3 shrink-0" />
+                      <span className="break-all">{label}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.section>
+        ) : null}
       </main>
 
       <div className="fixed right-0 bottom-0 left-0 z-30 border-t bg-background/95 backdrop-blur-md">
