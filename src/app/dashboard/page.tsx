@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { auth } from "@/auth";
 import { AppHeader } from "@/components/shared/app-header";
-import { CommunityLeaderboard } from "@/components/dashboard/community-leaderboard";
+// import { CommunityLeaderboard } from "@/components/dashboard/community-leaderboard"; // hidden post-launch
 import { EnrollmentEndedScreen } from "@/components/dashboard/enrollment-ended-screen";
 import { QuizUnlockBanner } from "@/components/dashboard/quiz-unlock-banner";
 import { PastMissedChallengeToast } from "@/components/dashboard/past-missed-challenge-toast";
@@ -21,7 +21,7 @@ import {
   type DashboardDataWithEnrollment,
 } from "@/features/dashboard/get-dashboard-data";
 import { getHeatmapData } from "@/features/dashboard/get-heatmap-data";
-import { getLeaderboard } from "@/features/dashboard/get-leaderboard";
+// import { getLeaderboard } from "@/features/dashboard/get-leaderboard"; // hidden post-launch
 import { getAvailableQuiz } from "@/features/quiz/get-available-quiz";
 import { getQuizAttemptHistory } from "@/features/quiz/get-quiz-attempt-history";
 import { Badge } from "@/components/ui/badge";
@@ -85,19 +85,19 @@ function challengeHref(enrollmentId: string, path: string): string {
   return `${path}?${q.toString()}`;
 }
 
-function parseLeaderboardDomain(
-  value: string,
-): "AI" | "DS" | "SE" | "CLAUDE" | "ALL" {
-  if (
-    value === "AI" ||
-    value === "DS" ||
-    value === "SE" ||
-    value === "CLAUDE"
-  ) {
-    return value;
-  }
-  return "ALL";
-}
+// function parseLeaderboardDomain(
+//   value: string,
+// ): "AI" | "DS" | "SE" | "CLAUDE" | "ALL" {
+//   if (
+//     value === "AI" ||
+//     value === "DS" ||
+//     value === "SE" ||
+//     value === "CLAUDE"
+//   ) {
+//     return value;
+//   }
+//   return "ALL";
+// }
 
 function difficultyPillClass(difficulty: string): string {
   const d = difficulty.toLowerCase();
@@ -132,13 +132,14 @@ export default async function DashboardPage({
     readQueryParam(query, "toast") === "past-missed";
   const dashboardPathWithoutToast = `/dashboard${stripQueryKeys(query, ["toast"])}`;
   const claudeEnabled = isClaudeEnabled();
-  let leaderboardDomain = parseLeaderboardDomain(
-    readQueryParam(query, "lb_domain"),
-  );
-  if (!claudeEnabled && leaderboardDomain === "CLAUDE") {
-    leaderboardDomain = "ALL";
-  }
-  const leaderboardSearch = readQueryParam(query, "lb_search");
+  // Leaderboard hidden temporarily — to be optimized and re-enabled post-launch
+  // let leaderboardDomain = parseLeaderboardDomain(
+  //   readQueryParam(query, "lb_domain"),
+  // );
+  // if (!claudeEnabled && leaderboardDomain === "CLAUDE") {
+  //   leaderboardDomain = "ALL";
+  // }
+  // const leaderboardSearch = readQueryParam(query, "lb_search");
 
   const selectedEnrollmentId =
     readQueryParam(query, "challenge") || undefined;
@@ -275,20 +276,14 @@ export default async function DashboardPage({
     );
   }
 
-  const [heatmapData, leaderboard, quizAvailability, quizHistory] =
-    await Promise.all([
-      getHeatmapData(dashboardData.enrollment.id, {
-        viewerUserId: session.user.id,
-      }),
-      getLeaderboard({
-        domain: leaderboardDomain,
-        search: leaderboardSearch,
-        viewerUserId: session.user.id,
-        claudeLeaderboardEnabled: claudeEnabled,
-      }),
-      getAvailableQuiz(session.user.id, dashboardData.enrollment.id),
-      getQuizAttemptHistory(session.user.id, dashboardData.enrollment.id),
-    ]);
+  const [heatmapData, quizAvailability, quizHistory] = await Promise.all([
+    getHeatmapData(dashboardData.enrollment.id, {
+      viewerUserId: session.user.id,
+    }),
+    // getLeaderboard({ ... }), // disabled with leaderboard section
+    getAvailableQuiz(session.user.id, dashboardData.enrollment.id),
+    getQuizAttemptHistory(session.user.id, dashboardData.enrollment.id),
+  ]);
 
   const progressPct = Math.min(
     100,
@@ -535,6 +530,7 @@ export default async function DashboardPage({
           </Card>
         </div>
 
+        {/* Leaderboard hidden temporarily — to be optimized and re-enabled post-launch
         <CommunityLeaderboard
           rows={leaderboard.rows}
           totalCount={leaderboard.totalCount}
@@ -544,6 +540,7 @@ export default async function DashboardPage({
             search: leaderboardSearch,
           }}
         />
+        */}
 
         {quizAvailability.reason === "ready" &&
         quizAvailability.quiz &&
