@@ -150,14 +150,23 @@
       "task": {
         "title": "Your Task",
         "steps": [
-          "Take a recent vague request you typed into Claude (or any AI).",
-          "Rewrite it as an engineered prompt: add role, context, instruction, and the format you want.",
-          "Run both versions in Claude and compare the outputs side by side.",
-          "Optional: use MetaPrompt to optimize it one more level and note what changed."
+          "Open Claude and start a new chat.",
+          "Paste the Lazy Prompt and generate the response.",
+          "Save or screenshot the generated image/output.",
+          "Start a new Claude chat.",
+          "Paste the Engineered Prompt(see below in prompt template section) and generate the response.",
+          "Compare both outputs and observe the differences in explanation quality, structure, examples, and image design.",
+          "Open your GitHub repository.",
+          "Create a new folder named Day2.",
+          "Inside the Day2 folder, create a file named day2.md.",
+          "Write the content of the day, key learnings and what you worked on along with the prompts that you entered.",
+          "Commit and push the changes to GitHub.",
+          "Copy the commit URL of the file.",
+          "Paste the file commit URL into the challenge submission window and submit your work."
         ],
         "solutionVideoUrl": "https://youtu.be/hHbgODDQmoc"
       },
-      "promptTemplate": "Compare these two prompts on the same task:\n\nNORMAL PROMPT:\n[paste your lazy one-liner]\n\nENGINEERED PROMPT:\nRole: You are a [profession] with strong experience.\nContext: I need this for [audience] because [goal]. Constraints: [tone, length, must-include].\nInstruction: [the single task].\nOutput Format: [bullets / table / 150-word paragraph].\n\nGenerate both outputs and label them clearly so I can compare.",
+      "promptTemplate": "You are an AI educator teaching complete beginners.\nExplain Prompt Engineering in simple language.\nInclude:\n* What Prompt Engineering is\n* Why it matters when using AI tools like Claude\n* One example of a weak prompt\n* One example of an improved prompt\n* Three practical benefits of writing better prompts\nAlso create a LinkedIn-ready image concept.\nImage Requirements:\n* Square LinkedIn post (1080×1080)\n* Claude-inspired brown, beige and cream colors\n* Professional and minimal design\n* Main title: \"Prompt Engineering\"\n* Show a visual comparison:\n  * Weak Prompt → Basic Output\n  * Engineered Prompt → Better Output\n* Modern AI and productivity-themed visuals\nadd abtalks 60 days claude challenge in the heading\nOutput Format:\nSection 1: Explanation\nSection 2: Weak vs Improved Prompt Example\nSection 3: Detailed Image Generation Prompt",
       "engagement": {
         "type": "Before vs After",
         "description": "Post your normal vs engineered prompt side by side and the two different outputs. Caption it: what surprised you most about the difference? Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
