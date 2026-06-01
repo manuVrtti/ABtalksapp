@@ -433,9 +433,6 @@ export function DayPage({
           animationDelay={0.28}
         >
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">
-              Customize the bracketed parts for your situation
-            </span>
             <button
               type="button"
               onClick={() => void handleCopyPrompt()}
