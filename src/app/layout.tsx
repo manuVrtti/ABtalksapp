@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { AppFooter } from "@/components/shared/app-footer";
+import { BottomNavGate } from "@/components/shared/bottom-nav-gate";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -40,8 +41,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pb-16 md:pb-0">{children}</main>
           <AppFooter />
+          <BottomNavGate />
           <Toaster />
         </ThemeProvider>
       </body>
