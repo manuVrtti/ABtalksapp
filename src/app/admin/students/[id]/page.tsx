@@ -219,14 +219,22 @@ export default async function AdminStudentDetailPage({
                     <TableCell>{row.dayNumber}</TableCell>
                     <TableCell>{row.status}</TableCell>
                     <TableCell>
-                      <a href={row.githubUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary underline">
-                        Open <ExternalLink className="size-3" />
-                      </a>
+                      {row.githubUrl ? (
+                        <a href={row.githubUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary underline">
+                          Open <ExternalLink className="size-3" />
+                        </a>
+                      ) : (
+                        <span className="text-muted-foreground">—</span>
+                      )}
                     </TableCell>
                     <TableCell>
-                      <a href={row.linkedinUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary underline">
-                        Open <ExternalLink className="size-3" />
-                      </a>
+                      {row.linkedinUrl ? (
+                        <a href={row.linkedinUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary underline">
+                          Open <ExternalLink className="size-3" />
+                        </a>
+                      ) : (
+                        <span className="text-muted-foreground">—</span>
+                      )}
                     </TableCell>
                     <TableCell>{formatDateTimeIST(row.submittedAt)}</TableCell>
                     <TableCell className="text-right">

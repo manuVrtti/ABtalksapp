@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SynergyChip } from "@/components/shared/synergy-chip";
 import {
   ChallengeSwitcher,
   type ChallengeSwitcherEnrollment,
@@ -58,7 +59,7 @@ export function AppHeader({
 }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const mockInterviewActive = pathname.startsWith("/mock-interview");
+  const jobsActive = pathname.startsWith("/jobs");
   const label = displayLabel(user);
   const showChallengeSwitcher =
     (userEnrollments?.length ?? 0) >= 2 &&
@@ -87,15 +88,13 @@ export function AppHeader({
             </Suspense>
           ) : null}
           <Link
-            href="/mock-interview"
+            href="/jobs"
             className={cn(
               "hidden text-sm font-medium transition-colors hover:text-foreground md:inline-flex",
-              mockInterviewActive
-                ? "text-foreground"
-                : "text-muted-foreground",
+              jobsActive ? "text-foreground" : "text-muted-foreground",
             )}
           >
-            Mock Interview
+            Jobs
           </Link>
           {user.isAdmin ? (
             <Link
@@ -105,6 +104,7 @@ export function AppHeader({
               Admin
             </Link>
           ) : null}
+          <SynergyChip />
           <ThemeToggle />
           <span className="hidden h-6 w-px shrink-0 bg-border sm:block" aria-hidden />
           <DropdownMenu>

@@ -12,8 +12,8 @@ export async function getSubmissionsFeed(input: {
     domain: string;
     dayNumber: number;
     status: string;
-    githubUrl: string;
-    linkedinUrl: string;
+    githubUrl: string | null;
+    linkedinUrl: string | null;
     submittedAt: Date;
   }>
 > {

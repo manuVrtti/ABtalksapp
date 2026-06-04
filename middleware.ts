@@ -14,7 +14,7 @@ const protectedPaths = [
   "/quiz",
   "/register",
   "/admin",
-  "/mock-interview",
+  "/jobs",
   "/mission",
 ];
 

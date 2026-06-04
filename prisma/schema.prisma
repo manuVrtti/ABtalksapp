@@ -186,12 +186,14 @@ model StudentProfile {
   isCampusAmbassadorCandidate   Boolean   @default(false)
   ambassadorAppliedAt           DateTime?
   ambassadorDismissedAt         DateTime?
+  synergyPoints                 Int       @default(0)
   createdAt                     DateTime  @default(now())
   updatedAt                     DateTime  @updatedAt
   user                          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([isCampusAmbassadorCandidate])
   @@index([domain, createdAt(sort: Desc)])
+  @@index([synergyPoints(sort: Desc)])
 }
 
 model Submission {
@@ -200,13 +202,14 @@ model Submission {
   enrollmentId String
   dailyTaskId  String
   dayNumber    Int
-  githubUrl    String           @unique
-  linkedinUrl  String
+  githubUrl    String?          @unique
+  linkedinUrl  String?
   status       SubmissionStatus
   submittedAt  DateTime         @default(now())
   dailyTask    DailyTask        @relation(fields: [dailyTaskId], references: [id], onDelete: Cascade)
   enrollment   Enrollment       @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
   user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  synergyEvent SynergyEvent?
 
   @@unique([enrollmentId, dayNumber])
   @@index([dayNumber])
@@ -234,8 +237,67 @@ model User {
   sessions                           Session[]
   studentProfile                     StudentProfile?
   submissions                        Submission[]
+  synergyEvents                      SynergyEvent[]
+  jobApplications                    JobApplication[]
 
   @@index([createdAt(sort: Desc)])
+}
+
+enum JobType {
+  FULL_TIME
+  INTERNSHIP
+  CONTRACT
+  PART_TIME
+}
+
+model Job {
+  id               String           @id @default(cuid())
+  title            String
+  company          String
+  location         String?
+  type             JobType          @default(FULL_TIME)
+  description      String
+  applyExternalUrl String?
+  isOpen           Boolean          @default(true)
+  createdByAdminId String
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  applications     JobApplication[]
+
+  @@index([isOpen, createdAt(sort: Desc)])
+}
+
+model JobApplication {
+  id        String   @id @default(cuid())
+  jobId     String
+  userId    String
+  note      String?
+  createdAt DateTime @default(now())
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, userId])
+  @@index([userId])
+  @@index([jobId])
+}
+
+model SynergyEvent {
+  id               String      @id @default(cuid())
+  userId           String
+  points           Int
+  type             String
+  submissionId     String?     @unique
+  enrollmentId     String?
+  dayNumber        Int?
+  rankAtAward      Int?
+  reason           String?
+  createdByAdminId String?
+  createdAt        DateTime    @default(now())
+  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  submission       Submission? @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
 }
 
 model AdminAction {

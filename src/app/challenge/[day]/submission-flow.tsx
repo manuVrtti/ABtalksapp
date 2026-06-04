@@ -23,11 +23,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  submitGithubStepAction,
-  submitLinkedinStepAction,
-} from "@/app/actions/submission-actions";
+import { submitDayAction } from "@/app/actions/submission-actions";
 
 type Props = {
   dayNumber: number;
@@ -43,13 +39,10 @@ export function SubmissionFlow({
   task,
   userDomain,
 }: Props) {
-  const [step, setStep] = useState<"github" | "linkedin" | "success">("github");
+  const [step, setStep] = useState<"form" | "success">("form");
   const [githubUrl, setGithubUrl] = useState("");
-  /** Snapshot from server when entering step 2 — used for reset only. */
-  const [originalLinkedinTemplate, setOriginalLinkedinTemplate] =
-    useState("");
-  const [editableTemplate, setEditableTemplate] = useState("");
   const [linkedinUrl, setLinkedinUrl] = useState("");
+  const [confirmed, setConfirmed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successStreak, setSuccessStreak] = useState(0);
@@ -97,31 +90,7 @@ export function SubmissionFlow({
     ? `?challenge=${encodeURIComponent(enrollmentId)}`
     : "";
 
-  async function handleGithubSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(null);
-    setIsSubmitting(true);
-    try {
-      const fd = new FormData();
-      fd.append("githubUrl", githubUrl);
-      fd.append("dayNumber", String(dayNumber));
-      if (enrollmentId) fd.append("enrollmentId", enrollmentId);
-      const res = await submitGithubStepAction(fd);
-      if (!res.ok) {
-        setError(res.message);
-        toast.error(res.message);
-        return;
-      }
-      setGithubUrl(res.githubUrl);
-      setOriginalLinkedinTemplate(res.linkedinTemplate);
-      setEditableTemplate(res.linkedinTemplate);
-      setStep("linkedin");
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
-  async function handleLinkedinSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setIsSubmitting(true);
@@ -130,8 +99,9 @@ export function SubmissionFlow({
       fd.append("githubUrl", githubUrl);
       fd.append("linkedinUrl", linkedinUrl);
       fd.append("dayNumber", String(dayNumber));
+      fd.append("confirmed", "true");
       if (enrollmentId) fd.append("enrollmentId", enrollmentId);
-      const res = await submitLinkedinStepAction(fd);
+      const res = await submitDayAction(fd);
       if (!res.ok) {
         setError(res.message);
         toast.error(res.message);
@@ -140,22 +110,15 @@ export function SubmissionFlow({
       setSuccessStreak(res.newStreak);
       setSuccessDaysCompleted(res.daysCompleted);
       setStep("success");
-      toast.success(`Day ${dayNumber} complete!`);
+      const synergyMsg =
+        res.synergyAwarded !== undefined
+          ? `Day ${dayNumber} complete! +${res.synergyAwarded} synergy`
+          : `Day ${dayNumber} complete!`;
+      toast.success(synergyMsg);
     } finally {
       setIsSubmitting(false);
     }
   }
-
-  async function copyTemplate() {
-    try {
-      await navigator.clipboard.writeText(editableTemplate);
-      toast.success("Copied to clipboard");
-    } catch {
-      toast.error("Could not copy — select the text manually");
-    }
-  }
-
-  const templateTooShort = editableTemplate.length < 50;
 
   const daysRemaining = Math.max(0, 60 - successDaysCompleted);
   const journeyPct = Math.min(100, Math.round((successDaysCompleted / 60) * 100));
@@ -309,98 +272,6 @@ export function SubmissionFlow({
     );
   }
 
-  if (step === "linkedin") {
-    return (
-      <div className="space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>{task.title}</CardTitle>
-            <CardDescription>
-              Step 2 of 2: Share on LinkedIn
-            </CardDescription>
-          </CardHeader>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Post text</CardTitle>
-            <CardDescription>
-              1. Copy this text · 2. Post it on LinkedIn · 3. Paste the post URL
-              below
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-                <Textarea
-                  value={editableTemplate}
-                  onChange={(e) => setEditableTemplate(e.target.value)}
-                  className="min-h-[200px] resize-y border-input bg-background text-sm text-foreground shadow-sm"
-                  aria-label="LinkedIn post template"
-                />
-                <Button
-                  type="button"
-                  variant="secondary"
-                  className="shrink-0 sm:mt-0"
-                  onClick={() => void copyTemplate()}
-                >
-                  Copy to clipboard
-                </Button>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Feel free to edit before posting — add your own thoughts or
-                personal touches
-              </p>
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm tabular-nums text-muted-foreground">
-                  {editableTemplate.length} characters
-                </p>
-                <Button
-                  type="button"
-                  variant="link"
-                  className="h-auto p-0 text-sm"
-                  onClick={() =>
-                    setEditableTemplate(originalLinkedinTemplate)
-                  }
-                >
-                  Reset to original
-                </Button>
-              </div>
-            </div>
-
-            <form onSubmit={handleLinkedinSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="linkedinUrl">LinkedIn post URL</Label>
-                <Input
-                  id="linkedinUrl"
-                  name="linkedinUrl"
-                  type="url"
-                  placeholder="https://www.linkedin.com/posts/…"
-                  value={linkedinUrl}
-                  onChange={(e) => setLinkedinUrl(e.target.value)}
-                  autoComplete="off"
-                  disabled={isSubmitting}
-                  aria-invalid={!!error}
-                />
-              </div>
-              {error ? (
-                <p className="text-sm text-destructive" role="alert">
-                  {error}
-                </p>
-              ) : null}
-              <Button
-                type="submit"
-                disabled={isSubmitting || templateTooShort}
-              >
-                {isSubmitting ? "Submitting…" : "Submit & complete day"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
       <Card>
@@ -415,37 +286,77 @@ export function SubmissionFlow({
         </CardContent>
       </Card>
 
+      <p className="text-center text-xs text-muted-foreground">
+        Tip: the earlier you finish each day, the more synergy you earn — and
+        adding your GitHub + LinkedIn earns even more.
+      </p>
+
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Submit your solution</CardTitle>
           <CardDescription>
-            Paste the URL of your public GitHub Commit File for this day&apos;s
-            work.
+            Confirm you completed today&apos;s task. GitHub and LinkedIn are
+            optional proof for bonus synergy.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleGithubSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="githubUrl">GitHub Commit URL</Label>
-              <Input
-                id="githubUrl"
-                name="githubUrl"
-                type="url"
-                placeholder="https://github.com/you/repo"
-                value={githubUrl}
-                onChange={(e) => setGithubUrl(e.target.value)}
-                autoComplete="off"
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <input
+                id="confirm-task"
+                type="checkbox"
+                checked={confirmed}
+                onChange={(e) => setConfirmed(e.target.checked)}
                 disabled={isSubmitting}
-                aria-invalid={!!error}
+                className="mt-0.5 size-4 shrink-0 rounded border border-input accent-primary"
               />
+              <label htmlFor="confirm-task" className="text-sm font-medium leading-snug">
+                I confirm I have completed today&apos;s task.
+              </label>
             </div>
+
+            <div className="space-y-4">
+              <p className="text-sm font-medium text-muted-foreground">
+                Add proof (optional — earns more synergy)
+              </p>
+              <div className="space-y-2">
+                <Label htmlFor="githubUrl">GitHub URL</Label>
+                <Input
+                  id="githubUrl"
+                  name="githubUrl"
+                  type="url"
+                  placeholder="GitHub commit or repo URL"
+                  value={githubUrl}
+                  onChange={(e) => setGithubUrl(e.target.value)}
+                  autoComplete="off"
+                  disabled={isSubmitting}
+                  aria-invalid={!!error}
+                />
+                <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
+                <Input
+                  id="linkedinUrl"
+                  name="linkedinUrl"
+                  type="url"
+                  placeholder="https://www.linkedin.com/posts/…"
+                  value={linkedinUrl}
+                  onChange={(e) => setLinkedinUrl(e.target.value)}
+                  autoComplete="off"
+                  disabled={isSubmitting}
+                />
+                <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
+              </div>
+            </div>
+
             {error ? (
               <p className="text-sm text-destructive" role="alert">
                 {error}
               </p>
             ) : null}
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Checking…" : "Validate & continue"}
+            <Button type="submit" disabled={isSubmitting || !confirmed}>
+              {isSubmitting ? "Submitting…" : `Submit Day ${dayNumber}`}
             </Button>
           </form>
         </CardContent>

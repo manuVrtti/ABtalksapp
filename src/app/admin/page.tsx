@@ -68,14 +68,16 @@ export default async function AdminHomePage() {
                 <Badge variant="outline" className={domainBadgeClass(row.domain)}>
                   {row.domain}
                 </Badge>
-                <a
-                  href={row.linkedinUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs text-primary underline"
-                >
-                  LinkedIn
-                </a>
+                {row.linkedinUrl ? (
+                  <a
+                    href={row.linkedinUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-primary underline"
+                  >
+                    LinkedIn
+                  </a>
+                ) : null}
               </div>
             ))}
           </CardContent>

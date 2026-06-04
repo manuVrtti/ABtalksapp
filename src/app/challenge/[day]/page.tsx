@@ -185,7 +185,17 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
     );
   }
 
-  if (data.existingSubmission) {
+  const dayContent = data.task.dayContent as DayContent | null;
+  const enrichedDayContent = dayContent
+    ? {
+        ...dayContent,
+        solutionVideoUrl:
+          dayContent.solutionVideoUrl ?? dayContent.task.solutionVideoUrl,
+        resources: dayContent.resources ?? data.task.resources,
+      }
+    : null;
+
+  if (data.existingSubmission && !enrichedDayContent) {
     const sub = data.existingSubmission;
     return (
       <ChallengePageShell
@@ -205,30 +215,34 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="space-y-2 text-sm">
-              <p className="font-medium text-muted-foreground">GitHub</p>
-              <a
-                href={sub.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
-              >
-                {sub.githubUrl}
-                <ExternalLink className="size-3.5" aria-hidden />
-              </a>
-            </div>
-            <div className="space-y-2 text-sm">
-              <p className="font-medium text-muted-foreground">LinkedIn</p>
-              <a
-                href={sub.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
-              >
-                {sub.linkedinUrl}
-                <ExternalLink className="size-3.5" aria-hidden />
-              </a>
-            </div>
+            {sub.githubUrl ? (
+              <div className="space-y-2 text-sm">
+                <p className="font-medium text-muted-foreground">GitHub</p>
+                <a
+                  href={sub.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
+                >
+                  {sub.githubUrl}
+                  <ExternalLink className="size-3.5" aria-hidden />
+                </a>
+              </div>
+            ) : null}
+            {sub.linkedinUrl ? (
+              <div className="space-y-2 text-sm">
+                <p className="font-medium text-muted-foreground">LinkedIn</p>
+                <a
+                  href={sub.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
+                >
+                  {sub.linkedinUrl}
+                  <ExternalLink className="size-3.5" aria-hidden />
+                </a>
+              </div>
+            ) : null}
             <Link
               href={`/dashboard?challenge=${encodeURIComponent(data.enrollment.id)}`}
               className={cn(buttonVariants({ variant: "secondary" }))}
@@ -240,16 +254,6 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
       </ChallengePageShell>
     );
   }
-
-  const dayContent = data.task.dayContent as DayContent | null;
-  const enrichedDayContent = dayContent
-    ? {
-        ...dayContent,
-        solutionVideoUrl:
-          dayContent.solutionVideoUrl ?? dayContent.task.solutionVideoUrl,
-        resources: dayContent.resources ?? data.task.resources,
-      }
-    : null;
 
   return (
     <ChallengePageShell
@@ -279,6 +283,14 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
             content={enrichedDayContent}
             resources={data.task.resources}
             enrollmentId={data.enrollment.id}
+            existingSubmission={
+              data.existingSubmission
+                ? {
+                    githubUrl: data.existingSubmission.githubUrl ?? "",
+                    linkedinUrl: data.existingSubmission.linkedinUrl ?? "",
+                  }
+                : null
+            }
           />
         </>
       ) : (

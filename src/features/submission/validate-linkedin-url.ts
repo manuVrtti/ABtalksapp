@@ -7,6 +7,7 @@ export type ValidateLinkedinResult =
 
 export function validateLinkedinUrl(url: string): ValidateLinkedinResult {
   const trimmed = url.trim();
+  if (trimmed === "") return { ok: true };
   if (!LINKEDIN_POST.test(trimmed)) {
     return {
       ok: false,
