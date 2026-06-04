@@ -3,7 +3,7 @@
     "dayNumber": 1,
     "domain": "CLAUDE",
     "title": "Day 1: Claude Setup & Your AI Personality Profile",
-    "problemStatement": "Welcome to **Day 1** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering (Orientation)\n\n**Today's focus:** Set up Claude on your desktop and create your personal AI Personality Profile.\n\n**Tasks:**\n1. Install and explore Claude on desktop (and/or web).\n2. Run the “AI Personality Profile” prompt to generate your personalized profile and cinematic AI portrait.\n3. Share your profile + portrait on LinkedIn to kick off your 60-day journey.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 1** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1: Foundation & Prompt Engineering (Orientation)\n\n**Today's focus:** Set up Claude on your desktop and create your personal AI Personality Profile.\n\n**Tasks:**\n1. Install and explore Claude on desktop (and/or web).\n2. Run the “AI Personality Profile” prompt to generate your personalized profile and cinematic AI portrait.\n3. Share your profile + portrait on LinkedIn to kick off your 60-day journey.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 1 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -16,7 +16,7 @@
     ],
     "difficulty": "Beginner",
     "estimatedMinutes": 40,
-    "linkedinTemplate": "Day 1/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday I set up Claude and generated my personal AI Personality Profile — my AI working style, strengths, and the kind of AI user I’m becoming.\n\n60 days. 60 real projects. Building in public.\n\n#60DayClaudeChallenge #ABtalks",
+    "linkedinTemplate": "Day 1/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday I set up Claude and generated my personal AI Personality Profile - my AI working style, strengths, and the kind of AI user I’m becoming.\n\n60 days. 60 real projects. Building in public.\n\n#60DayClaudeChallenge #ABtalks",
     "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
     "tags": [
       "claude",
@@ -66,7 +66,7 @@
         ],
         "solutionVideoUrl": "https://youtu.be/mi2hrPS_GcM"
       },
-      "promptTemplate": "Based on:\n* how I use AI\n* the prompts I ask\n* my work, goals, mindset, and personality\n* my strengths, weaknesses, curiosity, and communication style\n\nCreate a deeply personalized “AI Personality Profile” for me.\n\nMake it accurate, modern, cinematic, internet-native, realistic but fun.\n\nInclude:\n1. My AI working style\n2. My strengths & weaknesses\n3. What type of AI user I am\n4. Best future career paths for me\n5. My learning & decision-making style\n6. What makes me different from most AI users\n7. What I need to improve to become elite with AI\n8. A fun AI title for me\n9. A short cinematic AI character description\n\nThen, generate a hyper-realistic cinematic AI portrait of me based on everything above.\n\nThe image should capture: startup founder / AI engineer energy, futuristic workspace & AI screens, coding + research vibe, dark cinematic lighting, modern Gen-Z builder aesthetic, realistic details with subtle cyberpunk accents.\n\nIMPORTANT: don’t just write the image prompt — generate the actual image directly in chat. Make it professional, futuristic, cinematic, and LinkedIn-shareable.",
+      "promptTemplate": "Based on:\n* how I use AI\n* the prompts I ask\n* my work, goals, mindset, and personality\n* my strengths, weaknesses, curiosity, and communication style\n\nCreate a deeply personalized “AI Personality Profile” for me.\n\nMake it accurate, modern, cinematic, internet-native, realistic but fun.\n\nInclude:\n1. My AI working style\n2. My strengths & weaknesses\n3. What type of AI user I am\n4. Best future career paths for me\n5. My learning & decision-making style\n6. What makes me different from most AI users\n7. What I need to improve to become elite with AI\n8. A fun AI title for me\n9. A short cinematic AI character description\n\nThen, generate a hyper-realistic cinematic AI portrait of me based on everything above.\n\nThe image should capture: startup founder / AI engineer energy, futuristic workspace & AI screens, coding + research vibe, dark cinematic lighting, modern Gen-Z builder aesthetic, realistic details with subtle cyberpunk accents.\n\nIMPORTANT: don’t just write the image prompt - generate the actual image directly in chat. Make it professional, futuristic, cinematic, and LinkedIn-shareable.",
       "engagement": {
         "type": "Kickoff Post",
         "description": "Share your AI Personality Profile + cinematic portrait on LinkedIn. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
@@ -98,7 +98,7 @@
     "dayNumber": 2,
     "domain": "CLAUDE",
     "title": "Day 2: What Is Prompt Engineering",
-    "problemStatement": "Welcome to **Day 2** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** Understand what Prompt Engineering really is, and feel the difference between a normal prompt and an engineered one.\n\n**Tasks:**\n1. Read the short intro to Prompt Engineering and the Normal vs Engineered comparison.\n2. Rewrite one weak prompt of your own into a structured, professional version.\n3. Post the before/after on LinkedIn.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 2** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1: Foundation & Prompt Engineering\n\n**Today's focus:** Understand what Prompt Engineering really is, and feel the difference between a normal prompt and an engineered one.\n\n**Tasks:**\n1. Read the short intro to Prompt Engineering and the Normal vs Engineered comparison.\n2. Rewrite one weak prompt of your own into a structured, professional version.\n3. Post the before/after on LinkedIn.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 2 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -186,7 +186,7 @@
           "Open the Chrome Web Store link below and click \"Add to Chrome.\"",
           "Pin the MetaPrompt icon to your toolbar (click the puzzle-piece icon, then the pin).",
           "Go to claude.ai and type your rough prompt in the message box as usual.",
-          "Click the MetaPrompt button that appears near the input — it rewrites your prompt into a structured version.",
+          "Click the MetaPrompt button that appears near the input - it rewrites your prompt into a structured version.",
           "Review the optimized prompt, then send it to Claude. Free plan gives 20 enhancements per month."
         ],
         "linkUrl": "https://chromewebstore.google.com/detail/metaprompt-ai-prompt-engi/glkfhecdpcmaclfkhkibmoijipnnjkbf",
@@ -198,7 +198,7 @@
   "dayNumber": 3,
   "domain": "CLAUDE",
   "title": "Day 3: Role-Based Prompting",
-  "problemStatement": "Welcome to Day 3 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1 — Foundation & Prompt Engineering\n\nToday's focus: Learn how Role-Based Prompting can transform Claude from a general assistant into a specialized expert.\n\nTasks:\n1. Understand what Role-Based Prompting is.\n2. Compare outputs generated with and without a role.\n3. Experiment with at least two different personas.\n4. Install and explore Claude Usage Counter.\n5. Share your learning publicly.\n\nSubmission: Share your GitHub commit URL containing your Day 3 work and learning notes.",
+  "problemStatement": "Welcome to Day 3 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1: Foundation & Prompt Engineering\n\nToday's focus: Learn how Role-Based Prompting can transform Claude from a general assistant into a specialized expert.\n\nTasks:\n1. Understand what Role-Based Prompting is.\n2. Compare outputs generated with and without a role.\n3. Experiment with at least two different personas.\n4. Install and explore Claude Usage Counter.\n5. Share your learning publicly.\n\nSubmission: Share your GitHub commit URL containing your Day 3 work and learning notes.",
   "learningObjectives": [
     "Understand the fundamentals of Role-Based Prompting",
     "Learn how personas affect AI output quality",
@@ -212,7 +212,7 @@
   ],
   "difficulty": "Beginner",
   "estimatedMinutes": 35,
-  "linkedinTemplate": "Day 3/60 of #60DayClaudeChallenge with @ABTalksonAI 🚀\n\nToday I learned Role-Based Prompting.\n\nThe same question can produce completely different answers depending on the role you assign to Claude.\n\nDeveloper, Founder, HR, Product Manager, Marketer — each persona thinks differently.\n\nWhich AI persona would help you the most right now? 👇\n\n#RoleBasedPrompting #ClaudeAI #ABTalksOnAI",
+  "linkedinTemplate": "Day 3/60 of #60DayClaudeChallenge with @ABTalksonAI 🚀\n\nToday I learned Role-Based Prompting.\n\nThe same question can produce completely different answers depending on the role you assign to Claude.\n\nDeveloper, Founder, HR, Product Manager, Marketer - each persona thinks differently.\n\nWhich AI persona would help you the most right now? 👇\n\n#RoleBasedPrompting #ClaudeAI #ABTalksOnAI",
   "solutionApproach": "Submit a GitHub commit URL containing examples of role-based prompting, comparisons, learnings, and screenshot.",
   "tags": [
     "claude",
@@ -315,7 +315,7 @@
     "dayNumber": 4,
     "domain": "CLAUDE",
     "title": "Day 4: Chain-of-Thought Prompting",
-    "problemStatement": "Welcome to **Day 4** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** Chain-of-Thought — make Claude reason step-by-step on hard problems.\n\n**Tasks:**\n1. Pick a genuinely complex problem.\n2. Solve it with a normal prompt, then again with the chain-of-thought template.\n3. Compare reasoning quality and post your findings.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 4** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1: Foundation & Prompt Engineering\n\n**Today's focus:** Chain-of-Thought - make Claude reason step-by-step on hard problems.\n\n**Tasks:**\n1. Pick a genuinely complex problem.\n2. Solve it with a normal prompt, then again with the chain-of-thought template.\n3. Compare reasoning quality and post your findings.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 4 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -344,7 +344,7 @@
       "estimatedMinutes": 40,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Multi-step reasoning prompts. Instead of asking for an answer, you ask Claude to think through a problem in stages — understand, decompose, solve, verify, conclude. Dramatically better accuracy on anything complex.",
+        "summary": "Multi-step reasoning prompts. Instead of asking for an answer, you ask Claude to think through a problem in stages - understand, decompose, solve, verify, conclude. Dramatically better accuracy on anything complex.",
         "bullets": [
           {
             "label": "Why it works",
@@ -388,12 +388,12 @@
       "tool": {
         "name": "Claude Usage Tracker",
         "type": "Chrome Extension",
-        "description": "A free Chrome extension that shows live token usage on claude.ai. Helpful here because chain-of-thought reasoning uses more tokens — you can see exactly how much “thinking” costs.",
+        "description": "A free Chrome extension that shows live token usage on claude.ai. Helpful here because chain-of-thought reasoning uses more tokens - you can see exactly how much “thinking” costs.",
         "setupTitle": "How to set up the token counter in Claude",
         "setupSteps": [
           "Open the Chrome Web Store link below and click \"Add to Chrome.\"",
           "Go to claude.ai and open any conversation.",
-          "The extension injects a live token count directly into the Claude interface — no setup or API key needed.",
+          "The extension injects a live token count directly into the Claude interface - no setup or API key needed.",
           "Watch the counter as you send messages; compare the count before and after a chain-of-thought prompt."
         ],
         "linkUrl": "https://chromewebstore.google.com/detail/claude-usage-tracker/knemcdpkggnbhpoaaagmjiigenifejfo",
@@ -404,8 +404,8 @@
   {
     "dayNumber": 5,
     "domain": "CLAUDE",
-    "title": "Day 5: Context Management — Build Your AI Engineer Roadmap",
-    "problemStatement": "Welcome to **Day 5** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** Use Claude as your personal mentor and generate a roadmap to become an AI Engineer (or any role you want).\n\n**Tasks:**\n1. Run the mentor/coach prompt with your real goal filled in.\n2. Get back a structured roadmap with phases, projects, and a weekly plan.\n3. Pick the first 3 actions and share your roadmap on LinkedIn.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "title": "Day 5: Context Management - Build Your AI Engineer Roadmap",
+    "problemStatement": "Welcome to **Day 5** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1: Foundation & Prompt Engineering\n\n**Today's focus:** Use Claude as your personal mentor and generate a roadmap to become an AI Engineer (or any role you want).\n\n**Tasks:**\n1. Run the mentor/coach prompt with your real goal filled in.\n2. Get back a structured roadmap with phases, projects, and a weekly plan.\n3. Pick the first 3 actions and share your roadmap on LinkedIn.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 5 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -434,7 +434,7 @@
       "estimatedMinutes": 40,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Strong context = strong output. By telling Claude exactly who you are, what you want, and what your constraints are (time, current level, daily life), you get a realistic plan — not a generic listicle.",
+        "summary": "Strong context = strong output. By telling Claude exactly who you are, what you want, and what your constraints are (time, current level, daily life), you get a realistic plan - not a generic listicle.",
         "bullets": [
           {
             "label": "Frame the goal",
@@ -446,7 +446,7 @@
           },
           {
             "label": "Demand realism",
-            "text": "instruct Claude to consider workload and avoid burnout — not just theory."
+            "text": "instruct Claude to consider workload and avoid burnout - not just theory."
           },
           {
             "label": "Make it actionable",
@@ -459,7 +459,7 @@
         "steps": [
           "Pick a real career goal (e.g. “become an AI Engineer”, “become a data scientist”).",
           "Fill the mentor prompt below with your goal, your current level, and your weekly time budget.",
-          "Read the roadmap Claude returns — highlight the top 3 actions you’ll start this week.",
+          "Read the roadmap Claude returns - highlight the top 3 actions you’ll start this week.",
           "Save the roadmap as a doc and share the headline phases on LinkedIn."
         ],
         "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
@@ -478,14 +478,14 @@
       "tool": {
         "name": "Caveman Skill",
         "type": "Technique + Claude Code Skill",
-        "description": "Compress context into ultra-short, keyword-style notes and ask Claude to reply the same way — cuts tokens dramatically. Works in plain claude.ai chats; there’s also a one-click skill for Claude Code users.",
+        "description": "Compress context into ultra-short, keyword-style notes and ask Claude to reply the same way - cuts tokens dramatically. Works in plain claude.ai chats; there’s also a one-click skill for Claude Code users.",
         "setupTitle": "How to use the caveman technique",
         "setupSteps": [
-          "For everyone (no install): in any claude.ai chat, write your context in terse caveman style and add “reply in caveman style — keep all technical detail, cut filler words.”",
+          "For everyone (no install): in any claude.ai chat, write your context in terse caveman style and add “reply in caveman style - keep all technical detail, cut filler words.”",
           "Why it works: filler like “Sure, I’d be happy to help…” wastes tokens. Caveman keeps the facts and removes the fluff (often ~75% shorter).",
-          "For Claude Code users only: install as a one-line skill — run  claude install-skill JuliusBrussee/caveman  then trigger with  /caveman  or “caveman mode.”",
+          "For Claude Code users only: install as a one-line skill - run  claude install-skill JuliusBrussee/caveman  then trigger with  /caveman  or “caveman mode.”",
           "Turn it off any time with “normal mode.”",
-          "Note: this is a free community skill, not an official Anthropic tool — the technique is what matters."
+          "Note: this is a free community skill, not an official Anthropic tool - the technique is what matters."
         ],
         "linkUrl": "https://github.com/JuliusBrussee/caveman",
         "linkLabel": "View the caveman skill on GitHub"
@@ -496,7 +496,7 @@
     "dayNumber": 6,
     "domain": "CLAUDE",
     "title": "Day 6: Knowledge Checkpoint",
-    "problemStatement": "Welcome to **Day 6** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** A quick knowledge checkpoint. Five days in — let’s lock the basics before we accelerate.\n\n**Tasks:**\n1. Take the Day 6 MCQ on Days 1–5 concepts (released on abtalks.in).\n2. Revisit any concept you got wrong using your own Claude chat.\n3. Post one key thing you learned in the first week.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 6** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1: Foundation & Prompt Engineering\n\n**Today's focus:** A quick knowledge checkpoint. Five days in - let’s lock the basics before we accelerate.\n\n**Tasks:**\n1. Take the Day 6 MCQ on Days 1–5 concepts (released on abtalks.in).\n2. Revisit any concept you got wrong using your own Claude chat.\n3. Post one key thing you learned in the first week.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 6 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -509,7 +509,7 @@
     ],
     "difficulty": "Beginner",
     "estimatedMinutes": 25,
-    "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nFive days in — took the knowledge checkpoint today. The basics of prompt engineering are clicking.\n\nWhat’s the one prompt habit that changed how you use AI? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nFive days in - took the knowledge checkpoint today. The basics of prompt engineering are clicking.\n\nWhat’s the one prompt habit that changed how you use AI? 👇\n\n#60DayClaudeChallenge #ABtalks",
     "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
     "tags": [
       "claude",
@@ -520,12 +520,12 @@
     "dayContent": {
       "title": "Knowledge Checkpoint",
       "tagline": "Lock in the basics from Days 1–5",
-      "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
+      "module": "Module 1 - Claude Fundamentals & Prompt Engineering",
       "difficulty": "Beginner",
       "estimatedMinutes": 25,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Today is a review day. No new technique — just consolidation. You’ll take a short MCQ on everything from setup through context management, then revisit the topics you got wrong.",
+        "summary": "Today is a review day. No new technique - just consolidation. You’ll take a short MCQ on everything from setup through context management, then revisit the topics you got wrong.",
         "bullets": [
           {
             "label": "Setup",
@@ -552,7 +552,7 @@
       "task": {
         "title": "Your Task",
         "steps": [
-          "Open the Day 6 MCQ on abtalks.in and complete it honestly (no Googling — it’s for you).",
+          "Open the Day 6 MCQ on abtalks.in and complete it honestly (no Googling - it’s for you).",
           "For every question you got wrong, open Claude and ask it to explain the concept again with an example.",
           "Update your personal prompt log: which technique do you want to use more this week?",
           "Post one thing you genuinely learned in the first 5 days."
@@ -576,7 +576,7 @@
     "dayNumber": 7,
     "domain": "CLAUDE",
     "title": "Day 7: ATS-Friendly Resume Building",
-    "problemStatement": "Welcome to **Day 7** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2 — Career & Communication\n\n**Today's focus:** Build an ATS-friendly CV — fresher version, experienced version, or both.\n\n**Tasks:**\n1. Use the Fresher prompt if you’re a student/early-career, the Experienced prompt if you’re mid/senior.\n2. Paste your real details (or rough notes) and let Claude rebuild your CV.\n3. Tighten the result, export as PDF, and share it.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 7** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2: Career & Communication\n\n**Today's focus:** Build an ATS-friendly CV - fresher version, experienced version, or both.\n\n**Tasks:**\n1. Use the Fresher prompt if you’re a student/early-career, the Experienced prompt if you’re mid/senior.\n2. Paste your real details (or rough notes) and let Claude rebuild your CV.\n3. Tighten the result, export as PDF, and share it.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 7 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -589,7 +589,7 @@
     ],
     "difficulty": "Intermediate",
     "estimatedMinutes": 50,
-    "linkedinTemplate": "Day 7/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Resume Building): rebuilt my CV the ATS-friendly way — strong action verbs, measurable impact, recruiter-friendly format.\n\nWhat’s the one section recruiters scan first on your resume? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "linkedinTemplate": "Day 7/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Resume Building): rebuilt my CV the ATS-friendly way - strong action verbs, measurable impact, recruiter-friendly format.\n\nWhat’s the one section recruiters scan first on your resume? 👇\n\n#60DayClaudeChallenge #ABtalks",
     "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
     "tags": [
       "claude",
@@ -601,16 +601,16 @@
     "dayContent": {
       "title": "ATS-Friendly Resume Building",
       "tagline": "A clean, keyword-rich CV that actually passes the scan",
-      "module": "Module 2 — Career & Communication",
+      "module": "Module 2 - Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 50,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "ATS (Applicant Tracking System) software scans your resume before any human sees it. Today you’ll learn to write a CV that survives the scan AND impresses the recruiter — with the right keywords, measurable impact, and clean formatting.",
+        "summary": "ATS (Applicant Tracking System) software scans your resume before any human sees it. Today you’ll learn to write a CV that survives the scan AND impresses the recruiter - with the right keywords, measurable impact, and clean formatting.",
         "bullets": [
           {
             "label": "Strong action verbs",
-            "text": "“Built, shipped, automated” — not “responsible for, helped with.”"
+            "text": "“Built, shipped, automated” - not “responsible for, helped with.”"
           },
           {
             "label": "Measurable impact",
@@ -622,7 +622,7 @@
           },
           {
             "label": "Clean format",
-            "text": "no tables, no images, no fancy fonts — simple wins."
+            "text": "no tables, no images, no fancy fonts - simple wins."
           }
         ]
       },
@@ -653,7 +653,7 @@
     "dayNumber": 8,
     "domain": "CLAUDE",
     "title": "Day 8: Cold Outreach to Recruiters & Leaders",
-    "problemStatement": "Welcome to **Day 8** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2 — Career & Communication\n\n**Today's focus:** Cold outreach on LinkedIn that actually gets replies — fresher or experienced angle.\n\n**Tasks:**\n1. Pick the target: a recruiter, hiring manager, or leader you genuinely want to reach.\n2. Use the cold-outreach prompt to draft a personalized message.\n3. Send 3 outreach messages this week and post the template (not the personal bits) for others.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 8** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2: Career & Communication\n\n**Today's focus:** Cold outreach on LinkedIn that actually gets replies - fresher or experienced angle.\n\n**Tasks:**\n1. Pick the target: a recruiter, hiring manager, or leader you genuinely want to reach.\n2. Use the cold-outreach prompt to draft a personalized message.\n3. Send 3 outreach messages this week and post the template (not the personal bits) for others.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 8 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -666,7 +666,7 @@
     ],
     "difficulty": "Intermediate",
     "estimatedMinutes": 40,
-    "linkedinTemplate": "Day 8/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Cold Outreach): wrote a LinkedIn outreach message that’s short, personal, and actually about *them* — not me.\n\nWhat’s the one line that makes you reply to a cold message? 👇\n\n#60DayClaudeChallenge #ABtalks",
+    "linkedinTemplate": "Day 8/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Cold Outreach): wrote a LinkedIn outreach message that’s short, personal, and actually about *them* - not me.\n\nWhat’s the one line that makes you reply to a cold message? 👇\n\n#60DayClaudeChallenge #ABtalks",
     "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
     "tags": [
       "claude",
@@ -677,8 +677,8 @@
     ],
     "dayContent": {
       "title": "Cold Outreach Mastery",
-      "tagline": "Short, personal, and about them — not you",
-      "module": "Module 2 — Career & Communication",
+      "tagline": "Short, personal, and about them - not you",
+      "module": "Module 2 - Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 40,
       "deliverableFormat": "GitHub commit URL",
@@ -687,7 +687,7 @@
         "bullets": [
           {
             "label": "Them first",
-            "text": "the first line must be about something specific the person did — not your introduction."
+            "text": "the first line must be about something specific the person did - not your introduction."
           },
           {
             "label": "Under 80 words",
@@ -699,7 +699,7 @@
           },
           {
             "label": "Two follow-ups",
-            "text": "if they don’t reply, follow up after 3 days, then 5 days later — with a new angle."
+            "text": "if they don’t reply, follow up after 3 days, then 5 days later - with a new angle."
           }
         ]
       },
@@ -708,12 +708,12 @@
         "steps": [
           "Pick one person you genuinely want to reach (recruiter, hiring manager, founder, mentor).",
           "Use the Fresher or Experienced prompt below depending on where you are in your career.",
-          "Generate the message + 2 follow-ups. Personalize the first line manually — don’t leave it AI-generic.",
+          "Generate the message + 2 follow-ups. Personalize the first line manually - don’t leave it AI-generic.",
           "Send it. Then post the reusable template (with personal details removed) so others can learn from it."
         ],
         "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
       },
-      "promptTemplate": "=== FRESHER VERSION ===\nAct as an expert LinkedIn outreach coach. Write a 3-message cold outreach sequence from a fresher/student to a [recruiter / hiring manager / leader] at [company].\nGoal: [a 15-minute intro call / a referral / advice on breaking in].\nRecipient context: [paste 1-2 lines about them — their role, a recent post, an achievement].\nAbout me: [1 line — who I am, what I’m studying, the role I want].\n\nConstraints: each message under 80 words; the first line must be about them, not me; one clear, polite ask only.\n\nOutput:\n1. Initial message\n2. Follow-up after 3 days (new angle, not a nag)\n3. Final nudge after 5 more days (short, polite, easy yes)\n\n=== EXPERIENCED VERSION ===\nAct as an expert LinkedIn outreach coach. Write a 3-message cold outreach sequence from an experienced professional to a [hiring manager / VP / founder] at [company].\nGoal: [a peer-level conversation / a mid-senior role conversation / a partnership chat].\nRecipient context: [paste 1-2 lines about them and their work].\nAbout me: [1 line — my current role, the unique value I bring, the role/conversation I want].\n\nConstraints: each message under 80 words; the opener must reference something specific about them; one clear ask only.\n\nOutput:\n1. Initial message (peer-to-peer tone, confident not desperate)\n2. Follow-up after 3 days\n3. Final nudge after 5 more days",
+      "promptTemplate": "=== FRESHER VERSION ===\nAct as an expert LinkedIn outreach coach. Write a 3-message cold outreach sequence from a fresher/student to a [recruiter / hiring manager / leader] at [company].\nGoal: [a 15-minute intro call / a referral / advice on breaking in].\nRecipient context: [paste 1-2 lines about them - their role, a recent post, an achievement].\nAbout me: [1 line - who I am, what I’m studying, the role I want].\n\nConstraints: each message under 80 words; the first line must be about them, not me; one clear, polite ask only.\n\nOutput:\n1. Initial message\n2. Follow-up after 3 days (new angle, not a nag)\n3. Final nudge after 5 more days (short, polite, easy yes)\n\n=== EXPERIENCED VERSION ===\nAct as an expert LinkedIn outreach coach. Write a 3-message cold outreach sequence from an experienced professional to a [hiring manager / VP / founder] at [company].\nGoal: [a peer-level conversation / a mid-senior role conversation / a partnership chat].\nRecipient context: [paste 1-2 lines about them and their work].\nAbout me: [1 line - my current role, the unique value I bring, the role/conversation I want].\n\nConstraints: each message under 80 words; the opener must reference something specific about them; one clear ask only.\n\nOutput:\n1. Initial message (peer-to-peer tone, confident not desperate)\n2. Follow-up after 3 days\n3. Final nudge after 5 more days",
       "engagement": {
         "type": "Template Share",
         "description": "Post the reusable version of your outreach template (no personal details). Add 1-2 lines on what made the personalization work for you. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
@@ -730,7 +730,7 @@
     "dayNumber": 9,
     "domain": "CLAUDE",
     "title": "Day 9: LinkedIn Profile Optimization",
-    "problemStatement": "Welcome to **Day 9** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2 — Career & Communication\n\n**Today's focus:** Rebuild your LinkedIn profile so recruiters and peers actually find you.\n\n**Tasks:**\n1. Use the LinkedIn optimization prompt to rewrite your headline, About section, and top 3 experience bullets.\n2. Add the keywords for the role you actually want.\n3. Update LinkedIn and post a short note announcing the refresh.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 9** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2: Career & Communication\n\n**Today's focus:** Rebuild your LinkedIn profile so recruiters and peers actually find you.\n\n**Tasks:**\n1. Use the LinkedIn optimization prompt to rewrite your headline, About section, and top 3 experience bullets.\n2. Add the keywords for the role you actually want.\n3. Update LinkedIn and post a short note announcing the refresh.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 9 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -755,16 +755,16 @@
     "dayContent": {
       "title": "LinkedIn Profile Optimization",
       "tagline": "Get found by the right people",
-      "module": "Module 2 — Career & Communication",
+      "module": "Module 2 - Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 45,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Your LinkedIn profile is a search engine result. Today you’ll rewrite the three sections that matter most — headline, About, and top experience bullets — with the keywords for the role you actually want.",
+        "summary": "Your LinkedIn profile is a search engine result. Today you’ll rewrite the three sections that matter most - headline, About, and top experience bullets - with the keywords for the role you actually want.",
         "bullets": [
           {
             "label": "Headline",
-            "text": "not your job title — a sentence that says what you do, who for, and the outcome."
+            "text": "not your job title - a sentence that says what you do, who for, and the outcome."
           },
           {
             "label": "About section",
@@ -807,7 +807,7 @@
     "dayNumber": 10,
     "domain": "CLAUDE",
     "title": "Day 10: Build Your One-Page Portfolio with Claude",
-    "problemStatement": "Welcome to **Day 10** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2 — Career & Communication\n\n**Today's focus:** Build a one-page portfolio website using Claude — fast, clean, and shareable.\n\n**Tasks:**\n1. Use the portfolio prompt to generate the full HTML+CSS for a one-page site.\n2. Add your real projects, About, and contact.\n3. Host it (GitHub Pages, Vercel, or Netlify) and share the live link.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "problemStatement": "Welcome to **Day 10** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2: Career & Communication\n\n**Today's focus:** Build a one-page portfolio website using Claude - fast, clean, and shareable.\n\n**Tasks:**\n1. Use the portfolio prompt to generate the full HTML+CSS for a one-page site.\n2. Add your real projects, About, and contact.\n3. Host it (GitHub Pages, Vercel, or Netlify) and share the live link.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
     "learningObjectives": [
       "Apply Day 10 concepts to your real role or studies",
       "Build repeatable prompts you can reuse after the challenge",
@@ -832,16 +832,16 @@
     "dayContent": {
       "title": "One-Page Portfolio Site",
       "tagline": "From idea to live link in one session",
-      "module": "Module 2 — Career & Communication",
+      "module": "Module 2 - Career & Communication",
       "difficulty": "Intermediate",
       "estimatedMinutes": 60,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Today you’ll use Claude to generate a complete single-file portfolio site — hero, About, projects, contact — and host it on a free platform. No frameworks, no build step.",
+        "summary": "Today you’ll use Claude to generate a complete single-file portfolio site - hero, About, projects, contact - and host it on a free platform. No frameworks, no build step.",
         "bullets": [
           {
             "label": "Single file",
-            "text": "ask Claude for ONE index.html with inline CSS — easiest to host."
+            "text": "ask Claude for ONE index.html with inline CSS - easiest to host."
           },
           {
             "label": "Strong hero",
@@ -853,7 +853,7 @@
           },
           {
             "label": "Free hosting",
-            "text": "drag-and-drop to Netlify or Vercel — live in under 60 seconds."
+            "text": "drag-and-drop to Netlify or Vercel - live in under 60 seconds."
           }
         ]
       },
@@ -867,7 +867,7 @@
         ],
         "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
       },
-      "promptTemplate": "Act as a senior frontend engineer + designer.\n\nBuild me a single-file responsive one-page portfolio site (index.html with inline CSS, no frameworks, no external assets).\n\nStyle: dark theme, premium and modern (Linear / Vercel / Apple keynote vibe), bold sans-serif type, subtle gradient accents, generous whitespace, soft hover effects.\n\nSections:\n1. Hero — my name [name], a one-line value prop: “[what I do for whom and the outcome]”, and a CTA button to my email.\n2. About — 3 short paragraphs based on: [paste a few lines about you].\n3. Projects — 3 cards. Each has: project name, 1-line outcome, link. Data: [paste 3 projects].\n4. Contact — email + LinkedIn + GitHub links.\n\nConstraints:\n* Mobile responsive\n* Smooth scroll, anchor nav\n* Accessible color contrast\n* Self-contained: I should be able to open the .html file and it just works.\n\nOutput ONLY the full HTML in one code block.",
+      "promptTemplate": "Act as a senior frontend engineer + designer.\n\nBuild me a single-file responsive one-page portfolio site (index.html with inline CSS, no frameworks, no external assets).\n\nStyle: dark theme, premium and modern (Linear / Vercel / Apple keynote vibe), bold sans-serif type, subtle gradient accents, generous whitespace, soft hover effects.\n\nSections:\n1. Hero - my name [name], a one-line value prop: “[what I do for whom and the outcome]”, and a CTA button to my email.\n2. About - 3 short paragraphs based on: [paste a few lines about you].\n3. Projects - 3 cards. Each has: project name, 1-line outcome, link. Data: [paste 3 projects].\n4. Contact - email + LinkedIn + GitHub links.\n\nConstraints:\n* Mobile responsive\n* Smooth scroll, anchor nav\n* Accessible color contrast\n* Self-contained: I should be able to open the .html file and it just works.\n\nOutput ONLY the full HTML in one code block.",
       "engagement": {
         "type": "Live Site Share",
         "description": "Post your live portfolio link. Tell us how long it took you from “I should build one” to “it’s live.” Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",

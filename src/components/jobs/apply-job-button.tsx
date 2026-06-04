@@ -39,7 +39,7 @@ export function ApplyJobButton({
   if (!isOpen) {
     return (
       <p className="text-sm font-medium text-muted-foreground">
-        This role is closed — applications are no longer accepted.
+        This role is closed. Applications are no longer accepted.
       </p>
     );
   }

@@ -44,7 +44,7 @@ export default async function MissionPage() {
             Talent isn&apos;t the problem. Proof is.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            ABTalks is that bridge — a community run by students, for students,
+            ABTalks is that bridge, a community run by students, for students,
             founded by Anil Bajpai after watching capable people get overlooked
             and undervalued.
           </p>
@@ -70,7 +70,7 @@ export default async function MissionPage() {
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Too many students pour months into internships that pay nothing
-                — or worse, ones they have to pay to join — and still come out
+                - or worse, ones they have to pay to join - and still come out
                 without a real path to a first job.
               </p>
             </article>
@@ -96,7 +96,7 @@ export default async function MissionPage() {
               How it works
             </h2>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Pick your track — AI, Data Science, or Software Engineering — and
+              Pick your track: AI, Data Science, or Software Engineering, and
               commit to 60 days. Every day you build, push your work to GitHub,
               and share your progress in public, tagging us so the community can
               follow along and verify it&apos;s real. Working in the open is the
@@ -128,7 +128,7 @@ export default async function MissionPage() {
               </div>
               <h3 className="font-display font-semibold">Build in public</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Every day you build, push to GitHub, and share your progress —
+                Every day you build, push to GitHub, and share your progress,
                 tagging us so the community can verify it&apos;s real.
               </p>
             </article>
@@ -170,7 +170,7 @@ export default async function MissionPage() {
               <p className="text-base leading-relaxed text-primary-foreground/90">
                 Complete the 60 days and you move into mock interviews to get
                 you sharp and confident. From there you become visible to the
-                HRs and leaders in our network — and they reach out to you. No
+                HRs and leaders in our network, and they reach out to you. No
                 applications shouted into the void.
               </p>
             </div>
@@ -187,7 +187,7 @@ export default async function MissionPage() {
           </h2>
           <p className="mt-3 text-base leading-relaxed text-muted-foreground">
             ABTalks is students lifting each other up. Our Discord runs weekly
-            communication practice and plenty more — with a lot still on the
+            communication practice and plenty more, with a lot still on the
             way. Show up, do the work in public, and let it speak for you.
           </p>
           <Link

@@ -78,7 +78,7 @@ export function SynergyChip() {
                 </div>
                 <p className="text-sm font-semibold">Finish early</p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  The earlier you submit each day, the bigger your rank bonus —
+                  The earlier you submit each day, the bigger your rank bonus,
                   the first members each day earn the most.
                 </p>
               </div>
@@ -108,7 +108,7 @@ export function SynergyChip() {
                 </div>
                 <p className="text-sm font-semibold">Show up for the community</p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Join weekly communication practice and other sessions — those
+                  Join weekly communication practice and other sessions. Those
                   earn synergy too.
                 </p>
               </div>

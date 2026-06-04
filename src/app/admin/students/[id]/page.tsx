@@ -89,26 +89,26 @@ export default async function AdminStudentDetailPage({
               <>
                 <p>
                   <span className="text-muted-foreground">College:</span>{" "}
-                  {data.profile.college ?? "—"}
+                  {data.profile.college ?? "-"}
                 </p>
                 <p>
                   <span className="text-muted-foreground">Graduation Year:</span>{" "}
-                  {data.profile.graduationYear ?? "—"}
+                  {data.profile.graduationYear ?? "-"}
                 </p>
               </>
             ) : (
               <>
                 <p>
                   <span className="text-muted-foreground">Organization:</span>{" "}
-                  {data.profile.organization ?? "—"}
+                  {data.profile.organization ?? "-"}
                 </p>
                 <p>
                   <span className="text-muted-foreground">Role:</span>{" "}
-                  {data.profile.role ?? "—"}
+                  {data.profile.role ?? "-"}
                 </p>
                 <p>
                   <span className="text-muted-foreground">Years of Experience:</span>{" "}
-                  {data.profile.yearsExperience ?? "—"}
+                  {data.profile.yearsExperience ?? "-"}
                 </p>
               </>
             )}
@@ -187,7 +187,7 @@ export default async function AdminStudentDetailPage({
             </p>
             <p>
               <span className="text-muted-foreground">Last Submitted Day:</span>{" "}
-              {data.progress.lastSubmittedDay ?? "—"}
+              {data.progress.lastSubmittedDay ?? "-"}
             </p>
           </CardContent>
         </Card>
@@ -224,7 +224,7 @@ export default async function AdminStudentDetailPage({
                           Open <ExternalLink className="size-3" />
                         </a>
                       ) : (
-                        <span className="text-muted-foreground">—</span>
+                        <span className="text-muted-foreground">-</span>
                       )}
                     </TableCell>
                     <TableCell>
@@ -233,7 +233,7 @@ export default async function AdminStudentDetailPage({
                           Open <ExternalLink className="size-3" />
                         </a>
                       ) : (
-                        <span className="text-muted-foreground">—</span>
+                        <span className="text-muted-foreground">-</span>
                       )}
                     </TableCell>
                     <TableCell>{formatDateTimeIST(row.submittedAt)}</TableCell>
@@ -291,10 +291,10 @@ export default async function AdminStudentDetailPage({
                       {row.adminName} · {row.actionType}
                     </p>
                     <p className="text-muted-foreground">
-                      Reason: {row.reason?.trim() || "—"}
+                      Reason: {row.reason?.trim() || "-"}
                     </p>
                     <p className="text-muted-foreground">
-                      Metadata: {row.metadata ? JSON.stringify(row.metadata) : "—"}
+                      Metadata: {row.metadata ? JSON.stringify(row.metadata) : "-"}
                     </p>
                     <p className="text-xs text-muted-foreground">
                       {formatDateTimeIST(row.createdAt)}

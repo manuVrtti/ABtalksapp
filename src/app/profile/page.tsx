@@ -94,7 +94,7 @@ export default async function ProfilePage() {
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Your student profile is not set up yet. Registration will be available
-            soon — for now you can return to the dashboard.
+            soon. For now you can return to the dashboard.
           </p>
           <Link
             href="/dashboard"

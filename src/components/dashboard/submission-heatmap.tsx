@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 type Props = {
   data: HeatmapCell[];
   interactive?: boolean;
-  /** Current dashboard enrollment — preserves ?challenge= when opening /challenge/[day] */
+  /** Current dashboard enrollment: preserves ?challenge= when opening /challenge/[day] */
   challengeEnrollmentId?: string;
 };
 
@@ -35,16 +35,16 @@ function tooltipLabel(cell: HeatmapCell): string {
   const displayDate = formatDateIST(parseCalendarKeyToUtcDate(cell.date));
   switch (cell.status) {
     case "on_time":
-      return `Day ${cell.dayNumber} — On time on ${displayDate}`;
+      return `Day ${cell.dayNumber}: On time on ${displayDate}`;
     case "late":
-      return `Day ${cell.dayNumber} — On time on ${displayDate}`;
+      return `Day ${cell.dayNumber}: On time on ${displayDate}`;
     case "rejected":
-      return `Day ${cell.dayNumber} — Rejected on ${displayDate}`;
+      return `Day ${cell.dayNumber}: Rejected on ${displayDate}`;
     case "missed":
-      return `Day ${cell.dayNumber} — Missed on ${displayDate}`;
+      return `Day ${cell.dayNumber}: Missed on ${displayDate}`;
     case "future":
     default:
-      return `Day ${cell.dayNumber} — Unlocks on ${displayDate}`;
+      return `Day ${cell.dayNumber}: Unlocks on ${displayDate}`;
   }
 }
 
@@ -132,13 +132,13 @@ function TaskMetaSections({ cell }: { cell: HeatmapCell }) {
 function dialogTitle(cell: HeatmapCell): string {
   switch (cell.status) {
     case "missed":
-      return `Day ${cell.dayNumber} — Missed`;
+      return `Day ${cell.dayNumber}: Missed`;
     case "on_time":
-      return `Day ${cell.dayNumber} — On Time`;
+      return `Day ${cell.dayNumber}: On Time`;
     case "late":
-      return `Day ${cell.dayNumber} — On Time`;
+      return `Day ${cell.dayNumber}: On Time`;
     case "rejected":
-      return `Day ${cell.dayNumber} — Submission Rejected`;
+      return `Day ${cell.dayNumber}: Submission Rejected`;
     default:
       return `Day ${cell.dayNumber}`;
   }
@@ -161,7 +161,7 @@ export function SubmissionHeatmap({
   const submittedLabel =
     active?.submittedAt != null
       ? formatDateIST(new Date(active.submittedAt))
-      : "—";
+      : "-";
 
   return (
     <div className="w-full min-w-0">
@@ -344,7 +344,7 @@ export function SubmissionHeatmap({
                             {active.githubUrl}
                           </a>
                         ) : (
-                          "—"
+                          "-"
                         )}
                       </li>
                       <li>
@@ -359,7 +359,7 @@ export function SubmissionHeatmap({
                             {active.linkedinUrl}
                           </a>
                         ) : (
-                          "—"
+                          "-"
                         )}
                       </li>
                     </ul>

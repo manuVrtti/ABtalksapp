@@ -183,7 +183,7 @@ export function DayPage({
       setCopiedPrompt(true);
       setTimeout(() => setCopiedPrompt(false), 2000);
     } catch {
-      toast.error("Could not copy — select the text manually");
+      toast.error("Could not copy. Select the text manually");
     }
   };
 
@@ -363,7 +363,7 @@ export function DayPage({
           >
             {solutionVideoUrl.includes("REPLACE_WITH") ? (
               <p className="text-sm text-muted-foreground">
-                Solution walkthrough video coming soon — check back shortly.
+                Solution walkthrough video coming soon. Check back shortly.
               </p>
             ) : (
               <a
@@ -479,7 +479,7 @@ export function DayPage({
         </CollapsibleSection>
 
         <p className="text-center text-xs text-muted-foreground">
-          Tip: the earlier you finish each day, the more synergy you earn — and
+          Tip: the earlier you finish each day, the more synergy you earn, and
           adding your GitHub + LinkedIn earns even more.
         </p>
 
@@ -500,7 +500,7 @@ export function DayPage({
 
           <div className="space-y-4">
             <p className="text-sm font-medium text-muted-foreground">
-              Add proof (optional — earns more synergy)
+              Add proof (optional, earns more synergy)
             </p>
             <div className="space-y-2">
               <label htmlFor="github-url" className="text-sm font-medium">

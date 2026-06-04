@@ -287,7 +287,7 @@ export function SubmissionFlow({
       </Card>
 
       <p className="text-center text-xs text-muted-foreground">
-        Tip: the earlier you finish each day, the more synergy you earn — and
+        Tip: the earlier you finish each day, the more synergy you earn, and
         adding your GitHub + LinkedIn earns even more.
       </p>
 
@@ -317,7 +317,7 @@ export function SubmissionFlow({
 
             <div className="space-y-4">
               <p className="text-sm font-medium text-muted-foreground">
-                Add proof (optional — earns more synergy)
+                Add proof (optional, earns more synergy)
               </p>
               <div className="space-y-2">
                 <Label htmlFor="githubUrl">GitHub URL</Label>

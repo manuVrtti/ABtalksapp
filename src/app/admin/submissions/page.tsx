@@ -94,7 +94,7 @@ export default async function AdminSubmissionsPage({
                       Open <ExternalLink className="size-3" />
                     </a>
                   ) : (
-                    <span className="text-muted-foreground">—</span>
+                    <span className="text-muted-foreground">-</span>
                   )}
                 </TableCell>
                 <TableCell>
@@ -108,7 +108,7 @@ export default async function AdminSubmissionsPage({
                       Open <ExternalLink className="size-3" />
                     </a>
                   ) : (
-                    <span className="text-muted-foreground">—</span>
+                    <span className="text-muted-foreground">-</span>
                   )}
                 </TableCell>
               </TableRow>

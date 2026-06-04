@@ -81,7 +81,7 @@ export function ClaudeAudienceSlide() {
         Who Is This For?
       </h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Zero to Hero — no prior AI experience needed. Day 1 starts from
+        Zero to Hero: no prior AI experience needed. Day 1 starts from
         scratch.
       </p>
 

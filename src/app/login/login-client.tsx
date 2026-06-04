@@ -186,7 +186,7 @@ export function LoginClient({
             Sign in
           </Button>
           <p className="text-xs text-muted-foreground">
-            Dev mode — use test accounts from seed script
+            Dev mode: use test accounts from seed script
           </p>
         </form>
       ) : null}

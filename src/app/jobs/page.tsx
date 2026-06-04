@@ -50,7 +50,7 @@ export default async function JobsPage() {
 
         {jobs.length === 0 ? (
           <p className="mt-10 text-center text-muted-foreground">
-            No open roles right now — check back soon.
+            No open roles right now. Check back soon.
           </p>
         ) : (
           <ul className="mt-8 grid gap-4">

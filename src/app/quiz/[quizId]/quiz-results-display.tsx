@@ -21,14 +21,14 @@ function feedbackMessage(score: number, max: number): string {
   if (max === 10) {
     if (score >= 9) return "Excellent! 🎉";
     if (score >= 7) return "Great job!";
-    if (score >= 4) return "Good effort — review the explanations below.";
-    return "Keep learning — review the explanations below.";
+    if (score >= 4) return "Good effort. Review the explanations below.";
+    return "Keep learning. Review the explanations below.";
   }
   const pct = max > 0 ? (score / max) * 100 : 0;
   if (pct >= 90) return "Excellent! 🎉";
   if (pct >= 70) return "Great job!";
-  if (pct >= 40) return "Good effort — review the explanations below.";
-  return "Keep learning — review the explanations below.";
+  if (pct >= 40) return "Good effort. Review the explanations below.";
+  return "Keep learning. Review the explanations below.";
 }
 
 export function QuizResultsDisplay({ quiz, questions, userAnswers, score }: Props) {

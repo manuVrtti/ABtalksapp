@@ -155,7 +155,7 @@ export default async function AdminJobDetailPage({ params }: PageProps) {
                         <TableCell>{a.user.email}</TableCell>
                         <TableCell>{formatDateTimeIST(a.createdAt)}</TableCell>
                         <TableCell className="max-w-xs truncate">
-                          {a.note ?? "—"}
+                          {a.note ?? "-"}
                         </TableCell>
                       </TableRow>
                     );
