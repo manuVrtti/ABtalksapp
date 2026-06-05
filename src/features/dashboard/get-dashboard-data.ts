@@ -5,8 +5,7 @@ import type {
   SubmissionStatus,
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { getCurrentDayNumber, IST } from "@/lib/date-utils";
-import { formatInTimeZone } from "date-fns-tz";
+import { getCurrentDayNumber } from "@/lib/date-utils";
 import { resolveDashboardEnrollment } from "@/features/enrollment/resolve-dashboard-enrollment";
 
 export type DashboardDataNoEnrollment = {
@@ -75,13 +74,6 @@ export type DashboardDataWithEnrollment = {
 };
 
 export type DashboardData = DashboardDataNoEnrollment | DashboardDataWithEnrollment;
-
-function sameIstCalendarDay(a: Date, b: Date): boolean {
-  return (
-    formatInTimeZone(a, IST, "yyyy-MM-dd") ===
-    formatInTimeZone(b, IST, "yyyy-MM-dd")
-  );
-}
 
 const MAX_QUIZ_WEEK = 8;
 
@@ -191,21 +183,22 @@ export async function getDashboardData(
     };
   }
 
-  const now = new Date();
-  const submissionsLast2d = await prisma.submission.findMany({
-    where: {
-      userId,
-      enrollmentId: enrollment.id,
-      submittedAt: { gte: new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000) },
-    },
-    select: { submittedAt: true },
-  });
-
-  const isTodayCompleted = submissionsLast2d.some((s) =>
-    sameIstCalendarDay(s.submittedAt, now),
-  );
-
   const currentDay = getCurrentDayNumber(enrollment, enrollment.challenge);
+
+  const todaySubmission =
+    currentDay >= 1
+      ? await prisma.submission.findUnique({
+          where: {
+            enrollmentId_dayNumber: {
+              enrollmentId: enrollment.id,
+              dayNumber: currentDay,
+            },
+          },
+          select: { id: true },
+        })
+      : null;
+
+  const isTodayCompleted = todaySubmission !== null;
   const totalDays = enrollment.challenge.totalDays;
 
   let todayTask: DashboardDataWithEnrollment["todayTask"] = null;
