@@ -146,26 +146,26 @@ export default async function ProfilePage() {
       {claudeBanner.show && claudeBanner.startsAt ? (
         <ClaudeEnrollmentBanner claudeStartsAt={claudeBanner.startsAt} />
       ) : null}
-      <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8">
-        <h1 className="font-display text-2xl font-semibold tracking-tight">Profile</h1>
+      <main className="mx-auto w-full max-w-6xl flex-1 space-y-5 px-4 py-5 sm:space-y-8 sm:py-8">
+        <h1 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">Profile</h1>
 
         <SoundPreferences />
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-5 sm:gap-8 lg:grid-cols-2 lg:items-start">
           <Card>
-            <CardContent className="flex flex-col items-center gap-4 pt-6 text-center sm:flex-row sm:items-start sm:text-left">
-              <Avatar size="lg" className="size-20 text-lg">
+            <CardContent className="flex flex-row items-center gap-3 p-4 text-left sm:items-start sm:gap-4 sm:p-6">
+              <Avatar size="lg" className="size-14 text-base sm:size-20 sm:text-lg">
                 {user.image ? (
                   <AvatarImage src={user.image} alt="" />
                 ) : null}
                 <AvatarFallback>{initials(profile.fullName)}</AvatarFallback>
               </Avatar>
-              <div className="min-w-0 flex-1 space-y-2">
-                <p className="text-2xl font-semibold tracking-tight">
+              <div className="min-w-0 flex-1 space-y-1 sm:space-y-2">
+                <p className="text-lg font-semibold tracking-tight sm:text-2xl">
                   {profile.fullName}
                 </p>
-                <p className="text-sm text-muted-foreground">{user.email}</p>
-                <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
+                <p className="text-xs text-muted-foreground sm:text-sm">{user.email}</p>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   <Badge variant="outline">{userTypeLabel(profile.userType)}</Badge>
                   <Badge variant="secondary">
                     {domainDisplayName(profile.domain)}
@@ -177,14 +177,14 @@ export default async function ProfilePage() {
                   ) : null}
                 </div>
                 {profile.userType === UserType.STUDENT ? (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs text-muted-foreground sm:text-sm">
                     {profile.college}
                     {profile.graduationYear != null
                       ? ` · Class of ${profile.graduationYear}`
                       : null}
                   </p>
                 ) : (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs text-muted-foreground sm:text-sm">
                     {profile.role}
                     {profile.organization ? ` at ${profile.organization}` : null}
                     {profile.yearsExperience != null
@@ -196,25 +196,25 @@ export default async function ProfilePage() {
             </CardContent>
           </Card>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <Card>
-              <CardHeader>
+              <CardHeader className="pb-3 sm:pb-4">
                 <CardTitle>Your information</CardTitle>
                 <CardDescription>
                   Domain and email cannot be changed here.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6">
                 <ProfileForm initialProfile={formDefaults} />
               </CardContent>
             </Card>
 
             <Card>
-              <CardHeader>
+              <CardHeader className="pb-3 sm:pb-4">
                 <CardTitle>Resume</CardTitle>
                 <CardDescription>Visible to you and admins only.</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6">
                 {profile.resumeUrl ? (
                   <Link
                     href={profile.resumeUrl}
@@ -233,14 +233,14 @@ export default async function ProfilePage() {
             </Card>
 
             <Card>
-              <CardHeader>
+              <CardHeader className="pb-3 sm:pb-4">
                 <CardTitle>Refer &amp; Earn</CardTitle>
                 <CardDescription>
                   Share your link with friends. When they sign up using it, they
                   show up here.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-4 sm:p-6">
                 <div className="flex items-center gap-2 rounded-lg border bg-muted/30 p-3">
                   <code className="flex-1 truncate font-mono text-xs md:text-sm">
                     {referralLink}

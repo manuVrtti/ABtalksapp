@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import {
   Clock,
+  Flame,
   GitCommit,
   Share2,
-  Sparkles,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -38,7 +38,7 @@ export function SynergyChip() {
         aria-label="View your synergy"
         className="group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-gradient-to-r from-primary/15 to-violet-500/15 px-2.5 py-1 text-xs font-semibold text-primary shadow-sm transition-colors hover:from-primary/25 hover:to-violet-500/25"
       >
-        <Sparkles
+        <Flame
           className="size-3.5 transition-transform group-hover:scale-110"
           aria-hidden
         />
@@ -53,7 +53,7 @@ export function SynergyChip() {
           <div className="rounded-t-lg bg-gradient-to-br from-primary to-violet-500 px-6 py-8 text-primary-foreground">
             <div className="flex items-center gap-3">
               <div className="flex size-12 items-center justify-center rounded-full bg-white/20">
-                <Sparkles className="size-6" aria-hidden />
+                <Flame className="size-6" aria-hidden />
               </div>
               <div>
                 <p className="font-display text-4xl font-bold tabular-nums leading-none">

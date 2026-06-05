@@ -105,8 +105,8 @@ export function ProfileForm({ initialProfile }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <div className="space-y-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-5">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label>Account type</Label>
         <p className="text-sm font-medium">{userTypeLabel(userType)}</p>
         <p className="text-xs text-muted-foreground">
@@ -114,7 +114,7 @@ export function ProfileForm({ initialProfile }: Props) {
         </p>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label htmlFor="fullName">Full name</Label>
         <Input id="fullName" autoComplete="name" {...register("fullName")} />
         {errors.fullName ? (
@@ -124,7 +124,7 @@ export function ProfileForm({ initialProfile }: Props) {
 
       {userType === "STUDENT" ? (
         <>
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="college">College</Label>
             <Input id="college" {...register("college")} />
             {"college" in errors && errors.college ? (
@@ -132,7 +132,7 @@ export function ProfileForm({ initialProfile }: Props) {
             ) : null}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="graduationYear">Graduation year</Label>
             <Input
               id="graduationYear"
@@ -150,7 +150,7 @@ export function ProfileForm({ initialProfile }: Props) {
         </>
       ) : (
         <>
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="organization">Organization</Label>
             <Input id="organization" {...register("organization")} />
             {"organization" in errors && errors.organization ? (
@@ -160,7 +160,7 @@ export function ProfileForm({ initialProfile }: Props) {
             ) : null}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="role">Role</Label>
             <Input id="role" {...register("role")} />
             {"role" in errors && errors.role ? (
@@ -168,7 +168,7 @@ export function ProfileForm({ initialProfile }: Props) {
             ) : null}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="yearsExperience">Years of experience</Label>
             <Input
               id="yearsExperience"
@@ -186,7 +186,7 @@ export function ProfileForm({ initialProfile }: Props) {
         </>
       )}
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label>Skills (max 10)</Label>
         <div className="flex flex-wrap gap-2">
           {skills.map((s) => (
@@ -230,7 +230,7 @@ export function ProfileForm({ initialProfile }: Props) {
         ) : null}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label htmlFor="linkedinUrl">LinkedIn URL (optional)</Label>
         <Input
           id="linkedinUrl"
@@ -245,7 +245,7 @@ export function ProfileForm({ initialProfile }: Props) {
         ) : null}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label htmlFor="phone">Phone Number</Label>
         <Input
           id="phone"
@@ -262,7 +262,7 @@ export function ProfileForm({ initialProfile }: Props) {
         ) : null}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label htmlFor="githubUsername">GitHub username (optional)</Label>
         <Input
           id="githubUsername"
@@ -277,7 +277,7 @@ export function ProfileForm({ initialProfile }: Props) {
         ) : null}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <Label htmlFor="resumeUrl">Resume Link</Label>
         <Input
           id="resumeUrl"
