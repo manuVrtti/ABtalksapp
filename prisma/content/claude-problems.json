@@ -533,85 +533,119 @@
     }
   },
   {
-    "dayNumber": 6,
-    "domain": "CLAUDE",
-    "title": "Day 6: Knowledge Checkpoint",
-    "problemStatement": "Welcome to **Day 6** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** A quick knowledge checkpoint. Five days in — let’s lock the basics before we accelerate.\n\n**Tasks:**\n1. Take the Day 6 MCQ on Days 1–5 concepts (released on abtalks.in).\n2. Revisit any concept you got wrong using your own Claude chat.\n3. Post one key thing you learned in the first week.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
-    "learningObjectives": [
-      "Apply Day 6 concepts to your real role or studies",
-      "Build repeatable prompts you can reuse after the challenge",
-      "Practice safe, reviewable AI workflows"
-    ],
-    "resources": [
-      "https://claude.ai",
-      "https://docs.anthropic.com",
-      "https://www.anthropic.com/claude"
-    ],
+  "dayNumber": 6,
+  "domain": "CLAUDE",
+  "title": "Day 6: AI Resume Optimizer",
+  "problemStatement": "Welcome to Day 6 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1 — Practical AI Applications\n\nToday's focus: Learn how Claude can act as an ATS Expert, Resume Writer, Technical Recruiter, and Hiring Manager to transform your resume into a recruiter-friendly, ATS-optimized document.\n\nTasks:\n1. Understand ATS optimization fundamentals.\n2. Upload your existing resume to Claude.\n3. Use the provided Resume Optimizer prompt.\n4. Generate an ATS-optimized one-page resume.\n5. Compare before vs after versions.\n6. Install and explore NoteGPT.\n7. Share your learning publicly.\n\nIf you do not have a resume, Claude should first ask for the necessary details and then generate one from scratch.\n\nSubmission: Share your GitHub commit URL containing your Day 6 work and learning notes.",
+  "learningObjectives": [
+    "Understand ATS optimization fundamentals",
+    "Learn how recruiters evaluate resumes",
+    "Improve resume structure and readability using AI",
+    "Generate a professional one-page ATS-friendly resume",
+    "Explore NoteGPT as a learning and productivity tool"
+  ],
+  "resources": [
+    "https://www.geeksforgeeks.org/blogs/what-is-prompt-engineering-the-ai-revolution/",
+    "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+  ],
+  "difficulty": "Beginner",
+  "estimatedMinutes": 45,
+  "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as an ATS Expert and Resume Reviewer.\n\nI uploaded my resume and Claude analyzed it like a recruiter.\n\nThe result?\n\n✅ Better formatting\n✅ Stronger bullet points\n✅ Improved ATS compatibility\n✅ More recruiter-friendly structure\n\nAI isn't just for coding or content.\nIt can help you present yourself better too.\n\n#ATSResume #ClaudeAI #ABTalksOnAI",
+  "solutionApproach": "Submit a GitHub commit URL containing your original resume, optimized resume, ATS analysis, screenshots, and learnings.",
+  "tags": [
+    "claude",
+    "day-6",
+    "resume",
+    "ats",
+    "career",
+    "beginner"
+  ],
+  "dayContent": {
+    "title": "AI Resume Optimizer",
+    "tagline": "Turn your resume into a recruiter-ready asset",
+    "module": "Practical AI Applications",
     "difficulty": "Beginner",
-    "estimatedMinutes": 25,
-    "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nFive days in — took the knowledge checkpoint today. The basics of prompt engineering are clicking.\n\nWhat’s the one prompt habit that changed how you use AI? 👇\n\n#60DayClaudeChallenge #ABtalks",
-    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
-    "tags": [
-      "claude",
-      "day-6",
-      "checkpoint",
-      "beginner"
-    ],
-    "dayContent": {
-      "title": "Knowledge Checkpoint",
-      "tagline": "Lock in the basics from Days 1–5",
-      "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
-      "difficulty": "Beginner",
-      "estimatedMinutes": 25,
-      "deliverableFormat": "GitHub commit URL",
-      "learning": {
-        "summary": "Today is a review day. No new technique — just consolidation. You’ll take a short MCQ on everything from setup through context management, then revisit the topics you got wrong.",
-        "bullets": [
-          {
-            "label": "Setup",
-            "text": "Claude desktop install, Projects, and Artifacts."
-          },
-          {
-            "label": "Prompt Engineering",
-            "text": "what it is and the normal vs engineered shift."
-          },
-          {
-            "label": "Role-Based Prompting",
-            "text": "act-as personas, tone, and the “3 risks” trick."
-          },
-          {
-            "label": "Chain-of-Thought",
-            "text": "step-by-step reasoning, verification, FINAL ANSWER."
-          },
-          {
-            "label": "Context Management",
-            "text": "framing goals and constraints to get realistic, actionable answers."
-          }
-        ]
-      },
-      "task": {
-        "title": "Your Task",
-        "steps": [
-          "Open the Day 6 MCQ on abtalks.in and complete it honestly (no Googling — it’s for you).",
-          "For every question you got wrong, open Claude and ask it to explain the concept again with an example.",
-          "Update your personal prompt log: which technique do you want to use more this week?",
-          "Post one thing you genuinely learned in the first 5 days."
-        ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
-      },
-      "promptTemplate": "I just finished Days 1–5 of the 60-Day Claude AI Challenge: setup, prompt engineering, role-based prompting, chain-of-thought, and context management.\n\nQuiz me with 5 mixed multiple-choice questions covering these topics. Make 2 of them tricky.\nAfter my answers, give me:\n1. Which I got right / wrong\n2. A 1-line explanation of every concept I missed\n3. One practical exercise to reinforce my weakest area.",
-      "engagement": {
-        "type": "Week-1 Reflection",
-        "description": "Post one prompt habit you’ve built in the first 5 days that you wouldn’t have had a week ago. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
-        "hashtag": "#60DayClaudeChallenge",
-        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
-      },
-      "deliverable": {
-        "description": "Push your Week-1 reflection note to your repo as a markdown file. Submit the commit URL.",
-        "format": "GitHub commit URL"
-      }
+    "estimatedMinutes": 45,
+    "deliverableFormat": "GitHub commit URL",
+
+    "learning": {
+      "summary": "A resume is often your first interaction with a recruiter. ATS systems scan resumes before a human sees them. Claude can help improve formatting, readability, keyword optimization, and recruiter appeal while keeping every claim truthful.",
+      "bullets": [
+        {
+          "label": "ATS Optimization",
+          "text": "Improve resume structure for better parsing by Applicant Tracking Systems."
+        },
+        {
+          "label": "Recruiter Readability",
+          "text": "Make achievements easier to understand and evaluate."
+        },
+        {
+          "label": "Professional Branding",
+          "text": "Present your skills and projects more effectively."
+        },
+        {
+          "label": "Career Readiness",
+          "text": "Create a polished resume suitable for internships and job applications."
+        }
+      ]
+    },
+
+    "task": {
+      "title": "Your Task",
+      "steps": [
+        "Read the provided resources.",
+        "Open Claude and start a new conversation.",
+        "Upload your resume.",
+        "Use the provided Resume Optimizer prompt.",
+        "Review the ATS analysis generated by Claude.",
+        "Generate the optimized one-page resume.",
+        "Save the optimized version.",
+        "If you do not have a resume, allow Claude to collect the required details and generate one for you.",
+        "Create a Day6 folder in your GitHub repository.",
+        "Create a day6.md file.",
+        "Document your original resume, optimized resume, screenshots, and key learnings.",
+        "Commit and push the changes.",
+        "Submit the GitHub commit URL."
+      ],
+      "solutionVideoUrl": "https://www.youtube.com/watch?v=BcOxxyrOZ-g&feature=youtu.be"
+    },
+
+    "promptTemplate": "You are an ATS optimization expert and resume writer.\n\nRewrite my resume (text or image below) for maximum ATS parsing and recruiter readability, keeping every claim truthful to the source.\n\nIf I paste a job description, align keywords to it; otherwise optimize for my field.\n\nIf I do not provide a resume, first ask me for the details required to create one.\n\nOutput EXACTLY two parts, nothing else:\n\nPART 1 — ATS SCORE (keep short, no full report)\n\n- Previous Score: __/100\n- Optimized Score: __/100\n- 5–8 bullets, each stating what you changed and why it raised the score.\n\nPART 2 — FINAL RESUME\n\nGenerate the optimized resume and provide it in a PDF-ready one-page A4 format.\n\nFormatting:\n- Single column\n- No tables, columns, icons, images, or text boxes\n- Name large and bold\n- Contact directly under it as plain text\n- ATS-friendly section headings\n- Professional Summary\n- Education\n- Experience\n- Projects\n- Skills\n- Certifications (if present)\n\nRules:\n- Use ONLY information from the resume.\n- Never invent achievements, projects, skills, certifications, experience, or metrics.\n- If information is missing, suggest improvements instead of fabricating details.\n- Use strong action verbs.\n- Remove redundancy.\n- Keep everything truthful.\n- Must fit on ONE A4 page.\n- Optimize for ATS and recruiter readability.\n\nIf no resume is uploaded, ask for:\n- Name\n- Contact Information\n- Education\n- Experience\n- Projects\n- Skills\n- Certifications\n- Target Field\n\nThen generate the resume.",
+
+    "engagement": {
+      "type": "Before vs After Resume",
+      "description": "Share a screenshot of your ATS analysis and one improvement you discovered while optimizing your resume. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+      "hashtag": "#60DayClaudeChallenge",
+      "mentions": [
+        "@AnilBajpai",
+        "@ABTalksOnAI",
+        "@Anthropic"
+      ]
+    },
+
+    "deliverable": {
+      "description": "Upload a markdown file containing your ATS analysis, resume screenshots, optimized resume, and key learnings.",
+      "format": "GitHub commit URL"
+    },
+
+    "tool": {
+      "name": "NoteGPT",
+      "type": "Chrome Extension",
+      "description": "NoteGPT helps summarize YouTube videos, articles, PDFs, and web content using AI, making learning faster and more efficient.",
+      "setupTitle": "How to set up NoteGPT",
+      "setupSteps": [
+        "Open the Chrome Web Store link.",
+        "Click 'Add to Chrome'.",
+        "Pin the extension to your browser toolbar.",
+        "Open a YouTube video.",
+        "Use NoteGPT to generate summaries and notes.",
+        "Explore AI-powered learning features."
+      ],
+      "linkUrl": "https://chromewebstore.google.com/detail/notegpt-youtube-summary-c/baecjmoceaobpnffgnlkloccenkoibbb",
+      "linkLabel": "Get NoteGPT"
     }
-  },
+  }
+},
   {
     "dayNumber": 7,
     "domain": "CLAUDE",
