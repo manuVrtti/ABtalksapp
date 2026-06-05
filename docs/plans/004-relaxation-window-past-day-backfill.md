@@ -7,6 +7,18 @@ submissions count as `ON_TIME`, turn the heatmap cell green, and heal the
 current streak automatically. No opt-in, no admin gating, retroactive for any
 existing gaps that fall inside the current window.
 
+**Entry point:** the heatmap is the canonical way to reach a past day. Clicking
+a missed cell:
+- **Inside the window** → opens the existing dialog with the problem statement
+  AND a primary "Submit now" CTA that navigates to `/challenge/[day]` (which
+  renders the submission flow with the catch-up banner).
+- **Outside the window** → opens the same dialog with the problem statement
+  read-only (current behavior — no submit CTA).
+
+In-window missed cells also get a distinct visual cue on the grid (a ring/dot
+over the existing red fill) so users discover the affordance without clicking
+every cell.
+
 ## 2. Current behavior
 - `getCurrentDayNumber(enrollment, challenge)` ([src/lib/date-utils.ts:86](src/lib/date-utils.ts:86)) returns today's challenge day (1–60) in IST.
 - `assertPastDaySubmittable(enrollment, dayNumber, challenge)` ([src/features/submission/submit-day.ts:17](src/features/submission/submit-day.ts:17)) currently allows a past-day submission ONLY if:
@@ -17,8 +29,9 @@ existing gaps that fall inside the current window.
 - `challenge/[day]/page.tsx:178-186` ([src/app/challenge/[day]/page.tsx:178](src/app/challenge/%5Bday%5D/page.tsx:178)) redirects to dashboard with `toast=past-missed` whenever `day < currentDayNumber && !existingSubmission && !hasRejectResubmit`. This blocks the UI from ever rendering the submission flow for a missed past day.
 - `computeStreakStats` ([src/features/submission/streak-utils.ts](src/features/submission/streak-utils.ts)) treats ANY `Submission` row as a completed day (status-agnostic). So once a backfill row exists, the streak/longestStreak auto-recompute correctly.
 - `getHeatmapData` ([src/features/dashboard/get-heatmap-data.ts:195](src/features/dashboard/get-heatmap-data.ts:195)) maps both `ON_TIME` and `LATE` submissions to heatmap status `"on_time"` (green). So a backfilled row with status `ON_TIME` renders green with no UI change.
+- `SubmissionHeatmap` ([src/components/dashboard/submission-heatmap.tsx](src/components/dashboard/submission-heatmap.tsx)) is a Client component that renders a 60-cell grid of `<button>`s. `isClickable` (line 51) makes everything except `future` cells clickable. Clicking opens a `Dialog` (line 230) that already shows the problem statement for missed days with the message *"You missed this day. Submissions are no longer accepted, but you can review the problem statement to help with later tasks."* (line 288-293). The dialog footer has a `Resubmit` CTA for rejected cells (line 371-383) but no equivalent for missed cells — so today there is no UI path from a missed cell into the submission flow.
 
-Conclusion: the schema, streak math, and heatmap already do the right thing for backfilled rows. The change is purely in the **gates** (assert helper + wrong_day check + UI redirect) plus a new helper that defines the window.
+Conclusion: the schema, streak math, and heatmap colour logic already do the right thing for backfilled rows. The change is in the **gates** (assert helper + wrong_day check + URL redirect) plus a new helper that defines the window, plus the heatmap entry-point (new `isRelaxable` field + dialog CTA + distinct visual on the grid).
 
 ## 3. Files to touch
 
@@ -28,14 +41,16 @@ Conclusion: the schema, streak math, and heatmap already do the right thing for 
 | `src/features/challenge/get-day-data.ts` | [edit] | Add `isRelaxable: boolean` to the returned shape (true when the requested day is a past missed day inside the relaxation window). Reuse the new helper — do NOT duplicate the math. |
 | `src/app/challenge/[day]/page.tsx` | [edit] | In the past-missed redirect (`day < currentDayNumber && !existingSubmission && !hasRejectResubmit`), add `&& !data.isRelaxable`. When `isRelaxable`, render the existing `SubmissionFlow` / `DayPage` as if it were today's task. |
 | `src/components/challenge/submission-flow.tsx` *(or the file currently rendering the day-1 submit form — confirm exact path before edit)* | [edit] | When `isRelaxable === true`, show a small inline banner above the form: "Catch-up: you're submitting for a past day in your 5-day relaxation window. This will mark Day N green and heal your streak." Pure presentational; no logic change to the submit calls. |
+| `src/features/dashboard/get-heatmap-data.ts` | [edit] | Add `isRelaxable: boolean` to the `HeatmapCell` type and populate it for each cell (true iff `status === "missed"` and `isWithinRelaxationWindow(currentDay, dayNumber)`). `currentDay` is already computed at line 180 — reuse it. **Do NOT add a new `HeatmapCellStatus` value.** |
+| `src/components/dashboard/submission-heatmap.tsx` | [edit] | Two changes: (a) when a cell has `status === "missed"` and `isRelaxable === true`, add a yellow/amber ring to the red cell button so it's distinguishable in the grid; (b) in the dialog body and footer for missed cells, branch on `active.isRelaxable` — when true, show updated copy ("Catch-up window: you can still submit this day…") and a primary "Submit now" CTA `<Link>` to `/challenge/[dayNumber]?challenge=…` (mirror the existing `Resubmit` Link pattern at line 371-383). When false, keep the current message and no CTA. |
 | `src/app/actions/submission-actions.ts` | (no edit) | Already calls `assertPastDaySubmittable`. The helper change covers both `submitGithubStepAction` and the downstream `submitDay`. |
-| `src/features/dashboard/get-heatmap-data.ts` | (no edit) | `ON_TIME` rows already render green. |
 | `src/features/submission/streak-utils.ts` | (no edit) | Already status-agnostic — auto-heals when a row appears. |
 | `prisma/schema.prisma` | (no edit) | **No schema change.** No new enum value, no new column. Reuses `SubmissionStatus.ON_TIME`. |
 
 ## 4. Server vs Client
-- `submit-day.ts`, `get-day-data.ts`, `submission-actions.ts`, `challenge/[day]/page.tsx` — **Server** (existing). No boundary change.
+- `submit-day.ts`, `get-day-data.ts`, `submission-actions.ts`, `challenge/[day]/page.tsx`, `get-heatmap-data.ts` — **Server** (existing). No boundary change.
 - `submission-flow.tsx` (Client, existing `"use client"`) — receives a new boolean prop `isRelaxable` from the Server parent. Primitive boolean is safe across the boundary; no functions/icons/class instances passed.
+- `submission-heatmap.tsx` (Client, existing `"use client"`) — already receives `HeatmapCell[]` (plain data) from the Server dashboard page. The new `isRelaxable: boolean` on each cell is a primitive — safe to serialize across the boundary.
 - No new Client components.
 
 ## 5. Steps (file-by-file, ordered)
@@ -126,8 +141,46 @@ In `src/app/challenge/[day]/submission-flow.tsx` (Client component):
 
 - No new state, no extra action; the existing `submitGithubStepAction` → `submitLinkedinStepAction` flow handles the submission. The server path (Steps 1–3) does the gating.
 
-### Step 7 — (Optional, defer if not asked) Heatmap "catch-up" affordance
-Out of scope for this plan. If desired later: make missed-day heatmap cells inside the relaxation window visually distinct (e.g. dashed border) and clickable to deep-link into the day page. Today, missed cells are already clickable in some views — verify before adding.
+### Step 7 — Expose `isRelaxable` from the heatmap data source
+In `src/features/dashboard/get-heatmap-data.ts`:
+- Import `isWithinRelaxationWindow` from `@/features/submission/submit-day`.
+- Add `isRelaxable: boolean` to the `HeatmapCell` type (alongside `status`, before the task metadata fields).
+- In the cell-builder loop (line 183-234), compute `const isRelaxable = status === "missed" && isWithinRelaxationWindow(currentDay, dayNumber);` and include it in the pushed object.
+- **Do NOT** add a new `HeatmapCellStatus` value (e.g. `"missed_relaxable"`). Adding a status forces every consumer — legend, color map, dialog branches, admin views if any — to handle it. A separate boolean is additive and ignored by code that doesn't need it.
+
+### Step 8 — Heatmap grid: distinct visual for in-window missed cells
+In `src/components/dashboard/submission-heatmap.tsx`:
+- In the cell `<button>` className (around line 185-192), append a conditional ring class when `cell.status === "missed" && cell.isRelaxable`. Suggested: `"ring-2 ring-amber-400 ring-offset-1 ring-offset-background dark:ring-amber-500"`. Keep the existing `bg-red-500` fill — do NOT change the background. The ring is the cue; the cell is still missed.
+- Update `tooltipLabel` (line 34) to return a different string for relaxable missed cells, e.g. `"Day N — Missed, but still in catch-up window (submit by [date])"`. The expiry date is the IST calendar date for `dayNumber + 4` — compute via the existing `getIstDateKeyForChallengeDay` helper if needed, or simplify to just "still catchable" if the date math is awkward.
+- Add an entry to the legend `<ul>` (line 199-228) for the new visual: a small red square with the amber ring + label "Missed — catch up".
+
+### Step 9 — Heatmap dialog: branch missed-cell content on `isRelaxable`
+In the same file, inside the dialog body (around line 288-293):
+- When `active.status === "missed" && active.isRelaxable`: replace the current "Submissions are no longer accepted" banner with something like *"You're inside the 5-day catch-up window. Submit GitHub + LinkedIn now to mark this day green and heal your streak."* Use the same `rounded-lg border border-amber-400/60 bg-amber-50 dark:bg-amber-950/40` styling pattern.
+- When `active.status === "missed" && !active.isRelaxable`: keep the existing message unchanged.
+
+In the dialog footer (around line 370-387), add a "Submit now" CTA `<Link>` that mirrors the existing "Resubmit" pattern:
+
+```tsx
+{active.status === "missed" && active.isRelaxable ? (
+  <Link
+    href={
+      challengeEnrollmentId
+        ? `/challenge/${active.dayNumber}?challenge=${encodeURIComponent(challengeEnrollmentId)}`
+        : `/challenge/${active.dayNumber}`
+    }
+    className={cn(buttonVariants({ variant: "default" }))}
+    onClick={() => setOpen(false)}
+  >
+    Submit now
+  </Link>
+) : null}
+```
+
+Place it BEFORE the existing rejected `Resubmit` block (or beside it — they are mutually exclusive states so order doesn't matter for layout). Keep the `Close` button as-is.
+
+### Step 10 — Sanity-check `currentDayNumber` plumbing
+The dashboard page that mounts `<SubmissionHeatmap>` already loads `getHeatmapData(enrollmentId, ...)`. The new `isRelaxable` is computed server-side inside that helper, so the dashboard call sites need NO changes. Confirm `src/app/dashboard/page.tsx` (and any other consumer of `getHeatmapData`) still compiles and that no consumer destructures the `HeatmapCell` type in a way that breaks when a new field is added (it shouldn't — additive change).
 
 ## 6. Guardrails for Cursor (DO NOT)
 - **DO NOT** add a new `Submission` status (e.g. `RELAXED`). Reuse `ON_TIME`. Adding an enum value is a Postgres-level migration and changes streak/heatmap/leaderboard semantics in non-obvious ways.
@@ -140,6 +193,10 @@ Out of scope for this plan. If desired later: make missed-day heatmap cells insi
 - **DO NOT** introduce a feature flag, env var, or admin toggle. Always on for all active enrollments.
 - **DO NOT** create new files for the helper. It lives inline in `submit-day.ts` next to the other gates.
 - **DO NOT** touch `middleware.ts` or `auth.config.ts`. No edge-bundle risk.
+- **DO NOT** add a new `HeatmapCellStatus` enum value for "missed but catchable." Use a separate `isRelaxable: boolean` field on `HeatmapCell`. New enum values cascade into the legend, color map, admin views, public profile rendering, and any future filters.
+- **DO NOT** change the heatmap cell's background colour for in-window missed cells. They are still missed (no submission row exists). The amber ring is the affordance; turning the cell green pre-submit would lie to the user.
+- **DO NOT** embed the submission flow inside the dialog. Use a `<Link>` CTA to `/challenge/[day]` (the dialog already mirrors this pattern for rejected days via "Resubmit"). Embedding requires extracting `SubmissionFlow` from the page-level layout and replicating Server-side data fetching client-side — out of scope and risky.
+- **DO NOT** make `future` cells clickable. The existing `isClickable` check at line 51 already excludes them; leave it.
 
 ## 7. DB safety
 Not applicable — no schema changes, no migrations, no seed changes. Skip the Neon-branch step.
@@ -164,13 +221,27 @@ Not applicable — no schema changes, no migrations, no seed changes. Skip the N
 | Any user | Backfill same day twice via direct action call with different GitHub URLs | Second call upserts (existing behavior, no regression) | Pass |
 | Any user | Backfill with a URL already used by another student | Returns `duplicate` error (existing behavior) | Pass |
 
+### Heatmap entry-point test cases
+| User | Action | Expected |
+|---|---|---|
+| Vikram (Day 15) | Open dashboard, hover Day 12 cell (assume missed) | Tooltip says "Day 12 — Missed, but still in catch-up window…". Cell shows red fill **with amber ring**. |
+| Vikram | Click Day 12 (in-window missed) cell | Dialog opens with amber "catch-up window" banner + problem statement + **"Submit now"** primary CTA in footer. |
+| Vikram | Click "Submit now" in the dialog | Navigates to `/challenge/12?challenge=…`; submission flow renders with the catch-up banner from Step 6. |
+| Vikram | Click Day 10 cell (out-of-window missed) | Dialog opens with the **existing** "Submissions are no longer accepted" message + problem statement. **No** "Submit now" CTA. **No** amber ring on the grid cell either. |
+| Vikram | Click Day 5 cell (on-time, completed) | Dialog opens with existing on-time view (GitHub + LinkedIn links). Unchanged. |
+| Vikram | Click a `future` cell | Click is a no-op (button disabled). Unchanged. |
+| Karan (Day 45, missed Day 42) | After backfilling Day 42 via the CTA flow above, return to dashboard | Day 42 cell is now solid green (no ring). Day 41 cell (if also missed and in-window) still has amber ring. |
+| Heatmap legend | Inspect legend strip | New entry "Missed — catch up" with red square + amber ring is present. |
+
 ### Files that should have changed
 - `src/features/submission/submit-day.ts`
 - `src/features/challenge/get-day-data.ts`
 - `src/app/challenge/[day]/page.tsx`
 - `src/app/challenge/[day]/submission-flow.tsx`
+- `src/features/dashboard/get-heatmap-data.ts`
+- `src/components/dashboard/submission-heatmap.tsx`
 
-Nothing else. If `git diff --name-only` shows extra files (schema, migrations, streak-utils, heatmap, leaderboard, admin), STOP and review.
+Nothing else. If `git diff --name-only` shows extra files (schema, migrations, streak-utils, leaderboard, admin), STOP and review.
 
 ### Latent-bug note (out-of-scope, mention in PR description)
 The pre-existing `wrong_day` gate in `submit-day.ts:140-152` blocks reject-resubmits today (the user always submits on a different IST date than the original scheduled day). Step 3's fix incidentally repairs that path. If reject-resubmits worked in practice, it means either (a) admins reject submissions on the same IST day the resubmit happens, or (b) the path is rarely exercised. Either way, the new gate logic is strictly more permissive for past days and matches the documented business rules in `docs/project-context.md` §5.
@@ -178,13 +249,18 @@ The pre-existing `wrong_day` gate in `submit-day.ts:140-152` blocks reject-resub
 ## 9. Commit message
 
 ```
-feat(submission): add 5-day rolling relaxation window for past-day backfill
+feat(submission): add 5-day rolling relaxation window with heatmap entry-point
 
 Students can now submit for missed days within the last 5 calendar days
 (today + previous 4). Backfilled rows are stored as ON_TIME, render green on
 the heatmap, and heal currentStreak via the existing status-agnostic streak
-recomputation. No schema change; gated entirely in submit-day.ts and the
-challenge day page.
+recomputation. No schema change; gated in submit-day.ts and the challenge
+day page.
+
+The heatmap now surfaces this affordance: in-window missed cells get an
+amber ring, and the cell dialog gains a "Submit now" CTA that deep-links to
+/challenge/[day]. Out-of-window missed cells keep the existing read-only
+problem-statement view.
 
 Side-effect: also unblocks admin reject-resubmits, which the prior wrong_day
 gate was incorrectly rejecting.
