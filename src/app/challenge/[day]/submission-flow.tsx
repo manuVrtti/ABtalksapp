@@ -35,13 +35,31 @@ type Props = {
   enrollmentId?: string;
   task: Pick<DailyTask, "title" | "problemStatement">;
   userDomain: Domain;
+  isRelaxable?: boolean;
 };
+
+function RelaxationBanner({ dayNumber }: { dayNumber: number }) {
+  return (
+    <div
+      role="status"
+      className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-100"
+    >
+      <p className="font-medium">Catch-up day</p>
+      <p className="mt-1 text-amber-900/90 dark:text-amber-100/90">
+        You&apos;re submitting for Day {dayNumber}, a past day inside your
+        5-day relaxation window. This will mark Day {dayNumber} green on your
+        heatmap and heal your current streak.
+      </p>
+    </div>
+  );
+}
 
 export function SubmissionFlow({
   dayNumber,
   enrollmentId,
   task,
   userDomain,
+  isRelaxable = false,
 }: Props) {
   const [step, setStep] = useState<"github" | "linkedin" | "success">("github");
   const [githubUrl, setGithubUrl] = useState("");
@@ -403,6 +421,7 @@ export function SubmissionFlow({
 
   return (
     <div className="space-y-6">
+      {isRelaxable ? <RelaxationBanner dayNumber={dayNumber} /> : null}
       <Card>
         <CardHeader>
           <CardTitle>{task.title}</CardTitle>

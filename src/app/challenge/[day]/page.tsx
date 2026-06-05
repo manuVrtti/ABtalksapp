@@ -178,7 +178,8 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
   if (
     !data.existingSubmission &&
     day < data.currentDayNumber &&
-    !data.hasRejectResubmit
+    !data.hasRejectResubmit &&
+    !data.isRelaxable
   ) {
     redirect(
       `/dashboard?toast=past-missed&challenge=${encodeURIComponent(data.enrollment.id)}`,
@@ -302,6 +303,7 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
               problemStatement: data.task.problemStatement,
             }}
             userDomain={data.enrollment.domain}
+            isRelaxable={data.isRelaxable}
           />
         </>
       )}
