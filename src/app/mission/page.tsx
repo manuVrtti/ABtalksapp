@@ -113,7 +113,7 @@ export default async function MissionPage() {
               </div>
               <h3 className="font-display font-semibold">Enroll in a challenge</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                start by enrolling in a challenge.
+                Start by enrolling in the challenge.
               </p>
             </article>
             <article className="relative overflow-hidden rounded-2xl border bg-card p-5 shadow-sm">
