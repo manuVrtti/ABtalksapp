@@ -647,82 +647,122 @@
   }
 },
   {
-    "dayNumber": 7,
-    "domain": "CLAUDE",
-    "title": "Day 7: ATS-Friendly Resume Building",
-    "problemStatement": "Welcome to **Day 7** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2 — Career & Communication\n\n**Today's focus:** Build an ATS-friendly CV — fresher version, experienced version, or both.\n\n**Tasks:**\n1. Use the Fresher prompt if you’re a student/early-career, the Experienced prompt if you’re mid/senior.\n2. Paste your real details (or rough notes) and let Claude rebuild your CV.\n3. Tighten the result, export as PDF, and share it.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
-    "learningObjectives": [
-      "Apply Day 7 concepts to your real role or studies",
-      "Build repeatable prompts you can reuse after the challenge",
-      "Practice safe, reviewable AI workflows"
-    ],
-    "resources": [
-      "https://claude.ai",
-      "https://docs.anthropic.com",
-      "https://www.anthropic.com/claude"
-    ],
-    "difficulty": "Intermediate",
-    "estimatedMinutes": 50,
-    "linkedinTemplate": "Day 7/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Resume Building): rebuilt my CV the ATS-friendly way — strong action verbs, measurable impact, recruiter-friendly format.\n\nWhat’s the one section recruiters scan first on your resume? 👇\n\n#60DayClaudeChallenge #ABtalks",
-    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
-    "tags": [
-      "claude",
-      "day-7",
-      "resume",
-      "ats",
-      "intermediate"
-    ],
-    "dayContent": {
-      "title": "ATS-Friendly Resume Building",
-      "tagline": "A clean, keyword-rich CV that actually passes the scan",
-      "module": "Module 2 — Career & Communication",
-      "difficulty": "Intermediate",
-      "estimatedMinutes": 50,
-      "deliverableFormat": "GitHub commit URL",
-      "learning": {
-        "summary": "ATS (Applicant Tracking System) software scans your resume before any human sees it. Today you’ll learn to write a CV that survives the scan AND impresses the recruiter — with the right keywords, measurable impact, and clean formatting.",
-        "bullets": [
-          {
-            "label": "Strong action verbs",
-            "text": "“Built, shipped, automated” — not “responsible for, helped with.”"
-          },
-          {
-            "label": "Measurable impact",
-            "text": "every bullet should show a number, percentage, or scale where possible."
-          },
-          {
-            "label": "ATS keywords",
-            "text": "mirror the language used in real job descriptions for your target role."
-          },
-          {
-            "label": "Clean format",
-            "text": "no tables, no images, no fancy fonts — simple wins."
-          }
-        ]
-      },
-      "task": {
-        "title": "Your Task",
-        "steps": [
-          "Pick the right prompt for you below (Fresher or Experienced).",
-          "Paste your current resume content (or rough notes) into Claude with the prompt.",
-          "Refine the output: tighten weak bullets, add real numbers wherever you can.",
-          "Export the final version as a clean PDF and share a snippet on LinkedIn."
-        ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
-      },
-      "promptTemplate": "=== FRESHER / STUDENT VERSION ===\nAct as an expert resume writer and ATS optimization specialist.\nCreate an ATS-friendly one-page CV for a fresher/student targeting software engineering, AI/ML, or data science roles.\nHighlight projects, internships, certifications, technical skills, and academic achievements using strong action verbs and measurable impact.\nInclude ATS-friendly keywords, a professional summary, clean formatting, and recruiter-friendly bullet points.\nKeep the layout simple, modern, and optimized for internship and entry-level hiring.\n\n=== EXPERIENCED / MID-SENIOR VERSION ===\nAct as a senior resume strategist and ATS optimization expert.\nCreate a professional ATS-friendly CV for an experienced candidate targeting mid/senior-level roles in software engineering, AI engineering, or data science.\nEmphasize work experience, leadership, technical expertise, business impact, achievements, and measurable results using quantified bullet points.\nInclude industry-relevant keywords, a strong professional summary, core competencies, project highlights, certifications, and ATS-safe formatting optimized for recruiter screening and high interview conversion.",
-      "engagement": {
-        "type": "Resume Showcase",
-        "description": "Share a snippet of your new resume (blur the personal details) and one bullet you rewrote with measurable impact. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
-        "hashtag": "#60DayClaudeChallenge",
-        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
-      },
-      "deliverable": {
-        "description": "Push your ATS-friendly resume to your repo (PDF or markdown). Submit the commit URL.",
-        "format": "GitHub commit URL"
-      }
+"dayNumber": 7,
+"domain": "CLAUDE",
+"title": "Day 7: Claude Model Selection & Reasoning Effort",
+"problemStatement": "Welcome to Day 7 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1 — Claude Fundamentals\n\nToday's focus: Learn how to choose the right Claude model (Haiku, Sonnet, Opus) and the right reasoning effort level (Low, Standard, High, Max) for different tasks.\n\nMany users use Claude without understanding which model is best suited for a particular use case. Today you'll learn how power users optimize both model selection and reasoning effort to get faster, better, and more cost-effective results.\n\nTasks:\n1. Understand the differences between Haiku, Sonnet, and Opus.\n2. Learn when to use Low, Standard, High, and Max effort.\n3. Generate your personalized Claude Usage Strategy.\n4. Install and explore Claude Counter.\n5. Share your learning publicly.\n\nSubmission: Share your GitHub commit URL containing your Claude strategy, screenshots, and learning notes.",
+"learningObjectives": [
+"Understand the differences between Claude Haiku, Sonnet, and Opus",
+"Learn how reasoning effort impacts output quality",
+"Choose the right Claude model for different tasks",
+"Build a personalized Claude workflow",
+"Track Claude usage with Claude Counter"
+],
+"resources": [
+"https://claude.com/resources/tutorials/choosing-the-right-claude-model",
+"https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"
+],
+"difficulty": "Beginner",
+"estimatedMinutes": 30,
+"linkedinTemplate": "Day 7/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I learned something most Claude users never think about.\n\nChoosing the right Claude model is just as important as writing a good prompt.\n\nI explored:\n\n⚡ Haiku\n⚡ Sonnet\n⚡ Opus\n⚡ Low, Standard, High & Max reasoning effort\n\nMy biggest takeaway:\nThe best AI users don't just ask better questions.\nThey use the right model for the right task.\n\n#ClaudeAI #ABTalksOnAI #60DayClaudeChallenge",
+"solutionApproach": "Submit a GitHub commit URL containing your personalized Claude usage strategy, screenshots, and learnings.",
+"tags": [
+"claude",
+"day-7",
+"haiku",
+"sonnet",
+"opus",
+"reasoning",
+"beginner"
+],
+"dayContent": {
+"title": "Claude Model Selection & Reasoning Effort",
+"tagline": "Choose the right model before writing the perfect prompt",
+"module": "Claude Fundamentals",
+"difficulty": "Beginner",
+"estimatedMinutes": 30,
+"deliverableFormat": "GitHub commit URL",
+
+
+"learning": {
+  "summary": "Claude offers different models optimized for different types of work. Understanding when to use Haiku, Sonnet, Opus, and different reasoning effort levels helps you get better outputs while improving efficiency.",
+  "bullets": [
+    {
+      "label": "Haiku",
+      "text": "Best for speed, quick summaries, rewrites, and simple tasks."
+    },
+    {
+      "label": "Sonnet",
+      "text": "Best balance of intelligence, speed, and cost. Ideal for most users."
+    },
+    {
+      "label": "Opus",
+      "text": "Best for deep research, strategy, complex planning, and advanced reasoning."
+    },
+    {
+      "label": "Reasoning Effort",
+      "text": "Low, Standard, High, and Max determine how much thinking Claude performs before answering."
     }
-  },
+  ]
+},
+
+"task": {
+  "title": "Your Task",
+  "steps": [
+    "Read the provided resources.",
+    "Watch the solution video.",
+    "Install Claude Counter.",
+    "Open Claude.",
+    "Use the provided Claude Usage Strategy prompt.",
+    "Answer the questions Claude asks.",
+    "Generate your personalized Claude strategy.",
+    "Take screenshots of the generated workflow.",
+    "Create a Day7 folder in your GitHub repository.",
+    "Create a day7.md file.",
+    "Document your strategy, screenshots, and key learnings.",
+    "Commit and push the changes.",
+    "Submit the GitHub commit URL."
+  ],
+  "solutionVideoUrl": "https://youtu.be/fC27xqNH-7U"
+},
+
+"promptTemplate": "You are a Claude AI Expert, Productivity Consultant, and AI Workflow Architect.\n\nYour goal is to recommend the best Claude model and effort settings for me based on my profile and daily tasks.\n\nFirst ask me these questions:\n\n1. What is your current situation?\n(Student / Professional / Freelancer / Founder)\n\n2. What are your primary activities?\n(Examples: Coding, Content Creation, Learning, Research, Marketing, Resume Building, Career Preparation, Business Planning)\n\n3. How often do you use Claude?\n(Occasionally / Daily / Heavy User)\n\n4. What type of outputs do you need most?\n(Fast Answers / Learning Support / Coding Help / Deep Research / Business Strategy / Creative Work)\n\nAfter collecting my answers:\n\nThink step by step.\n\n1. Analyze my profile.\n2. Analyze my typical use cases.\n3. Identify which Claude model fits me best.\n4. Identify when I should use Haiku, Sonnet, and Opus.\n5. Identify which effort setting I should use most often.\n6. Recommend situations where I should switch to High or Max effort.\n7. Suggest an optimal Claude workflow for my daily tasks.\n\nFinally generate:\n\n# My Claude Usage Strategy\n\n## Recommended Primary Model\n\n## Why This Model Fits Me\n\n## When to Use Haiku\n\n## When to Use Sonnet\n\n## When to Use Opus\n\n## Recommended Effort Level\n\n### Low\n\n### Standard\n\n### High\n\n### Max\n\n## My Personalized Claude Workflow\n\nProvide a table:\nTask | Best Model | Best Effort | Reason\n\n## Biggest Mistakes I Should Avoid\n\n## Final Recommendation\n\nIf I could use only ONE model and ONE effort level for most of my work, what would you recommend and why?\n\nPresent the output in a clean, visual, beginner-friendly format.",
+
+"engagement": {
+  "type": "Claude Workflow Strategy",
+  "description": "Share your biggest learning about choosing the right Claude model and reasoning effort. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+  "hashtag": "#60DayClaudeChallenge",
+  "mentions": [
+    "@AnilBajpai",
+    "@ABTalksOnAI",
+    "@Anthropic"
+  ]
+},
+
+"deliverable": {
+  "description": "Upload a markdown file containing your personalized Claude strategy, screenshots, and learnings.",
+  "format": "GitHub commit URL"
+},
+
+"tool": {
+  "name": "Claude Counter",
+  "type": "Browser Extension",
+  "description": "Claude Counter helps monitor Claude usage, message limits, and consumption directly inside Claude's web interface.",
+  "setupTitle": "How to set up Claude Counter",
+  "setupSteps": [
+    "Open the GitHub repository.",
+    "Follow the installation instructions.",
+    "Install the extension in your browser.",
+    "Open Claude.ai.",
+    "Verify the counter appears correctly.",
+    "Monitor your Claude usage and limits."
+  ],
+  "linkUrl": "https://github.com/she-llac/claude-counter",
+  "linkLabel": "Get Claude Counter"
+}
+
+}
+},
   {
     "dayNumber": 8,
     "domain": "CLAUDE",
