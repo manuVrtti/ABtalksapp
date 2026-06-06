@@ -164,7 +164,9 @@ export default async function ProfilePage() {
                 <p className="text-lg font-semibold tracking-tight sm:text-2xl">
                   {profile.fullName}
                 </p>
-                <p className="text-xs text-muted-foreground sm:text-sm">{user.email}</p>
+                <p className="break-words text-xs text-muted-foreground sm:text-sm">
+                  {user.email}
+                </p>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   <Badge variant="outline">{userTypeLabel(profile.userType)}</Badge>
                   <Badge variant="secondary">
@@ -242,7 +244,7 @@ export default async function ProfilePage() {
               </CardHeader>
               <CardContent className="space-y-4 p-4 sm:p-6">
                 <div className="flex items-center gap-2 rounded-lg border bg-muted/30 p-3">
-                  <code className="flex-1 truncate font-mono text-xs md:text-sm">
+                  <code className="min-w-0 flex-1 truncate font-mono text-xs md:text-sm">
                     {referralLink}
                   </code>
                   <CopyReferralLinkButton link={referralLink} />

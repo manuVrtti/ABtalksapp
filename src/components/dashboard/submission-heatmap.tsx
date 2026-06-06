@@ -167,7 +167,7 @@ export function SubmissionHeatmap({
 
   return (
     <div className="w-full min-w-0">
-      <div className="overflow-x-auto pb-1">
+      <div className="overflow-x-auto px-1 py-1.5">
         <div
           className="grid w-max max-w-full grid-cols-10 gap-1.5 sm:mx-auto sm:gap-2"
           role="grid"

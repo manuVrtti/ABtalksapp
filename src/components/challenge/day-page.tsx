@@ -26,6 +26,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { submitDayAction } from "@/app/actions/submission-actions";
+import { useSynergy } from "@/components/shared/synergy-provider";
 
 interface CollapsibleSectionProps {
   icon: React.ReactNode;
@@ -163,6 +164,7 @@ export function DayPage({
   existingSubmission,
 }: Props) {
   const router = useRouter();
+  const { refresh } = useSynergy();
   const [githubUrl, setGithubUrl] = useState(
     existingSubmission?.githubUrl ?? "",
   );
@@ -204,6 +206,7 @@ export function DayPage({
       const result = await submitDayAction(fd);
 
       if (result.ok) {
+        refresh();
         const synergyMsg =
           result.synergyAwarded !== undefined
             ? `Day ${dayNumber} submitted! +${result.synergyAwarded} synergy 🔥`

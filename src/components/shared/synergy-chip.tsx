@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Clock,
   Flame,
@@ -16,19 +16,15 @@ import {
 } from "@/components/ui/dialog";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { getMySynergyAction } from "@/app/actions/synergy-actions";
+import { useSynergy } from "@/components/shared/synergy-provider";
 import {
   SYNERGY_PROOF_GITHUB,
   SYNERGY_PROOF_LINKEDIN,
 } from "@/features/synergy/scoring";
 
 export function SynergyChip() {
-  const [points, setPoints] = useState<number | null>(null);
+  const { points } = useSynergy();
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    void getMySynergyAction().then((res) => setPoints(res.points));
-  }, []);
 
   return (
     <>

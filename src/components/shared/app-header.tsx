@@ -148,7 +148,10 @@ export function AppHeader({
               >
                 Profile
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push("/mission")}>
+              <DropdownMenuItem
+                className="hidden md:flex"
+                onClick={() => router.push("/mission")}
+              >
                 Our Mission
               </DropdownMenuItem>
               <DropdownMenuItem
