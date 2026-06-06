@@ -5,6 +5,7 @@ import {
   getCurrentDayNumber,
   getIstDateKeyForChallengeDay,
 } from "@/lib/date-utils";
+import { isWithinRelaxationWindow } from "@/features/submission/submit-day";
 
 export type HeatmapCellStatus =
   | "on_time"
@@ -17,6 +18,8 @@ export type HeatmapCell = {
   dayNumber: number;
   date: string;
   status: HeatmapCellStatus;
+  /** Past missed day inside the 5-day relaxation window (today + previous 4). */
+  isRelaxable: boolean;
   /** Daily task metadata when the challenge defines this day */
   taskTitle: string | null;
   problemStatement: string | null;
@@ -209,11 +212,14 @@ export async function getHeatmapData(
 
     const hasSubmission = status === "on_time" || status === "late";
     const action = status === "rejected" ? rejectAction : null;
+    const isRelaxable =
+      status === "missed" && isWithinRelaxationWindow(currentDay, dayNumber);
 
     out.push({
       dayNumber,
       date,
       status,
+      isRelaxable,
       taskTitle: task?.title ?? null,
       problemStatement: task?.problemStatement ?? null,
       learningObjectives: task?.learningObjectives ?? [],

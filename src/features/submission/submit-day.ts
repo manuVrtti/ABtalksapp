@@ -14,6 +14,23 @@ import { computeStreakStats } from "./streak-utils";
 import { resolveChallengeEnrollment } from "@/features/enrollment/resolve-dashboard-enrollment";
 import { awardSubmissionSynergy } from "@/features/synergy/award-submission-synergy";
 
+/**
+ * Relaxation window: today + previous 4 days = 5 calendar days total.
+ * Returns true if `dayNumber` is a PAST day inside the window (i.e. a
+ * legitimate backfill target). Today itself is handled by the normal path.
+ *
+ * Example: currentDay=12 → returns true for dayNumber in {8, 9, 10, 11}.
+ * Pre-start (currentDay=0) and Day 1 with no prior days return false.
+ */
+export function isWithinRelaxationWindow(
+  currentDay: number,
+  dayNumber: number,
+): boolean {
+  if (currentDay < 2) return false;
+  if (dayNumber < 1 || dayNumber >= currentDay) return false;
+  return dayNumber >= currentDay - 4;
+}
+
 /** Blocks backfill for past calendar days with no submission, unless admin reject resubmit applies. */
 export async function assertPastDaySubmittable(
   enrollment: { id: string; userId: string; startedAt: Date },
@@ -44,6 +61,8 @@ export async function assertPastDaySubmittable(
     (a) => readDayNumberFromMetadata(a.metadata) === dayNumber,
   );
   if (hasRejectResubmit) return { ok: true };
+
+  if (isWithinRelaxationWindow(currentDay, dayNumber)) return { ok: true };
 
   return {
     ok: false,
@@ -158,7 +177,8 @@ export async function submitDay(input: {
     dayNumber,
     challengeAnchor,
   );
-  if (submittedAtIst !== expectedDate) {
+  const isBackfill = dayNumber < currentDay;
+  if (!isBackfill && submittedAtIst !== expectedDate) {
     return {
       ok: false,
       reason: "wrong_day",

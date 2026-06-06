@@ -41,7 +41,9 @@ function tooltipLabel(cell: HeatmapCell): string {
     case "rejected":
       return `Day ${cell.dayNumber}: Rejected on ${displayDate}`;
     case "missed":
-      return `Day ${cell.dayNumber}: Missed on ${displayDate}`;
+      return cell.isRelaxable
+        ? `Day ${cell.dayNumber} — Missed, but still in catch-up window`
+        : `Day ${cell.dayNumber} — Missed on ${displayDate}`;
     case "future":
     default:
       return `Day ${cell.dayNumber}: Unlocks on ${displayDate}`;
@@ -185,6 +187,9 @@ export function SubmissionHeatmap({
                 className={cn(
                   "size-7 shrink-0 rounded-md sm:size-9",
                   STATUS_CLASS[cell.status],
+                  cell.status === "missed" &&
+                    cell.isRelaxable &&
+                    "ring-2 ring-amber-400 ring-offset-1 ring-offset-background dark:ring-amber-500",
                   clickable &&
                     "cursor-pointer transition-[box-shadow,transform] hover:z-10 hover:ring-2 hover:ring-primary hover:ring-offset-2 hover:ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
                   isFuture && "cursor-not-allowed",
@@ -217,6 +222,13 @@ export function SubmissionHeatmap({
             aria-hidden
           />
           Missed
+        </li>
+        <li className="flex items-center gap-2">
+          <span
+            className="size-3.5 shrink-0 rounded-sm bg-red-500 ring-2 ring-amber-400 ring-offset-1 ring-offset-background dark:ring-amber-500"
+            aria-hidden
+          />
+          Missed - catch up
         </li>
         <li className="flex items-center gap-2">
           <span
@@ -285,7 +297,13 @@ export function SubmissionHeatmap({
               </DialogHeader>
 
               <div className="min-h-0 flex-1 space-y-6 overflow-y-auto px-5 py-4">
-                {active.status === "missed" ? (
+                {active.status === "missed" && active.isRelaxable ? (
+                  <p className="rounded-lg border border-amber-400/60 bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950/40 dark:text-amber-100">
+                    You&apos;re inside the 5-day catch-up window. Submit GitHub +
+                    LinkedIn now to mark this day green and heal your streak.
+                  </p>
+                ) : null}
+                {active.status === "missed" && !active.isRelaxable ? (
                   <p className="rounded-lg border border-border/60 bg-muted/40 p-3 text-sm text-muted-foreground">
                     You missed this day. Submissions are no longer accepted, but you
                     can review the problem statement to help with later tasks.
@@ -368,6 +386,19 @@ export function SubmissionHeatmap({
               </div>
 
               <div className="flex shrink-0 flex-wrap justify-center gap-2 border-t border-border/60 bg-muted/30 px-5 py-4">
+                {active.status === "missed" && active.isRelaxable ? (
+                  <Link
+                    href={
+                      challengeEnrollmentId
+                        ? `/challenge/${active.dayNumber}?challenge=${encodeURIComponent(challengeEnrollmentId)}`
+                        : `/challenge/${active.dayNumber}`
+                    }
+                    className={cn(buttonVariants({ variant: "default" }))}
+                    onClick={() => setOpen(false)}
+                  >
+                    Submit now
+                  </Link>
+                ) : null}
                 {active.status === "rejected" ? (
                   <Link
                     href={
