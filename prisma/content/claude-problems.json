@@ -312,266 +312,340 @@
    
   ,
   {
-    "dayNumber": 4,
-    "domain": "CLAUDE",
-    "title": "Day 4: Chain-of-Thought Prompting",
-    "problemStatement": "Welcome to **Day 4** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** Chain-of-Thought — make Claude reason step-by-step on hard problems.\n\n**Tasks:**\n1. Pick a genuinely complex problem.\n2. Solve it with a normal prompt, then again with the chain-of-thought template.\n3. Compare reasoning quality and post your findings.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
-    "learningObjectives": [
-      "Apply Day 4 concepts to your real role or studies",
-      "Build repeatable prompts you can reuse after the challenge",
-      "Practice safe, reviewable AI workflows"
-    ],
-    "resources": [
-      "https://claude.ai",
-      "https://docs.anthropic.com",
-      "https://www.anthropic.com/claude"
-    ],
-    "difficulty": "Intermediate",
+  "dayNumber": 4,
+  "domain": "CLAUDE",
+  "title": "Day 4: Chain-of-Thought Prompting",
+  "problemStatement": "Welcome to Day 4 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1 — Foundation & Prompt Engineering\n\nToday's focus: Learn how Chain-of-Thought Prompting helps Claude reason step-by-step and generate significantly better outputs for complex tasks.\n\nTasks:\n1. Understand what Chain-of-Thought Prompting is.\n2. Use Claude to build a personalized career roadmap.\n3. Compare the output quality with a normal prompt.\n4. Install and explore Capsule Hub.\n5. Share your learning publicly.\n\nSubmission: Share your GitHub commit URL containing your Day 4 work and learning notes.",
+  "learningObjectives": [
+    "Understand the fundamentals of Chain-of-Thought Prompting",
+    "Learn how structured reasoning improves output quality",
+    "Generate personalized roadmaps using step-by-step thinking",
+    "Explore Capsule Hub for managing AI workflows",
+    "Apply Chain-of-Thought prompting to real-world planning problems"
+  ],
+  "resources": [
+    "https://www.geeksforgeeks.org/artificial-intelligence/what-is-chain-of-thought-prompting/",
+    "https://www.promptingguide.ai/techniques/cot",
+    "https://docs.anthropic.com"
+  ],
+  "difficulty": "Beginner",
+  "estimatedMinutes": 40,
+  "linkedinTemplate": "Day 4/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I learned Chain-of-Thought Prompting.\n\nInstead of asking Claude for an answer, I made it think step-by-step.\n\nThe result was a personalized roadmap and far better reasoning than a normal prompt.\n\nHave you ever asked AI to think before answering? 👇\n\n#ChainOfThought #ClaudeAI #ABTalksOnAI",
+  "solutionApproach": "Submit a GitHub commit URL containing your personalized roadmap, prompt screenshots, learnings, and observations.",
+  "tags": [
+    "claude",
+    "day-4",
+    "chain-of-thought",
+    "reasoning",
+    "beginner"
+  ],
+  "dayContent": {
+    "title": "Chain-of-Thought Prompting",
+    "tagline": "Make Claude think before it answers",
+    "module": "Prompt Engineering",
+    "difficulty": "Beginner",
     "estimatedMinutes": 40,
-    "linkedinTemplate": "Day 4/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Chain-of-Thought): asked Claude to *think* before it answered. The difference on complex problems is huge.\n\nWhat’s the hardest problem you’d let an AI reason through? 👇\n\n#60DayClaudeChallenge #ABtalks",
-    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
-    "tags": [
-      "claude",
-      "day-4",
-      "chain-of-thought",
-      "intermediate"
-    ],
-    "dayContent": {
-      "title": "Chain-of-Thought Prompting",
-      "tagline": "Make Claude reason step-by-step for hard problems",
-      "module": "",
-      "difficulty": "Intermediate",
-      "estimatedMinutes": 40,
-      "deliverableFormat": "GitHub commit URL",
-      "learning": {
-        "summary": "Multi-step reasoning prompts. Instead of asking for an answer, you ask Claude to think through a problem in stages — understand, decompose, solve, verify, conclude. Dramatically better accuracy on anything complex.",
-        "bullets": [
-          {
-            "label": "Why it works",
-            "text": "step-by-step structure forces the model to slow down and check itself."
-          },
-          {
-            "label": "Decompose",
-            "text": "break a big problem into small named parts before solving any of them."
-          },
-          {
-            "label": "Verify",
-            "text": "ask Claude to double-check its own logic before giving the final answer."
-          },
-          {
-            "label": "Final answer",
-            "text": "always require a clearly labelled FINAL ANSWER so the takeaway is unmissable."
-          }
-        ]
-      },
-      "task": {
-        "title": "Your Task",
-        "steps": [
-          "Pick a complex problem (a budget plan, a tricky decision, a multi-step calculation, an architecture choice).",
-          "Solve it once with a normal one-line prompt. Save the answer.",
-          "Solve it again using the chain-of-thought template below. Save the answer.",
-          "Compare both: which one would you actually trust to act on?"
-        ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
-      },
-      "promptTemplate": "I need help solving this complex problem:\n\n[Insert problem/task]\n\nThink through it step by step:\n\n1. Understand the problem\n   * What do we know?\n   * What needs to be solved?\n\n2. Break it into smaller parts\n   * Explain each part briefly.\n\n3. Solve systematically\n   * Show your reasoning clearly.\n   * Consider edge cases or alternatives if needed.\n\n4. Verify the solution\n   * Double-check the logic/calculations.\n\n5. FINAL ANSWER\n   * Give a concise, clearly labeled final answer with key takeaways.\n\nImportant:\n* Don’t skip reasoning steps.\n* Prioritize accuracy over speed.\n* Mention uncertainties if any.",
-      "engagement": {
-        "type": "Reasoning Comparison",
-        "description": "Share the normal answer vs the step-by-step answer to the same problem. Which one would you trust more, and why? Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
-        "hashtag": "#60DayClaudeChallenge",
-        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
-      },
-      "deliverable": {
-        "description": "Push your reasoning comparison to your repo as a markdown file. Submit the commit URL.",
-        "format": "GitHub commit URL"
-      },
-      "tool": {
-        "name": "Claude Usage Tracker",
-        "type": "Chrome Extension",
-        "description": "A free Chrome extension that shows live token usage on claude.ai. Helpful here because chain-of-thought reasoning uses more tokens — you can see exactly how much “thinking” costs.",
-        "setupTitle": "How to set up the token counter in Claude",
-        "setupSteps": [
-          "Open the Chrome Web Store link below and click \"Add to Chrome.\"",
-          "Go to claude.ai and open any conversation.",
-          "The extension injects a live token count directly into the Claude interface — no setup or API key needed.",
-          "Watch the counter as you send messages; compare the count before and after a chain-of-thought prompt."
-        ],
-        "linkUrl": "https://chromewebstore.google.com/detail/claude-usage-tracker/knemcdpkggnbhpoaaagmjiigenifejfo",
-        "linkLabel": "Get Claude Usage Tracker"
-      }
+    "deliverableFormat": "GitHub commit URL",
+
+    "learning": {
+      "summary": "Chain-of-Thought Prompting improves AI output by forcing the model to reason through a problem step-by-step before generating a final answer. Instead of jumping directly to a solution, Claude breaks down the problem, analyzes it, and verifies its reasoning.",
+      "bullets": [
+        {
+          "label": "Better reasoning",
+          "text": "Breaking problems into steps improves accuracy and depth."
+        },
+        {
+          "label": "More reliable outputs",
+          "text": "Claude evaluates assumptions before providing recommendations."
+        },
+        {
+          "label": "Personalized solutions",
+          "text": "Structured thinking creates highly customized outputs."
+        },
+        {
+          "label": "Real-world applications",
+          "text": "Career planning, business strategy, decision-making, and project planning become significantly better."
+        }
+      ]
+    },
+
+    "task": {
+      "title": "Your Task",
+      "steps": [
+        "Read the provided resources on Chain-of-Thought Prompting.",
+        "Open Claude and start a new conversation.",
+        "Use the provided Chain-of-Thought prompt template.",
+        "Answer the four questions Claude asks.",
+        "Generate your personalized career roadmap.",
+        "Review the roadmap and identify your biggest insight.",
+        "Create a Day4 folder in your GitHub repository.",
+        "Create a day4.md file.",
+        "Document your roadmap, screenshots, learnings, and observations.",
+        "Commit and push the changes.",
+        "Submit the GitHub commit URL."
+      ],
+      "solutionVideoUrl": "https://youtu.be/6CDB3Yn_6Lc"
+    },
+
+    "promptTemplate": "You are an Elite AI Career Strategist.\n\nYour goal is to build a personalized roadmap for me.\n\nBefore creating the roadmap, ask me ONLY these 4 questions:\n\nQuestion 1\nWhat is your current situation?\nExamples:\n• Student\n• Working Professional\n• Freelancer\n• Founder\n• Career Switcher\n\nQuestion 2\nWhat skills do you currently have?\nExamples:\n• Python\n• Marketing\n• Sales\n• Design\n• Web Development\n• Data Analysis\n\nQuestion 3\nWhat is your target goal?\nExamples:\n• Get a job\n• Land an internship\n• Become a Data Scientist\n• Become an AI Engineer\n• Start a business\n• Grow on LinkedIn\n\nQuestion 4\nWhat is your target timeline?\nExamples:\n• 3 months\n• 6 months\n• 1 year\n• 2 years\n\nAfter collecting all answers:\n\nThink step by step.\n\n1. Analyze my current position.\n2. Identify strengths.\n3. Identify skill gaps.\n4. Identify the fastest path to the goal.\n5. Recommend learning priorities.\n6. Recommend projects.\n7. Recommend networking strategy.\n8. Create milestones.\n\nFinally generate a visually structured ONE-PAGE roadmap.\n\nThe roadmap must contain:\n\n🚀 Current Position\n🎯 Target Goal\n📈 Skill Gap Analysis\n🛠 Recommended Learning Plan\n💼 Suggested Projects\n🌐 Networking Strategy\n📅 Monthly Milestones\n⚡ Immediate Next Actions\n\nPDF DESIGN REQUIREMENTS:\n\n• A4 Portrait Layout\n• Professional consulting-report style\n• Clean sections with visual hierarchy\n• Tables wherever appropriate\n• No overlapping text\n• Use concise content\n• Use visual dividers\n• Maximum one page\n• Export-ready PDF format\n• Easy to screenshot and share on LinkedIn\n\nEnd with:\n\nGenerated using Chain-of-Thought Reasoning",
+
+    "engagement": {
+      "type": "Roadmap Showcase",
+      "description": "Share your personalized roadmap on LinkedIn. Explain what surprised you most about Claude's reasoning process. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+      "hashtag": "#60DayClaudeChallenge",
+      "mentions": [
+        "@AnilBajpai",
+        "@ABTalksOnAI",
+        "@Anthropic"
+      ]
+    },
+
+    "deliverable": {
+      "description": "Upload a markdown file containing your generated roadmap, screenshots, learnings, and Capsule Hub observations.",
+      "format": "GitHub commit URL"
+    },
+
+    "tool": {
+      "name": "Capsule Hub",
+      "type": "Chrome Extension",
+      "description": "Capsule Hub helps organize prompts, workflows, reusable instructions, and AI context in one place, making it easier to manage advanced Claude workflows.",
+      "setupTitle": "How to set up Capsule Hub",
+      "setupSteps": [
+        "Open the Chrome Web Store link.",
+        "Click 'Add to Chrome'.",
+        "Pin the extension to your browser toolbar.",
+        "Open Claude.ai.",
+        "Explore prompt storage and organization features.",
+        "Create your first reusable prompt capsule."
+      ],
+      "linkUrl": "https://chromewebstore.google.com/detail/capsule-hub-by-tilantra/ngeoeefidomejcdhiecidpaalfoekjbh",
+      "linkLabel": "Get Capsule Hub"
     }
-  },
+  }
+},
   {
     "dayNumber": 5,
     "domain": "CLAUDE",
-    "title": "Day 5: Context Management — Build Your AI Engineer Roadmap",
-    "problemStatement": "Welcome to **Day 5** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** Use Claude as your personal mentor and generate a roadmap to become an AI Engineer (or any role you want).\n\n**Tasks:**\n1. Run the mentor/coach prompt with your real goal filled in.\n2. Get back a structured roadmap with phases, projects, and a weekly plan.\n3. Pick the first 3 actions and share your roadmap on LinkedIn.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "title": "Day 5: Context Engineering",
+    "problemStatement": "Welcome to Day 5 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1 — Foundation & Prompt Engineering\n\nToday's focus: Learn why Context Engineering is becoming more important than Prompt Engineering.\n\nA great prompt without context often produces generic outputs. A good prompt with the right context produces personalized, highly relevant, and actionable outputs.\n\nTasks:\n1. Understand what Context Engineering is.\n2. Compare outputs generated with and without context.\n3. Observe how context dramatically improves response quality.\n4. Install and explore Sider AI.\n5. Share your learning publicly.\n\nSubmission: Share your GitHub commit URL containing your Day 5 work and learning notes.",
     "learningObjectives": [
-      "Apply Day 5 concepts to your real role or studies",
-      "Build repeatable prompts you can reuse after the challenge",
-      "Practice safe, reviewable AI workflows"
+      "Understand the fundamentals of Context Engineering",
+      "Learn why context improves AI outputs",
+      "Compare generic vs personalized AI responses",
+      "Explore Sider AI as a productivity assistant",
+      "Apply Context Engineering to real-world planning tasks"
     ],
     "resources": [
-      "https://claude.ai",
-      "https://docs.anthropic.com",
-      "https://www.anthropic.com/claude"
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "https://www.promptingguide.ai/guides/context-engineering-guide",
+      "https://www.langchain.com/blog/context-engineering-for-agents"
     ],
-    "difficulty": "Intermediate",
-    "estimatedMinutes": 40,
-    "linkedinTemplate": "Day 5/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Context Management): asked Claude to build me a phase-by-phase roadmap to become an AI Engineer. Realistic, weekly, and tailored to my level.\n\nWhat’s the role you’d ask AI to map a path to? 👇\n\n#60DayClaudeChallenge #ABtalks",
-    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "difficulty": "Beginner",
+    "estimatedMinutes": 35,
+    "linkedinTemplate": "Day 5/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I learned Context Engineering.\n\nI used the same prompt twice.\n\nThe first time without context.\nThe second time with context.\n\nThe difference in quality was massive.\n\nTurns out AI isn't just about asking better questions.\nIt's about providing better context.\n\n#ContextEngineering #ClaudeAI #ABTalksOnAI",
+    "solutionApproach": "Submit a GitHub commit URL containing screenshots of both outputs, your observations, and key learnings.",
     "tags": [
       "claude",
       "day-5",
-      "context-management",
-      "intermediate"
+      "context-engineering",
+      "prompt-engineering",
+      "beginner"
     ],
     "dayContent": {
-      "title": "Context Management",
-      "tagline": "Use Claude as your personal mentor to build a real roadmap",
-      "module": "",
-      "difficulty": "Intermediate",
-      "estimatedMinutes": 40,
+      "title": "Context Engineering",
+      "tagline": "Better context. Better outputs.",
+      "module": "Prompt Engineering",
+      "difficulty": "Beginner",
+      "estimatedMinutes": 35,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Strong context = strong output. By telling Claude exactly who you are, what you want, and what your constraints are (time, current level, daily life), you get a realistic plan — not a generic listicle.",
+        "summary": "Context Engineering is the practice of providing relevant information, constraints, background, goals, and user-specific details to AI before asking it to perform a task. The quality of context often matters more than the prompt itself.",
         "bullets": [
           {
-            "label": "Frame the goal",
-            "text": "give Claude your goal AND your constraints (time available, skill level, responsibilities)."
+            "label": "Personalized Outputs",
+            "text": "Context allows Claude to generate recommendations tailored to your situation."
           },
           {
-            "label": "Ask for phases",
-            "text": "phases + milestones beat a flat 50-item to-do list."
+            "label": "Higher Accuracy",
+            "text": "Claude makes fewer assumptions when it understands the full picture."
           },
           {
-            "label": "Demand realism",
-            "text": "instruct Claude to consider workload and avoid burnout — not just theory."
+            "label": "Better Planning",
+            "text": "Context enables more realistic and actionable roadmaps."
           },
           {
-            "label": "Make it actionable",
-            "text": "always ask for the top 3 actions to start tomorrow."
+            "label": "Real-world AI Systems",
+            "text": "Modern AI agents rely heavily on context engineering, memory, and retrieval."
           }
         ]
       },
       "task": {
         "title": "Your Task",
         "steps": [
-          "Pick a real career goal (e.g. “become an AI Engineer”, “become a data scientist”).",
-          "Fill the mentor prompt below with your goal, your current level, and your weekly time budget.",
-          "Read the roadmap Claude returns — highlight the top 3 actions you’ll start this week.",
-          "Save the roadmap as a doc and share the headline phases on LinkedIn."
+          "Read the provided resources on Context Engineering.",
+          "Open Claude and start a new conversation.",
+          "Paste Prompt A exactly as given and generate the output.",
+          "Save or screenshot the output.",
+          "Start a new conversation.",
+          "Paste Prompt B and replace the information inside the brackets with your own details.",
+          "Generate the output.",
+          "Save or screenshot the output.",
+          "Compare both outputs and observe the differences.",
+          "Create a Day5 folder in your GitHub repository.",
+          "Create a day5.md file.",
+          "Document both outputs, screenshots, and your key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
         ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=X7H-vYVuf10&feature=youtu.be"
       },
-      "promptTemplate": "Act as an expert mentor, strategist, and coach for a [student / working professional] who wants to achieve [goal].\nCreate a practical and realistic step-by-step plan while considering limited time, workload, current skill level, and daily responsibilities.\n\nInclude:\n* Clear roadmap with phases and milestones\n* Top priority actions to start immediately\n* Weekly and monthly execution plan\n* Important skills / tools / resources to learn\n* Beginner-to-advanced project or practice ideas\n* Productivity and time-management strategies\n* Common mistakes to avoid\n* Tips for consistency, growth, and avoiding burnout\n* Career, portfolio, networking, and personal branding advice where relevant\n\nKeep the response structured, actionable, beginner-friendly, and focused on real-world results rather than just theory.",
+      "promptTemplate": "PROMPT A (WITHOUT CONTEXT)\n\nCreate a 30-day learning roadmap.\n\nInclude:\n- Weekly milestones\n- Daily tasks\n- Resources\n- Projects\n- Final outcome\n\nMake it practical and beginner-friendly.\n\n━━━━━━━━━━━━━━━━━━━━━━\n\nPROMPT B (WITH CONTEXT)\n\nCreate a 30-day learning roadmap.\n\nContext:\n- Current Situation: [Student/Professional/Freelancer]\n- Current Skills: [Add Skills]\n- Goal: [Target Goal]\n- Available Time: [Hours per Day]\n- Experience Level: [Beginner/Intermediate]\n- Preferred Learning Style: [Videos/Projects/Reading]\n\nInclude:\n- Weekly milestones\n- Daily tasks\n- Resources\n- Projects\n- Final outcome\n\nMake it practical and beginner-friendly.\n\nCompare both outputs and identify:\n1. Which roadmap feels more personalized?\n2. Which roadmap would you actually follow?\n3. What role did context play in improving the result?",
       "engagement": {
-        "type": "Roadmap Share",
-        "description": "Share the phase titles + the first 3 actions from your roadmap. Tag the role you’re building toward. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "type": "Before vs After Comparison",
+        "description": "Share screenshots of both outputs on LinkedIn. Explain the biggest difference you observed between the generic roadmap and the personalized roadmap. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
         "hashtag": "#60DayClaudeChallenge",
-        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
       },
       "deliverable": {
-        "description": "Push your personalized career roadmap to your repo as a markdown file. Submit the commit URL.",
+        "description": "Upload a markdown file containing Prompt A output, Prompt B output, screenshots, comparison, and key learnings.",
         "format": "GitHub commit URL"
       },
       "tool": {
-        "name": "Caveman Skill",
-        "type": "Technique + Claude Code Skill",
-        "description": "Compress context into ultra-short, keyword-style notes and ask Claude to reply the same way — cuts tokens dramatically. Works in plain claude.ai chats; there’s also a one-click skill for Claude Code users.",
-        "setupTitle": "How to use the caveman technique",
+        "name": "Sider AI",
+        "type": "Browser Extension",
+        "description": "Sider AI is an AI-powered browser assistant that provides access to multiple AI models, writing assistance, summarization, translation, and productivity features directly inside your browser.",
+        "setupTitle": "How to set up Sider AI",
         "setupSteps": [
-          "For everyone (no install): in any claude.ai chat, write your context in terse caveman style and add “reply in caveman style — keep all technical detail, cut filler words.”",
-          "Why it works: filler like “Sure, I’d be happy to help…” wastes tokens. Caveman keeps the facts and removes the fluff (often ~75% shorter).",
-          "For Claude Code users only: install as a one-line skill — run  claude install-skill JuliusBrussee/caveman  then trigger with  /caveman  or “caveman mode.”",
-          "Turn it off any time with “normal mode.”",
-          "Note: this is a free community skill, not an official Anthropic tool — the technique is what matters."
+          "Open the Sider AI website.",
+          "Install the browser extension.",
+          "Pin the extension to your browser toolbar.",
+          "Open any webpage.",
+          "Use Sider AI to summarize, explain, or interact with content.",
+          "Explore the available AI productivity features."
         ],
-        "linkUrl": "https://github.com/JuliusBrussee/caveman",
-        "linkLabel": "View the caveman skill on GitHub"
+        "linkUrl": "https://sider.ai/apps/lp-chatgpt",
+        "linkLabel": "Get Sider AI"
       }
     }
   },
   {
-    "dayNumber": 6,
-    "domain": "CLAUDE",
-    "title": "Day 6: Knowledge Checkpoint",
-    "problemStatement": "Welcome to **Day 6** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 1 — Foundation & Prompt Engineering\n\n**Today's focus:** A quick knowledge checkpoint. Five days in — let’s lock the basics before we accelerate.\n\n**Tasks:**\n1. Take the Day 6 MCQ on Days 1–5 concepts (released on abtalks.in).\n2. Revisit any concept you got wrong using your own Claude chat.\n3. Post one key thing you learned in the first week.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
-    "learningObjectives": [
-      "Apply Day 6 concepts to your real role or studies",
-      "Build repeatable prompts you can reuse after the challenge",
-      "Practice safe, reviewable AI workflows"
-    ],
-    "resources": [
-      "https://claude.ai",
-      "https://docs.anthropic.com",
-      "https://www.anthropic.com/claude"
-    ],
+  "dayNumber": 6,
+  "domain": "CLAUDE",
+  "title": "Day 6: AI Resume Optimizer",
+  "problemStatement": "Welcome to Day 6 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 1 — Practical AI Applications\n\nToday's focus: Learn how Claude can act as an ATS Expert, Resume Writer, Technical Recruiter, and Hiring Manager to transform your resume into a recruiter-friendly, ATS-optimized document.\n\nTasks:\n1. Understand ATS optimization fundamentals.\n2. Upload your existing resume to Claude.\n3. Use the provided Resume Optimizer prompt.\n4. Generate an ATS-optimized one-page resume.\n5. Compare before vs after versions.\n6. Install and explore NoteGPT.\n7. Share your learning publicly.\n\nIf you do not have a resume, Claude should first ask for the necessary details and then generate one from scratch.\n\nSubmission: Share your GitHub commit URL containing your Day 6 work and learning notes.",
+  "learningObjectives": [
+    "Understand ATS optimization fundamentals",
+    "Learn how recruiters evaluate resumes",
+    "Improve resume structure and readability using AI",
+    "Generate a professional one-page ATS-friendly resume",
+    "Explore NoteGPT as a learning and productivity tool"
+  ],
+  "resources": [
+    "https://www.geeksforgeeks.org/blogs/what-is-prompt-engineering-the-ai-revolution/",
+    "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+  ],
+  "difficulty": "Beginner",
+  "estimatedMinutes": 45,
+  "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as an ATS Expert and Resume Reviewer.\n\nI uploaded my resume and Claude analyzed it like a recruiter.\n\nThe result?\n\n✅ Better formatting\n✅ Stronger bullet points\n✅ Improved ATS compatibility\n✅ More recruiter-friendly structure\n\nAI isn't just for coding or content.\nIt can help you present yourself better too.\n\n#ATSResume #ClaudeAI #ABTalksOnAI",
+  "solutionApproach": "Submit a GitHub commit URL containing your original resume, optimized resume, ATS analysis, screenshots, and learnings.",
+  "tags": [
+    "claude",
+    "day-6",
+    "resume",
+    "ats",
+    "career",
+    "beginner"
+  ],
+  "dayContent": {
+    "title": "AI Resume Optimizer",
+    "tagline": "Turn your resume into a recruiter-ready asset",
+    "module": "Practical AI Applications",
     "difficulty": "Beginner",
-    "estimatedMinutes": 25,
-    "linkedinTemplate": "Day 6/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nFive days in — took the knowledge checkpoint today. The basics of prompt engineering are clicking.\n\nWhat’s the one prompt habit that changed how you use AI? 👇\n\n#60DayClaudeChallenge #ABtalks",
-    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
-    "tags": [
-      "claude",
-      "day-6",
-      "checkpoint",
-      "beginner"
-    ],
-    "dayContent": {
-      "title": "Knowledge Checkpoint",
-      "tagline": "Lock in the basics from Days 1–5",
-      "module": "Module 1 — Claude Fundamentals & Prompt Engineering",
-      "difficulty": "Beginner",
-      "estimatedMinutes": 25,
-      "deliverableFormat": "GitHub commit URL",
-      "learning": {
-        "summary": "Today is a review day. No new technique — just consolidation. You’ll take a short MCQ on everything from setup through context management, then revisit the topics you got wrong.",
-        "bullets": [
-          {
-            "label": "Setup",
-            "text": "Claude desktop install, Projects, and Artifacts."
-          },
-          {
-            "label": "Prompt Engineering",
-            "text": "what it is and the normal vs engineered shift."
-          },
-          {
-            "label": "Role-Based Prompting",
-            "text": "act-as personas, tone, and the “3 risks” trick."
-          },
-          {
-            "label": "Chain-of-Thought",
-            "text": "step-by-step reasoning, verification, FINAL ANSWER."
-          },
-          {
-            "label": "Context Management",
-            "text": "framing goals and constraints to get realistic, actionable answers."
-          }
-        ]
-      },
-      "task": {
-        "title": "Your Task",
-        "steps": [
-          "Open the Day 6 MCQ on abtalks.in and complete it honestly (no Googling — it’s for you).",
-          "For every question you got wrong, open Claude and ask it to explain the concept again with an example.",
-          "Update your personal prompt log: which technique do you want to use more this week?",
-          "Post one thing you genuinely learned in the first 5 days."
-        ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
-      },
-      "promptTemplate": "I just finished Days 1–5 of the 60-Day Claude AI Challenge: setup, prompt engineering, role-based prompting, chain-of-thought, and context management.\n\nQuiz me with 5 mixed multiple-choice questions covering these topics. Make 2 of them tricky.\nAfter my answers, give me:\n1. Which I got right / wrong\n2. A 1-line explanation of every concept I missed\n3. One practical exercise to reinforce my weakest area.",
-      "engagement": {
-        "type": "Week-1 Reflection",
-        "description": "Post one prompt habit you’ve built in the first 5 days that you wouldn’t have had a week ago. Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
-        "hashtag": "#60DayClaudeChallenge",
-        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
-      },
-      "deliverable": {
-        "description": "Push your Week-1 reflection note to your repo as a markdown file. Submit the commit URL.",
-        "format": "GitHub commit URL"
-      }
+    "estimatedMinutes": 45,
+    "deliverableFormat": "GitHub commit URL",
+
+    "learning": {
+      "summary": "A resume is often your first interaction with a recruiter. ATS systems scan resumes before a human sees them. Claude can help improve formatting, readability, keyword optimization, and recruiter appeal while keeping every claim truthful.",
+      "bullets": [
+        {
+          "label": "ATS Optimization",
+          "text": "Improve resume structure for better parsing by Applicant Tracking Systems."
+        },
+        {
+          "label": "Recruiter Readability",
+          "text": "Make achievements easier to understand and evaluate."
+        },
+        {
+          "label": "Professional Branding",
+          "text": "Present your skills and projects more effectively."
+        },
+        {
+          "label": "Career Readiness",
+          "text": "Create a polished resume suitable for internships and job applications."
+        }
+      ]
+    },
+
+    "task": {
+      "title": "Your Task",
+      "steps": [
+        "Read the provided resources.",
+        "Open Claude and start a new conversation.",
+        "Upload your resume.",
+        "Use the provided Resume Optimizer prompt.",
+        "Review the ATS analysis generated by Claude.",
+        "Generate the optimized one-page resume.",
+        "Save the optimized version.",
+        "If you do not have a resume, allow Claude to collect the required details and generate one for you.",
+        "Create a Day6 folder in your GitHub repository.",
+        "Create a day6.md file.",
+        "Document your original resume, optimized resume, screenshots, and key learnings.",
+        "Commit and push the changes.",
+        "Submit the GitHub commit URL."
+      ],
+      "solutionVideoUrl": "https://www.youtube.com/watch?v=BcOxxyrOZ-g&feature=youtu.be"
+    },
+
+    "promptTemplate": "You are an ATS optimization expert and resume writer.\n\nRewrite my resume (text or image below) for maximum ATS parsing and recruiter readability, keeping every claim truthful to the source.\n\nIf I paste a job description, align keywords to it; otherwise optimize for my field.\n\nIf I do not provide a resume, first ask me for the details required to create one.\n\nOutput EXACTLY two parts, nothing else:\n\nPART 1 — ATS SCORE (keep short, no full report)\n\n- Previous Score: __/100\n- Optimized Score: __/100\n- 5–8 bullets, each stating what you changed and why it raised the score.\n\nPART 2 — FINAL RESUME\n\nGenerate the optimized resume and provide it in a PDF-ready one-page A4 format.\n\nFormatting:\n- Single column\n- No tables, columns, icons, images, or text boxes\n- Name large and bold\n- Contact directly under it as plain text\n- ATS-friendly section headings\n- Professional Summary\n- Education\n- Experience\n- Projects\n- Skills\n- Certifications (if present)\n\nRules:\n- Use ONLY information from the resume.\n- Never invent achievements, projects, skills, certifications, experience, or metrics.\n- If information is missing, suggest improvements instead of fabricating details.\n- Use strong action verbs.\n- Remove redundancy.\n- Keep everything truthful.\n- Must fit on ONE A4 page.\n- Optimize for ATS and recruiter readability.\n\nIf no resume is uploaded, ask for:\n- Name\n- Contact Information\n- Education\n- Experience\n- Projects\n- Skills\n- Certifications\n- Target Field\n\nThen generate the resume.",
+
+    "engagement": {
+      "type": "Before vs After Resume",
+      "description": "Share a screenshot of your ATS analysis and one improvement you discovered while optimizing your resume. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+      "hashtag": "#60DayClaudeChallenge",
+      "mentions": [
+        "@AnilBajpai",
+        "@ABTalksOnAI",
+        "@Anthropic"
+      ]
+    },
+
+    "deliverable": {
+      "description": "Upload a markdown file containing your ATS analysis, resume screenshots, optimized resume, and key learnings.",
+      "format": "GitHub commit URL"
+    },
+
+    "tool": {
+      "name": "NoteGPT",
+      "type": "Chrome Extension",
+      "description": "NoteGPT helps summarize YouTube videos, articles, PDFs, and web content using AI, making learning faster and more efficient.",
+      "setupTitle": "How to set up NoteGPT",
+      "setupSteps": [
+        "Open the Chrome Web Store link.",
+        "Click 'Add to Chrome'.",
+        "Pin the extension to your browser toolbar.",
+        "Open a YouTube video.",
+        "Use NoteGPT to generate summaries and notes.",
+        "Explore AI-powered learning features."
+      ],
+      "linkUrl": "https://chromewebstore.google.com/detail/notegpt-youtube-summary-c/baecjmoceaobpnffgnlkloccenkoibbb",
+      "linkLabel": "Get NoteGPT"
     }
-  },
+  }
+},
   {
     "dayNumber": 7,
     "domain": "CLAUDE",

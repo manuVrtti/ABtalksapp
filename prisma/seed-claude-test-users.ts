@@ -125,6 +125,26 @@ const STUDENT_USERS = [
   { firstName: "Riya", lastName: "Mehta", college: "Manipal Institute", graduationYear: 2027 },
 ] as const;
 
+/** Dev logins: {name}@abtalks.dev / password "test" */
+const TEAM_USERS = [
+  "anil",
+  "rudra",
+  "shallika",
+  "sohail",
+  "suyash",
+  "prashant",
+  "suman",
+  "aditi",
+  "harshita",
+  "priyanshi",
+  "sarthak",
+  "shivansh",
+  "shrishti",
+  "swarit",
+] as const;
+
+const DEV_TEST_PASSWORD = "test";
+
 const PROFESSIONAL_USERS = [
   { firstName: "Karan", lastName: "Verma", organization: "Tata Consultancy Services", role: "Software Engineer", yearsExperience: 3 },
   { firstName: "Megha", lastName: "Bansal", organization: "Infosys", role: "Business Analyst", yearsExperience: 5 },
@@ -350,9 +370,47 @@ async function seedClaudeTestUsers() {
 
   console.log(`   Created ${professionalUsers.length} professional test users`);
 
+  console.log("👤 Creating team test users (password: test)...");
+
+  const teamUsers = [];
+  for (let i = 0; i < TEAM_USERS.length; i++) {
+    const slug = TEAM_USERS[i]!;
+    const displayName = slug.charAt(0).toUpperCase() + slug.slice(1);
+    const email = `${slug}${TEST_EMAIL_SUFFIX}`;
+
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: DEV_TEST_PASSWORD,
+        name: displayName,
+        emailVerified: new Date(),
+        studentProfile: {
+          create: {
+            fullName: displayName,
+            phone: `+91${9200000000 + i}`,
+            userType: UserType.STUDENT,
+            domain: Domain.CLAUDE,
+            college: "ABTalks Team",
+            graduationYear: 2026,
+            skills: ["Python", "AI", "Claude"],
+            linkedinUrl: `https://linkedin.com/in/${slug}-abtalks`,
+            githubUsername: slug,
+            referralCode: `TEAM${i.toString().padStart(3, "0")}`,
+            isReadyForInterview: false,
+          },
+        },
+      },
+    });
+
+    teamUsers.push(user);
+    console.log(`   ${email} (${displayName})`);
+  }
+
+  console.log(`   Created ${teamUsers.length} team test users`);
+
   console.log("📊 Creating enrollments with varied progress patterns...");
 
-  const allUsers = [...studentUsers, ...professionalUsers];
+  const allUsers = [...studentUsers, ...professionalUsers, ...teamUsers];
   const patterns = Object.values(PROGRESS_PATTERNS);
   const challengeAnchor = { startsAt: tenDaysAgo };
 
@@ -428,7 +486,9 @@ async function seedClaudeTestUsers() {
 
   console.log("");
   console.log("✅ CLAUDE test seed complete!");
-  console.log(`   ${studentUsers.length} students, ${professionalUsers.length} professionals`);
+  console.log(
+    `   ${studentUsers.length} students, ${professionalUsers.length} professionals, ${teamUsers.length} team (password: ${DEV_TEST_PASSWORD})`,
+  );
   console.log(`   All emails ${TEST_EMAIL_SUFFIX}`);
   console.log(`   Challenge startsAt: ${tenDaysAgo.toISOString().split("T")[0]}`);
   console.log("");

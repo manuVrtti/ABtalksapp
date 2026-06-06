@@ -12,6 +12,24 @@ import { validateSubmissionUrl } from "@/lib/validations/submission";
 import { validateLinkedinUrl } from "./validate-linkedin-url";
 import { computeStreakStats } from "./streak-utils";
 import { resolveChallengeEnrollment } from "@/features/enrollment/resolve-dashboard-enrollment";
+import { awardSubmissionSynergy } from "@/features/synergy/award-submission-synergy";
+
+/**
+ * Relaxation window: today + previous 4 days = 5 calendar days total.
+ * Returns true if `dayNumber` is a PAST day inside the window (i.e. a
+ * legitimate backfill target). Today itself is handled by the normal path.
+ *
+ * Example: currentDay=12 → returns true for dayNumber in {8, 9, 10, 11}.
+ * Pre-start (currentDay=0) and Day 1 with no prior days return false.
+ */
+export function isWithinRelaxationWindow(
+  currentDay: number,
+  dayNumber: number,
+): boolean {
+  if (currentDay < 2) return false;
+  if (dayNumber < 1 || dayNumber >= currentDay) return false;
+  return dayNumber >= currentDay - 4;
+}
 
 /** Blocks backfill for past calendar days with no submission, unless admin reject resubmit applies. */
 export async function assertPastDaySubmittable(
@@ -44,6 +62,8 @@ export async function assertPastDaySubmittable(
   );
   if (hasRejectResubmit) return { ok: true };
 
+  if (isWithinRelaxationWindow(currentDay, dayNumber)) return { ok: true };
+
   return {
     ok: false,
     message:
@@ -56,6 +76,7 @@ export type SubmitDayOk = {
   submissionId: string;
   newStreak: number;
   daysCompleted: number;
+  synergyAwarded?: number;
 };
 
 export type SubmitDayErr = {
@@ -66,15 +87,26 @@ export type SubmitDayErr = {
 
 export type SubmitDayResult = SubmitDayOk | SubmitDayErr;
 
+function trimOrNull(value: string | null | undefined): string | null {
+  const t = (value ?? "").trim();
+  return t === "" ? null : t;
+}
+
 export async function submitDay(input: {
   userId: string;
-  githubUrl: string;
-  linkedinUrl: string;
+  githubUrl?: string | null;
+  linkedinUrl?: string | null;
   dayNumber: number;
   enrollmentId?: string | null;
 }): Promise<SubmitDayResult> {
-  const { userId, linkedinUrl, dayNumber } = input;
-  const githubNormalized = normalizeGithubUrl(input.githubUrl.trim());
+  const { userId, dayNumber } = input;
+  const githubStored = trimOrNull(input.githubUrl);
+  const linkedinStored = trimOrNull(input.linkedinUrl);
+  const hasGithub = githubStored !== null;
+  const hasLinkedin = linkedinStored !== null;
+  const githubNormalized = hasGithub
+    ? normalizeGithubUrl(githubStored)
+    : null;
 
   const enrollment = await resolveChallengeEnrollment(
     userId,
@@ -119,20 +151,22 @@ export async function submitDay(input: {
     };
   }
 
-  const gh = await validateSubmissionUrl(
-    githubNormalized,
-    enrollment.domain,
-    userId,
-    {
-      enrollmentId: enrollment.id,
-      dayNumber,
-    },
-  );
-  if (!gh.ok) {
-    return { ok: false, reason: gh.reason, message: gh.message };
+  if (hasGithub && githubNormalized) {
+    const gh = await validateSubmissionUrl(
+      githubNormalized,
+      enrollment.domain,
+      userId,
+      {
+        enrollmentId: enrollment.id,
+        dayNumber,
+      },
+    );
+    if (!gh.ok) {
+      return { ok: false, reason: gh.reason, message: gh.message };
+    }
   }
 
-  const li = validateLinkedinUrl(linkedinUrl);
+  const li = validateLinkedinUrl(input.linkedinUrl ?? "");
   if (!li.ok) {
     return { ok: false, reason: li.reason, message: li.message };
   }
@@ -143,7 +177,8 @@ export async function submitDay(input: {
     dayNumber,
     challengeAnchor,
   );
-  if (submittedAtIst !== expectedDate) {
+  const isBackfill = dayNumber < currentDay;
+  if (!isBackfill && submittedAtIst !== expectedDate) {
     return {
       ok: false,
       reason: "wrong_day",
@@ -155,43 +190,63 @@ export async function submitDay(input: {
 
   try {
     const result = await prisma.$transaction(async (tx) => {
-      const submission = await tx.submission.upsert({
+      const existing = await tx.submission.findUnique({
         where: {
           enrollmentId_dayNumber: {
             enrollmentId: enrollment.id,
             dayNumber,
           },
         },
-        create: {
-          userId,
-          enrollmentId: enrollment.id,
-          dailyTaskId: task.id,
-          dayNumber,
-          githubUrl: githubNormalized,
-          linkedinUrl: linkedinUrl.trim(),
-          status: newStatus,
-          submittedAt: new Date(),
-        },
-        update: {
-          githubUrl: githubNormalized,
-          linkedinUrl: linkedinUrl.trim(),
-          status: newStatus,
-          submittedAt: new Date(),
-        },
+        select: { id: true },
       });
+
+      let submission;
+      let synergyAwarded: number | undefined;
+
+      if (!existing) {
+        submission = await tx.submission.create({
+          data: {
+            userId,
+            enrollmentId: enrollment.id,
+            dailyTaskId: task.id,
+            dayNumber,
+            githubUrl: githubNormalized,
+            linkedinUrl: linkedinStored,
+            status: newStatus,
+            submittedAt: new Date(),
+          },
+        });
+        synergyAwarded = await awardSubmissionSynergy(tx, {
+          userId,
+          submissionId: submission.id,
+          enrollmentId: enrollment.id,
+          challengeId: enrollment.challengeId,
+          dayNumber,
+          submittedAt: submission.submittedAt,
+          hasGithub,
+          hasLinkedin,
+        });
+      } else {
+        submission = await tx.submission.update({
+          where: { id: existing.id },
+          data: {
+            githubUrl: githubNormalized,
+            linkedinUrl: linkedinStored,
+            status: newStatus,
+            submittedAt: new Date(),
+          },
+        });
+      }
 
       const daysCompleted = await tx.submission.count({
         where: { enrollmentId: enrollment.id },
       });
 
       const { currentStreak: newStreak, longestStreak: recomputedLongest } =
-        await computeStreakStats(
-        tx,
-        {
+        await computeStreakStats(tx, {
           enrollmentId: enrollment.id,
           endDay: currentDay,
-        },
-      );
+        });
       const completed = daysCompleted >= 60;
 
       await tx.enrollment.update({
@@ -228,6 +283,7 @@ export async function submitDay(input: {
         submissionId: submission.id,
         newStreak,
         daysCompleted,
+        synergyAwarded,
       };
     }, {
       maxWait: 10000,

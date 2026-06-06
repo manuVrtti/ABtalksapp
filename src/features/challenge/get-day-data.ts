@@ -3,12 +3,13 @@ import { prisma } from "@/lib/db";
 import { getCurrentDayNumber } from "@/lib/date-utils";
 import { readDayNumberFromMetadata } from "@/lib/admin-action-metadata";
 import { resolveChallengeEnrollment } from "@/features/enrollment/resolve-dashboard-enrollment";
+import { isWithinRelaxationWindow } from "@/features/submission/submit-day";
 
 export type DayData = {
   task: DailyTask;
   existingSubmission: {
-    githubUrl: string;
-    linkedinUrl: string;
+    githubUrl: string | null;
+    linkedinUrl: string | null;
     status: SubmissionStatus;
     submittedAt: Date;
   } | null;
@@ -16,6 +17,8 @@ export type DayData = {
   isUnlocked: boolean;
   /** Admin rejected this day’s submission (row deleted); user may still resubmit via /challenge/[day]. */
   hasRejectResubmit: boolean;
+  /** Past missed day inside the 5-day relaxation window (today + previous 4). */
+  isRelaxable: boolean;
   enrollment: { id: string; domain: Domain };
 };
 
@@ -76,6 +79,9 @@ export async function getDayData(
 
   const currentDayNumber = getCurrentDayNumber(enrollment, enrollment.challenge);
   const isUnlocked = dayNumber <= currentDayNumber;
+  const isRelaxable =
+    !submission &&
+    isWithinRelaxationWindow(currentDayNumber, dayNumber);
 
   return {
     task,
@@ -83,6 +89,7 @@ export async function getDayData(
     currentDayNumber,
     isUnlocked,
     hasRejectResubmit,
+    isRelaxable,
     enrollment: { id: enrollment.id, domain: enrollment.domain },
   };
 }

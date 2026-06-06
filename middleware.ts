@@ -14,6 +14,8 @@ const protectedPaths = [
   "/quiz",
   "/register",
   "/admin",
+  "/jobs",
+  "/mission",
 ];
 
 function applyRefCookie(response: NextResponse, ref: string | null) {

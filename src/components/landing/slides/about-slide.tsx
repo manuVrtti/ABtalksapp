@@ -30,7 +30,7 @@ export function AboutSlide() {
           {
             icon: Users,
             title: "Public Accountability",
-            desc: "Post your work on GitHub & LinkedIn — build your portfolio",
+            desc: "Post your work on GitHub & LinkedIn. Build your portfolio",
           },
           {
             icon: Trophy,

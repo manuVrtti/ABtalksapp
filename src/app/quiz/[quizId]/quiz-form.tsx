@@ -89,7 +89,7 @@ export function QuizForm({ quiz, questions }: Props) {
     <Card>
       <CardHeader>
         <CardTitle>
-          Week {quiz.weekNumber} quiz — {quiz.domain}
+          Week {quiz.weekNumber} quiz: {quiz.domain}
         </CardTitle>
         <CardDescription>{quiz.title}</CardDescription>
       </CardHeader>
@@ -154,7 +154,7 @@ export function QuizForm({ quiz, questions }: Props) {
         <div className="flex flex-col gap-2 border-t pt-4">
           <p className="text-sm text-muted-foreground">
             {allAnswered
-              ? "All questions answered — you can submit."
+              ? "All questions answered. You can submit."
               : `Please answer all ${total} questions (${answeredCount}/${total} answered).`}
           </p>
           <Button

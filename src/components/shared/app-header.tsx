@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { Domain } from "@prisma/client";
 import { AlertCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SynergyChip } from "@/components/shared/synergy-chip";
 import {
   ChallengeSwitcher,
   type ChallengeSwitcherEnrollment,
@@ -57,6 +58,8 @@ export function AppHeader({
   activeEnrollmentId,
 }: Props) {
   const router = useRouter();
+  const pathname = usePathname();
+  const jobsActive = pathname.startsWith("/jobs");
   const label = displayLabel(user);
   const showChallengeSwitcher =
     (userEnrollments?.length ?? 0) >= 2 &&
@@ -84,6 +87,15 @@ export function AppHeader({
               />
             </Suspense>
           ) : null}
+          <Link
+            href="/jobs"
+            className={cn(
+              "hidden text-sm font-medium transition-colors hover:text-foreground md:inline-flex",
+              jobsActive ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
+            Jobs
+          </Link>
           {user.isAdmin ? (
             <Link
               href="/admin"
@@ -92,6 +104,7 @@ export function AppHeader({
               Admin
             </Link>
           ) : null}
+          <SynergyChip />
           <ThemeToggle />
           <span className="hidden h-6 w-px shrink-0 bg-border sm:block" aria-hidden />
           <DropdownMenu>
@@ -129,8 +142,17 @@ export function AppHeader({
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => router.push("/profile")}>
+              <DropdownMenuItem
+                className="hidden md:flex"
+                onClick={() => router.push("/profile")}
+              >
                 Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="hidden md:flex"
+                onClick={() => router.push("/mission")}
+              >
+                Our Mission
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {

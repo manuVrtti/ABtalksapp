@@ -119,8 +119,8 @@ export async function getStudents(
     userType: row.user.studentProfile?.userType ?? "STUDENT",
     affiliation:
       row.user.studentProfile?.userType === "PROFESSIONAL"
-        ? (row.user.studentProfile?.organization ?? "—")
-        : (row.user.studentProfile?.college ?? "—"),
+        ? (row.user.studentProfile?.organization ?? "-")
+        : (row.user.studentProfile?.college ?? "-"),
     referralCount: countMap.get(row.user.id) ?? 0,
   }));
 
