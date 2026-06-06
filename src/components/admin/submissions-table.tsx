@@ -21,8 +21,8 @@ export type SubmissionTableRow = {
   domain: string;
   dayNumber: number;
   status: string;
-  githubUrl: string;
-  linkedinUrl: string;
+  githubUrl: string | null;
+  linkedinUrl: string | null;
   submittedAt: string;
 };
 
@@ -32,6 +32,25 @@ function domainBadgeClass(domain: string): string {
   if (domain === "CLAUDE")
     return "border-orange-500/40 bg-orange-50 text-orange-800 dark:bg-orange-950/40 dark:text-orange-200";
   return "border-domains-se/50 bg-domains-se-bg text-domains-se";
+}
+
+function ProofLink({
+  href,
+  label,
+  className,
+}: {
+  href: string | null;
+  label: string;
+  className?: string;
+}) {
+  if (!href) {
+    return <span className="text-muted-foreground">-</span>;
+  }
+  return (
+    <a href={href} target="_blank" rel="noreferrer" className={className}>
+      {label}
+    </a>
+  );
 }
 
 export function SubmissionsTable({ rows }: { rows: SubmissionTableRow[] }) {
@@ -56,22 +75,16 @@ export function SubmissionsTable({ rows }: { rows: SubmissionTableRow[] }) {
               {formatDateTimeIST(new Date(row.submittedAt))}
             </p>
             <div className="mt-2 flex gap-3 text-xs">
-              <a
+              <ProofLink
                 href={row.githubUrl}
-                target="_blank"
-                rel="noreferrer"
+                label="GitHub"
                 className="text-primary underline"
-              >
-                GitHub
-              </a>
-              <a
+              />
+              <ProofLink
                 href={row.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
+                label="LinkedIn"
                 className="text-primary underline"
-              >
-                LinkedIn
-              </a>
+              />
             </div>
           </article>
         ))}
@@ -118,24 +131,32 @@ export function SubmissionsTable({ rows }: { rows: SubmissionTableRow[] }) {
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  <a
-                    href={row.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-primary underline"
-                  >
-                    Open <ExternalLink className="size-3" />
-                  </a>
+                  {row.githubUrl ? (
+                    <a
+                      href={row.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-primary underline"
+                    >
+                      Open <ExternalLink className="size-3" />
+                    </a>
+                  ) : (
+                    <span className="text-muted-foreground">-</span>
+                  )}
                 </TableCell>
                 <TableCell>
-                  <a
-                    href={row.linkedinUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-primary underline"
-                  >
-                    Open <ExternalLink className="size-3" />
-                  </a>
+                  {row.linkedinUrl ? (
+                    <a
+                      href={row.linkedinUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-primary underline"
+                    >
+                      Open <ExternalLink className="size-3" />
+                    </a>
+                  ) : (
+                    <span className="text-muted-foreground">-</span>
+                  )}
                 </TableCell>
               </TableRow>
             ))}

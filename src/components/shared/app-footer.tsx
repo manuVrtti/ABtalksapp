@@ -4,7 +4,7 @@ export function AppFooter() {
   const supportEmail = "team@abtalks.in";
 
   return (
-    <footer className="mt-auto border-t bg-card/50 backdrop-blur-sm">
+    <footer className="mt-auto border-t bg-card/50 pb-16 backdrop-blur-sm md:pb-0">
       <div className="container mx-auto px-6 py-6">
         <div className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
           <div className="font-display font-medium">

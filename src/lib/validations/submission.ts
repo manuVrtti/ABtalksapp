@@ -47,7 +47,7 @@ async function validateClaudeGithubUrl(
       ok: false,
       reason: "invalid_format",
       message:
-        "Submit a GitHub URL — either a specific commit (https://github.com/user/repo/commit/abc123) or your repo URL (https://github.com/user/repo).",
+        "Submit a GitHub URL: either a specific commit (https://github.com/user/repo/commit/abc123) or your repo URL (https://github.com/user/repo).",
     };
   }
 

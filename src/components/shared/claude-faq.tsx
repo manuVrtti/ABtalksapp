@@ -24,7 +24,7 @@ const FAQS = [
   {
     question: "Will I receive daily tasks or teaching sessions?",
     answer:
-      "Starting June 1, 2026, you'll receive daily AI-based tasks through the ABTalks platform — Claude AI implementation, prompt engineering, AI productivity, and real-world workflows. You're expected to complete tasks consistently, share learnings on LinkedIn daily, and maintain discipline. Detailed walkthroughs are available on the ABTalks on AI YouTube channel.",
+      "Starting June 1, 2026, you'll receive daily AI-based tasks through the ABTalks platform: Claude AI implementation, prompt engineering, AI productivity, and real-world workflows. You're expected to complete tasks consistently, share learnings on LinkedIn daily, and maintain discipline. Detailed walkthroughs are available on the ABTalks on AI YouTube channel.",
   },
   {
     question: "What if I miss a day's task?",

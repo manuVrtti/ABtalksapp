@@ -53,7 +53,7 @@ export function ClaudeCtaSlide({ totalCount }: Props) {
           <li>• 60 days = 60 individual daily posts on LinkedIn</li>
           <li>• Each day requires its own submission (no batching)</li>
           <li>• Posting 3 days of work in one post doesn&apos;t count as 3 days</li>
-          <li>• Consistency is the win — missed days break your streak</li>
+          <li>• Consistency is the win: missed days break your streak</li>
         </ul>
       </motion.div>
 

@@ -81,7 +81,7 @@ export async function getReferralStats(
     const sp = r.referred.studentProfile;
     const referredName =
       sp?.fullName?.trim() || r.referred.email || "Unknown";
-    const referredDomain = sp?.domain ?? "—";
+    const referredDomain = sp?.domain ?? "-";
     return {
       id: r.id,
       referredName,

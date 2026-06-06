@@ -1286,7 +1286,7 @@
   {
     "weekNumber": 1,
     "domain": "AI",
-    "title": "Week 1: AI Foundations — From Pipelines to Your First Classifier",
+    "title": "Week 1: AI Foundations - From Pipelines to Your First Classifier",
     "questions": [
       {
         "questionOrder": 1,
@@ -1306,7 +1306,7 @@
         "optionC": "To break text into smaller units (words or sub-words) that a model can process",
         "optionD": "To translate text into another language",
         "correctAnswer": "C",
-        "explanation": "Tokenization splits raw text into discrete units (tokens) — usually words or sub-words — which is the first step before any numerical representation."
+        "explanation": "Tokenization splits raw text into discrete units (tokens) - usually words or sub-words - which is the first step before any numerical representation."
       },
       {
         "questionOrder": 3,
@@ -1346,7 +1346,7 @@
         "optionC": "Searching only inside a SQL database",
         "optionD": "Showing the top 10 most popular results regardless of query",
         "correctAnswer": "B",
-        "explanation": "Semantic search retrieves results that are similar in meaning to the query — not just lexically identical. It's the foundation of modern AI retrieval and RAG."
+        "explanation": "Semantic search retrieves results that are similar in meaning to the query - not just lexically identical. It's the foundation of modern AI retrieval and RAG."
       },
       {
         "questionOrder": 7,
@@ -1356,7 +1356,7 @@
         "optionC": "Patterns extracted from training examples",
         "optionD": "Internet searches performed at runtime",
         "correctAnswer": "C",
-        "explanation": "ML models learn statistical patterns from labeled or unlabeled training examples. You don't write rules — you provide examples and the model infers the rules."
+        "explanation": "ML models learn statistical patterns from labeled or unlabeled training examples. You don't write rules - you provide examples and the model infers the rules."
       },
       {
         "questionOrder": 8,

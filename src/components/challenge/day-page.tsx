@@ -25,10 +25,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import {
-  submitGithubStepAction,
-  submitLinkedinStepAction,
-} from "@/app/actions/submission-actions";
+import { submitDayAction } from "@/app/actions/submission-actions";
+import { useSynergy } from "@/components/shared/synergy-provider";
 
 interface CollapsibleSectionProps {
   icon: React.ReactNode;
@@ -166,12 +164,14 @@ export function DayPage({
   existingSubmission,
 }: Props) {
   const router = useRouter();
+  const { refresh } = useSynergy();
+  const [githubUrl, setGithubUrl] = useState(
+    existingSubmission?.githubUrl ?? "",
+  );
   const [linkedinUrl, setLinkedinUrl] = useState(
     existingSubmission?.linkedinUrl ?? "",
   );
-  const [artifactUrl, setArtifactUrl] = useState(
-    existingSubmission?.githubUrl ?? "",
-  );
+  const [confirmed, setConfirmed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
@@ -185,40 +185,33 @@ export function DayPage({
       setCopiedPrompt(true);
       setTimeout(() => setCopiedPrompt(false), 2000);
     } catch {
-      toast.error("Could not copy — select the text manually");
+      toast.error("Could not copy. Select the text manually");
     }
   };
 
   const handleSubmit = async () => {
-    if (!linkedinUrl.trim() || !artifactUrl.trim()) {
-      toast.error("Both fields are required");
+    if (!confirmed) {
       return;
     }
 
     setSubmitting(true);
     try {
-      const githubFd = new FormData();
-      githubFd.append("githubUrl", artifactUrl.trim());
-      githubFd.append("dayNumber", String(dayNumber));
-      githubFd.append("enrollmentId", enrollmentId);
+      const fd = new FormData();
+      fd.append("githubUrl", githubUrl.trim());
+      fd.append("linkedinUrl", linkedinUrl.trim());
+      fd.append("dayNumber", String(dayNumber));
+      fd.append("enrollmentId", enrollmentId);
+      fd.append("confirmed", "true");
 
-      const githubResult = await submitGithubStepAction(githubFd);
-      if (!githubResult.ok) {
-        toast.error(githubResult.message);
-        setSubmitting(false);
-        return;
-      }
-
-      const linkedinFd = new FormData();
-      linkedinFd.append("githubUrl", githubResult.githubUrl);
-      linkedinFd.append("linkedinUrl", linkedinUrl.trim());
-      linkedinFd.append("dayNumber", String(dayNumber));
-      linkedinFd.append("enrollmentId", enrollmentId);
-
-      const result = await submitLinkedinStepAction(linkedinFd);
+      const result = await submitDayAction(fd);
 
       if (result.ok) {
-        toast.success(`Day ${dayNumber} submitted! 🔥`);
+        refresh();
+        const synergyMsg =
+          result.synergyAwarded !== undefined
+            ? `Day ${dayNumber} submitted! +${result.synergyAwarded} synergy 🔥`
+            : `Day ${dayNumber} submitted! 🔥`;
+        toast.success(synergyMsg);
         router.push(
           `/dashboard?challenge=${encodeURIComponent(enrollmentId)}`,
         );
@@ -373,7 +366,7 @@ export function DayPage({
           >
             {solutionVideoUrl.includes("REPLACE_WITH") ? (
               <p className="text-sm text-muted-foreground">
-                Solution walkthrough video coming soon — check back shortly.
+                Solution walkthrough video coming soon. Check back shortly.
               </p>
             ) : (
               <a
@@ -488,13 +481,51 @@ export function DayPage({
           </span>
         </CollapsibleSection>
 
-        <div className="rounded-2xl border bg-card p-6">
-          <p className="mb-2 text-xs text-muted-foreground">
-            
-          </p>
-          <div className="flex flex-col gap-2 md:flex-row md:gap-3">
-            <div className="min-w-0 flex-1">
+        <p className="text-center text-xs text-muted-foreground">
+          Tip: the earlier you finish each day, the more synergy you earn, and
+          adding your GitHub + LinkedIn earns even more.
+        </p>
+
+        <div className="rounded-2xl border bg-card p-6 space-y-5">
+          <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+            <input
+              id="confirm-task"
+              type="checkbox"
+              checked={confirmed}
+              onChange={(e) => setConfirmed(e.target.checked)}
+              disabled={submitting}
+              className="mt-0.5 size-4 shrink-0 rounded border border-input accent-primary"
+            />
+            <label htmlFor="confirm-task" className="text-sm font-medium leading-snug">
+              I confirm I have completed today&apos;s task.
+            </label>
+          </div>
+
+          <div className="space-y-4">
+            <p className="text-sm font-medium text-muted-foreground">
+              Add proof (optional, earns more synergy)
+            </p>
+            <div className="space-y-2">
+              <label htmlFor="github-url" className="text-sm font-medium">
+                GitHub URL
+              </label>
               <Input
+                id="github-url"
+                type="url"
+                placeholder="GitHub commit or repo URL"
+                value={githubUrl}
+                onChange={(e) => setGithubUrl(e.target.value)}
+                className="text-sm"
+                disabled={submitting}
+              />
+              <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="linkedin-url" className="text-sm font-medium">
+                LinkedIn URL
+              </label>
+              <Input
+                id="linkedin-url"
                 type="url"
                 placeholder="LinkedIn post URL"
                 value={linkedinUrl}
@@ -502,27 +533,18 @@ export function DayPage({
                 className="text-sm"
                 disabled={submitting}
               />
+              <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
             </div>
-            <div className="min-w-0 flex-1">
-              <Input
-                type="url"
-                placeholder="Github Commit URL"
-                aria-label="GitHub commit URL"
-                value={artifactUrl}
-                onChange={(e) => setArtifactUrl(e.target.value)}
-                className="text-sm"
-                disabled={submitting}
-              />
-            </div>
-            <Button
-              onClick={() => void handleSubmit()}
-              disabled={submitting || !linkedinUrl.trim() || !artifactUrl.trim()}
-              className="shrink-0 gap-2"
-            >
-              <Send className="h-4 w-4" />
-              {submitting ? "Submitting..." : `Submit Day ${dayNumber}`}
-            </Button>
           </div>
+
+          <Button
+            onClick={() => void handleSubmit()}
+            disabled={submitting || !confirmed}
+            className="w-full gap-2 sm:w-auto"
+          >
+            <Send className="h-4 w-4" />
+            {submitting ? "Submitting..." : `Submit Day ${dayNumber}`}
+          </Button>
         </div>
       </main>
     </div>

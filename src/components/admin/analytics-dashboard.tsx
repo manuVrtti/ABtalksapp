@@ -48,15 +48,15 @@ type AnalyticsData = {
 };
 
 function registrationsTitle(range: TimeRange) {
-  if (range === "weekly") return "Registrations — Last 12 Weeks";
-  if (range === "monthly") return "Registrations — Last 12 Months";
-  return "Registrations — Last 30 Days";
+  if (range === "weekly") return "Registrations: Last 12 Weeks";
+  if (range === "monthly") return "Registrations: Last 12 Months";
+  return "Registrations: Last 30 Days";
 }
 
 function submissionsTitle(range: TimeRange) {
-  if (range === "weekly") return "Submissions — Last 12 Weeks";
-  if (range === "monthly") return "Submissions — Last 12 Months";
-  return "Submissions — Last 30 Days";
+  if (range === "weekly") return "Submissions: Last 12 Weeks";
+  if (range === "monthly") return "Submissions: Last 12 Months";
+  return "Submissions: Last 30 Days";
 }
 
 export function AnalyticsDashboard({ data }: { data: AnalyticsData }) {

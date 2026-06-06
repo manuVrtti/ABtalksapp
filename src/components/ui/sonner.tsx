@@ -25,6 +25,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme}
       className="toaster group"
+      position="bottom-center"
+      richColors
+      offset="1rem"
+      mobileOffset={{ bottom: "5.5rem" }}
       icons={{
         success: <CircleCheckIcon className="size-4" />,
         info: <InfoIcon className="size-4" />,
@@ -34,15 +38,21 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }}
       style={
         {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
+          "--normal-bg": "hsl(var(--background))",
+          "--normal-text": "hsl(var(--foreground))",
+          "--normal-border": "hsl(var(--border))",
           "--border-radius": "var(--radius)",
         } as React.CSSProperties
       }
       toastOptions={{
         classNames: {
-          toast: "cn-toast",
+          toast:
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+          description: "group-[.toast]:text-muted-foreground",
+          success:
+            "group-[.toaster]:!bg-emerald-50 group-[.toaster]:!text-emerald-950 group-[.toaster]:!border-emerald-200 dark:group-[.toaster]:!bg-emerald-950 dark:group-[.toaster]:!text-emerald-50 dark:group-[.toaster]:!border-emerald-800",
+          error:
+            "group-[.toaster]:!bg-destructive/10 group-[.toaster]:!text-destructive group-[.toaster]:!border-destructive/30",
         },
       }}
       {...props}

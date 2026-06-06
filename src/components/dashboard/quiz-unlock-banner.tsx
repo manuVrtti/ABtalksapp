@@ -31,7 +31,7 @@ export function QuizUnlockBanner({
               Week {weekNumber} Quiz Unlocked!
             </h3>
             <p className="text-sm text-muted-foreground">
-              {`${title} — ${questionCount} questions to test what you've learned`}
+              {`${title}: ${questionCount} questions to test what you've learned`}
             </p>
           </div>
         </div>

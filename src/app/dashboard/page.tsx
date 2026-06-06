@@ -360,7 +360,7 @@ export default async function DashboardPage({
             {isChallengeComplete ? (
               <div className="rounded-xl border border-dashed border-border/80 bg-muted/30 p-6 text-center">
                 <p className="font-display text-lg font-semibold">
-                  🎉 Challenge complete — you&apos;re ready for interview!
+                  🎉 Challenge complete! You&apos;re ready for interview!
                 </p>
                 {profile.isReadyForInterview ? (
                   <p className="mt-2 text-sm text-muted-foreground">
@@ -571,7 +571,7 @@ export default async function DashboardPage({
           <Card className="border-muted-foreground/20 bg-muted/40">
             <CardHeader>
               <CardTitle className="text-base text-muted-foreground">
-                Week {quizAvailability.attempt.quiz.weekNumber} quiz — scored{" "}
+                Week {quizAvailability.attempt.quiz.weekNumber} quiz: scored{" "}
                 {quizAvailability.attempt.score}/10
               </CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -597,7 +597,7 @@ export default async function DashboardPage({
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Your quiz history</CardTitle>
               <CardDescription>
-                Past attempts — open to review results (current week&apos;s quiz is
+                Past attempts: open to review results (current week&apos;s quiz is
                 above when applicable).
               </CardDescription>
             </CardHeader>
@@ -609,7 +609,7 @@ export default async function DashboardPage({
                     className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border/50 bg-muted/25 px-4 py-3 shadow-sm"
                   >
                     <span className="text-muted-foreground">
-                      Week {row.weekNumber} — scored {row.score}/10
+                      Week {row.weekNumber}: scored {row.score}/10
                       <span className="ml-1 text-xs">· {row.title}</span>
                     </span>
                     <Link

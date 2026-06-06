@@ -223,6 +223,17 @@ export async function rejectSubmissionAction(input: {
 
       targetUserId = submission.userId;
 
+      const event = await tx.synergyEvent.findUnique({
+        where: { submissionId },
+        select: { points: true },
+      });
+      if (event) {
+        await tx.studentProfile.updateMany({
+          where: { userId: submission.userId },
+          data: { synergyPoints: { decrement: event.points } },
+        });
+      }
+
       await tx.submission.delete({ where: { id: submissionId } });
 
       const remainingCount = await tx.submission.count({
@@ -287,5 +298,54 @@ export async function rejectSubmissionAction(input: {
       message:
         e instanceof Error ? e.message : "Failed to reject submission",
     };
+  }
+}
+
+export async function grantSynergyAction(input: {
+  targetUserId: string;
+  points: number;
+  reason?: string;
+}) {
+  const admin = await requireAdmin();
+  const parsed = z
+    .object({
+      targetUserId: z.string().min(1),
+      points: z.coerce.number().int().min(1).max(1000),
+      reason: z.string().max(500).optional(),
+    })
+    .safeParse(input);
+  if (!parsed.success) return { ok: false as const, message: "Invalid input" };
+
+  const { targetUserId, points, reason } = parsed.data;
+
+  try {
+    await prisma.$transaction(async (tx) => {
+      await tx.synergyEvent.create({
+        data: {
+          userId: targetUserId,
+          points,
+          type: "COMMUNITY_GRANT",
+          reason,
+          createdByAdminId: admin.userId,
+        },
+      });
+      await tx.studentProfile.updateMany({
+        where: { userId: targetUserId },
+        data: { synergyPoints: { increment: points } },
+      });
+      await tx.adminAction.create({
+        data: {
+          adminUserId: admin.userId,
+          targetUserId,
+          actionType: "GRANT_SYNERGY",
+          metadata: { points },
+          reason,
+        },
+      });
+    });
+    revalidateAdminViews(targetUserId);
+    return { ok: true as const };
+  } catch {
+    return { ok: false as const, message: "Grant failed" };
   }
 }

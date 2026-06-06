@@ -8,8 +8,8 @@ import { isWithinRelaxationWindow } from "@/features/submission/submit-day";
 export type DayData = {
   task: DailyTask;
   existingSubmission: {
-    githubUrl: string;
-    linkedinUrl: string;
+    githubUrl: string | null;
+    linkedinUrl: string | null;
     status: SubmissionStatus;
     submittedAt: Date;
   } | null;

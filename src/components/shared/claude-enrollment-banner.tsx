@@ -36,9 +36,9 @@ export function ClaudeEnrollmentBanner({
             <Sparkles className="h-4 w-4 shrink-0 text-orange-500" />
             <p className="truncate text-sm font-medium">
               <span className="hidden sm:inline">
-                Master Claude AI in 60 Days —{" "}
+                Master Claude AI in 60 Days:{" "}
               </span>
-              <span className="sm:hidden">Claude Challenge — </span>
+              <span className="sm:hidden">Claude Challenge: </span>
               <span className="font-normal text-muted-foreground">
                 Starts June 1
               </span>
