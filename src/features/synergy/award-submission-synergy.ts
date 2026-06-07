@@ -9,22 +9,11 @@ export async function awardSubmissionSynergy(
     enrollmentId: string;
     challengeId: string;
     dayNumber: number;
-    submittedAt: Date;
     hasGithub: boolean;
     hasLinkedin: boolean;
   },
 ): Promise<number> {
-  const earlier = await tx.submission.count({
-    where: {
-      dayNumber: args.dayNumber,
-      enrollment: { challengeId: args.challengeId },
-      submittedAt: { lt: args.submittedAt },
-      id: { not: args.submissionId },
-    },
-  });
-  const rank = earlier + 1;
   const { points } = computeSubmissionSynergy({
-    rank,
     hasGithub: args.hasGithub,
     hasLinkedin: args.hasLinkedin,
   });
@@ -37,7 +26,7 @@ export async function awardSubmissionSynergy(
       submissionId: args.submissionId,
       enrollmentId: args.enrollmentId,
       dayNumber: args.dayNumber,
-      rankAtAward: rank,
+      rankAtAward: null,
     },
   });
   await tx.studentProfile.updateMany({

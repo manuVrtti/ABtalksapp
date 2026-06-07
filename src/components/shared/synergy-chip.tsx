@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import {
-  Clock,
   Flame,
   GitCommit,
   Share2,
   TrendingUp,
+  UserPlus,
   Users,
 } from "lucide-react";
 import {
@@ -20,6 +20,7 @@ import { useSynergy } from "@/components/shared/synergy-provider";
 import {
   SYNERGY_PROOF_GITHUB,
   SYNERGY_PROOF_LINKEDIN,
+  SYNERGY_REFERRAL,
 } from "@/features/synergy/scoring";
 
 export function SynergyChip() {
@@ -69,13 +70,13 @@ export function SynergyChip() {
             </p>
             <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
               <div className="rounded-xl border bg-card p-2.5 sm:p-3">
-                <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-indigo-500/10">
-                  <Clock className="size-4 text-indigo-600 dark:text-indigo-400" />
+                <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-amber-500/10">
+                  <UserPlus className="size-4 text-amber-600 dark:text-amber-400" />
                 </div>
-                <p className="text-sm font-semibold">Finish early</p>
+                <p className="text-sm font-semibold">Refer a friend</p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  The earlier you submit each day, the bigger your rank bonus,
-                  the first members each day earn the most.
+                  Share your referral link. When someone signs up using it, you
+                  get +{SYNERGY_REFERRAL} synergy instantly.
                 </p>
               </div>
               <div className="rounded-xl border bg-card p-2.5 sm:p-3">
