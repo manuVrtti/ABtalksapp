@@ -29,10 +29,7 @@ function readCache(): { n: number; t: number } | null {
 }
 
 export function SynergyProvider({ children }: { children: React.ReactNode }) {
-  const [points, setPointsState] = useState<number | null>(() => {
-    if (typeof window === "undefined") return null;
-    return readCache()?.n ?? null;
-  });
+  const [points, setPointsState] = useState<number | null>(null);
 
   const writeCache = useCallback((n: number) => {
     try {
@@ -54,6 +51,7 @@ export function SynergyProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const cached = readCache();
+    if (cached) setPointsState(cached.n);
     if (!cached || Date.now() - cached.t > TTL_MS) refresh();
   }, [refresh]);
 
