@@ -191,7 +191,7 @@ export function PreStartDashboard({ enrollment, challenge }: Props) {
           Get updates, ask questions, and connect with fellow learners
         </p>
         <a
-          href="https://chat.whatsapp.com/Fqx07wwZhiq0lA6Z7d5uad"
+          href="https://chat.whatsapp.com/LSru1BgvifpEB4OMZsaZEi"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
