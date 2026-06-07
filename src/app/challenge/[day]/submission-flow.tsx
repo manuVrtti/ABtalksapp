@@ -305,11 +305,6 @@ export function SubmissionFlow({
         </CardContent>
       </Card>
 
-      <p className="text-center text-xs text-muted-foreground">
-        Tip: the earlier you finish each day, the more synergy you earn, and
-        adding your GitHub + LinkedIn earns even more.
-      </p>
-
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Submit your solution</CardTitle>

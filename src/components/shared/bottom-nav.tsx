@@ -1,7 +1,9 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, useReducedMotion } from "framer-motion";
 import { Briefcase, Compass, Home, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,8 +23,51 @@ function isTabActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+type IndicatorRect = { x: number; y: number; w: number; h: number };
+
 export function BottomNav() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
+
+  const navRef = useRef<HTMLElement | null>(null);
+  const tabRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [rect, setRect] = useState<IndicatorRect | null>(null);
+
+  const activeIndex = tabs.findIndex((t) => isTabActive(pathname, t.href));
+
+  // Measure the active tab relative to the nav so a single, always-mounted
+  // indicator can slide between tabs. Never mount/unmount it (that's what made
+  // it occasionally "pop in" instead of sliding).
+  const measure = useCallback(() => {
+    const nav = navRef.current;
+    const el = activeIndex >= 0 ? tabRefs.current[activeIndex] : null;
+    if (!nav || !el) {
+      setRect(null);
+      return;
+    }
+    const navBox = nav.getBoundingClientRect();
+    const box = el.getBoundingClientRect();
+    if (box.width === 0) {
+      // Nav is hidden (md breakpoint) — nothing to position.
+      setRect(null);
+      return;
+    }
+    setRect({
+      x: box.left - navBox.left,
+      y: box.top - navBox.top,
+      w: box.width,
+      h: box.height,
+    });
+  }, [activeIndex]);
+
+  useEffect(() => {
+    measure();
+  }, [measure, pathname]);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
 
   if (
     pathname === "/" ||
@@ -37,25 +82,45 @@ export function BottomNav() {
       aria-hidden={false}
     >
       <nav
+        ref={navRef}
         aria-label="Main navigation"
-        className="pointer-events-auto flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-border/40 bg-card/70 px-2 py-1.5 shadow-lg shadow-black/10 backdrop-blur-xl dark:bg-card/60 dark:shadow-black/40"
+        className="pointer-events-auto relative flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-border/40 bg-card/70 px-2 py-1.5 shadow-lg shadow-black/10 backdrop-blur-xl dark:bg-card/60 dark:shadow-black/40"
       >
-        {tabs.map(({ href, label, Icon }) => {
-          const active = isTabActive(pathname, href);
+        {rect ? (
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute left-0 top-0 rounded-full bg-primary/15"
+            initial={false}
+            animate={{ x: rect.x, y: rect.y, width: rect.w, height: rect.h }}
+            transition={
+              reduceMotion
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 380, damping: 30 }
+            }
+          />
+        ) : null}
+
+        {tabs.map(({ href, label, Icon }, i) => {
+          const active = i === activeIndex;
           return (
             <Link
               key={href}
               href={href}
+              ref={(el) => {
+                tabRefs.current[i] = el;
+              }}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-2 py-1.5 text-xs transition-colors",
+                "focus-spark relative z-10 flex flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-2 py-1.5 text-xs transition-colors",
                 active
-                  ? "bg-primary/15 text-primary"
+                  ? "text-primary"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
-              <Icon className="size-5" aria-hidden />
-              <span className="text-[10px] font-medium leading-none">{label}</span>
+              <Icon className="relative size-5" aria-hidden />
+              <span className="relative text-[10px] font-medium leading-none">
+                {label}
+              </span>
             </Link>
           );
         })}
