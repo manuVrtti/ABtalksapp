@@ -481,11 +481,6 @@ export function DayPage({
           </span>
         </CollapsibleSection>
 
-        <p className="text-center text-xs text-muted-foreground">
-          Tip: the earlier you finish each day, the more synergy you earn, and
-          adding your GitHub + LinkedIn earns even more.
-        </p>
-
         <div className="rounded-2xl border bg-card p-6 space-y-5">
           <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
             <input
