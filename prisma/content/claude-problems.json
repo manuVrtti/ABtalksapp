@@ -960,76 +960,98 @@
   {
     "dayNumber": 10,
     "domain": "CLAUDE",
-    "title": "Day 10: Build Your One-Page Portfolio with Claude",
-    "problemStatement": "Welcome to **Day 10** of the 60-Day Claude AI Mastery Challenge.\n\n**Theme:** Phase 2 — Career & Communication\n\n**Today's focus:** Build a one-page portfolio website using Claude — fast, clean, and shareable.\n\n**Tasks:**\n1. Use the portfolio prompt to generate the full HTML+CSS for a one-page site.\n2. Add your real projects, About, and contact.\n3. Host it (GitHub Pages, Vercel, or Netlify) and share the live link.\n\n**Submission:** Share a Claude conversation link, artifact, or short doc that shows your work.\n\n**Note:** Real content from our team launches before June 1, 2026.",
+    "title": "Day 10: Build Your Personal Portfolio Website with Claude",
+    "problemStatement": "Welcome to Day 10 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 2 — Building with Claude\n\nToday's focus: Learn how to use Claude as a personal branding and web development partner.\n\nA strong portfolio is one of the most valuable assets for students, professionals, freelancers, and founders. Instead of spending days learning HTML, CSS, JavaScript, and design, you'll use Claude to generate a modern portfolio website directly from your information.\n\nToday you'll build a complete personal portfolio website with modern UI, animations, responsive design, dark mode, project showcases, achievements, and contact information.\n\nTasks:\n1. Understand how AI can accelerate web development.\n2. Generate a modern portfolio website using Claude.\n3. Customize the generated portfolio.\n4. Generate a downloadable HTML application.\n5. Share your portfolio publicly.\n\nImportant:\nSet Claude's effort level to Low before generating the portfolio.\n\nYou may also upload your resume and optionally your profile photo to help Claude create a more personalized portfolio.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML file, and learning notes.",
     "learningObjectives": [
-      "Apply Day 10 concepts to your real role or studies",
-      "Build repeatable prompts you can reuse after the challenge",
-      "Practice safe, reviewable AI workflows"
+      "Build a complete portfolio website using Claude",
+      "Learn AI-assisted web development",
+      "Generate downloadable HTML applications",
+      "Understand personal branding fundamentals",
+      "Create recruiter-friendly portfolios"
     ],
     "resources": [
       "https://claude.ai",
-      "https://docs.anthropic.com",
-      "https://www.anthropic.com/claude"
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
     ],
     "difficulty": "Intermediate",
     "estimatedMinutes": 60,
-    "linkedinTemplate": "Day 10/60 of #60DayClaudeChallenge with @ABtalks 🚀\n\nToday (Portfolio): built and hosted a clean one-page portfolio site with Claude. Going from “I should make one” to “it’s live” in a single sitting.\n\nWhat’s the one project you’d feature on yours? 👇\n\n#60DayClaudeChallenge #ABtalks",
-    "solutionApproach": "Submit a valid Claude share or artifact URL, plus your LinkedIn post URL when prompted.",
+    "linkedinTemplate": "Day 10/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude to build my own personal portfolio website.\n\nThe portfolio includes:\n\n🌐 Personal Branding\n💼 Projects Showcase\n⚡ Skills Section\n🏆 Achievements\n📱 Mobile Responsive Design\n🎨 Modern UI & Animations\n🌙 Dark Mode\n\nBiggest takeaway:\n\nAI is not just helping us write content.\n\nIt's helping us build products, websites, and personal brands faster than ever.\n\n#ClaudeAI #PortfolioWebsite #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing screenshots of your portfolio website, generated HTML file, and learnings.",
     "tags": [
       "claude",
       "day-10",
       "portfolio",
-      "web-dev",
+      "html",
+      "web-development",
+      "personal-branding",
       "intermediate"
     ],
     "dayContent": {
-      "title": "One-Page Portfolio Site",
-      "tagline": "From idea to live link in one session",
-      "module": "Module 2 — Career & Communication",
+      "title": "Build Your Personal Portfolio Website",
+      "tagline": "Transform your profile into a modern portfolio",
+      "module": "Claude Artifacts",
       "difficulty": "Intermediate",
       "estimatedMinutes": 60,
       "deliverableFormat": "GitHub commit URL",
       "learning": {
-        "summary": "Today you’ll use Claude to generate a complete single-file portfolio site — hero, About, projects, contact — and host it on a free platform. No frameworks, no build step.",
+        "summary": "Modern portfolios are no longer limited to developers. Using Claude, anyone can generate beautiful personal websites showcasing skills, projects, achievements, and professional profiles. This helps build credibility, visibility, and personal branding.",
         "bullets": [
           {
-            "label": "Single file",
-            "text": "ask Claude for ONE index.html with inline CSS — easiest to host."
+            "label": "Personal Branding",
+            "text": "Create a strong online professional presence."
           },
           {
-            "label": "Strong hero",
-            "text": "name + one-line value proposition + the role you want."
+            "label": "AI Web Development",
+            "text": "Generate websites without writing code manually."
           },
           {
-            "label": "3 projects max",
-            "text": "each with a short outcome line. Quality over quantity."
+            "label": "Portfolio Building",
+            "text": "Showcase projects, skills, and achievements."
           },
           {
-            "label": "Free hosting",
-            "text": "drag-and-drop to Netlify or Vercel — live in under 60 seconds."
+            "label": "Career Growth",
+            "text": "Improve visibility among recruiters and hiring managers."
           }
         ]
       },
       "task": {
         "title": "Your Task",
         "steps": [
-          "Decide what you want the site to say in one sentence (your value proposition).",
-          "List your top 3 projects with a 1-line outcome each.",
-          "Use the prompt below to generate the full single-file site.",
-          "Drag the file onto Netlify (or push to GitHub + Vercel) to get a live link. Share it."
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the provided Portfolio Website prompt.",
+          "Replace placeholders with your own information.",
+          "Optionally upload your resume and profile photo.",
+          "Generate the complete portfolio website.",
+          "Save the generated HTML file.",
+          "Open the file in your browser and test it.",
+          "Take screenshots of the portfolio.",
+          "Optionally deploy your portfolio on Vercel or Netlify and make it publicly accessible.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day10 folder in your GitHub repository.",
+          "Create a day10.md file.",
+          "Upload screenshots, generated HTML file, and your learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
         ],
-        "solutionVideoUrl": "https://youtube.com/REPLACE_WITH_DAY_VIDEO"
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=o7nTVSyTgng&feature=youtu.be"
       },
-      "promptTemplate": "Act as a senior frontend engineer + designer.\n\nBuild me a single-file responsive one-page portfolio site (index.html with inline CSS, no frameworks, no external assets).\n\nStyle: dark theme, premium and modern (Linear / Vercel / Apple keynote vibe), bold sans-serif type, subtle gradient accents, generous whitespace, soft hover effects.\n\nSections:\n1. Hero — my name [name], a one-line value prop: “[what I do for whom and the outcome]”, and a CTA button to my email.\n2. About — 3 short paragraphs based on: [paste a few lines about you].\n3. Projects — 3 cards. Each has: project name, 1-line outcome, link. Data: [paste 3 projects].\n4. Contact — email + LinkedIn + GitHub links.\n\nConstraints:\n* Mobile responsive\n* Smooth scroll, anchor nav\n* Accessible color contrast\n* Self-contained: I should be able to open the .html file and it just works.\n\nOutput ONLY the full HTML in one code block.",
+      "promptTemplate": "You are an expert full-stack web developer and personal branding designer.\n\nBuild a complete, modern, single-file personal portfolio website using HTML, Tailwind CSS (CDN), and vanilla JavaScript for this person:\n\n=== PERSONAL INFO ===\nName: [Your Name]\nTitle: [e.g., 'Data Science Enthusiast | GenAI Builder']\nLocation: [City, Country]\nEmail: [email]\nLinkedIn: [URL]\nGitHub: [URL]\nAbout: [2-3 sentences about yourself]\n\n=== SKILLS ===\nTechnical: [Python, ML, SQL, etc.]\nTools: [VS Code, Jupyter, Power BI, etc.]\nSoft Skills: [Leadership, Communication, etc.]\n\n=== PROJECTS ===\n1. [Project Name] — [1 line description] — Tech: [stack]\n2. [Project Name] — [1 line description] — Tech: [stack]\n3. [Project Name] — [1 line description] — Tech: [stack]\n\n=== EXPERIENCE & ACHIEVEMENTS ===\n- [Internship / Hackathon / Certification]\n- [Award / Rank / Notable achievement]\n\n=== DESIGN PREFERENCES ===\nMode: Dark/Light toggle\nStyle: Modern, minimal, premium\nColors: [e.g., Purple + Teal, or Blue + Orange]\nFont: Clean sans-serif display font\n\n=== REQUIREMENTS ===\nInclude these sections:\n- Hero (name, title, typing animation, social links)\n- About Me\n- Skills (animated bars + tech tags)\n- Projects (cards with tech tags)\n- Achievements & Certifications\n- Contact (form + direct links)\n- Dark/Light mode toggle\n- Mobile responsive\n- Smooth scroll animations\n- Active nav highlighting\n- Single HTML file, no build step\n- Tailwind via CDN\n- SEO meta tags included\n\nOptional:\n- If a resume is uploaded, extract details automatically.\n- If a profile photo is uploaded, use it in the portfolio.\n- Generate recruiter-friendly content and project descriptions from resume data.\n\nReturn only the complete HTML code.",
       "engagement": {
-        "type": "Live Site Share",
-        "description": "Post your live portfolio link. Tell us how long it took you from “I should build one” to “it’s live.” Mention @AnilBajpai @ABTalksonAI @Anthropic in your post.",
+        "type": "Portfolio Showcase",
+        "description": "Share screenshots of your portfolio and explain one thing you learned about personal branding while building it. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
         "hashtag": "#60DayClaudeChallenge",
-        "mentions": ["@AnilBajpai", "@ABTalksonAI", "@Anthropic"]
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
       },
       "deliverable": {
-        "description": "Push your portfolio files (index.html + screenshot) to your repo. Submit the commit URL.",
+        "description": "Upload a markdown file containing portfolio screenshots, generated HTML file, key learnings, and optionally a live portfolio URL deployed on Vercel or Netlify.",
         "format": "GitHub commit URL"
       }
     }
