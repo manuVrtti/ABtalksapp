@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket } from "lucide-react";
+import { MessageCircle, Rocket } from "lucide-react";
 
 interface Props {
   totalCount: number;
@@ -56,6 +56,25 @@ export function ClaudeCtaSlide({ totalCount }: Props) {
           <li>• Consistency is the win: missed days break your streak</li>
         </ul>
       </motion.div>
+
+      <div className="mt-4 rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-3 text-center">
+        <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10">
+          <MessageCircle className="h-5 w-5 text-emerald-500" />
+        </div>
+        <h3 className="text-sm font-semibold">Join the WhatsApp Community</h3>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Get updates, ask questions, and connect with fellow builders before
+          Day 1.
+        </p>
+        <a
+          href="https://chat.whatsapp.com/LSru1BgvifpEB4OMZsaZEi"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex items-center gap-2 rounded-lg border border-emerald-500/30 px-3 py-1.5 text-xs font-medium text-emerald-600 hover:bg-emerald-500/10 dark:text-emerald-400"
+        >
+          Join WhatsApp Group
+        </a>
+      </div>
 
       <p className="mt-3 text-xs text-muted-foreground">
         FREE to join · Open to all roles & students
