@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, useTransition } from "react";
+import { useCallback, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Copy, X } from "lucide-react";
@@ -11,6 +11,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   publishRecruiterProfileAction,
   regenerateShareTokenAction,
@@ -18,20 +26,45 @@ import {
   upsertRecruiterReviewAction,
 } from "@/app/actions/recruiter-review-actions";
 import { cn } from "@/lib/utils";
-import type { Education, Project } from "@/lib/validations/recruiter";
+import type {
+  Certification,
+  CodingChallenge,
+  Compensation,
+  Education,
+  Experience,
+  Logistics,
+  Project,
+  RecommendationLevel,
+  SkillGroup,
+} from "@/lib/validations/recruiter";
 
 type ReviewData = {
-  confidenceRating: number | null;
-  codingRating: number | null;
-  communicationRating: number | null;
+  targetRole: string;
+  skillGroups: SkillGroup[];
+  education: Education[];
+  certifications: Certification[];
+  languagesSpoken: string[];
+  achievements: string[];
   headline: string;
   summary: string;
-  strengths: string[];
-  recommendedRoles: string[];
+  experience: Experience[];
   projects: Project[];
-  education: Education[];
-  achievements: string[];
-  certifications: string[];
+  communicationScore: number | null;
+  programmingScore: number | null;
+  behaviorScore: number | null;
+  communicationFeedback: string;
+  programmingFeedback: string;
+  behaviorFeedback: string;
+  codingChallenges: CodingChallenge[];
+  strengths: string[];
+  areasForGrowth: string[];
+  recommendation: RecommendationLevel | null;
+  assessmentDate: string;
+  interviewerName: string;
+  challengeRound: string;
+  abtalksId: string;
+  logistics: Logistics;
+  compensation: Compensation;
   adminNote: string;
   isPublished: boolean;
   shareToken: string | null;
@@ -43,52 +76,22 @@ type Props = {
   review: ReviewData;
 };
 
-const RATING_LABELS = [
-  { key: "confidenceRating" as const, label: "Confidence" },
-  { key: "codingRating" as const, label: "Coding skills" },
-  { key: "communicationRating" as const, label: "Communication" },
-];
-
-function RatingSelector({
-  label,
-  value,
-  onChange,
-}: {
+const RECOMMENDATION_OPTIONS: {
+  value: RecommendationLevel;
   label: string;
-  value: number | null;
-  onChange: (v: number | null) => void;
-}) {
-  return (
-    <div className="space-y-2">
-      <Label>{label}</Label>
-      <div className="flex gap-1">
-        {[1, 2, 3, 4, 5].map((n) => (
-          <button
-            key={n}
-            type="button"
-            onClick={() => onChange(value === n ? null : n)}
-            className={cn(
-              "flex size-9 items-center justify-center rounded-md border text-sm font-medium transition-colors",
-              value === n
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-background hover:bg-muted",
-            )}
-            aria-label={`${label}: ${n} of 5`}
-          >
-            {n}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
+}[] = [
+  { value: "STRONGLY_RECOMMEND", label: "Strongly recommend" },
+  { value: "RECOMMEND", label: "Recommend" },
+  { value: "NEUTRAL", label: "Neutral" },
+  { value: "DO_NOT_RECOMMEND", label: "Do not recommend" },
+];
 
 function TagInput({
   label,
   tags,
   onChange,
   placeholder,
-  maxTags = 10,
+  maxTags = 12,
 }: {
   label: string;
   tags: string[];
@@ -164,61 +167,58 @@ function TagInput({
   );
 }
 
-function ProjectsEditor({
-  projects,
+function SkillGroupsEditor({
+  groups,
   onChange,
 }: {
-  projects: Project[];
-  onChange: (projects: Project[]) => void;
+  groups: SkillGroup[];
+  onChange: (groups: SkillGroup[]) => void;
 }) {
-  function updateProject(index: number, patch: Partial<Project>) {
-    onChange(projects.map((p, i) => (i === index ? { ...p, ...patch } : p)));
+  function updateGroup(index: number, patch: Partial<SkillGroup>) {
+    onChange(groups.map((g, i) => (i === index ? { ...g, ...patch } : g)));
   }
 
-  function removeProject(index: number) {
-    onChange(projects.filter((_, i) => i !== index));
+  function removeGroup(index: number) {
+    onChange(groups.filter((_, i) => i !== index));
   }
 
   return (
     <div className="space-y-3">
-      <Label>Projects</Label>
-      {projects.map((project, index) => (
+      <Label>Skill groups</Label>
+      {groups.map((group, index) => (
         <div key={index} className="space-y-2 rounded-lg border p-3">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm font-medium">Project {index + 1}</span>
+            <span className="text-sm font-medium">Group {index + 1}</span>
             <Button
               type="button"
               variant="ghost"
               size="sm"
-              onClick={() => removeProject(index)}
+              onClick={() => removeGroup(index)}
             >
               Remove
             </Button>
           </div>
           <Input
-            placeholder="Title"
-            value={project.title}
-            onChange={(e) => updateProject(index, { title: e.target.value })}
+            placeholder="Category (e.g. Frontend)"
+            value={group.category}
+            onChange={(e) => updateGroup(index, { category: e.target.value })}
           />
-          <Textarea
-            placeholder="Description"
-            value={project.description}
-            rows={2}
-            onChange={(e) =>
-              updateProject(index, { description: e.target.value })
-            }
+          <TagInput
+            label="Skills in this group"
+            tags={group.skills}
+            onChange={(skills) => updateGroup(index, { skills })}
+            placeholder="Type skills, comma-separated, then Add"
+            maxTags={20}
           />
         </div>
       ))}
       <Button
         type="button"
         variant="outline"
-        disabled={projects.length >= 8}
-        onClick={() =>
-          onChange([...projects, { title: "", description: "" }])
-        }
+        disabled={groups.length >= 12}
+        onClick={() => onChange([...groups, { category: "", skills: [] }])}
       >
-        Add project
+        Add skill group
       </Button>
     </div>
   );
@@ -267,12 +267,12 @@ function EducationEditor({
           />
           <div className="grid gap-2 sm:grid-cols-2">
             <Input
-              placeholder="Year (e.g. 2025 or 2021–2025)"
+              placeholder="Year"
               value={row.year}
               onChange={(e) => updateRow(index, { year: e.target.value })}
             />
             <Input
-              placeholder="Score (e.g. 8.4 CGPA or 82%)"
+              placeholder="Score (CGPA / %)"
               value={row.score}
               onChange={(e) => updateRow(index, { score: e.target.value })}
             />
@@ -296,47 +296,405 @@ function EducationEditor({
   );
 }
 
+function CertificationsEditor({
+  certifications,
+  onChange,
+}: {
+  certifications: Certification[];
+  onChange: (certifications: Certification[]) => void;
+}) {
+  function updateRow(index: number, patch: Partial<Certification>) {
+    onChange(
+      certifications.map((row, i) => (i === index ? { ...row, ...patch } : row)),
+    );
+  }
+
+  function removeRow(index: number) {
+    onChange(certifications.filter((_, i) => i !== index));
+  }
+
+  return (
+    <div className="space-y-3">
+      <Label>Certifications</Label>
+      {certifications.map((row, index) => (
+        <div key={index} className="space-y-2 rounded-lg border p-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-sm font-medium">Certification {index + 1}</span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => removeRow(index)}
+            >
+              Remove
+            </Button>
+          </div>
+          <Input
+            placeholder="Name"
+            value={row.name}
+            onChange={(e) => updateRow(index, { name: e.target.value })}
+          />
+          <div className="grid gap-2 sm:grid-cols-2">
+            <Input
+              placeholder="Issuer"
+              value={row.issuer}
+              onChange={(e) => updateRow(index, { issuer: e.target.value })}
+            />
+            <Input
+              placeholder="Year"
+              value={row.year}
+              onChange={(e) => updateRow(index, { year: e.target.value })}
+            />
+          </div>
+        </div>
+      ))}
+      <Button
+        type="button"
+        variant="outline"
+        disabled={certifications.length >= 12}
+        onClick={() =>
+          onChange([...certifications, { name: "", issuer: "", year: "" }])
+        }
+      >
+        Add certification
+      </Button>
+    </div>
+  );
+}
+
+function ExperienceEditor({
+  experience,
+  onChange,
+}: {
+  experience: Experience[];
+  onChange: (experience: Experience[]) => void;
+}) {
+  function updateRow(index: number, patch: Partial<Experience>) {
+    onChange(experience.map((row, i) => (i === index ? { ...row, ...patch } : row)));
+  }
+
+  function removeRow(index: number) {
+    onChange(experience.filter((_, i) => i !== index));
+  }
+
+  return (
+    <div className="space-y-3">
+      <Label>Experience</Label>
+      {experience.map((row, index) => (
+        <div key={index} className="space-y-2 rounded-lg border p-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-sm font-medium">Role {index + 1}</span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => removeRow(index)}
+            >
+              Remove
+            </Button>
+          </div>
+          <Input
+            placeholder="Title"
+            value={row.title}
+            onChange={(e) => updateRow(index, { title: e.target.value })}
+          />
+          <div className="grid gap-2 sm:grid-cols-2">
+            <Input
+              placeholder="Company"
+              value={row.company}
+              onChange={(e) => updateRow(index, { company: e.target.value })}
+            />
+            <Input
+              placeholder="Location"
+              value={row.location}
+              onChange={(e) => updateRow(index, { location: e.target.value })}
+            />
+          </div>
+          <Input
+            placeholder="Period (e.g. Jan 2022 – Present)"
+            value={row.period}
+            onChange={(e) => updateRow(index, { period: e.target.value })}
+          />
+          <TagInput
+            label="Bullet points"
+            tags={row.bullets}
+            onChange={(bullets) => updateRow(index, { bullets })}
+            placeholder="Type bullet, comma-separated, then Add"
+            maxTags={8}
+          />
+        </div>
+      ))}
+      <Button
+        type="button"
+        variant="outline"
+        disabled={experience.length >= 8}
+        onClick={() =>
+          onChange([
+            ...experience,
+            {
+              title: "",
+              company: "",
+              location: "",
+              period: "",
+              bullets: [],
+            },
+          ])
+        }
+      >
+        Add experience
+      </Button>
+    </div>
+  );
+}
+
+function ProjectsEditor({
+  projects,
+  onChange,
+}: {
+  projects: Project[];
+  onChange: (projects: Project[]) => void;
+}) {
+  function updateProject(index: number, patch: Partial<Project>) {
+    onChange(projects.map((p, i) => (i === index ? { ...p, ...patch } : p)));
+  }
+
+  function removeProject(index: number) {
+    onChange(projects.filter((_, i) => i !== index));
+  }
+
+  return (
+    <div className="space-y-3">
+      <Label>Projects</Label>
+      {projects.map((project, index) => (
+        <div key={index} className="space-y-2 rounded-lg border p-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-sm font-medium">Project {index + 1}</span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => removeProject(index)}
+            >
+              Remove
+            </Button>
+          </div>
+          <Input
+            placeholder="Title"
+            value={project.title}
+            onChange={(e) => updateProject(index, { title: e.target.value })}
+          />
+          <Input
+            placeholder="Tech stack"
+            value={project.tech}
+            onChange={(e) => updateProject(index, { tech: e.target.value })}
+          />
+          <Textarea
+            placeholder="Description"
+            value={project.description}
+            rows={2}
+            onChange={(e) =>
+              updateProject(index, { description: e.target.value })
+            }
+          />
+        </div>
+      ))}
+      <Button
+        type="button"
+        variant="outline"
+        disabled={projects.length >= 8}
+        onClick={() =>
+          onChange([...projects, { title: "", tech: "", description: "" }])
+        }
+      >
+        Add project
+      </Button>
+    </div>
+  );
+}
+
+function CodingChallengesEditor({
+  challenges,
+  onChange,
+}: {
+  challenges: CodingChallenge[];
+  onChange: (challenges: CodingChallenge[]) => void;
+}) {
+  function updateRow(index: number, patch: Partial<CodingChallenge>) {
+    onChange(challenges.map((row, i) => (i === index ? { ...row, ...patch } : row)));
+  }
+
+  function removeRow(index: number) {
+    onChange(challenges.filter((_, i) => i !== index));
+  }
+
+  return (
+    <div className="space-y-3">
+      <Label>Coding challenges</Label>
+      {challenges.map((row, index) => (
+        <div key={index} className="grid gap-2 rounded-lg border p-3 sm:grid-cols-3">
+          <Input
+            placeholder="Name"
+            value={row.name}
+            onChange={(e) => updateRow(index, { name: e.target.value })}
+          />
+          <Input
+            placeholder="Status"
+            value={row.status}
+            onChange={(e) => updateRow(index, { status: e.target.value })}
+          />
+          <div className="flex gap-2">
+            <Input
+              placeholder="Score"
+              value={row.score}
+              onChange={(e) => updateRow(index, { score: e.target.value })}
+            />
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => removeRow(index)}
+            >
+              Remove
+            </Button>
+          </div>
+        </div>
+      ))}
+      <Button
+        type="button"
+        variant="outline"
+        disabled={challenges.length >= 12}
+        onClick={() =>
+          onChange([...challenges, { name: "", status: "", score: "" }])
+        }
+      >
+        Add challenge
+      </Button>
+    </div>
+  );
+}
+
+function ScoreInput({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number | null;
+  onChange: (v: number | null) => void;
+}) {
+  return (
+    <div className="space-y-2">
+      <Label>{label}</Label>
+      <Input
+        type="number"
+        min={0}
+        max={100}
+        value={value ?? ""}
+        onChange={(e) => {
+          const raw = e.target.value;
+          if (raw === "") {
+            onChange(null);
+            return;
+          }
+          const n = Number(raw);
+          if (Number.isNaN(n)) return;
+          onChange(Math.min(100, Math.max(0, Math.round(n))));
+        }}
+      />
+    </div>
+  );
+}
+
 export function RecruiterReviewPanel({ studentId, studentName, review }: Props) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
-  const [confidenceRating, setConfidenceRating] = useState(
-    review.confidenceRating,
-  );
-  const [codingRating, setCodingRating] = useState(review.codingRating);
-  const [communicationRating, setCommunicationRating] = useState(
-    review.communicationRating,
-  );
+  const [targetRole, setTargetRole] = useState(review.targetRole);
+  const [skillGroups, setSkillGroups] = useState(review.skillGroups);
+  const [education, setEducation] = useState(review.education);
+  const [certifications, setCertifications] = useState(review.certifications);
+  const [languagesSpoken, setLanguagesSpoken] = useState(review.languagesSpoken);
+  const [achievements, setAchievements] = useState(review.achievements);
   const [headline, setHeadline] = useState(review.headline);
   const [summary, setSummary] = useState(review.summary);
-  const [strengths, setStrengths] = useState(review.strengths);
-  const [recommendedRoles, setRecommendedRoles] = useState(
-    review.recommendedRoles,
-  );
+  const [experience, setExperience] = useState(review.experience);
   const [projects, setProjects] = useState(review.projects);
-  const [education, setEducation] = useState(review.education);
-  const [achievements, setAchievements] = useState(review.achievements);
-  const [certifications, setCertifications] = useState(review.certifications);
+  const [communicationScore, setCommunicationScore] = useState(
+    review.communicationScore,
+  );
+  const [programmingScore, setProgrammingScore] = useState(
+    review.programmingScore,
+  );
+  const [behaviorScore, setBehaviorScore] = useState(review.behaviorScore);
+  const [communicationFeedback, setCommunicationFeedback] = useState(
+    review.communicationFeedback,
+  );
+  const [programmingFeedback, setProgrammingFeedback] = useState(
+    review.programmingFeedback,
+  );
+  const [behaviorFeedback, setBehaviorFeedback] = useState(
+    review.behaviorFeedback,
+  );
+  const [codingChallenges, setCodingChallenges] = useState(
+    review.codingChallenges,
+  );
+  const [strengths, setStrengths] = useState(review.strengths);
+  const [areasForGrowth, setAreasForGrowth] = useState(review.areasForGrowth);
+  const [recommendation, setRecommendation] = useState(review.recommendation);
+  const [assessmentDate, setAssessmentDate] = useState(review.assessmentDate);
+  const [interviewerName, setInterviewerName] = useState(review.interviewerName);
+  const [challengeRound, setChallengeRound] = useState(review.challengeRound);
+  const [abtalksId, setAbtalksId] = useState(review.abtalksId);
+  const [logistics, setLogistics] = useState(review.logistics);
+  const [compensation, setCompensation] = useState(review.compensation);
   const [adminNote, setAdminNote] = useState(review.adminNote);
   const [isPublished, setIsPublished] = useState(review.isPublished);
   const [shareToken, setShareToken] = useState(review.shareToken);
+
+  const assessmentComposite = useMemo(() => {
+    if (
+      communicationScore == null ||
+      programmingScore == null ||
+      behaviorScore == null
+    ) {
+      return null;
+    }
+    return communicationScore + programmingScore + behaviorScore;
+  }, [communicationScore, programmingScore, behaviorScore]);
 
   function handleSave() {
     startTransition(async () => {
       const result = await upsertRecruiterReviewAction({
         userId: studentId,
-        confidenceRating,
-        codingRating,
-        communicationRating,
+        targetRole: targetRole || undefined,
         headline: headline || undefined,
         summary: summary || undefined,
         adminNote: adminNote || undefined,
-        strengths,
-        recommendedRoles,
-        projects: projects.filter((p) => p.title.trim()),
-        education: education.filter((e) => e.degree.trim() && e.institution.trim()),
+        skillGroups: skillGroups.filter((g) => g.category.trim()),
+        education: education.filter(
+          (e) => e.degree.trim() && e.institution.trim(),
+        ),
+        certifications: certifications.filter((c) => c.name.trim()),
+        languagesSpoken,
         achievements,
-        certifications,
+        experience: experience.filter((e) => e.title.trim()),
+        projects: projects.filter((p) => p.title.trim()),
+        communicationScore,
+        programmingScore,
+        behaviorScore,
+        communicationFeedback: communicationFeedback || undefined,
+        programmingFeedback: programmingFeedback || undefined,
+        behaviorFeedback: behaviorFeedback || undefined,
+        codingChallenges: codingChallenges.filter((c) => c.name.trim()),
+        strengths,
+        areasForGrowth,
+        recommendation,
+        assessmentDate: assessmentDate || "",
+        interviewerName: interviewerName || undefined,
+        challengeRound: challengeRound || undefined,
+        abtalksId: abtalksId || undefined,
+        logistics,
+        compensation,
       });
       if (!result.ok) {
         toast.error(result.message);
@@ -401,106 +759,276 @@ export function RecruiterReviewPanel({ studentId, studentName, review }: Props) 
   return (
     <div className="space-y-6">
       <p className="text-sm text-muted-foreground">
-        Rate and curate a recruiter-facing profile for {studentName}. Contact
+        Capture the full resume and assessment report for {studentName}. Contact
         details are never shown on the shared page.
       </p>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Ratings (1–5)</CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-4 sm:grid-cols-3">
-          {RATING_LABELS.map(({ key, label }) => {
-            const value =
-              key === "confidenceRating"
-                ? confidenceRating
-                : key === "codingRating"
-                  ? codingRating
-                  : communicationRating;
-            const setValue =
-              key === "confidenceRating"
-                ? setConfidenceRating
-                : key === "codingRating"
-                  ? setCodingRating
-                  : setCommunicationRating;
-            return (
-              <RatingSelector
-                key={key}
-                label={label}
-                value={value}
-                onChange={setValue}
-              />
-            );
-          })}
-        </CardContent>
-      </Card>
+      <Tabs defaultValue="resume">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="resume">Resume</TabsTrigger>
+          <TabsTrigger value="assessment">Assessment</TabsTrigger>
+          <TabsTrigger value="internal">Internal</TabsTrigger>
+        </TabsList>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Curated content</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="headline">Headline</Label>
-            <Input
-              id="headline"
-              value={headline}
-              onChange={(e) => setHeadline(e.target.value)}
-              placeholder="e.g. Strong full-stack candidate with consistent delivery"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="summary">Summary</Label>
-            <Textarea
-              id="summary"
-              value={summary}
-              onChange={(e) => setSummary(e.target.value)}
-              rows={4}
-              placeholder="Brief overview for recruiters…"
-            />
-          </div>
-          <TagInput
-            label="Key strengths"
-            tags={strengths}
-            onChange={setStrengths}
-            placeholder="Type strengths, comma-separated, then Add"
-          />
-          <TagInput
-            label="Recommended roles"
-            tags={recommendedRoles}
-            onChange={setRecommendedRoles}
-            placeholder="Type roles, comma-separated, then Add"
-          />
-          <ProjectsEditor projects={projects} onChange={setProjects} />
-          <EducationEditor education={education} onChange={setEducation} />
-          <TagInput
-            label="Achievements"
-            tags={achievements}
-            onChange={setAchievements}
-            placeholder="Type achievements, comma-separated, then Add"
-            maxTags={12}
-          />
-          <TagInput
-            label="Certifications"
-            tags={certifications}
-            onChange={setCertifications}
-            placeholder="Type certifications, comma-separated, then Add"
-            maxTags={12}
-          />
-          <div className="space-y-2">
-            <Label htmlFor="adminNote">
-              Private admin note — never shown to recruiters
-            </Label>
-            <Textarea
-              id="adminNote"
-              value={adminNote}
-              onChange={(e) => setAdminNote(e.target.value)}
-              rows={3}
-              placeholder="Internal notes only…"
-            />
-          </div>
-        </CardContent>
-      </Card>
+        <TabsContent value="resume" className="space-y-4 pt-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Resume content</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="targetRole">Target role</Label>
+                <Input
+                  id="targetRole"
+                  value={targetRole}
+                  onChange={(e) => setTargetRole(e.target.value)}
+                  placeholder="e.g. Full-stack Engineer"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="headline">Headline</Label>
+                <Input
+                  id="headline"
+                  value={headline}
+                  onChange={(e) => setHeadline(e.target.value)}
+                />
+              </div>
+              <SkillGroupsEditor groups={skillGroups} onChange={setSkillGroups} />
+              <EducationEditor education={education} onChange={setEducation} />
+              <CertificationsEditor
+                certifications={certifications}
+                onChange={setCertifications}
+              />
+              <TagInput
+                label="Languages spoken"
+                tags={languagesSpoken}
+                onChange={setLanguagesSpoken}
+                placeholder='e.g. "English — Native", comma-separated'
+              />
+              <TagInput
+                label="Achievements"
+                tags={achievements}
+                onChange={setAchievements}
+                placeholder="Type achievements, comma-separated, then Add"
+              />
+              <div className="space-y-2">
+                <Label htmlFor="summary">Professional summary</Label>
+                <Textarea
+                  id="summary"
+                  value={summary}
+                  onChange={(e) => setSummary(e.target.value)}
+                  rows={4}
+                />
+              </div>
+              <ExperienceEditor experience={experience} onChange={setExperience} />
+              <ProjectsEditor projects={projects} onChange={setProjects} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="assessment" className="space-y-4 pt-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>ABTalks assessment scores</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-3">
+                <ScoreInput
+                  label="Communication (/100)"
+                  value={communicationScore}
+                  onChange={setCommunicationScore}
+                />
+                <ScoreInput
+                  label="Programming (/100)"
+                  value={programmingScore}
+                  onChange={setProgrammingScore}
+                />
+                <ScoreInput
+                  label="Behavior (/100)"
+                  value={behaviorScore}
+                  onChange={setBehaviorScore}
+                />
+              </div>
+              <p className="text-sm font-medium">
+                ABTalks Assessment Score:{" "}
+                {assessmentComposite != null
+                  ? `${assessmentComposite} / 300`
+                  : "— / 300"}
+              </p>
+              <div className="space-y-2">
+                <Label htmlFor="communicationFeedback">
+                  Communication feedback
+                </Label>
+                <Textarea
+                  id="communicationFeedback"
+                  value={communicationFeedback}
+                  onChange={(e) => setCommunicationFeedback(e.target.value)}
+                  rows={3}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="programmingFeedback">Programming feedback</Label>
+                <Textarea
+                  id="programmingFeedback"
+                  value={programmingFeedback}
+                  onChange={(e) => setProgrammingFeedback(e.target.value)}
+                  rows={3}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="behaviorFeedback">Behavior feedback</Label>
+                <Textarea
+                  id="behaviorFeedback"
+                  value={behaviorFeedback}
+                  onChange={(e) => setBehaviorFeedback(e.target.value)}
+                  rows={3}
+                />
+              </div>
+              <CodingChallengesEditor
+                challenges={codingChallenges}
+                onChange={setCodingChallenges}
+              />
+              <TagInput
+                label="Key strengths"
+                tags={strengths}
+                onChange={setStrengths}
+                placeholder="Type strengths, comma-separated, then Add"
+              />
+              <TagInput
+                label="Areas for growth"
+                tags={areasForGrowth}
+                onChange={setAreasForGrowth}
+                placeholder="Type areas, comma-separated, then Add"
+              />
+              <div className="space-y-2">
+                <Label>Recommendation</Label>
+                <Select
+                  value={recommendation ?? ""}
+                  onValueChange={(v) =>
+                    setRecommendation(
+                      v ? (v as RecommendationLevel) : null,
+                    )
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select recommendation" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {RECOMMENDATION_OPTIONS.map((opt) => (
+                      <SelectItem key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="assessmentDate">Assessment date</Label>
+                  <Input
+                    id="assessmentDate"
+                    type="date"
+                    value={assessmentDate}
+                    onChange={(e) => setAssessmentDate(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="interviewerName">Interviewer name</Label>
+                  <Input
+                    id="interviewerName"
+                    value={interviewerName}
+                    onChange={(e) => setInterviewerName(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="challengeRound">Challenge round</Label>
+                  <Input
+                    id="challengeRound"
+                    value={challengeRound}
+                    onChange={(e) => setChallengeRound(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="abtalksId">ABTalks ID</Label>
+                  <Input
+                    id="abtalksId"
+                    value={abtalksId}
+                    onChange={(e) => setAbtalksId(e.target.value)}
+                    placeholder="Leave blank to auto-generate"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="internal" className="space-y-4 pt-4">
+          <Card className="border-destructive/30">
+            <CardHeader>
+              <CardTitle>Internal — not shown to recruiters</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {(
+                  [
+                    ["openToRelocation", "Open to relocation"],
+                    ["preferredLocations", "Preferred locations"],
+                    ["currentLocation", "Current location"],
+                    ["availableFrom", "Available from"],
+                    ["noticePeriod", "Notice period"],
+                    ["workAuthorization", "Work authorization"],
+                    ["preferredWorkMode", "Preferred work mode"],
+                  ] as const
+                ).map(([key, label]) => (
+                  <div key={key} className="space-y-2">
+                    <Label>{label}</Label>
+                    <Input
+                      value={logistics[key]}
+                      onChange={(e) =>
+                        setLogistics({ ...logistics, [key]: e.target.value })
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {(
+                  [
+                    ["currentCtc", "Current CTC"],
+                    ["expectedCtc", "Expected CTC"],
+                    ["negotiatedOffer", "Negotiated offer"],
+                    ["equity", "Equity"],
+                    ["benefitsRequired", "Benefits required"],
+                    ["currencyPreference", "Currency preference"],
+                  ] as const
+                ).map(([key, label]) => (
+                  <div key={key} className="space-y-2">
+                    <Label>{label}</Label>
+                    <Input
+                      value={compensation[key]}
+                      onChange={(e) =>
+                        setCompensation({
+                          ...compensation,
+                          [key]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="adminNote">Interviewer private notes</Label>
+                <Textarea
+                  id="adminNote"
+                  value={adminNote}
+                  onChange={(e) => setAdminNote(e.target.value)}
+                  rows={4}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
 
       <div className="flex flex-wrap gap-2">
         <Button type="button" onClick={handleSave} disabled={pending}>

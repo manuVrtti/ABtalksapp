@@ -109,107 +109,107 @@
   {
     "weekNumber": 2,
     "domain": "CLAUDE",
-    "title": "Week 2: Prompt Engineering Patterns",
+    "title": "Week 2 Challenge Quiz: Building Real-World Applications with Claude",
     "questions": [
       {
         "questionOrder": 1,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 1: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "While building NutriScope on Day 9, what was the key lesson about creating large applications with Claude?",
+        "optionA": "Use the biggest prompt possible",
+        "optionB": "Generate everything in one shot",
+        "optionC": "Build an MVP first and enhance it iteratively",
+        "optionD": "Always use Opus",
+        "correctAnswer": "C",
+        "explanation": "Day 9 focused on iterative development: build first, enhance later."
       },
       {
         "questionOrder": 2,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 2: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the primary purpose of Claude Artifacts introduced during the challenge?",
+        "optionA": "Writing longer essays",
+        "optionB": "Creating interactive applications and tools",
+        "optionC": "Training AI models",
+        "optionD": "Generating images only",
+        "correctAnswer": "B",
+        "explanation": "Artifacts transform Claude from a chatbot into an application builder."
       },
       {
         "questionOrder": 3,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 3: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "When generating a portfolio website on Day 10, what additional input could significantly improve personalization?",
+        "optionA": "Browser version",
+        "optionB": "Resume and profile photo",
+        "optionC": "Internet speed",
+        "optionD": "Operating system",
+        "correctAnswer": "B",
+        "explanation": "Uploading a resume and optionally a profile photo helps Claude create a more personalized portfolio."
       },
       {
         "questionOrder": 4,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 4: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the most important rule while optimizing resumes on Day 11?",
+        "optionA": "Add more skills to improve ATS score",
+        "optionB": "Rewrite experience completely",
+        "optionC": "Never invent achievements, skills, or experience",
+        "optionD": "Increase resume length",
+        "correctAnswer": "C",
+        "explanation": "ATS optimization must maintain 100% factual accuracy."
       },
       {
         "questionOrder": 5,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 5: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the key benefit of connecting Indeed with Claude on Day 13?",
+        "optionA": "Creating resumes automatically",
+        "optionB": "Finding and analyzing jobs based on your profile and preferences",
+        "optionC": "Building websites",
+        "optionD": "Generating certifications",
+        "correctAnswer": "B",
+        "explanation": "Job connectors allow Claude to discover and evaluate relevant opportunities."
       },
       {
         "questionOrder": 6,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 6: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the Job Discovery workflow, which combination produces the best job recommendations?",
+        "optionA": "Job title only",
+        "optionB": "Resume only",
+        "optionC": "Professional profile + job search criteria",
+        "optionD": "Location only",
+        "correctAnswer": "C",
+        "explanation": "Claude needs both profile information and job preferences to personalize recommendations."
       },
       {
         "questionOrder": 7,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 7: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "According to Day 14, which phrase could be a potential workplace red flag?",
+        "optionA": "Structured onboarding",
+        "optionB": "Learning opportunities",
+        "optionC": "Wear many hats and always available",
+        "optionD": "Flexible working hours",
+        "correctAnswer": "C",
+        "explanation": "Such phrases often indicate burnout risk and unrealistic expectations."
       },
       {
         "questionOrder": 8,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 8: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why did the Job Risk Analyzer generate interview questions?",
+        "optionA": "To increase ATS score",
+        "optionB": "To validate potential risks before accepting an offer",
+        "optionC": "To replace recruiters",
+        "optionD": "To generate cover letters",
+        "correctAnswer": "B",
+        "explanation": "The questions help candidates verify concerns discovered during analysis."
       },
       {
         "questionOrder": 9,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 9: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Throughout Days 8–14, participants were repeatedly advised to set Claude's effort level to:",
+        "optionA": "Maximum",
+        "optionB": "High",
+        "optionC": "Medium",
+        "optionD": "Low",
+        "correctAnswer": "D",
+        "explanation": "Low effort generally works best on the free tier and reduces generation failures."
       },
       {
         "questionOrder": 10,
-        "questionText": "Week 2: Prompt Engineering Patterns - Question 10: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 2 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the biggest overall lesson from Week 2?",
+        "optionA": "Claude is only useful for chatting",
+        "optionB": "AI works best without context",
+        "optionC": "Claude can be used as a builder, recruiter, analyst, and career assistant when given structured inputs",
+        "optionD": "Long prompts always guarantee success",
+        "correctAnswer": "C",
+        "explanation": "Week 2 demonstrated how Claude can create applications, optimize careers, analyze jobs, and generate professional assets through structured prompting."
       }
     ]
   },

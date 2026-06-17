@@ -2,3 +2,5 @@
 
 - 2026-06-12 [schema] Added RecruiterReview model for admin-curated anonymized recruiter profiles with share tokens.
 - 2026-06-12 [schema] Added projects/education Json and achievements/certifications arrays to RecruiterReview for admin-curated resume sections.
+- 2026-06-12 [schema] Expanded RecruiterReview to full assessment-report format with /100 scores, resume sections, and admin-only logistics/compensation.
+- 2026-06-12 [convention] Server-side recruiter PDF via @react-pdf/renderer at GET /r/[token]/pdf (Node runtime only).

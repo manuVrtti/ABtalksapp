@@ -6,9 +6,19 @@ import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin-auth";
 import {
   achievementsSchema,
-  certificationsSchema,
+  areasForGrowthSchema,
+  codingChallengesSchema,
+  compensationSchema,
   educationListSchema,
+  experienceListSchema,
+  languagesSpokenSchema,
+  logisticsSchema,
   projectsSchema,
+  recommendationSchema,
+  scoreSchema,
+  skillGroupsSchema,
+  strengthsSchema,
+  certificationsListSchema,
 } from "@/lib/validations/recruiter";
 
 function revalidateAdminViews(targetUserId: string) {
@@ -24,35 +34,51 @@ function revalidateAdminViews(targetUserId: string) {
   revalidatePath("/register");
 }
 
-const ratingSchema = z.coerce
-  .number()
-  .int()
-  .min(1)
-  .max(5)
-  .nullable()
-  .optional();
-const tagArraySchema = z.array(z.string().trim().min(1).max(60)).max(10);
-
 const upsertSchema = z.object({
   userId: z.string().min(1),
-  confidenceRating: ratingSchema,
-  codingRating: ratingSchema,
-  communicationRating: ratingSchema,
+  targetRole: z.string().max(120).optional(),
   headline: z.string().max(200).optional(),
-  summary: z.string().max(2000).optional(),
-  adminNote: z.string().max(2000).optional(),
-  strengths: tagArraySchema.optional(),
-  recommendedRoles: tagArraySchema.optional(),
-  projects: projectsSchema.optional(),
+  summary: z.string().max(4000).optional(),
+  adminNote: z.string().max(4000).optional(),
+  skillGroups: skillGroupsSchema.optional(),
   education: educationListSchema.optional(),
+  certifications: certificationsListSchema.optional(),
+  languagesSpoken: languagesSpokenSchema.optional(),
   achievements: achievementsSchema.optional(),
-  certifications: certificationsSchema.optional(),
+  experience: experienceListSchema.optional(),
+  projects: projectsSchema.optional(),
+  communicationScore: scoreSchema.nullable().optional(),
+  programmingScore: scoreSchema.nullable().optional(),
+  behaviorScore: scoreSchema.nullable().optional(),
+  communicationFeedback: z.string().max(2000).optional(),
+  programmingFeedback: z.string().max(2000).optional(),
+  behaviorFeedback: z.string().max(2000).optional(),
+  codingChallenges: codingChallengesSchema.optional(),
+  strengths: strengthsSchema.optional(),
+  areasForGrowth: areasForGrowthSchema.optional(),
+  recommendation: recommendationSchema.nullable().optional(),
+  assessmentDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date")
+    .optional()
+    .or(z.literal("")),
+  interviewerName: z.string().max(120).optional(),
+  challengeRound: z.string().max(120).optional(),
+  abtalksId: z.string().max(40).optional(),
+  logistics: logisticsSchema.optional(),
+  compensation: compensationSchema.optional(),
 });
 
 const userIdSchema = z.object({ userId: z.string().min(1) });
 
 function generateShareToken() {
   return crypto.randomUUID().replace(/-/g, "");
+}
+
+function parseAssessmentDate(value: string | undefined): Date | null {
+  if (!value?.trim()) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+  return new Date(`${value}T00:00:00.000Z`);
 }
 
 export async function upsertRecruiterReviewAction(
@@ -62,7 +88,7 @@ export async function upsertRecruiterReviewAction(
   const parsed = upsertSchema.safeParse(input);
   if (!parsed.success) return { ok: false as const, message: "Invalid input" };
 
-  const { userId, ...data } = parsed.data;
+  const { userId, assessmentDate, ...data } = parsed.data;
 
   try {
     await prisma.$transaction(async (tx) => {
@@ -70,34 +96,64 @@ export async function upsertRecruiterReviewAction(
         where: { userId },
         create: {
           userId,
-          confidenceRating: data.confidenceRating ?? null,
-          codingRating: data.codingRating ?? null,
-          communicationRating: data.communicationRating ?? null,
+          targetRole: data.targetRole ?? null,
           headline: data.headline ?? null,
           summary: data.summary ?? null,
           adminNote: data.adminNote ?? null,
-          strengths: data.strengths ?? [],
-          recommendedRoles: data.recommendedRoles ?? [],
-          projects: data.projects ?? [],
+          skillGroups: data.skillGroups ?? [],
           education: data.education ?? [],
-          achievements: data.achievements ?? [],
           certifications: data.certifications ?? [],
+          languagesSpoken: data.languagesSpoken ?? [],
+          achievements: data.achievements ?? [],
+          experience: data.experience ?? [],
+          projects: data.projects ?? [],
+          communicationScore: data.communicationScore ?? null,
+          programmingScore: data.programmingScore ?? null,
+          behaviorScore: data.behaviorScore ?? null,
+          communicationFeedback: data.communicationFeedback ?? null,
+          programmingFeedback: data.programmingFeedback ?? null,
+          behaviorFeedback: data.behaviorFeedback ?? null,
+          codingChallenges: data.codingChallenges ?? [],
+          strengths: data.strengths ?? [],
+          areasForGrowth: data.areasForGrowth ?? [],
+          recommendation: data.recommendation ?? null,
+          assessmentDate: parseAssessmentDate(assessmentDate),
+          interviewerName: data.interviewerName ?? null,
+          challengeRound: data.challengeRound ?? null,
+          abtalksId: data.abtalksId?.trim() ? data.abtalksId.trim() : null,
+          logistics: data.logistics ?? {},
+          compensation: data.compensation ?? {},
           reviewedByAdminId: admin.userId,
           reviewedAt: new Date(),
         },
         update: {
-          confidenceRating: data.confidenceRating ?? null,
-          codingRating: data.codingRating ?? null,
-          communicationRating: data.communicationRating ?? null,
+          targetRole: data.targetRole ?? null,
           headline: data.headline ?? null,
           summary: data.summary ?? null,
           adminNote: data.adminNote ?? null,
-          strengths: data.strengths ?? [],
-          recommendedRoles: data.recommendedRoles ?? [],
-          projects: data.projects ?? [],
+          skillGroups: data.skillGroups ?? [],
           education: data.education ?? [],
-          achievements: data.achievements ?? [],
           certifications: data.certifications ?? [],
+          languagesSpoken: data.languagesSpoken ?? [],
+          achievements: data.achievements ?? [],
+          experience: data.experience ?? [],
+          projects: data.projects ?? [],
+          communicationScore: data.communicationScore ?? null,
+          programmingScore: data.programmingScore ?? null,
+          behaviorScore: data.behaviorScore ?? null,
+          communicationFeedback: data.communicationFeedback ?? null,
+          programmingFeedback: data.programmingFeedback ?? null,
+          behaviorFeedback: data.behaviorFeedback ?? null,
+          codingChallenges: data.codingChallenges ?? [],
+          strengths: data.strengths ?? [],
+          areasForGrowth: data.areasForGrowth ?? [],
+          recommendation: data.recommendation ?? null,
+          assessmentDate: parseAssessmentDate(assessmentDate),
+          interviewerName: data.interviewerName ?? null,
+          challengeRound: data.challengeRound ?? null,
+          abtalksId: data.abtalksId?.trim() ? data.abtalksId.trim() : null,
+          logistics: data.logistics ?? {},
+          compensation: data.compensation ?? {},
           reviewedByAdminId: admin.userId,
           reviewedAt: new Date(),
         },

@@ -1257,5 +1257,545 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 13,
+    "domain": "CLAUDE",
+    "title": "Day 13: Connect Indeed with Claude & Build Your AI Job Search Assistant",
+    "problemStatement": "Welcome to Day 13 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 2 — Building with Claude\n\nToday's focus: Learn how to connect external data sources with Claude and transform it into a personalized AI-powered job search assistant.\n\nMost job seekers spend hours manually searching through job boards, filtering opportunities, comparing roles, and identifying which jobs are actually worth applying to.\n\nToday you'll connect Indeed with Claude using Claude Connectors and let Claude perform job discovery, role analysis, skill-gap analysis, and opportunity prioritization for you.\n\nInstead of manually searching hundreds of jobs, Claude will analyze your profile and help identify the highest-fit opportunities.\n\nTasks:\n1. Connect Indeed with Claude.\n2. Create your professional profile.\n3. Define your job search criteria.\n4. Let Claude discover matching opportunities.\n5. Analyze market demand and skill gaps.\n6. Build your personalized job search strategy.\n7. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low before running the prompts.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, discovered opportunities, analysis, and learning notes.",
+    "learningObjectives": [
+      "Learn how Claude Connectors work",
+      "Connect Indeed with Claude",
+      "Perform AI-powered job discovery",
+      "Analyze job market demand",
+      "Identify skill gaps and career opportunities"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/",
+      "https://claude.ai/directory/connectors/indeed"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 13/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I transformed Claude into my personal AI Job Search Assistant.\n\nI connected Indeed with Claude and used AI to:\n\n🔍 Discover matching job opportunities\n📊 Analyze market demand\n🎯 Calculate role fit scores\n📈 Identify skill gaps\n💼 Prioritize high-value opportunities\n\nBiggest takeaway:\n\nThe future of job search isn't manually scrolling through job boards.\n\nIt's using AI to find the best opportunities faster and smarter.\n\n#ClaudeAI #Indeed #JobSearch #CareerGrowth #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing screenshots of your job search workflow, discovered opportunities, skill-gap analysis, and key learnings.",
+    "tags": [
+      "claude",
+      "day-13",
+      "connectors",
+      "indeed",
+      "job-search",
+      "career",
+      "ai-assistant"
+    ],
+    "dayContent": {
+      "title": "Build Your AI Job Search Assistant",
+      "tagline": "Let Claude find your next opportunity",
+      "module": "Claude Connectors",
+      "difficulty": "Beginner",
+      "estimatedMinutes": 45,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Claude Connectors allow Claude to access external information sources and use them for personalized analysis. By connecting Indeed, Claude can help automate job discovery, role matching, opportunity prioritization, and career planning.",
+        "bullets": [
+          {
+            "label": "Claude Connectors",
+            "text": "Connect external platforms directly to Claude."
+          },
+          {
+            "label": "AI Job Discovery",
+            "text": "Automatically find matching opportunities."
+          },
+          {
+            "label": "Market Analysis",
+            "text": "Identify in-demand skills and hiring trends."
+          },
+          {
+            "label": "Career Planning",
+            "text": "Build a smarter job search strategy."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Open Claude Connectors",
+          "The link for Indeed Connector is provided in Resources, connect it.",
+          "Connect your Indeed account.",
+          "Start a new conversation.",
+          "Paste Prompt 1 and create your professional profile.",
+          "Paste Prompt 2 and define your job search criteria.",
+          "Paste Prompt 3 and allow Claude to discover matching jobs.",
+          "Review the opportunities and match scores.",
+          "Analyze the skill-gap recommendations.",
+          "Review market demand insights.",
+          "Save the generated results.",
+          "Take screenshots of the opportunities and analysis.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day13 folder in your GitHub repository.",
+          "Create a day13.md file.",
+          "Upload screenshots in GitHub folder (if required), and mention discovered opportunities, analysis, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=8DTqXPzVfT0"
+      },
+
+      "promptTemplate": "PROMPT 1: Professional Profile\n\nDescribe your professional background, including:\n\nCurrent role\nYears of experience\nKey skills and technologies\nIndustry/domain expertise\nCurrent company type\nCurrent location\nNotable achievements, certifications, or accomplishments\n\nPROMPT 2: Job Search Criteria\n\nSpecify your target job requirements, including:\n\nDesired job titles\nPreferred company types\nPreferred locations (Remote/Hybrid/Onsite)\nSalary expectations\nIndustries or companies to exclude\nJob posting recency requirements\nAny additional preferences or constraints\n\nPROMPT 3: Job Discovery & Analysis\n\nUsing my professional profile and job search criteria:\n\nSearch for matching job opportunities using the available job connector(s)\nPrioritize the highest-fit roles\nExclude jobs that do not meet my requirements\nReturn the top opportunities in a table containing:\n\nCompany\nRole\nLocation\nPosted Date\nDirect Application Link\nMatch Score\nWhy It Fits My Profile\nCTC\n\nAlso provide:\n\nMost commonly required skills across the jobs\nSkill gap analysis\nMarket demand insights\nRecommendations to improve my chances of getting interviews\nOverall fit assessment for my target roles and compensation goals.",
+
+      "engagement": {
+        "type": "AI Job Search Showcase",
+        "description": "Share one surprising insight you discovered from Claude's job search analysis. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots, discovered opportunities, skill-gap analysis, market insights, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 14,
+    "domain": "CLAUDE",
+    "title": "Day 14: Detect Job Red Flags Before You Apply with Claude",
+    "problemStatement": "Welcome to Day 14 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 2 — Building with Claude\n\nToday's focus: Learn how to use Claude as an AI Job Risk Analyzer and Red Flag Detector.\n\nMany job seekers spend hours tailoring resumes and preparing applications without evaluating whether the opportunity is actually worth pursuing.\n\nToday you'll use Claude to analyze Job Descriptions and Company Information to uncover hidden risks, unrealistic expectations, toxic workplace signals, misleading remote-job claims, hiring concerns, and company-related red flags.\n\nInstead of applying blindly, you'll learn how to make smarter career decisions using AI.\n\nTasks:\n1. Gather a Job Description.\n2. Research company information.\n3. Use Claude to analyze the opportunity.\n4. Identify risks and positive signals.\n5. Generate smart interview questions.\n6. Make an informed application decision.\n7. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low before generating the analysis.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing the risk analysis report, screenshots, and learning notes.",
+    "learningObjectives": [
+      "Identify job description red flags",
+      "Analyze company risks before applying",
+      "Evaluate remote job authenticity",
+      "Detect toxic workplace signals",
+      "Make smarter career decisions using AI"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/",
+      "https://drive.google.com/drive/folders/1uUqgLorQ6rotH8x7iIzqX5gbsv6VBFMT"
+    ],
+    "difficulty": "Beginner",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 14/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as an AI Job Red Flag Detector.\n\nI analyzed a Job Description and Company Information to uncover:\n\n🚩 Unrealistic Requirements\n🏢 Company Risks\n🌍 Remote Job Authenticity\n⚠️ Hiring Concerns\n💼 Workplace Culture Signals\n\nBiggest takeaway:\n\nNot every opportunity is worth pursuing.\n\nSometimes the smartest career move is knowing which jobs to avoid.\n\n#ClaudeAI #JobSearch #CareerGrowth #Hiring #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated risk report, screenshots, interview questions, and key learnings.",
+    "tags": [
+      "claude",
+      "day-14",
+      "career",
+      "job-analysis",
+      "red-flags",
+      "hiring",
+      "job-search"
+    ],
+    "dayContent": {
+      "title": "AI Job Red Flag Detector",
+      "tagline": "Analyze opportunities before investing your time",
+      "module": "Career Applications with Claude",
+      "difficulty": "Beginner",
+      "estimatedMinutes": 30,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "A job application is a two-way evaluation process. While companies assess candidates, candidates should also evaluate opportunities. Claude can help identify hidden risks, misleading claims, toxic work culture signals, and hiring concerns before you invest time in applying.",
+        "bullets": [
+          {
+            "label": "Risk Detection",
+            "text": "Identify hidden red flags inside job descriptions."
+          },
+          {
+            "label": "Company Analysis",
+            "text": "Evaluate company stability and reputation signals."
+          },
+          {
+            "label": "Remote Validation",
+            "text": "Detect misleading remote-work claims."
+          },
+          {
+            "label": "Interview Strategy",
+            "text": "Generate smart questions to validate concerns."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Gather a Job Description (JD).",
+          "Gather Company Information.",
+          "Copy and paste the Job Red Flag Detector prompt.",
+          "If you have the JD then upload the JD as a PDF or paste the job description directly.",
+          "If you do not have JD then you can take the JD from resources",
+          "Paste the company information.",
+          "Generate the risk analysis report.",
+          "Review the Overall Risk Score.",
+          "Review Red Flags and Positive Signals.",
+          "Analyze the Risk Breakdown.",
+          "Review the Final Verdict.",
+          "Review the generated interview questions.",
+          "Take screenshots of the report.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day14 folder in your GitHub repository.",
+          "Create a day14.md file.",
+          "Upload screenshots, generated report, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=01CfQ-qJ27w&feature=youtu.be"
+      },
+
+      "promptTemplate": "You are an AI Red Flag Detector for job seekers.\n\nAnalyze the Job Description and Company Information.\n\nIdentify:\n\n1. Unrealistic Requirements\n- Excessive experience for the role\n- Too many skills/responsibilities\n- Contradictory expectations\n\n2. Toxic Workplace Signals\n- Burnout indicators\n- 'Wear many hats'\n- 'Fast-paced', 'rockstar', 'hustle culture'\n- Poor work-life balance signals\n\n3. Remote Job Authenticity\n- Hidden office requirements\n- Relocation expectations\n- Misleading remote claims\n\n4. Hiring Risks\n- Missing salary information\n- Vague responsibilities\n- Excessive qualifications\n- Suspicious hiring practices\n\n5. Company Risks\n- Reputation concerns\n- Stability concerns\n- Growth or layoff indicators\n\nOutput:\n\n## Overall Risk Score (0-100)\n\n### Top Red Flags\n- List with severity (1-10)\n\n### Positive Signals\n- List positives\n\n### Risk Breakdown\n| Category | Risk Level |\n|-----------|-----------|\n| Requirements | |\n| Culture | |\n| Remote | |\n| Hiring | |\n| Company | |\n\n### Final Verdict\n✅ Apply\n⚠️ Apply with Caution\n❌ Avoid\n\n### 5 Smart Interview Questions\nGenerate questions that help validate the identified risks.\n\nJob Description:\n[Paste Here]\n\nCompany Information:\n[Paste Here]",
+
+      "engagement": {
+        "type": "Career Intelligence Showcase",
+        "description": "Share one red flag or positive signal you discovered while analyzing a job opportunity. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing the risk analysis report, screenshots, interview questions, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 15,
+    "domain": "CLAUDE",
+    "title": "Day 15: Build Your Personal Astrology & Life Analysis Consultant with Claude",
+    "problemStatement": "Welcome to Day 15 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 2 — Building with Claude\n\nToday's focus: Learn how to use Claude as a personalized analysis assistant by combining structured data collection, reasoning, forecasting, and report generation.\n\nToday you'll create a Personal Astrology & Life Analysis Consultant that generates a detailed life report based on birth details and current life circumstances.\n\nThe goal is not to blindly accept predictions, but to learn how Claude can collect information, structure complex analyses, generate long-form reports, and present insights in an organized format.\n\nTasks:\n1. Collect required personal information.\n2. Generate a structured life analysis report.\n3. Explore career, wealth, relationships, and life patterns.\n4. Generate future forecasts and recommendations.\n5. Learn how Claude handles multi-step analysis.\n6. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low before generating the report.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing generated reports, screenshots, and learning notes.",
+    "learningObjectives": [
+      "Learn structured information collection",
+      "Generate long-form personalized reports",
+      "Understand multi-step reasoning workflows",
+      "Create complex analysis frameworks using Claude",
+      "Learn prompt engineering for detailed reports"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 15/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I learned how to build a structured life analysis system using Claude.\n\nI created a personalized report covering:\n\n📊 Life Patterns\n💼 Career Analysis\n💰 Wealth Potential\n❤️ Relationships\n📈 Future Forecasts\n🎯 Actionable Guidance\n\nBiggest takeaway:\n\nThe quality of AI outputs depends heavily on how well we collect information and structure the prompt.\n\nClaude can generate surprisingly detailed reports when given the right context and instructions.\n\n#ClaudeAI #PromptEngineering #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing generated reports, screenshots, observations, and learnings.",
+    "tags": [
+      "claude",
+      "day-15",
+      "prompt-engineering",
+      "analysis",
+      "report-generation",
+      "reasoning",
+      "intermediate"
+    ],
+    "dayContent": {
+      "title": "Build a Personal Life Analysis Consultant",
+      "tagline": "Learn structured report generation with Claude",
+      "module": "Advanced Prompt Engineering",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 45,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Complex reports require structured data collection, multi-step reasoning, and organized presentation. Today you'll learn how Claude can transform raw inputs into comprehensive reports that combine analysis, forecasting, and actionable recommendations.",
+        "bullets": [
+          {
+            "label": "Structured Inputs",
+            "text": "Learn how information quality impacts output quality."
+          },
+          {
+            "label": "Multi-Step Reasoning",
+            "text": "Generate reports through layered analysis."
+          },
+          {
+            "label": "Report Generation",
+            "text": "Create detailed and organized outputs."
+          },
+          {
+            "label": "Prompt Design",
+            "text": "Build prompts that guide AI through complex tasks."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Open Claude.",
+          "Set Claude effort level to Low or Medium.",
+          "Start a new conversation.",
+          "Paste the provided Astrology & Life Analysis prompt.",
+          "Provide your Full Name.",
+          "Provide your Gender.",
+          "Provide your Date of Birth.",
+          "Provide your Birth Time.",
+          "Specify Birth Time Accuracy (Exact, Approximate, or Unknown).",
+          "Provide your Place of Birth.",
+          "Provide your Current City.",
+          "Provide your Relationship Status.",
+          "Provide your Profession.",
+          "Provide your Top 3 Current Concerns.",
+          "Allow Claude to generate the complete report.",
+          "Review Career & Wealth Analysis carefully.",
+          "Review Relationship and Life Pattern sections.",
+          "Review Forecasts and Recommendations.",
+          "Take screenshots of important sections.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day15 folder in your GitHub repository.",
+          "Create a day15.md file.",
+          "Upload screenshots, generated reports, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=itBQIDEOF8k&feature=youtu.be"
+      },
+
+      "promptTemplate": "You are an expert Vedic astrologer specializing in Parashara, Jaimini, Nakshatra, Vimshottari Dasha, and Transit Analysis.\n\nBefore starting, collect:\n\n* Full Name\n* Gender\n* Date of Birth\n* Exact Birth Time\n* Birth Time Accuracy (Exact/Approximate/Unknown)\n* Place of Birth\n* Current City\n* Relationship Status\n* Profession\n* Top 3 Current Concerns\n\nAfter receiving the details:\n\n### 1. Birth Chart Summary\n\nProvide:\n\n* Lagna (Ascendant)\n* Moon Sign\n* Sun Sign\n* Nakshatra & Pada\n* Planetary Placements\n* Key Strengths & Weaknesses\n* Major Yogas and Doshas\n* Functional Benefic and Malefic Planets\n\n### 2. Life Pattern Analysis\n\nAnalyze:\n\n* Core personality\n* Childhood and family influences\n* Repeating karmic patterns\n* Relationship tendencies\n* Career strengths and blind spots\n* Financial habits and challenges\n\n### 3. Career & Wealth (Highest Priority)\n\nAnalyze:\n\n* Career suitability\n* Job vs Business\n* Leadership potential\n* Government job potential\n* Foreign opportunities\n* Wealth accumulation potential\n* Investments and property prospects\n\nProvide age ranges for:\n\n* Career breakthroughs\n* Wealth growth periods\n* Challenging phases\n\n### 4. Relationships & Marriage\n\nAnalyze:\n\n* Love vs arranged marriage potential\n* Marriage timing windows\n* Spouse characteristics\n* Relationship strengths and risks\n\n### 5. Current Dasha Analysis\n\nExplain:\n\n* Current Mahadasha\n* Current Antardasha\n* Current opportunities\n* Current challenges\n\n### 6. 5-Year Forecast\n\nFor each year provide:\n\n| Year | Career | Money | Relationships | Health |\n| ---- | ------ | ----- | ------------- | ------ |\n\nHighlight:\n\n* Best year\n* Toughest year\n* Major turning points\n\n### 7. Remedies\n\nRecommend remedies only if astrologically justified:\n\n* Mantras\n* Donations\n* Spiritual practices\n* Gemstones (only if strongly supported)\n\n### Output Rules\n\n* Use tables wherever possible.\n* Explain the astrological reasoning behind predictions.\n* Focus on practical guidance, not generic statements.\n* Clearly separate facts, interpretations, and probabilities.\n* Prioritize career, wealth, and major life decisions.\n* Be honest about both opportunities and risks.",
+
+      "engagement": {
+        "type": "Prompt Engineering Showcase",
+        "description": "Share one thing you learned about collecting inputs, structuring prompts, or generating detailed reports with Claude. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing generated reports, screenshots, observations, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 16,
+    "domain": "CLAUDE",
+    "title": "Day 16: Build Your First Custom Claude Skill for Stock Research",
+    "problemStatement": "Welcome to Day 16 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 3 — Custom Skills & Automation\n\nToday's focus: Learn how to create reusable Custom Skills in Claude.\n\nMost users repeatedly paste the same prompts every time they want a task completed. Power users create Custom Skills so Claude automatically follows a predefined workflow without requiring the prompt to be pasted again.\n\nToday you'll build a professional Stock Fundamental Research Skill that can analyze Indian and global listed companies using financial statements, valuation metrics, business quality, management analysis, risks, competitive advantages, ownership patterns, and growth prospects.\n\nOnce the skill is created, you can reuse it indefinitely without rewriting the prompt.\n\nTasks:\n1. Learn how Custom Skills work.\n2. Create your first Stock Research Skill.\n3. Configure instructions and behavior.\n4. Test the skill on multiple stocks.\n5. Generate research reports and comparisons.\n6. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low before creating the skill.\n\nThe goal is to learn reusable workflows. After the skill is created, you only need to mention the stock name and Claude will automatically follow the instructions.\n\nIf Claude does not complete the output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots of the skill, generated stock reports, and learning notes.",
+    "learningObjectives": [
+      "Understand Claude Custom Skills",
+      "Create reusable AI workflows",
+      "Generate professional stock research reports",
+      "Learn financial analysis frameworks",
+      "Reduce repetitive prompting using skills"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 16/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I learned how to create Custom Skills in Claude.\n\nI built a reusable Stock Fundamental Research Skill that can analyze:\n\n📈 Valuation Metrics\n📊 Financial Statements\n🏢 Business Quality\n👨‍💼 Management Analysis\n⚠️ Risks & Red Flags\n📉 Ownership Trends\n📋 Peer Comparisons\n\nBiggest takeaway:\n\nThe real power of Claude isn't just prompting.\n\nIt's creating reusable skills that eliminate repetitive work forever.\n\n#ClaudeAI #Investing #StockAnalysis #CustomSkills #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing screenshots of the created skill, stock analysis reports, comparisons, and learnings.",
+    "tags": [
+      "claude",
+      "day-16",
+      "custom-skills",
+      "stock-analysis",
+      "finance",
+      "automation",
+      "intermediate"
+    ],
+    "dayContent": {
+      "title": "Build Your First Stock Research Skill",
+      "tagline": "Stop repeating prompts. Create reusable AI workflows.",
+      "module": "Claude Custom Skills",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 45,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Custom Skills allow Claude to remember a workflow so you don't have to repeatedly paste long prompts. Once created, a skill can be reused indefinitely across multiple conversations and stock analyses.",
+        "bullets": [
+          {
+            "label": "Reusable Workflows",
+            "text": "Create once and reuse forever."
+          },
+          {
+            "label": "Custom Skills",
+            "text": "Turn prompts into permanent capabilities."
+          },
+          {
+            "label": "Stock Research",
+            "text": "Analyze businesses using a structured framework."
+          },
+          {
+            "label": "Productivity",
+            "text": "Eliminate repetitive prompting and save time."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Open Claude.",
+          "Set Claude effort level to Low or Medium.",
+          "Navigate to the Skills section in Claude.",
+          "Create a new Custom Skill.",
+          "Set the Skill Name as stock-fundamental-research.",
+          "Add the provided description.",
+          "Paste the provided instructions.",
+          "Save the Custom Skill.",
+          "Test the skill using a stock such as TCS, Infosys, Reliance, HDFC Bank, or Tata Motors.",
+          "Generate a  report on any stock or can compare stocks.",
+          "Review charts, valuation analysis, ownership trends, and risk factors.",
+          "Take screenshots of the created skill and generated reports.",
+          "Observe how the skill can be reused without re-entering the prompt.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day16 folder in your GitHub repository.",
+          "Create a day16.md file.",
+          "Upload screenshots, generated reports, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=Gd8k1pbL1rI&feature=youtu.be"
+      },
+
+      "promptTemplate": "Skill Name: stock-fundamental-research\n\nDescription: Analyze Indian and global listed companies using fundamentals, financial statements, business quality, competitive advantages, valuation, risks, and growth prospects. Generate evidence-based research reports and investor-friendly summaries. Never provide direct buy, sell, or hold recommendations.\n\nInstructions:\n\n# Stock Fundamental Analyzer\n\nAnalyze Indian listed stocks (NSE/BSE) using fundamentals only. Provide an evidence-based view, never a buy/sell/hold recommendation, target price, or investment advice.\n\n## Modes\nQuick Take = single stock + short/simple request (default if only stock name provided); Deep Dive = detailed/full analysis; Compare = two stocks or vs/compare request; Pros & Cons = strengths/weaknesses request; Portfolio Fit = user shares holdings and asks how a stock fits.\n\nAlso give charts and all related to the stock.\n\n## Mandatory Rules\n1. Use live data first. Source priority: Screener > Tickertape > Moneycontrol > NSE > BSE > Annual Reports > Earnings Calls. Cross-check important figures with at least 2 sources.\n\n2. Never fabricate data. If unavailable: 🚩 Data unavailable — verify at [source]. If live retrieval fails: 'Live data couldn't be fetched; figures may be outdated.'\n\n3. Cite source beside every key figure.\n\n4. Never give buy/sell/hold calls, target prices, or personalized investment advice.\n\n5. No predictions. Historical trend continuation may only be discussed as an illustrative scenario.\n\n6. Use plain English and briefly explain jargon when first used.\n\n7. Give Price Chart also in Output.\n\n## Research Checklist\nCMP, Market Cap, Face Value, 52W High/Low; P/E, P/B, EV/EBITDA vs sector and 5Y average; Revenue, Profit, EPS CAGR (3Y/5Y); EBITDA Margin & NPM (5Y trend); EPS last 8 quarters; FCF (3–5Y); D/E, Interest Coverage, Current Ratio; ROE & ROCE (current, 3Y avg, 5Y avg); Dividend history & payout; Promoter holding trend and pledging (>10% = flag); FII/DII trends (8 quarters); Moat, pricing power, brand, switching costs, market share; Management quality and governance; Sector tailwinds/headwinds; Latest earnings commentary; Top news; 3 closest peers with P/E, P/B, ROE, Revenue Growth, D/E.\n\n## Interpretation Rules\nValuation: Cheap = below sector & history; Fair = within ~10%; Expensive = above both.\nD/E: <1 Safe, 1–2 Moderate, >2 Leveraged.\nInterest Coverage: >3 Healthy, 1.5–3 Watch, <1.5 Risk.\nCurrent Ratio: >1.5 Comfortable, 1–1.5 Watch, <1 Risk.\nFCF: Positive & growing = Strong; Positive & stable = Stable; Negative = Concern.\nROE/ROCE: >15 Good, 10–15 Average, <10 Weak.\nGrowth: Accelerating, Steady, Slowing, Declining.\n\n## Output Formats\n### Quick Take (150–220 words)\nCompany overview; CMP, Market Cap, P/E + valuation verdict; D/E, ROE, ROCE; growth trend; 3 strengths; 2 watch-points; Fundamental Quality (Strong/Moderate/Weak) with explanation; also give price chart of the stock; end with 'Want the full Deep Dive?'\n\n### Deep Dive\nUse assets/deep-dive-template.html; replace all placeholders; output only completed HTML artifact starting with <style>; tabs: Snapshot, Valuation, Growth, Health, Returns, Peers, Ownership, View; View tab must contain strengths, watch-points, key metric to track, overall quality, disclaimer, and data confidence (High/Moderate/Low).\n\n### Compare\nSide-by-side comparison: CMP, Market Cap, P/E, P/B, EV/EBITDA, Revenue CAGR, Profit CAGR, EBITDA Margin, ROE, ROCE, D/E, Promoter Holding, Pledging, Dividend; include charts of stock prices; 'Where A Leads', 'Where B Leads', and neutral investor-style summary; no winner.\n\n### Pros & Cons\n3–5 evidence-backed strengths; 3–5 evidence-backed risks; balanced summary.\n\n### Portfolio Fit\nConcentration analysis; sector overlap; what it adds; what it duplicates; compact fundamental snapshot; discuss fit without advising action.\n\n## Closing Line\n'This is a view of the fundamentals for educational purposes only. It is not investment advice and not a buy/sell/hold recommendation. Verify all figures independently. The final decision is yours.'",
+
+      "engagement": {
+        "type": "Custom Skill Showcase",
+        "description": "Share one stock you analyzed using your custom skill and explain what surprised you most about the generated research. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the custom skill, generated stock reports, comparison analyses, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 17,
+    "domain": "CLAUDE",
+    "title": "Day 17: Build an AI-Powered Vehicle Cost & Fuel Analysis Dashboard",
+    "problemStatement": "Welcome to Day 17 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 3 — Custom Skills, Data Analysis & Real-World Dashboards\n\nToday's focus: Learn how to use Claude as a Data Analyst and Dashboard Builder.\n\nReal-world decision making often depends on data. Whether you're comparing vehicle running costs, fuel efficiency, maintenance expenses, carbon emissions, or long-term ownership costs, data analysis can help you make more informed decisions.\n\nToday you'll work with a real CSV dataset and use Claude to generate a complete interactive HTML dashboard.\n\nThe dashboard will analyze multiple fuel types, calculate vehicle ownership metrics, compare environmental impact, evaluate E85 economics, and generate professional visualizations.\n\nTasks:\n1. Download the provided CSV dataset.\n2. Customize the prompt with your vehicle details.\n3. Upload the CSV into Claude.\n4. Generate an interactive HTML dashboard.\n5. Analyze fuel costs, maintenance costs, and environmental impact.\n6. Compare fuel types using charts and KPIs.\n7. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low before generating the dashboard.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots of the dashboard, generated HTML file, and learning notes.",
+    "learningObjectives": [
+      "Work with CSV datasets in Claude",
+      "Generate data-driven HTML dashboards",
+      "Perform vehicle cost analysis",
+      "Create visualizations using SVG charts",
+      "Learn practical data analytics workflows"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/",
+      "https://drive.google.com/file/d/1dVIJ73dA-OD2m2E5FDNP_qK59G7sYITU/view?usp=sharing"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 17/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as a Data Analyst and Dashboard Builder.\n\nI analyzed a vehicle fuel dataset and generated a complete interactive dashboard featuring:\n\n🚗 Vehicle Ownership Analysis\n⛽ Fuel Cost Comparison\n📊 SVG Charts & Visualizations\n🌍 CO₂ Impact Analysis\n🔧 Maintenance Cost Tracking\n📈 E85 Fuel Economics\n\nBiggest takeaway:\n\nClaude isn't just a chatbot.\n\nIt can analyze datasets, calculate metrics, and build complete dashboards from raw CSV files.\n\n#ClaudeAI #DataAnalytics #Dashboard #DataVisualization #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated dashboard HTML, screenshots, analysis findings, and key learnings.",
+    "tags": [
+      "claude",
+      "day-17",
+      "data-analysis",
+      "dashboard",
+      "csv",
+      "html",
+      "visualization"
+    ],
+    "dayContent": {
+      "title": "Build an AI Vehicle Cost & Fuel Analysis Dashboard",
+      "tagline": "Transform raw CSV data into an interactive dashboard",
+      "module": "Data Analysis with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 45,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Claude can act as a data analyst capable of processing CSV datasets, calculating business metrics, generating visualizations, and building complete HTML dashboards. This workflow mirrors real-world analytics projects used in consulting, finance, operations, and business intelligence.",
+        "bullets": [
+          {
+            "label": "CSV Analysis",
+            "text": "Analyze structured datasets without writing code."
+          },
+          {
+            "label": "Dashboard Creation",
+            "text": "Generate complete HTML dashboards from raw data."
+          },
+          {
+            "label": "Business Metrics",
+            "text": "Calculate meaningful KPIs and insights."
+          },
+          {
+            "label": "Visualization",
+            "text": "Create charts and dashboards using SVG graphics."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Download the CSV dataset from the provided Google Drive link.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Gather your vehicle information.",
+          "Update the prompt with your vehicle details.",
+          "Upload the downloaded CSV file into Claude.",
+          "Paste the provided Vehicle Cost Analysis Dashboard prompt.",
+          "Generate the complete HTML dashboard.",
+          "Review KPI cards, fuel comparisons, maintenance costs, and environmental impact analysis.",
+          "Analyze the E85 economics and break-even calculations.",
+          "Review SVG charts, gauges, and fuel comparisons.",
+          "Save the generated HTML file.",
+          "Open the dashboard in your browser.",
+          "Take screenshots of the dashboard.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day17 folder in your GitHub repository.",
+          "Create a day17.md file.",
+          "Upload screenshots, generated HTML, analysis findings, and learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=l00X_hloplY"
+      },
+
+      "promptTemplate": "## Details\n- Vehicle : [YOUR VEHICLE MODEL]\n- Fuel    : [Petrol/Diesel/CNG/E85/EV]\n- Usage   : [City/Highway/Mixed/Fleet]\n- KM/month: [e.g. 1000]\n- Car Age : [e.g. 3 yrs]\n\n## Role\nData analyst. Read attached CSV → compute metrics → output one HTML dashboard. HTML only, no explanation.\n\n## Compute (group by Fuel_Type)\n1. Avg Cost/km        = Fuel_Cost_INR ÷ Distance_km\n2. Avg CO₂/km         = CO2_emitted_kg ÷ Distance_km\n3. Avg Maintenance/km = Maintenance_Cost_INR ÷ Distance_km\n4. Avg Refuel time    = Refuel_Recharge_time_min\n5. Age buckets: New(0-2y) Mid-life(3-5y) Aged(6-9y) Old(10+y)\n   → show Cost/km and Maint/km per bucket. Mark [CAR AGE] yrs.\n6. E85 Paradox:\n   - Pump saving    = ((Petrol_price−E85_price)/Petrol_price)×100\n   - Running penalty= ((E85_cpkm−Petrol_cpkm)/Petrol_cpkm)×100\n   - Break-even     = (E85_mileage÷Petrol_mileage)×Petrol_price\n7. E85 Score/10: cost=4pt CO₂=3pt refuel=2pt maint=1pt\n\n## Dashboard (no CDN, pure SVG charts, CSS in <style>, JS in <script>)\nDark navy #0a0f1e, glassmorphism. Colours: E85=amber Petrol=blue Diesel=grey CNG=green EV=purple.\n\n1. Header — '[YOUR VEHICLE] · [FUEL] · Age:[CAR AGE]y · [KM/month]km/mo'\n2. KPI Cards (5) — your fuel cost/km | E85 cost/km | E85 premium vs Petrol | break-even price | your monthly cost\n3. SVG bar chart: Cost/km per fuel | SVG doughnut: CO₂/km per fuel (hover tooltips)\n4. SVG line chart: Cost/km vs age (0-12y) per fuel. Vertical line at [CAR AGE].\n5. SVG gauge: E85 score/10 (CSS animated). One verdict sentence.\n6. Fuel cards: highlight [FUEL] with glow. Each: 2 pros ✅ 2 cons ❌ best-for 🚗\n\nOutput: <!DOCTYPE html> only. All numbers from CSV. Responsive 375px–1440px.",
+
+      "engagement": {
+        "type": "Dashboard Showcase",
+        "description": "Share one surprising insight you discovered from the vehicle dataset and explain how data visualization helped you understand the results. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing dashboard screenshots, generated HTML file, key insights from the dataset, and learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]

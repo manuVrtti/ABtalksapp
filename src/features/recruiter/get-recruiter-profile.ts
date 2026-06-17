@@ -1,14 +1,31 @@
-import { EnrollmentStatus } from "@prisma/client";
+import { EnrollmentStatus, type RecommendationLevel } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import {
+  parseCertifications,
+  parseCodingChallenges,
+  parseCompensation,
   parseEducation,
+  parseExperience,
+  parseLogistics,
   parseProjects,
+  parseSkillGroups,
+  type Certification,
+  type CodingChallenge,
+  type Compensation,
   type Education,
+  type Experience,
+  type Logistics,
   type Project,
+  type SkillGroup,
 } from "@/lib/validations/recruiter";
 
 export type RecruiterProfileView = {
   fullName: string;
+  image: string | null;
+  email: string;
+  phone: string | null;
+  linkedinUrl: string | null;
+  githubUsername: string | null;
   userType: "STUDENT" | "PROFESSIONAL";
   domain: string;
   college: string | null;
@@ -22,21 +39,60 @@ export type RecruiterProfileView = {
   currentStreak: number;
   longestStreak: number;
   isReadyForInterview: boolean;
-  synergyPoints: number;
-  ratings: {
-    confidence: number | null;
-    coding: number | null;
-    communication: number | null;
-  };
+  targetRole: string | null;
+  skillGroups: SkillGroup[];
+  education: Education[];
+  certifications: Certification[];
+  languagesSpoken: string[];
+  achievements: string[];
   headline: string | null;
   summary: string | null;
-  strengths: string[];
-  recommendedRoles: string[];
+  experience: Experience[];
   projects: Project[];
-  education: Education[];
-  achievements: string[];
-  certifications: string[];
+  communicationScore: number | null;
+  programmingScore: number | null;
+  behaviorScore: number | null;
+  communicationFeedback: string | null;
+  programmingFeedback: string | null;
+  behaviorFeedback: string | null;
+  codingChallenges: CodingChallenge[];
+  strengths: string[];
+  areasForGrowth: string[];
+  recommendation: RecommendationLevel | null;
+  assessmentDate: string | null;
+  interviewerName: string | null;
+  challengeRound: string | null;
+  abtalksId: string;
+  logistics: Logistics;
+  compensation: Compensation;
+  assessmentComposite: number | null;
+  assessmentMax: number;
 };
+
+function deriveAbtalksId(userId: string, override: string | null | undefined) {
+  if (override?.trim()) return override.trim();
+  return `AB-${userId.slice(0, 8).toUpperCase()}`;
+}
+
+function formatAssessmentDate(date: Date | null | undefined): string | null {
+  if (!date) return null;
+  return date.toISOString().slice(0, 10);
+}
+
+function computeAssessmentComposite(
+  communication: number | null,
+  programming: number | null,
+  behavior: number | null,
+): number | null {
+  if (
+    communication == null ||
+    programming == null ||
+    behavior == null
+  ) {
+    return null;
+  }
+  return communication + programming + behavior;
+}
 
 export async function getRecruiterProfileByToken(
   token: string,
@@ -45,19 +101,37 @@ export async function getRecruiterProfileByToken(
     where: { shareToken: token },
     select: {
       isPublished: true,
-      confidenceRating: true,
-      codingRating: true,
-      communicationRating: true,
+      targetRole: true,
+      skillGroups: true,
+      education: true,
+      certifications: true,
+      languagesSpoken: true,
+      achievements: true,
       headline: true,
       summary: true,
-      strengths: true,
-      recommendedRoles: true,
+      experience: true,
       projects: true,
-      education: true,
-      achievements: true,
-      certifications: true,
+      communicationScore: true,
+      programmingScore: true,
+      behaviorScore: true,
+      communicationFeedback: true,
+      programmingFeedback: true,
+      behaviorFeedback: true,
+      codingChallenges: true,
+      strengths: true,
+      areasForGrowth: true,
+      recommendation: true,
+      assessmentDate: true,
+      interviewerName: true,
+      challengeRound: true,
+      abtalksId: true,
+      logistics: true,
+      compensation: true,
       user: {
         select: {
+          id: true,
+          image: true,
+          email: true,
           studentProfile: {
             select: {
               fullName: true,
@@ -69,7 +143,9 @@ export async function getRecruiterProfileByToken(
               role: true,
               yearsExperience: true,
               skills: true,
-              synergyPoints: true,
+              phone: true,
+              linkedinUrl: true,
+              githubUsername: true,
               isReadyForInterview: true,
             },
           },
@@ -102,6 +178,11 @@ export async function getRecruiterProfileByToken(
 
   return {
     fullName: p.fullName,
+    image: review.user.image,
+    email: review.user.email,
+    phone: p.phone,
+    linkedinUrl: p.linkedinUrl,
+    githubUsername: p.githubUsername,
     userType: p.userType,
     domain: p.domain,
     college: p.college,
@@ -115,19 +196,37 @@ export async function getRecruiterProfileByToken(
     currentStreak: enr?.currentStreak ?? 0,
     longestStreak: enr?.longestStreak ?? 0,
     isReadyForInterview: p.isReadyForInterview,
-    synergyPoints: p.synergyPoints,
-    ratings: {
-      confidence: review.confidenceRating,
-      coding: review.codingRating,
-      communication: review.communicationRating,
-    },
+    targetRole: review.targetRole,
+    skillGroups: parseSkillGroups(review.skillGroups),
+    education: parseEducation(review.education),
+    certifications: parseCertifications(review.certifications),
+    languagesSpoken: review.languagesSpoken,
+    achievements: review.achievements,
     headline: review.headline,
     summary: review.summary,
-    strengths: review.strengths,
-    recommendedRoles: review.recommendedRoles,
+    experience: parseExperience(review.experience),
     projects: parseProjects(review.projects),
-    education: parseEducation(review.education),
-    achievements: review.achievements,
-    certifications: review.certifications,
+    communicationScore: review.communicationScore,
+    programmingScore: review.programmingScore,
+    behaviorScore: review.behaviorScore,
+    communicationFeedback: review.communicationFeedback,
+    programmingFeedback: review.programmingFeedback,
+    behaviorFeedback: review.behaviorFeedback,
+    codingChallenges: parseCodingChallenges(review.codingChallenges),
+    strengths: review.strengths,
+    areasForGrowth: review.areasForGrowth,
+    recommendation: review.recommendation,
+    assessmentDate: formatAssessmentDate(review.assessmentDate),
+    interviewerName: review.interviewerName,
+    challengeRound: review.challengeRound,
+    abtalksId: deriveAbtalksId(review.user.id, review.abtalksId),
+    logistics: parseLogistics(review.logistics),
+    compensation: parseCompensation(review.compensation),
+    assessmentComposite: computeAssessmentComposite(
+      review.communicationScore,
+      review.programmingScore,
+      review.behaviorScore,
+    ),
+    assessmentMax: 300,
   };
 }
