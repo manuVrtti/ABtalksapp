@@ -7,6 +7,7 @@ import {
   BookOpen,
   Briefcase,
   FileText,
+  Gift,
   LayoutDashboard,
   Megaphone,
   Users,
@@ -20,7 +21,8 @@ type IconName =
   | "jobs"
   | "content"
   | "analytics"
-  | "ambassadors";
+  | "ambassadors"
+  | "referrals";
 
 const iconMap = {
   overview: LayoutDashboard,
@@ -30,6 +32,7 @@ const iconMap = {
   content: BookOpen,
   analytics: BarChart3,
   ambassadors: Megaphone,
+  referrals: Gift,
 } as const;
 
 type NavItem = {

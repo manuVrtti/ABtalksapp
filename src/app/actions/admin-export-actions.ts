@@ -8,6 +8,7 @@ import {
   type TimeRange,
 } from "@/features/admin/get-analytics-data";
 import { getMissingStudentsForDay } from "@/features/admin/get-missing-by-day";
+import { getReferrersInRange } from "@/features/admin/get-referrals-report";
 import { getSubmissionsFeed } from "@/features/admin/get-submissions-feed";
 
 const SUBMISSIONS_EXPORT_CAP = 10_000;
@@ -227,5 +228,18 @@ export async function getMissingStudentsForExport(
     "Enrollment Status": r.status,
     "Days Completed": r.daysCompleted,
     "Last Submitted Day": r.lastSubmittedDay ?? "",
+  }));
+}
+
+export async function getReferrersForExport(range: {
+  startKey?: string;
+  endKey?: string;
+}) {
+  await requireAdmin();
+  const rows = await getReferrersInRange(range);
+  return rows.map((r) => ({
+    Name: r.fullName,
+    Email: r.email,
+    "Referral Count": r.referralCount,
   }));
 }

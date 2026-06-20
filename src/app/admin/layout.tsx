@@ -23,6 +23,7 @@ export default async function AdminLayout({
       label: "Campus Ambassadors",
       icon: "ambassadors" as const,
     },
+    { href: "/admin/referrals", label: "Referrals", icon: "referrals" as const },
   ];
 
   return (

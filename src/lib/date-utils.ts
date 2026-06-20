@@ -1,5 +1,5 @@
 import { addDays, differenceInCalendarDays } from "date-fns";
-import { formatInTimeZone } from "date-fns-tz";
+import { formatInTimeZone, fromZonedTime } from "date-fns-tz";
 
 const IST = "Asia/Kolkata";
 
@@ -111,6 +111,27 @@ export function formatDateIST(date: Date): string {
 
 export function formatDateTimeIST(date: Date): string {
   return formatInTimeZone(date, IST, "d MMM yyyy, h:mm a");
+}
+
+/** Inclusive IST calendar range [startKey 00:00 IST, endKey 24:00 IST) → UTC
+ *  instants for a createdAt filter. Either bound may be omitted (open-ended). */
+export function istDateRangeToUtc(
+  startKey?: string,
+  endKey?: string,
+): { startUtc?: Date; endExclusiveUtc?: Date } {
+  const startUtc = startKey
+    ? fromZonedTime(`${startKey}T00:00:00`, IST)
+    : undefined;
+  let endExclusiveUtc: Date | undefined;
+  if (endKey) {
+    const nextKey = formatInTimeZone(
+      addDays(parseCalendarKeyToUtcDate(endKey), 1),
+      "UTC",
+      "yyyy-MM-dd",
+    );
+    endExclusiveUtc = fromZonedTime(`${nextKey}T00:00:00`, IST);
+  }
+  return { startUtc, endExclusiveUtc };
 }
 
 export { IST };
