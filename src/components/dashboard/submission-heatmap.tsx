@@ -412,6 +412,21 @@ export function SubmissionHeatmap({
                     Resubmit
                   </Link>
                 ) : null}
+                {(active.status === "missed" && !active.isRelaxable) ||
+                active.status === "on_time" ||
+                active.status === "late" ? (
+                  <Link
+                    href={
+                      challengeEnrollmentId
+                        ? `/challenge/${active.dayNumber}?challenge=${encodeURIComponent(challengeEnrollmentId)}`
+                        : `/challenge/${active.dayNumber}`
+                    }
+                    className={cn(buttonVariants({ variant: "outline" }))}
+                    onClick={() => setOpen(false)}
+                  >
+                    View task
+                  </Link>
+                ) : null}
                 <Button type="button" variant="default" onClick={() => setOpen(false)}>
                   Close
                 </Button>

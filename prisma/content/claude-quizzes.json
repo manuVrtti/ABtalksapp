@@ -216,107 +216,107 @@
   {
     "weekNumber": 3,
     "domain": "CLAUDE",
-    "title": "Week 3: Content, Writing & Office",
+    "title": "Week 3 Challenge Quiz: Building Real Applications with Claude",
     "questions": [
       {
         "questionOrder": 1,
-        "questionText": "Week 3: Content, Writing & Office - Question 1: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the biggest advantage of creating a Claude Skill in Day 16?",
+        "optionA": "Makes Claude faster",
+        "optionB": "Reduces internet usage",
+        "optionC": "Allows reusable workflows without rewriting prompts",
+        "optionD": "Unlocks new Claude models",
+        "correctAnswer": "C",
+        "explanation": "Skills let users save instructions and reuse powerful workflows without repeatedly writing the same prompts."
       },
       {
         "questionOrder": 2,
-        "questionText": "Week 3: Content, Writing & Office - Question 2: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the Stock Fundamental Research Skill, which rule is MOST important?",
+        "optionA": "Always predict stock prices",
+        "optionB": "Provide buy/sell recommendations",
+        "optionC": "Use live data and never fabricate information",
+        "optionD": "Focus only on technical indicators",
+        "correctAnswer": "C",
+        "explanation": "The skill emphasizes evidence-based analysis, source verification, and avoiding fabricated data."
       },
       {
         "questionOrder": 3,
-        "questionText": "Week 3: Content, Writing & Office - Question 3: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the primary learning from the Vehicle Cost Dashboard project?",
+        "optionA": "Building mobile apps",
+        "optionB": "Using CSV data to generate insights and dashboards",
+        "optionC": "Creating social media content",
+        "optionD": "Training machine learning models",
+        "correctAnswer": "B",
+        "explanation": "The project focused on analyzing CSV data and generating a complete interactive dashboard."
       },
       {
         "questionOrder": 4,
-        "questionText": "Week 3: Content, Writing & Office - Question 4: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "The Brain Dump Action Planner Skill is designed to transform:",
+        "optionA": "Images into videos",
+        "optionB": "Code into documentation",
+        "optionC": "Messy notes and transcripts into structured action plans",
+        "optionD": "PDFs into websites",
+        "correctAnswer": "C",
+        "explanation": "Its purpose is to organize unstructured thoughts, meetings, and notes into actionable outputs."
       },
       {
         "questionOrder": 5,
-        "questionText": "Week 3: Content, Writing & Office - Question 5: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the Football Intelligence Hub project, Claude combined which three capabilities?",
+        "optionA": "Coding, debugging, and deployment",
+        "optionB": "Prediction, education, and personality assessment",
+        "optionC": "Video editing, design, and animation",
+        "optionD": "Database management, networking, and cloud computing",
+        "correctAnswer": "B",
+        "explanation": "The Football Intelligence Hub generated predictions, quizzes, and personality analysis in one experience."
       },
       {
         "questionOrder": 6,
-        "questionText": "Week 3: Content, Writing & Office - Question 6: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What browser API was required in the Face Puzzle Game project?",
+        "optionA": "Geolocation API",
+        "optionB": "Bluetooth API",
+        "optionC": "getUserMedia() Camera API",
+        "optionD": "Speech Recognition API",
+        "correctAnswer": "C",
+        "explanation": "The game captured the user's photo through webcam access using getUserMedia()."
       },
       {
         "questionOrder": 7,
-        "questionText": "Week 3: Content, Writing & Office - Question 7: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "The Digital Privacy Intelligence Dashboard emphasized which principle?",
+        "optionA": "Predicting exact user behavior",
+        "optionB": "Accessing private company databases",
+        "optionC": "Separating facts from estimates",
+        "optionD": "Tracking users in real time",
+        "correctAnswer": "C",
+        "explanation": "A key requirement was clearly distinguishing confirmed facts from inferred estimates."
       },
       {
         "questionOrder": 8,
-        "questionText": "Week 3: Content, Writing & Office - Question 8: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Across Week 3 projects, what common pattern emerged?",
+        "optionA": "AI was mainly used for writing essays",
+        "optionB": "AI was used to build complete applications and experiences",
+        "optionC": "AI replaced all human decision making",
+        "optionD": "AI was only used for image generation",
+        "correctAnswer": "B",
+        "explanation": "Week 3 focused on dashboards, games, skills, analysis systems, and interactive experiences."
       },
       {
         "questionOrder": 9,
-        "questionText": "Week 3: Content, Writing & Office - Question 9: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why were HTML artifacts used repeatedly throughout Week 3?",
+        "optionA": "They require special software",
+        "optionB": "They allow creation of shareable, interactive applications",
+        "optionC": "They reduce internet speed",
+        "optionD": "They only work on desktop devices",
+        "correctAnswer": "B",
+        "explanation": "HTML artifacts allow users to instantly run dashboards, games, and tools in a browser."
       },
       {
         "questionOrder": 10,
-        "questionText": "Week 3: Content, Writing & Office - Question 10: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 3 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the biggest mindset shift from Week 3?",
+        "optionA": "Claude is only a chatbot",
+        "optionB": "Claude is mainly a search engine",
+        "optionC": "Claude can act as a system builder, analyst, developer, and experience creator",
+        "optionD": "Claude should only be used for answering questions",
+        "correctAnswer": "C",
+        "explanation": "Week 3 demonstrated that Claude can build reusable systems, applications, dashboards, and complete user experiences."
       }
     ]
   },

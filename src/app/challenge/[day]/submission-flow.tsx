@@ -32,6 +32,7 @@ type Props = {
   task: Pick<DailyTask, "title" | "problemStatement">;
   userDomain: Domain;
   isRelaxable?: boolean;
+  canSubmit?: boolean;
 };
 
 function RelaxationBanner({ dayNumber }: { dayNumber: number }) {
@@ -56,6 +57,7 @@ export function SubmissionFlow({
   task,
   userDomain,
   isRelaxable = false,
+  canSubmit = true,
 }: Props) {
   const [step, setStep] = useState<"form" | "success">("form");
   const [githubUrl, setGithubUrl] = useState("");
@@ -292,7 +294,9 @@ export function SubmissionFlow({
 
   return (
     <div className="space-y-6">
-      {isRelaxable ? <RelaxationBanner dayNumber={dayNumber} /> : null}
+      {canSubmit && isRelaxable ? (
+        <RelaxationBanner dayNumber={dayNumber} />
+      ) : null}
       <Card>
         <CardHeader>
           <CardTitle>{task.title}</CardTitle>
@@ -305,76 +309,86 @@ export function SubmissionFlow({
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Submit your solution</CardTitle>
-          <CardDescription>
-            Confirm you completed today&apos;s task. GitHub and LinkedIn are
-            optional proof for bonus synergy.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
-              <input
-                id="confirm-task"
-                type="checkbox"
-                checked={confirmed}
-                onChange={(e) => setConfirmed(e.target.checked)}
-                disabled={isSubmitting}
-                className="mt-0.5 size-4 shrink-0 rounded border border-input accent-primary"
-              />
-              <label htmlFor="confirm-task" className="text-sm font-medium leading-snug">
-                I confirm I have completed today&apos;s task.
-              </label>
-            </div>
-
-            <div className="space-y-4">
-              <p className="text-sm font-medium text-muted-foreground">
-                Add proof (optional, earns more synergy)
-              </p>
-              <div className="space-y-2">
-                <Label htmlFor="githubUrl">GitHub URL</Label>
-                <Input
-                  id="githubUrl"
-                  name="githubUrl"
-                  type="url"
-                  placeholder="GitHub commit or repo URL"
-                  value={githubUrl}
-                  onChange={(e) => setGithubUrl(e.target.value)}
-                  autoComplete="off"
+      {canSubmit ? (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Submit your solution</CardTitle>
+            <CardDescription>
+              Confirm you completed today&apos;s task. GitHub and LinkedIn are
+              optional proof for bonus synergy.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+                <input
+                  id="confirm-task"
+                  type="checkbox"
+                  checked={confirmed}
+                  onChange={(e) => setConfirmed(e.target.checked)}
                   disabled={isSubmitting}
-                  aria-invalid={!!error}
+                  className="mt-0.5 size-4 shrink-0 rounded border border-input accent-primary"
                 />
-                <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
+                <label htmlFor="confirm-task" className="text-sm font-medium leading-snug">
+                  I confirm I have completed today&apos;s task.
+                </label>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
-                <Input
-                  id="linkedinUrl"
-                  name="linkedinUrl"
-                  type="url"
-                  placeholder="https://www.linkedin.com/posts/…"
-                  value={linkedinUrl}
-                  onChange={(e) => setLinkedinUrl(e.target.value)}
-                  autoComplete="off"
-                  disabled={isSubmitting}
-                />
-                <p className="text-xs text-muted-foreground">Optional · +8 synergy</p>
-              </div>
-            </div>
 
-            {error ? (
-              <p className="text-sm text-destructive" role="alert">
-                {error}
-              </p>
-            ) : null}
-            <Button type="submit" disabled={isSubmitting || !confirmed}>
-              {isSubmitting ? "Submitting…" : `Submit Day ${dayNumber}`}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-muted-foreground">
+                  Add proof (optional, earns more synergy)
+                </p>
+                <div className="space-y-2">
+                  <Label htmlFor="githubUrl">GitHub URL</Label>
+                  <Input
+                    id="githubUrl"
+                    name="githubUrl"
+                    type="url"
+                    placeholder="GitHub commit or repo URL"
+                    value={githubUrl}
+                    onChange={(e) => setGithubUrl(e.target.value)}
+                    autoComplete="off"
+                    disabled={isSubmitting}
+                    aria-invalid={!!error}
+                  />
+                  <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
+                  <Input
+                    id="linkedinUrl"
+                    name="linkedinUrl"
+                    type="url"
+                    placeholder="https://www.linkedin.com/posts/…"
+                    value={linkedinUrl}
+                    onChange={(e) => setLinkedinUrl(e.target.value)}
+                    autoComplete="off"
+                    disabled={isSubmitting}
+                  />
+                  <p className="text-xs text-muted-foreground">Optional · +8 synergy</p>
+                </div>
+              </div>
+
+              {error ? (
+                <p className="text-sm text-destructive" role="alert">
+                  {error}
+                </p>
+              ) : null}
+              <Button type="submit" disabled={isSubmitting || !confirmed}>
+                {isSubmitting ? "Submitting…" : `Submit Day ${dayNumber}`}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card>
+          <CardContent className="pt-6">
+            <p className="text-sm text-muted-foreground">
+              Submissions for this day are closed — viewing for reference.
+            </p>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }

@@ -175,16 +175,13 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
     );
   }
 
-  if (
-    !data.existingSubmission &&
-    day < data.currentDayNumber &&
-    !data.hasRejectResubmit &&
-    !data.isRelaxable
-  ) {
-    redirect(
-      `/dashboard?toast=past-missed&challenge=${encodeURIComponent(data.enrollment.id)}`,
-    );
-  }
+  const canSubmit =
+    bypassEnabled ||
+    (data.isUnlocked &&
+      (day >= data.currentDayNumber ||
+        data.isRelaxable ||
+        data.hasRejectResubmit ||
+        data.existingSubmission != null));
 
   const dayContent = data.task.dayContent as DayContent | null;
   const enrichedDayContent = dayContent
@@ -292,6 +289,7 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
                   }
                 : null
             }
+            canSubmit={canSubmit}
           />
         </>
       ) : (
@@ -316,6 +314,7 @@ export default async function ChallengeDayPage({ params, searchParams }: PagePro
             }}
             userDomain={data.enrollment.domain}
             isRelaxable={data.isRelaxable}
+            canSubmit={canSubmit}
           />
         </>
       )}

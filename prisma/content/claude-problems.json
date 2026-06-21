@@ -2121,7 +2121,116 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 21,
+    "domain": "CLAUDE",
+    "title": "Day 21: Build a Digital Privacy & Footprint Intelligence Dashboard",
+    "problemStatement": "Welcome to Day 21 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 3 — AI-Powered Dashboards, Risk Analysis & Digital Intelligence\n\nToday's focus: Learn how to use Claude as a Cybersecurity Analyst, Privacy Consultant, Risk Assessor, and Digital Intelligence Researcher.\n\nEvery digital service we use leaves behind a digital footprint. Social media platforms, search engines, shopping apps, payment apps, messaging services, gaming platforms, and cloud providers all contribute to the data companies can potentially collect and analyze.\n\nToday you'll use Claude to generate a complete Digital Privacy Intelligence Dashboard that visualizes your estimated digital footprint, exposure levels, privacy risks, ecosystem concentration, data collection likelihood, and actionable privacy recommendations.\n\nTasks:\n1. Analyze a sample digital footprint dataset.\n2. Generate a privacy intelligence dashboard.\n3. Understand company exposure rankings.\n4. Evaluate data collection likelihood.\n5. Discover your estimated digital twin profile.\n6. Review privacy improvement recommendations.\n7. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low, Medium, or High.\n\nAll behavioral insights generated should be treated as estimates based on reported services, not confirmed personal data.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated dashboard HTML, and learning notes.",
+    "learningObjectives": [
+      "Understand digital footprint analysis",
+      "Learn privacy and cybersecurity concepts",
+      "Generate interactive HTML dashboards",
+      "Analyze platform ecosystem concentration",
+      "Create actionable privacy improvement plans"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 45,
+    "linkedinTemplate": "Day 21/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as a Privacy Intelligence Analyst.\n\nI generated a complete Digital Privacy Dashboard featuring:\n\n🔒 Privacy Score\n🌐 Digital Footprint Score\n📊 Exposure Heatmaps\n🏢 Company Exposure Rankings\n🕵️ Digital Twin Profile\n⚠️ Risk Radar Analysis\n💰 Most Valuable Data Assets\n🛡️ Privacy Improvement Plan\n\nBiggest takeaway:\n\nMost of us underestimate how much information companies can potentially infer from the services we use every day.\n\nAI can help visualize those risks and provide actionable privacy recommendations.\n\n#ClaudeAI #CyberSecurity #Privacy #DigitalFootprint #DataPrivacy #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing dashboard screenshots, generated HTML file, privacy insights, and key learnings.",
+    "tags": [
+      "claude",
+      "day-21",
+      "privacy",
+      "cybersecurity",
+      "dashboard",
+      "digital-footprint",
+      "html",
+      "risk-analysis"
+    ],
+    "dayContent": {
+      "title": "Build a Digital Privacy Intelligence Dashboard",
+      "tagline": "Visualize your digital footprint and privacy exposure",
+      "module": "Privacy Intelligence with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 45,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Claude can analyze digital ecosystems, estimate privacy exposure, identify tracking risks, and generate interactive dashboards that help users better understand how their online activities contribute to their digital footprint.",
+        "bullets": [
+          {
+            "label": "Privacy Analysis",
+            "text": "Understand how digital services contribute to your online footprint."
+          },
+          {
+            "label": "Risk Assessment",
+            "text": "Identify potential privacy and tracking risks."
+          },
+          {
+            "label": "Digital Twin Modeling",
+            "text": "Estimate what platforms might infer from your activity."
+          },
+          {
+            "label": "Actionable Security",
+            "text": "Generate realistic privacy improvement plans."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Open Claude.",
+          "Set Claude effort level to Low, Medium, or High.",
+          "Start a new conversation.",
+          "Paste the provided Digital Privacy Dashboard prompt.",
+          "Review the sample dataset included in the prompt.",
+          "Generate the complete HTML dashboard.",
+          "Review your Digital Footprint Score.",
+          "Analyze your Privacy Score.",
+          "Explore the Exposure Heatmap.",
+          "Review the Company Exposure Ranking.",
+          "Analyze the Digital Twin Profile section.",
+          "Review the Risk Radar.",
+          "Study the Most Valuable Data Assets section.",
+          "Review the Privacy Improvement Simulator.",
+          "Analyze the Final Verdict.",
+          "Take screenshots of the dashboard.",
+          "Save the generated HTML file.",
+          "Open it in your browser and test interactions.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day21 folder in your GitHub repository.",
+          "Create a day21.md file.",
+          "Upload screenshots, generated HTML, privacy findings, and learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=KuliibvyzrY&feature=youtu.be"
+      },
+
+      "promptTemplate": "### Sample User Dataset\n\nUse the following dataset as the user's reported digital footprint.\n\nFacts:\n\nApplications : Instagram, Snapchat, TikTok, YouTube, Discord, WhatsApp, iMessage, Spotify, Roblox, PUBG Mobile, Amazon, Meesho, Google Search, Google Pay, Google Photos\n\nDataset Rules:\n* Treat all listed services as Facts.\n* Use these services to calculate all scores, exposure rankings, heatmaps, risk levels, ecosystem concentration, digital twin insights, data collection likelihood, and privacy recommendations.\n* Infer parent companies from the services.\n* Any behavioural, demographic, lifestyle, shopping, spending, entertainment, mobility, travel, communication, or technology-related conclusions must be labeled as Estimates.\n* Never claim certainty.\n* Never claim access to private databases.\n* If information cannot reasonably be inferred, display: 'Not enough information provided.'\n\n# Output Requirement\n\nGenerate a complete interactive HTML artifact starting with <style>.\n\nDo not output markdown.\n\nThe artifact should feel like a premium cybersecurity dashboard.\n\nDesign Inspiration:\n\nNotion, Stripe Dashboard, Linear, Google Privacy Checkup, Apple Privacy Reports, Modern SaaS Analytics Platforms.\n\n### Dashboard Overview\n\nCreate a visually rich dashboard containing:\n\n1. Digital Footprint Score (0-100)\n2. Privacy Score (0-100)\n3. Exposure Heatmap\n4. Company Exposure Ranking\n5. Data Collection Matrix\n6. Risk Radar\n7. Digital Twin Profile\n8. Most Valuable Data Assets\n9. Privacy Improvement Plan\n\nDisplay:\n\nDigital Footprint Score\n🟢 0-30 = Minimal\n🟡 31-60 = Moderate\n🟠 61-80 = Significant\n🔴 81-100 = Extensive\n\nPrivacy Score\n🔴 0-30 = Weak\n🟠 31-60 = Fair\n🟡 61-80 = Good\n🟢 81-100 = Strong\n\nInclude:\n* Total Services Used\n* Number of Parent Companies\n* Ecosystem Concentration Score\n* Estimated Tracking Surface\n\nCreate all sections exactly as specified including Digital Twin Profile, Exposure Heatmap, Company Exposure Ranking, Data Collection Matrix, Risk Radar, WOW Insights, Most Valuable Data Assets, Privacy Improvement Simulator, and Final Verdict.\n\nCritical Rules:\n* Never claim access to private databases.\n* Never claim certainty about inferred traits.\n* Separate Facts from Estimates.",
+
+      "engagement": {
+        "type": "Privacy Intelligence Showcase",
+        "description": "Share one surprising insight you discovered about your digital footprint or privacy exposure. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing dashboard screenshots, generated HTML file, privacy insights, risk analysis, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
-
-
 ]
