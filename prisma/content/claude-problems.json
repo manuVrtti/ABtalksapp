@@ -2232,5 +2232,341 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 22,
+    "domain": "CLAUDE",
+    "title": "Day 22: Validate Your Startup Idea with Claude",
+    "problemStatement": "Welcome to Day 22 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Startups & Business Building\n\nToday's focus: Learn how to use Claude as a Startup Advisor, VC Analyst, Market Research Expert, and Business Consultant.\n\nMany startup founders spend months building products before validating whether a real market need exists. Successful founders validate problems, customers, market demand, competition, and business viability before investing significant time and resources.\n\nToday you'll use Claude to analyze and validate your startup idea using frameworks commonly used by venture capital firms, startup accelerators, consulting firms, and incubators.\n\nClaude will help assess market opportunity, customer demand, competitive landscape, founder-market fit, business risks, and execution priorities.\n\nTasks:\n1. Define your startup idea.\n2. Identify the problem being solved.\n3. Define your target customers.\n4. Analyze founder-market fit.\n5. Evaluate market size and opportunity.\n6. Analyze competitors and market gaps.\n7. Generate a professional Startup Validation Report.\n8. Create a 30-Day Action Plan.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Medium or High for deeper analysis.\n\nThe goal is not to receive validation blindly. The goal is to receive an honest assessment of strengths, risks, assumptions, and opportunities.\n\nIf Claude does not generate the complete output or usage limits are reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing your Startup Validation Report, screenshots, and key learnings.",
+    "learningObjectives": [
+      "Validate startup ideas systematically",
+      "Understand market sizing frameworks",
+      "Analyze competitors and market gaps",
+      "Evaluate founder-market fit",
+      "Create actionable startup execution plans"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 22/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as a Startup Advisor and VC Analyst.\n\nI generated a complete Startup Validation Report including:\n\n💡 Problem Validation\n📊 TAM, SAM & SOM Analysis\n🎯 Ideal Customer Profile\n🏢 Competitor Analysis\n📈 Market Gap Analysis\n⚠️ Risk Assessment\n🚀 Go / No-Go Recommendation\n📅 30-Day Action Plan\n\nBiggest takeaway:\n\nA great startup idea isn't enough.\n\nThe real challenge is validating whether the problem is real, the market is large enough, and customers are willing to pay for a solution.\n\n#ClaudeAI #StartupValidation #Entrepreneurship #Startups #BusinessStrategy #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing your Startup Validation Report, screenshots, startup insights, and key learnings.",
+    "tags": [
+      "claude",
+      "day-22",
+      "startup",
+      "entrepreneurship",
+      "market-research",
+      "business",
+      "validation"
+    ],
+    "dayContent": {
+      "title": "Validate Your Startup Idea Like a VC",
+      "tagline": "Turn startup assumptions into evidence-based insights",
+      "module": "Entrepreneurship with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Startup success depends on solving real problems for real customers. Claude can help founders validate ideas, identify risks, understand customers, analyze competitors, and prioritize actions before building products.",
+        "bullets": [
+          {
+            "label": "Problem Validation",
+            "text": "Determine whether the problem is painful enough to solve."
+          },
+          {
+            "label": "Market Research",
+            "text": "Analyze opportunity size and market demand."
+          },
+          {
+            "label": "Founder-Market Fit",
+            "text": "Assess how well your background aligns with the opportunity."
+          },
+          {
+            "label": "Execution Planning",
+            "text": "Create actionable next steps for startup validation."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Medium or High.",
+          "Start a new conversation.",
+          "Paste the provided Startup Validation prompt.",
+          "Answer all startup discovery questions honestly.",
+          "Provide details about your startup idea and target customers.",
+          "Share any existing validation such as users, waitlists, interviews, or feedback.",
+          "Review the Founder-Market Fit analysis.",
+          "Review the TAM, SAM, and SOM calculations.",
+          "Analyze the Competitor Analysis section.",
+          "Study the Market Gap Analysis.",
+          "Review the Customer Persona and ICP.",
+          "Analyze the Risk Assessment section.",
+          "Review the Go / No-Go recommendation.",
+          "Study the 30-Day Action Plan.",
+          "Export or save the Startup Validation Report.",
+          "Take screenshots of key insights.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day22 folder in your GitHub repository.",
+          "Create a day22.md file.",
+          "Upload screenshots, generated report, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=g0O5UAoI494&feature=youtu.be"
+      },
+
+      "promptTemplate": "Act as a Startup Advisor, VC Analyst, and Market Research Expert.\n\nHelp me validate my startup idea.\n\nFirst ask me:\n\n1. Startup Idea\n2. Problem Being Solved\n3. Target Customers\n4. Why I Want to Build It\n5. Existing Validation (users, feedback, waitlist, etc.)\n6. Target Market/Country\n7. Startup, Business, or Side Project?\n\nAfter collecting my answers, generate a professional PDF-ready Startup Validation Report containing:\n\n* Executive Summary\n* Problem Validation\n* Founder-Market Fit Score\n* TAM, SAM, SOM Analysis\n* Competitor Analysis\n* Market Gap Analysis\n* Ideal Customer Profile (ICP)\n* Buyer Persona\n* Customer Pain Points\n* Buying Triggers & Objections\n* Customer Journey\n* Risk Assessment\n* Pivot Opportunities\n* Go / No-Go Recommendation\n* 30-Day Action Plan\n\nUse tables, scores, charts, and professional consulting-style formatting.\n\nOutput should look like a report prepared by McKinsey, Y Combinator, or a VC firm and be ready for direct PDF export.",
+
+      "engagement": {
+        "type": "Startup Validation Showcase",
+        "description": "Share one assumption about your startup that was validated or challenged during the analysis. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing your Startup Validation Report, screenshots, startup insights, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 23,
+    "domain": "CLAUDE",
+    "title": "Day 23: Build Your Customer & MVP Blueprint with Claude",
+    "problemStatement": "Welcome to Day 23 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Startups & Business Building\n\nToday's focus: Learn how to use Claude as a Startup Product Manager, Customer Research Expert, and MVP Strategist.\n\nMany founders make the mistake of building features before understanding customers. Successful startups focus on customer pain points, buying behavior, objections, motivations, and the smallest possible product that delivers value.\n\nToday you'll use Claude to transform your startup validation report into a complete Customer & MVP Blueprint.\n\nClaude will help identify your ideal customer profile, buyer personas, customer journey, top pain points, buying triggers, MVP priorities, pricing assumptions, and startup execution risks.\n\nThe goal is to reduce unnecessary development, focus on real customer needs, and increase your chances of finding product-market fit.\n\nTasks:\n1. Use your Startup Validation Report from Day 22.\n2. Analyze customer segments.\n3. Generate Ideal Customer Profiles.\n4. Create Buyer Personas.\n5. Identify customer pain points and buying triggers.\n6. Build an MVP roadmap.\n7. Prioritize features using MoSCoW.\n8. Generate a Founder Action Sheet.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Medium or High.\n\nThis exercise is designed to help founders avoid overbuilding and focus on customer-driven product development.\n\nIf Claude does not generate the complete output or usage limits are reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing your Customer & MVP Blueprint, screenshots, and key learnings.",
+    "learningObjectives": [
+      "Understand customer discovery frameworks",
+      "Create ideal customer profiles",
+      "Design MVP-first products",
+      "Prioritize features effectively",
+      "Reduce startup execution risk"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 23/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as a Startup Product Manager and Customer Research Expert.\n\nI generated a complete Customer & MVP Blueprint including:\n\n🎯 Ideal Customer Profile (ICP)\n👤 Buyer Personas\n😖 Top Customer Pain Points\n🛒 Customer Journey Mapping\n⚡ Buying Triggers & Objections\n🚀 MVP Recommendation\n📊 MoSCoW Prioritization\n⚠️ Startup Risk Analysis\n📅 30-Day MVP Plan\n\nBiggest takeaway:\n\nCustomers don't buy features.\n\nThey buy solutions to painful problems.\n\nThe fastest way to waste months of work is building something customers never asked for.\n\n#ClaudeAI #Startup #MVP #ProductManagement #CustomerResearch #Entrepreneurship #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing your Customer & MVP Blueprint, screenshots, customer insights, and key learnings.",
+    "tags": [
+      "claude",
+      "day-23",
+      "startup",
+      "customer-research",
+      "product-management",
+      "mvp",
+      "entrepreneurship"
+    ],
+    "dayContent": {
+      "title": "Build Your Customer & MVP Blueprint",
+      "tagline": "Understand customers before building products",
+      "module": "Startup Product Management with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Great startups are built around customer needs, not founder assumptions. Claude can help founders identify customer pain points, define ideal users, prioritize features, and design MVPs that maximize learning while minimizing wasted effort.",
+        "bullets": [
+          {
+            "label": "Customer Discovery",
+            "text": "Identify who experiences the problem most intensely."
+          },
+          {
+            "label": "MVP Strategy",
+            "text": "Build only what is necessary to validate demand."
+          },
+          {
+            "label": "Feature Prioritization",
+            "text": "Separate essential features from distractions."
+          },
+          {
+            "label": "Execution Planning",
+            "text": "Create a focused action plan for the next 30 days."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to low.",
+          "Start the conversation in yesterday's chat.",
+          "If you completed Day 22, upload or paste your Startup Validation Report.",
+          "If not, provide startup idea, problem, customers, validation, and target market details.",
+          "Paste the provided Customer & MVP Blueprint prompt.",
+          "Generate the complete report.",
+          "Review the Ideal Customer Profile (ICP).",
+          "Analyze the Buyer Persona section.",
+          "Review the Top 10 Customer Pain Points.",
+          "Study the Customer Journey map.",
+          "Review Buying Triggers and Objections.",
+          "Analyze the MVP Recommendation section.",
+          "Review MoSCoW Prioritization.",
+          "Study the Pricing Hypothesis.",
+          "Analyze the Top 5 Risks section.",
+          "Review the Founder Action Sheet.",
+          "Export or save the generated report.",
+          "Take screenshots of key sections.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day23 folder in your GitHub repository.",
+          "Create a day23.md file.",
+          "Upload screenshots, generated report, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=JFDYaqa1o2U&feature=youtu.be"
+      },
+
+      "promptTemplate": "You are a Startup Product Manager and Customer Research Expert.\n\nFirst ask if I have a Startup Validation Report.\n\nIf yes:\n\n* Extract startup idea\n* Problem\n* Target customers\n* Competitors\n* Validation insights\n\nIf no:\nAsk:\n\n1. Startup Idea\n2. Problem Being Solved\n3. Target Customers\n4. Existing Validation\n5. Market/Country\n\nThen generate:\n\n# Customer & MVP Blueprint\n\n## Executive Summary\n\n## Ideal Customer Profile\n\n## Buyer Persona\n\n## Top 10 Customer Pain Points\n\n## Customer Journey\n\nAwareness → Consideration → Purchase → Retention\n\n## Key Customer Objections\n\n## Key Buying Triggers\n\n## MVP Recommendation\n\nAnswer:\n\n* What should be built first?\n* What should NOT be built?\n* Success metrics\n\n## MoSCoW Prioritization\n\nMust Have\n\nShould Have\n\nCould Have\n\nWon't Have\n\n## Pricing Hypothesis\n\n## Top 5 Risks\n\n## 30-Day MVP Plan\n\n## Founder Action Sheet\n\nTop 10 next actions\n\n## Scores (0-100)\n\n* Customer Clarity\n* Problem Severity\n* PMF Potential\n* MVP Readiness\n\n## Final Verdict\n\n🟢 Strong Demand Signal\n\n🟡 Promising but Unvalidated\n\n🟠 Weak Demand Signal\n\n🔴 Low Demand Probability\n\nProvide a concise PDF-ready under 8 pages report using tables and bullet points.",
+
+      "engagement": {
+        "type": "Startup MVP Showcase",
+        "description": "Share the biggest customer insight or MVP feature you discovered during the analysis. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing your Customer & MVP Blueprint, screenshots, customer insights, MVP recommendations, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 24,
+    "domain": "CLAUDE",
+    "title": "Day 24: Build a Startup Business Strategy & Investment Readiness Report",
+    "problemStatement": "Welcome to Day 24 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Startups & Business Building\n\nToday's focus: Learn how to use Claude as an AI Co-Founder, Growth Strategist, YC Advisor, and Business Consultant.\n\nMost founders spend significant time validating ideas and understanding customers, but many never deeply analyze whether the business itself can become sustainable.\n\nA startup can solve a real problem and still fail due to poor monetization, weak distribution, customer acquisition challenges, or an unsustainable business model.\n\nToday you'll use your Day 23 Customer & MVP Blueprint as the foundation for a complete Business Strategy & Investment Readiness Report.\n\nClaude will evaluate your business model, revenue assumptions, customer acquisition strategy, go-to-market plan, competitive positioning, growth risks, and overall investment potential.\n\nThe goal is to determine whether your startup can realistically become a sustainable business.\n\nTasks:\n1. Use your Day 23 Customer & MVP Blueprint.\n2. Analyze business viability.\n3. Build a Business Model Canvas.\n4. Create a Revenue & Pricing Strategy.\n5. Generate a Go-To-Market Plan.\n6. Design a Customer Acquisition Strategy.\n7. Create a First 100 Users Plan.\n8. Assess investment readiness.\n9. Generate a visual business dashboard.\n10. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Medium or High.\n\nThe objective is not to receive positive validation.\n\nThe objective is to identify weak assumptions, growth bottlenecks, monetization risks, and opportunities before investing significant resources.\n\nIf Claude does not generate the complete output or usage limits are reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing your Business Strategy Report, screenshots, dashboard, and key learnings.",
+    "learningObjectives": [
+      "Evaluate startup business viability",
+      "Build sustainable revenue strategies",
+      "Design customer acquisition systems",
+      "Understand startup investment readiness",
+      "Identify growth and monetization risks"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 24/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I used Claude as my AI Co-Founder, Growth Strategist, and Startup Advisor.\n\nI transformed my startup blueprint into a complete Business Strategy & Investment Readiness Report.\n\nThe report included:\n\n💰 Revenue & Pricing Strategy\n🚀 Go-To-Market Plan\n🎯 Customer Acquisition Strategy\n👥 First 100 Users Plan\n🏢 Business Model Canvas\n🛡️ Competitive Moat Analysis\n📊 Investment Scorecard\n⚠️ Growth & Monetization Risks\n📈 Business Dashboard\n\nBiggest takeaway:\n\nA startup isn't a business until someone pays.\n\nDistribution, customer acquisition, and sustainable revenue matter more than adding endless features.\n\n#ClaudeAI #StartupStrategy #BusinessModel #Entrepreneurship #GrowthStrategy #StartupFounder #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing your Business Strategy Report, visual dashboard, screenshots, startup insights, and key learnings.",
+    "tags": [
+      "claude",
+      "day-24",
+      "startup",
+      "business-strategy",
+      "entrepreneurship",
+      "growth",
+      "gtm",
+      "investment"
+    ],
+    "dayContent": {
+      "title": "Build Your Startup Business Strategy Report",
+      "tagline": "Turn your startup idea into a sustainable business model",
+      "module": "Business Strategy with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "A validated problem and a strong MVP are only the beginning. Sustainable startups require clear revenue models, efficient customer acquisition, competitive advantages, and disciplined execution. Claude can help founders evaluate whether their startup can realistically become a scalable business.",
+        "bullets": [
+          {
+            "label": "Business Viability",
+            "text": "Determine whether customers will consistently pay for your solution."
+          },
+          {
+            "label": "Revenue Strategy",
+            "text": "Design monetization models and pricing approaches."
+          },
+          {
+            "label": "Go-To-Market Planning",
+            "text": "Build practical customer acquisition and distribution systems."
+          },
+          {
+            "label": "Investment Readiness",
+            "text": "Evaluate startup strengths, weaknesses, and growth potential."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to low",
+          "Continue in your Day 23 conversation.",
+          "Provide your Day 23 Customer & MVP Blueprint.",
+          "Paste the provided Business Strategy prompt.",
+          "Generate the complete Business Strategy Report.",
+          "Review the Business Reality Check section.",
+          "Analyze the Business Model Canvas.",
+          "Review Revenue & Pricing Strategy.",
+          "Study the Go-To-Market Strategy.",
+          "Analyze the Customer Acquisition Strategy.",
+          "Review the First 100 Users Plan.",
+          "Study the Competitive Position & Moat section.",
+          "Analyze the Reverse SWOT Analysis.",
+          "Review the Investor One-Liner and Founder Pitch.",
+          "Review the Investment Scorecard.",
+          "Study the Visual Dashboard.",
+          "Analyze the Final Verdict.",
+          "Export or save the report.",
+          "Take screenshots of key sections.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day24 folder in your GitHub repository.",
+          "Create a day24.md file.",
+          "Upload screenshots, generated report, dashboard, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=TzVUsoHH7ao&feature=youtu.be"
+      },
+
+      "promptTemplate": "You are an AI Co-Founder, Growth Strategist, YC Advisor, and Business Consultant.\n\n## INPUT\n\nUse the Day 23 Blueprint as the source of truth. First summarize the startup in 5-10 bullets, then extract customer, MVP, value proposition, pricing, revenue, and GTM assumptions.\n\n## TASK\n\nDetermine whether this startup can become a sustainable business.\n\nFocus on:\n\n* Revenue over vanity metrics\n* Distribution over features\n* Evidence over assumptions\n* Practical execution over theory\n\n## ANALYSIS\n\n### 1. Business Reality Check\n\n* Who pays?\n* Why do they pay?\n* How will they discover the product?\n* Biggest growth risks?\n* Biggest monetization risks?\n* Weak assumptions to validate?\n\n### 2. Business Strategy Report\n\nProvide:\n\n* Executive Summary\n* Business Model Canvas\n* Revenue & Pricing Strategy\n* Go-To-Market Strategy\n* Customer Acquisition Strategy\n* First 100 Users Plan\n* Competitive Position & Moat\n* Reverse SWOT Analysis\n* Investor One-Liner\n* 30-Second Founder Pitch\n* Founder Action Sheet (Top 10 Actions)\n\n### 3. Investment Scorecard (0-100)\n\nScore:\n\n* Business Viability\n* Revenue Potential\n* GTM Strength\n* Competitive Strength\n* Investor Readiness\n\nInclude brief reasoning.\n\n### 4. Visual Dashboard\n\nCreate a single HTML/SVG infographic showing:\n\n* Business Model\n* Revenue Streams\n* GTM Flow\n* First 100 Users Plan\n* Competitive Moat\n* Key Risks\n* Score Cards\n* Final Verdict\n\nVerdict:\n\n🟢 Investable\n🟡 Validate\n🟠 Pivot\n🔴 Reject\n\n## OUTPUT\n\nGenerate a professional PDF-ready report with:\n\n* Title Page\n* Table of Contents\n* Executive Summary\n* Business Strategy Report\n* Visual Dashboard\n* Founder Action Sheet\n\nUse tables where useful and insert --- PAGE BREAK --- between major sections.\n\nPDF FORMATTING RULES\n\n- Ensure all tables fit within page width; wrap text instead of overflowing columns.\n- Limit table columns to a readable width and use bullet lists inside cells when necessary.\n- Maintain consistent margins, spacing, and section hierarchy for clean PDF export.\n- If a table becomes too wide, split it into multiple tables rather than shrinking readability.\n\nEnd with a 2-3 sentence Sustainability Verdict.",
+
+      "engagement": {
+        "type": "Startup Strategy Showcase",
+        "description": "Share one major risk, insight, or growth opportunity that Claude identified in your startup business model. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing your Business Strategy Report, dashboard screenshots, investment scorecard, founder action sheet, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
