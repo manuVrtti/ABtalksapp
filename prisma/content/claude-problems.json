@@ -2790,5 +2790,115 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 27,
+    "domain": "CLAUDE",
+    "title": "Day 27: Build an Interactive Prior Authorization Story Simulator",
+    "problemStatement": "Welcome to Day 27 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Healthcare Education & Interactive Storytelling\n\nToday's focus: Learn how to use Claude as a Product Designer, UX Engineer, Healthcare Educator, and Front-End Developer.\n\nComplex healthcare workflows become much easier to understand when presented as interactive stories instead of static documentation.\n\nToday you'll build a complete Prior Authorization Story Simulator where users learn the PA process through conversations between a patient and a healthcare operations specialist.\n\nInstead of reading lengthy explanations, users experience each stage of the journey through an interactive story with choices, progress tracking, and educational insights.\n\nThe application demonstrates how healthcare education can become engaging through conversational UI, storytelling, and decision-based interactions.\n\nTasks:\n1. Build a complete Prior Authorization Story Simulator.\n2. Create an interactive chat-based experience.\n3. Simulate real healthcare conversations.\n4. Add branching choices after every scene.\n5. Explain healthcare concepts in beginner-friendly language.\n6. Visualize the patient's complete PA journey.\n7. Complete all eight story scenes.\n8. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nMake sure every interaction, button, scene progression, and dialogue works correctly.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, completed story, and learning notes.",
+    "learningObjectives": [
+      "Build interactive storytelling applications",
+      "Understand Prior Authorization workflows",
+      "Create conversational user experiences",
+      "Design educational healthcare applications",
+      "Generate complete HTML applications using Claude"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 27/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built an Interactive Prior Authorization Story Simulator using Claude.\n\nThe experience included:\n\n💬 Interactive Chat-Based Storytelling\n👦 Patient Journey Simulation\n👩 Healthcare Operations Guidance\n🏥 Insurance Review Process\n📑 Appeals & Documentation\n📊 Progress Tracking\n🎯 Decision-Based Story Flow\n📚 Beginner-Friendly Healthcare Education\n\nBiggest takeaway:\n\nThe best educational software doesn't overwhelm users with documentation.\n\nIt lets them learn by interacting.\n\nUsing Claude, I transformed a complex healthcare workflow into an engaging conversational experience that anyone can understand.\n\n#ClaudeAI #Healthcare #HealthTech #UXDesign #Storytelling #WebDevelopment #AIApps #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of the completed story simulator, and your key learnings.",
+    "tags": [
+      "claude",
+      "day-27",
+      "healthcare",
+      "storytelling",
+      "education",
+      "html",
+      "javascript",
+      "chat-ui"
+    ],
+    "dayContent": {
+      "title": "Build a Prior Authorization Story Simulator",
+      "tagline": "Learn healthcare workflows through interactive conversations",
+      "module": "Interactive Storytelling with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+
+      "learning": {
+        "summary": "Claude can generate complete educational applications that combine storytelling, interactive conversations, healthcare concepts, branching decisions, and modern UI design. Interactive learning improves understanding far more effectively than static documentation.",
+        "bullets": [
+          {
+            "label": "Interactive Storytelling",
+            "text": "Teach complex concepts through conversations instead of long documents."
+          },
+          {
+            "label": "Healthcare Education",
+            "text": "Simplify Prior Authorization using real-world scenarios."
+          },
+          {
+            "label": "Conversational UI",
+            "text": "Create engaging chat interfaces with guided decision making."
+          },
+          {
+            "label": "Application Development",
+            "text": "Generate complete educational web applications using Claude."
+          }
+        ]
+      },
+
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start conversation in the same chat of day 26.",
+          "Paste the provided Prior Authorization Story Simulator prompt.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open the application in your browser.",
+          "Start the interactive story.",
+          "Follow Rahul's healthcare journey.",
+          "Read Priya's explanations for each stage.",
+          "Choose one of the two options after every scene.",
+          "Progress through all eight story chapters.",
+          "Observe the progress bar updating throughout the journey.",
+          "Complete the approval process and review the final takeaways.",
+          "Restart the story to explore different dialogue paths.",
+          "Take screenshots of important scenes.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day27 folder in your GitHub repository.",
+          "Create a day27.md file.",
+          "Upload screenshots, generated HTML file, and learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=zW6pLHJnOoc&feature=youtu.be"
+      },
+
+      "promptTemplate": "Prior Authorization Story Simulator\n\nSingle-file HTML app. HTML, Tailwind CSS CDN, Vanilla JavaScript.\nUse createElement + appendChild for every new chat bubble. Never call innerHTML = on the chat container.\nDesign: same as previously established.\n\nCharacters\n👦 Rahul — patient. Appears left.\n👧 Priya — healthcare operations specialist. Appears right.\nNarrators and doctors appear as centered italic text only, never chat bubbles.\n\nStory — 8 scenes with append-only chat feed and progress bar:\n\n1. Doctor Visit — Rahul visits City Medical Center. Dr. Patel diagnoses Rheumatoid Arthritis, prescribes Humira.\n\n2. Insurance Roadblock — Dr. Patel's office submits PA directly to StarCare Health (payer). No pharmacy involved. Flow: Provider → PA Request → Payer. Approved PA is saved on file permanently.\n\n3. What is PA? — Priya explains in plain language. Include: step therapy isn't just bureaucracy — for aggressive diagnoses, delays can affect disease progression. Cite: 'AMA 2023 PA Survey: PA causes treatment delays in the majority of cases.'\n\n4. Insurance Review — Priya walks through what StarCare Health checks: eligibility, clinical documentation, ICD-10 diagnosis match, step therapy history. Explain why each matters.\n\n5. Denial — Denied: missing step therapy documentation. Denial ≠ permanent. Priya notes the system side: 'PA denials cost physician offices 2+ staff hours to resolve.'\n\n6. Appeal — Gather documents, Letter of Medical Necessity, formal appeal filing.\n\n7. Approval — PA approved, saved on file. Reference number issued. No repeat PA needed for Humira.\n\n8. Takeaways — Two perspectives: Patient (what Rahul learned) + System (how health systems track denial rate, appeal rate, resolution time).\n\nAfter each scene show 2 choices that influence dialogue and progression.\nLabel StarCare Health as an illustrative example throughout.\nBeginner-friendly language.\nHealthcare education design system.",
+
+      "engagement": {
+        "type": "Healthcare Story Simulator Showcase",
+        "description": "Share one new thing you learned about the Prior Authorization process or healthcare operations after completing the simulator. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the completed story simulator, generated HTML file, key takeaways from the Prior Authorization journey, and your learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
