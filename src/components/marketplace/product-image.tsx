@@ -14,13 +14,13 @@ export function ProductImage({ src, alt }: Props) {
   const [imgSrc, setImgSrc] = useState(src ?? PLACEHOLDER);
 
   return (
-    <div className="relative aspect-square w-full bg-zinc-800">
+    <div className="relative h-[220px] w-full">
       <Image
         src={imgSrc}
         alt={alt}
         fill
-        className="object-cover"
-        sizes="(max-width: 640px) 50vw, 25vw"
+        className="object-cover object-center"
+        sizes="(max-width: 640px) 100vw, 312px"
         onError={() => setImgSrc(PLACEHOLDER)}
       />
     </div>

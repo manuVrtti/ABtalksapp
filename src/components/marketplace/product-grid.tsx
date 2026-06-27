@@ -11,7 +11,7 @@ export function ProductGrid({ items, balance, defaultPhone }: Props) {
   return (
     <div
       id="products"
-      className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      className="grid grid-cols-1 justify-items-center gap-x-[51px] gap-y-[53px] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
       {items.map((item) => (
         <ProductCard

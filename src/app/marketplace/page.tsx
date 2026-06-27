@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { AppHeader } from "@/components/shared/app-header";
-import { EarningPills } from "@/components/marketplace/earning-pills";
 import { MarketplaceHero } from "@/components/marketplace/marketplace-hero";
 import { ProductGrid } from "@/components/marketplace/product-grid";
 import { SortControl } from "@/components/marketplace/sort-control";
@@ -35,12 +34,15 @@ export default async function MarketplacePage() {
   };
 
   return (
-    <div className="flex min-h-svh flex-col bg-zinc-950 text-zinc-100">
-      <AppHeader user={headerUser} />
-      <main className="mx-auto w-full max-w-6xl flex-1 space-y-8 px-4 py-8 sm:px-6">
-        <MarketplaceHero />
-        <EarningPills />
-        <SortControl />
+    <div className="flex min-h-svh flex-col bg-[#030712] text-white">
+      <div className="[&_header]:border-[#030712] [&_header]:bg-[#050C1D] [&_header]:shadow-none">
+        <AppHeader user={headerUser} />
+      </div>
+      <MarketplaceHero />
+      <main className="mx-auto w-full max-w-[1897px] flex-1 px-4 py-8 sm:px-[67px] sm:py-10">
+        <div className="mb-8 flex justify-end">
+          <SortControl />
+        </div>
         <ProductGrid
           items={items}
           balance={balance}

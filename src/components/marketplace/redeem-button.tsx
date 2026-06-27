@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { RedeemDialog } from "@/components/marketplace/redeem-dialog";
 
 type Props = {
@@ -25,25 +24,25 @@ export function RedeemButton({
 
   if (balance < costSP) {
     return (
-      <Button
+      <button
         type="button"
         disabled
-        className="w-full bg-zinc-800 text-zinc-500"
+        className="h-[31px] w-full rounded-[10px] bg-[#1C283D]/80 text-xs font-semibold text-[#BCBCBC]"
       >
         Need {shortfall} more SP
-      </Button>
+      </button>
     );
   }
 
   return (
     <>
-      <Button
+      <button
         type="button"
-        className="w-full bg-violet-600 hover:bg-violet-500"
         onClick={() => setOpen(true)}
+        className="h-[31px] w-full rounded-[10px] bg-gradient-to-t from-[#2B1D8C] to-[#7166F0] text-xs font-semibold text-white shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] transition-opacity hover:opacity-95"
       >
         Redeem
-      </Button>
+      </button>
       <RedeemDialog
         open={open}
         onOpenChange={setOpen}

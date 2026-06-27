@@ -1,23 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function MarketplaceHero() {
   return (
-    <section className="space-y-4 text-center">
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-        Marketplace
-      </h1>
-      <p className="mx-auto max-w-xl text-sm text-zinc-400 sm:text-base">
-        Redeem your synergy points for exclusive ABTalks merchandise. Complete
-        tasks, refer friends, and share your work to earn more SP.
-      </p>
+    <section className="relative w-full">
+      <div className="relative aspect-[1897/360] w-full min-h-[200px] max-h-[360px] overflow-hidden sm:min-h-[280px]">
+        <Image
+          src="/marketplace/hero-banner.png"
+          alt="Marketplace — redeem synergy points for exclusive ABTalks merchandise"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
       <Link
         href="#products"
-        className={cn(
-          buttonVariants({ variant: "default" }),
-          "bg-violet-600 hover:bg-violet-500",
-        )}
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded-md focus:bg-[#2B1D8C] focus:px-4 focus:py-2 focus:text-white"
       >
         Browse Rewards
       </Link>

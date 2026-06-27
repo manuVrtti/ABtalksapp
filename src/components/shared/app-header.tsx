@@ -135,7 +135,7 @@ export function AppHeader({
           ) : null}
           <Link
             href="/marketplace"
-            className="hidden text-sm font-medium text-muted-foreground hover:text-foreground md:inline-flex md:items-center md:gap-1"
+            className="hidden text-lg font-normal text-[#D5B9FF] hover:text-[#E8D4FF] md:inline-flex md:items-center md:gap-1"
           >
             Refer and Redeem
             <ArrowRight className="size-3.5" aria-hidden />
