@@ -91,10 +91,7 @@ export function AdminMobileNav({ navItems }: AdminMobileNavProps) {
               open ? "translate-x-0" : "-translate-x-full",
             )}
           >
-            <div className="mb-6 flex items-center justify-between">
-              <span className="font-display text-lg font-bold tracking-tight">
-                <span className="text-primary">A</span>B TALKS
-              </span>
+            <div className="mb-4 flex justify-end">
               <button
                 type="button"
                 onClick={() => setOpen(false)}

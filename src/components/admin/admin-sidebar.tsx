@@ -55,13 +55,6 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
 
   return (
     <aside className="flex h-full flex-col">
-      <Link
-        href="/admin"
-        className="mb-6 font-display text-lg font-bold tracking-tight text-foreground"
-      >
-        <span className="text-primary">A</span>B TALKS
-      </Link>
-
       <nav className="flex-1 space-y-1">
         {navItems.map((item) => {
           const Icon = iconMap[item.icon];
