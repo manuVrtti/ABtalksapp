@@ -72,6 +72,12 @@
   --shadow-pop: var(--elevation-pop);
 }
 
+@property --synergy-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 @keyframes heatmap-cell {
   from {
     opacity: 0;
@@ -201,6 +207,61 @@
   }
   .spark-pulse {
     animation: spark-pulse var(--dur-3) var(--ease-spark-out);
+  }
+
+  @keyframes synergy-beam {
+    to {
+      --synergy-angle: 360deg;
+    }
+  }
+
+  .synergy-glow {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* crisp light beam traveling around the border ring */
+  .synergy-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--synergy-angle),
+      transparent 0deg,
+      transparent 210deg,
+      hsl(var(--primary)) 290deg,
+      #d8b4fe 320deg,
+      transparent 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: synergy-beam 3s linear infinite;
+    pointer-events: none;
+  }
+
+  /* soft halo trailing the same beam */
+  .synergy-glow::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--synergy-angle),
+      transparent 0deg,
+      transparent 230deg,
+      hsl(var(--primary) / 0.65) 295deg,
+      transparent 360deg
+    );
+    filter: blur(5px);
+    opacity: 0.75;
+    animation: synergy-beam 3s linear infinite;
+    pointer-events: none;
   }
 
   .logo-tail {

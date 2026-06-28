@@ -35,6 +35,8 @@ export function BottomNav() {
   const [rect, setRect] = useState<IndicatorRect | null>(null);
 
   const activeIndex = tabs.findIndex((t) => isTabActive(pathname, t.href));
+  const isMarketplace =
+    pathname === "/marketplace" || pathname.startsWith("/marketplace/");
 
   // Measure the active tab relative to the nav so a single, always-mounted
   // indicator can slide between tabs. Never mount/unmount it (that's what made
@@ -79,7 +81,10 @@ export function BottomNav() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-3 pb-[max(env(safe-area-inset-bottom),0.5rem)] md:hidden"
+      className={cn(
+        "pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-3 pb-[max(env(safe-area-inset-bottom),0.5rem)] md:hidden",
+        isMarketplace && "dark",
+      )}
       aria-hidden={false}
     >
       <nav

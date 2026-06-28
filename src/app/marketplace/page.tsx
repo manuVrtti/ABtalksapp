@@ -50,7 +50,7 @@ export default async function MarketplacePage({
   };
 
   return (
-    <div className="flex min-h-svh flex-col bg-[#030712] text-white">
+    <div className="dark flex min-h-svh flex-col bg-[#030712] text-white">
       <div className="[&_header]:border-[#030712] [&_header]:bg-[#050C1D] [&_header]:shadow-none">
         <AppHeader user={headerUser} />
       </div>
