@@ -421,7 +421,7 @@ type MarketplaceItemJson = {
   sortOrder: number;
 };
 
-async function seedMarketplaceItems() {
+export async function seedMarketplaceItems() {
   const raw = loadJsonFile<MarketplaceItemJson[]>("marketplace.json");
   if (!Array.isArray(raw)) return;
 
