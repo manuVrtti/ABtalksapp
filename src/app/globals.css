@@ -305,6 +305,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  body.marketplace-page {
+    background-color: #030712;
+  }
   html {
     @apply font-sans;
   }

@@ -6,6 +6,7 @@ import { SynergyProvider } from "@/components/shared/synergy-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { AppFooter } from "@/components/shared/app-footer";
 import { BottomNavGate } from "@/components/shared/bottom-nav-gate";
+import { MainShell } from "@/components/shared/main-shell";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -45,7 +46,7 @@ export default function RootLayout({
         >
           <SynergyProvider>
             <MotionProvider>
-              <main className="flex-1 pb-16 md:pb-0">{children}</main>
+              <MainShell>{children}</MainShell>
             </MotionProvider>
           </SynergyProvider>
           <AppFooter />
