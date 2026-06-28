@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Domain } from "@prisma/client";
 import { AlertCircle, Briefcase } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -95,9 +96,16 @@ export function AppHeader({
           <Link
             href="/dashboard"
             data-collapsed={collapsed}
-            className="logo-link shrink-0 font-display text-xl font-bold tracking-tight text-foreground focus-spark"
+            className="logo-link focus-spark shrink-0"
           >
-            <span className="text-primary">A</span>B<span className="logo-tail">Talks</span>
+            <Image
+              src="/abtalks-logo.png"
+              alt="ABTalks"
+              width={300}
+              height={84}
+              priority
+              className="logo-image"
+            />
           </Link>
         </div>
 
