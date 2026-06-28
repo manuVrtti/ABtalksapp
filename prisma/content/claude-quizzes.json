@@ -323,107 +323,107 @@
   {
     "weekNumber": 4,
     "domain": "CLAUDE",
-    "title": "Week 4: Code & Developer Workflow",
+    "title": "Week 4 Challenge Quiz: Entrepreneurship & Healthcare Simulations with Claude",
     "questions": [
       {
         "questionOrder": 1,
-        "questionText": "Week 4: Code & Developer Workflow - Question 1: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the primary objective of the Startup Validation Report created in Day 22?",
+        "optionA": "Design a company logo",
+        "optionB": "Validate a startup idea before building it",
+        "optionC": "Generate social media posts",
+        "optionD": "Create a mobile application",
+        "correctAnswer": "B",
+        "explanation": "The Startup Validation Report helps founders evaluate market demand, competition, customer problems, and business viability before investing time and money."
       },
       {
         "questionOrder": 2,
-        "questionText": "Week 4: Code & Developer Workflow - Question 2: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Which framework was introduced to estimate the size of a startup's market opportunity?",
+        "optionA": "SWOT Analysis",
+        "optionB": "MoSCoW Prioritization",
+        "optionC": "TAM, SAM, SOM",
+        "optionD": "Porter's Five Forces",
+        "correctAnswer": "C",
+        "explanation": "TAM, SAM, and SOM help founders estimate the total, serviceable, and obtainable market opportunities."
       },
       {
         "questionOrder": 3,
-        "questionText": "Week 4: Code & Developer Workflow - Question 3: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "The Customer & MVP Blueprint primarily focuses on:",
+        "optionA": "Building every requested feature",
+        "optionB": "Understanding customers before building products",
+        "optionC": "Writing business contracts",
+        "optionD": "Creating marketing posters",
+        "correctAnswer": "B",
+        "explanation": "Successful startups first understand customer pain points, buying behavior, and priorities before developing products."
       },
       {
         "questionOrder": 4,
-        "questionText": "Week 4: Code & Developer Workflow - Question 4: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the purpose of MoSCoW Prioritization?",
+        "optionA": "Estimate company valuation",
+        "optionB": "Prioritize product features based on importance",
+        "optionC": "Calculate revenue projections",
+        "optionD": "Hire startup employees",
+        "correctAnswer": "B",
+        "explanation": "MoSCoW categorizes features into Must Have, Should Have, Could Have, and Won't Have."
       },
       {
         "questionOrder": 5,
-        "questionText": "Week 4: Code & Developer Workflow - Question 5: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "The Business Strategy Report generated in Day 24 emphasized which principle?",
+        "optionA": "Features over customers",
+        "optionB": "Revenue and distribution over vanity metrics",
+        "optionC": "Hiring before validation",
+        "optionD": "Scaling before product-market fit",
+        "correctAnswer": "B",
+        "explanation": "A sustainable business depends on revenue generation, customer acquisition, and effective distribution—not just adding features."
       },
       {
         "questionOrder": 6,
-        "questionText": "Week 4: Code & Developer Workflow - Question 6: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Which AI judge in the Shark Tank Simulator primarily evaluates market size and scalability?",
+        "optionA": "Founder",
+        "optionB": "Customer",
+        "optionC": "Venture Capitalist",
+        "optionD": "Angel Investor",
+        "correctAnswer": "C",
+        "explanation": "The Venture Capitalist focuses on market potential, scalability, and investment opportunities."
       },
       {
         "questionOrder": 7,
-        "questionText": "Week 4: Code & Developer Workflow - Question 7: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the Prior Authorization Workflow Simulator, which three stakeholders form the core workflow?",
+        "optionA": "Doctor, Pharmacy, Laboratory",
+        "optionB": "Patient, Provider, Payer",
+        "optionC": "Hospital, Government, Patient",
+        "optionD": "Doctor, Nurse, Receptionist",
+        "correctAnswer": "B",
+        "explanation": "The simulator teaches how a Prior Authorization request moves between the Patient, Provider, and Payer."
       },
       {
         "questionOrder": 8,
-        "questionText": "Week 4: Code & Developer Workflow - Question 8: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the Prior Authorization Story Simulator, a denial means:",
+        "optionA": "Treatment is permanently cancelled",
+        "optionB": "The patient must change hospitals",
+        "optionC": "The provider can appeal or submit additional documentation",
+        "optionD": "Insurance coverage automatically expires",
+        "correctAnswer": "C",
+        "explanation": "A denial is not final. Providers can submit missing documentation or file an appeal."
       },
       {
         "questionOrder": 9,
-        "questionText": "Week 4: Code & Developer Workflow - Question 9: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Which factor contributes the highest weight to the Hospital Admission Readiness Score?",
+        "optionA": "Bed Availability",
+        "optionB": "Consent",
+        "optionC": "Prior Authorization Status",
+        "optionD": "Insurance Verification",
+        "correctAnswer": "C",
+        "explanation": "Prior Authorization Status contributes 25% of the readiness score, making it the most significant factor."
       },
       {
         "questionOrder": 10,
-        "questionText": "Week 4: Code & Developer Workflow - Question 10: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 4 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the biggest mindset shift from Week 4?",
+        "optionA": "Claude is mainly a chatbot for answering questions",
+        "optionB": "Claude can act as a startup advisor, business strategist, healthcare educator, and full-stack application builder",
+        "optionC": "Claude is only useful for writing code",
+        "optionD": "Claude replaces business decision-making entirely",
+        "correctAnswer": "B",
+        "explanation": "Week 4 demonstrated that Claude can validate startups, design business strategies, build interactive simulations, and create complete educational applications across multiple domains."
       }
     ]
   },

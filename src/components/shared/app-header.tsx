@@ -61,6 +61,8 @@ export function AppHeader({
   const router = useRouter();
   const pathname = usePathname();
   const jobsActive = pathname.startsWith("/jobs");
+  const isMarketplace =
+    pathname === "/marketplace" || pathname.startsWith("/marketplace/");
   const label = displayLabel(user);
   const showChallengeSwitcher =
     (userEnrollments?.length ?? 0) >= 2 &&
@@ -142,7 +144,7 @@ export function AppHeader({
             </Link>
           ) : null}
           <SynergyChip />
-          <ThemeToggle />
+          {!isMarketplace ? <ThemeToggle /> : null}
           <span className="hidden h-6 w-px shrink-0 bg-border sm:block" aria-hidden />
           <DropdownMenu>
             <DropdownMenuTrigger
