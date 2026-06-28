@@ -93,17 +93,20 @@ export function RedeemDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="border border-[#1C283D] bg-[#0B1124] text-white ring-1 ring-white/10 sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>{itemTitle}</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-white">{itemTitle}</DialogTitle>
+          <DialogDescription className="text-[#BCBCBC]">
             This will deduct {costSP} SP from your {balance} SP balance.
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="shippingAddress" className="text-sm font-medium">
+            <label
+              htmlFor="shippingAddress"
+              className="text-sm font-medium text-zinc-200"
+            >
               Shipping address
             </label>
             <Textarea
@@ -113,13 +116,16 @@ export function RedeemDialog({
               onChange={(e) => setShippingAddress(e.target.value)}
               placeholder="Full postal address — name, street, city, state, pincode, country"
               disabled={pending}
-              className="min-h-[100px]"
+              className="min-h-[100px] border-[#1C283D] bg-[#050C1D] text-white placeholder:text-zinc-500 dark:bg-[#050C1D]"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="recipientPhone" className="text-sm font-medium">
+            <label
+              htmlFor="recipientPhone"
+              className="text-sm font-medium text-zinc-200"
+            >
               Recipient phone
             </label>
             <Input
@@ -129,6 +135,7 @@ export function RedeemDialog({
               value={recipientPhone}
               onChange={(e) => setRecipientPhone(e.target.value)}
               disabled={pending}
+              className="border-[#1C283D] bg-[#050C1D] text-white placeholder:text-zinc-500 dark:bg-[#050C1D]"
               required
             />
           </div>
@@ -139,11 +146,11 @@ export function RedeemDialog({
             </p>
           ) : null}
 
-          <DialogFooter className="sm:justify-stretch">
+          <DialogFooter className="border-[#1C283D] bg-transparent sm:justify-stretch">
             <Button
               type="submit"
               disabled={pending}
-              className="w-full bg-violet-600 hover:bg-violet-500"
+              className="w-full bg-gradient-to-t from-[#2B1D8C] to-[#7166F0] text-white shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] hover:opacity-95"
             >
               {pending ? "Processing…" : "Confirm Redemption"}
             </Button>

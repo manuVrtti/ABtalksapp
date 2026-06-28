@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client";
+
 import { prisma } from "@/lib/db";
 
 export type CatalogItem = {
@@ -9,7 +11,21 @@ export type CatalogItem = {
   imagePath: string | null;
 };
 
-export async function getCatalog(): Promise<CatalogItem[]> {
+export type CatalogSort = "recommended" | "price_asc" | "price_desc" | "newest";
+
+const ORDER_BY: Record<
+  CatalogSort,
+  Prisma.MarketplaceItemOrderByWithRelationInput[]
+> = {
+  recommended: [{ sortOrder: "asc" }, { createdAt: "asc" }],
+  price_asc: [{ costSP: "asc" }, { sortOrder: "asc" }],
+  price_desc: [{ costSP: "desc" }, { sortOrder: "asc" }],
+  newest: [{ createdAt: "desc" }],
+};
+
+export async function getCatalog(
+  sort: CatalogSort = "recommended",
+): Promise<CatalogItem[]> {
   const items = await prisma.marketplaceItem.findMany({
     where: { active: true },
     select: {
@@ -20,7 +36,7 @@ export async function getCatalog(): Promise<CatalogItem[]> {
       costSP: true,
       imagePath: true,
     },
-    orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
+    orderBy: ORDER_BY[sort],
   });
   return items;
 }

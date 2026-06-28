@@ -4,11 +4,24 @@ import { AppHeader } from "@/components/shared/app-header";
 import { MarketplaceHero } from "@/components/marketplace/marketplace-hero";
 import { ProductGrid } from "@/components/marketplace/product-grid";
 import { SortControl } from "@/components/marketplace/sort-control";
-import { getCatalog } from "@/features/marketplace/get-catalog";
+import { getCatalog, type CatalogSort } from "@/features/marketplace/get-catalog";
 import { getMySynergy } from "@/features/synergy/get-my-synergy";
 import { prisma } from "@/lib/db";
 
-export default async function MarketplacePage() {
+function isCatalogSort(value: string | undefined): value is CatalogSort {
+  return (
+    value === "recommended" ||
+    value === "price_asc" ||
+    value === "price_desc" ||
+    value === "newest"
+  );
+}
+
+export default async function MarketplacePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ sort?: string }>;
+}) {
   const session = await auth();
   if (!session?.user?.id) {
     redirect("/login");
@@ -16,8 +29,11 @@ export default async function MarketplacePage() {
 
   const userId = session.user.id;
 
+  const sp = await searchParams;
+  const sort: CatalogSort = isCatalogSort(sp.sort) ? sp.sort : "recommended";
+
   const [items, balance, profile] = await Promise.all([
-    getCatalog(),
+    getCatalog(sort),
     getMySynergy(userId),
     prisma.studentProfile.findUnique({
       where: { userId },
@@ -39,9 +55,12 @@ export default async function MarketplacePage() {
         <AppHeader user={headerUser} />
       </div>
       <MarketplaceHero />
-      <main className="mx-auto w-full max-w-[1897px] flex-1 px-4 py-8 sm:px-[67px] sm:py-10">
+      <main
+        id="products"
+        className="mx-auto w-full max-w-[1897px] flex-1 scroll-mt-20 px-4 py-8 sm:px-[67px] sm:py-10"
+      >
         <div className="mb-8 flex justify-end">
-          <SortControl />
+          <SortControl sort={sort} />
         </div>
         <ProductGrid
           items={items}
