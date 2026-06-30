@@ -206,7 +206,11 @@ export default async function DashboardPage({
       "An admin";
 
     return (
-      <div className="flex min-h-svh flex-col bg-muted/30">
+      <div className="relative flex min-h-svh flex-col bg-muted/30">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[360px] bg-gradient-to-b from-primary/20 via-violet-500/10 to-transparent sm:h-[440px]"
+        />
         <AppHeader
           user={headerUser}
           userEnrollments={allEnrollments}
@@ -223,7 +227,7 @@ export default async function DashboardPage({
         {hasClaudeEnrollment && shouldShowAmbassadorBanner ? (
           <CampusAmbassadorBanner />
         ) : null}
-        <main className="mx-auto flex w-full max-w-6xl flex-1">
+        <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-1">
           <EnrollmentEndedScreen
             studentName={dashboardData.profile.fullName}
             adminName={adminName}
@@ -240,7 +244,11 @@ export default async function DashboardPage({
 
   if (isPreStart) {
     return (
-      <div className="flex min-h-svh flex-col bg-muted/30">
+      <div className="relative flex min-h-svh flex-col bg-muted/30">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[360px] bg-gradient-to-b from-primary/20 via-violet-500/10 to-transparent sm:h-[440px]"
+        />
         <AppHeader
           user={headerUser}
           userEnrollments={allEnrollments}
@@ -263,6 +271,7 @@ export default async function DashboardPage({
             cleanPath={dashboardPathWithoutToast}
           />
         ) : null}
+        <div className="relative z-10 flex-1">
         <PreStartDashboard
           enrollment={{
             id: dashboardData.enrollment.id,
@@ -273,6 +282,7 @@ export default async function DashboardPage({
             startsAt: dashboardData.enrollment.challenge.startsAt!,
           }}
         />
+        </div>
       </div>
     );
   }
@@ -295,7 +305,11 @@ export default async function DashboardPage({
     enrollment.daysCompleted >= enrollment.totalDays;
 
   return (
-    <div className="flex min-h-svh flex-col bg-muted/30">
+    <div className="relative flex min-h-svh flex-col bg-muted/30">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[360px] bg-gradient-to-b from-primary/20 via-violet-500/10 to-transparent sm:h-[440px]"
+      />
       <AppHeader
         user={headerUser}
         userEnrollments={allEnrollments}
@@ -321,7 +335,7 @@ export default async function DashboardPage({
           cleanPath={dashboardPathWithoutToast}
         />
       ) : null}
-      <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-6 sm:px-6">
+      <main className="relative z-10 mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-6 sm:px-6">
         {dashboardData.availableQuiz ? (
           <div className="mb-6">
             <QuizUnlockBanner
@@ -333,7 +347,7 @@ export default async function DashboardPage({
           </div>
         ) : null}
 
-        <Card>
+        <Card className="shadow-md">
           <CardHeader className="pb-3">
             <CardTitle className="font-display text-2xl">Your 60-Day Journey</CardTitle>
             <CardDescription>

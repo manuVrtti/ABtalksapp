@@ -1,9 +1,10 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Domain } from "@prisma/client";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Briefcase } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -60,11 +61,35 @@ export function AppHeader({
   const router = useRouter();
   const pathname = usePathname();
   const jobsActive = pathname.startsWith("/jobs");
+  const isMarketplace =
+    pathname === "/marketplace" || pathname.startsWith("/marketplace/");
   const label = displayLabel(user);
   const showChallengeSwitcher =
     (userEnrollments?.length ?? 0) >= 2 &&
     !!activeEnrollmentId &&
     (userEnrollments?.some((e) => e.id === activeEnrollmentId) ?? false);
+
+  const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setCollapsed((prev) => {
+          if (!prev && y > 24) return true;
+          if (prev && y < 8) return false;
+          return prev;
+        });
+        ticking = false;
+      });
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-card/95 shadow-sm backdrop-blur-sm">
@@ -72,9 +97,17 @@ export function AppHeader({
         <div className="flex min-w-0 items-center gap-3">
           <Link
             href="/dashboard"
-            className="shrink-0 font-display text-xl font-bold tracking-tight text-foreground"
+            data-collapsed={collapsed}
+            className="logo-link focus-spark shrink-0"
           >
-            <span className="text-primary">A</span>BTalks
+            <Image
+              src="/abtalks-logo.png"
+              alt="ABTalks"
+              width={300}
+              height={84}
+              priority
+              className="logo-image"
+            />
           </Link>
         </div>
 
@@ -90,29 +123,35 @@ export function AppHeader({
           <Link
             href="/jobs"
             className={cn(
-              "hidden text-sm font-medium transition-colors hover:text-foreground md:inline-flex",
-              jobsActive ? "text-foreground" : "text-muted-foreground",
+              "focus-spark group hidden shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-sm font-medium transition-colors md:inline-flex",
+              jobsActive
+                ? "border-primary/30 bg-primary/10 text-primary"
+                : "border-transparent text-muted-foreground hover:border-border/60 hover:bg-muted/60 hover:text-foreground",
             )}
           >
+            <Briefcase
+              className="size-3.5 transition-transform group-hover:scale-110"
+              aria-hidden
+            />
             Jobs
           </Link>
           {user.isAdmin ? (
             <Link
               href="/admin"
-              className="inline-flex shrink-0 items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
+              className="focus-spark inline-flex shrink-0 items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
             >
               Admin
             </Link>
           ) : null}
           <SynergyChip />
-          <ThemeToggle />
+          {!isMarketplace ? <ThemeToggle /> : null}
           <span className="hidden h-6 w-px shrink-0 bg-border sm:block" aria-hidden />
           <DropdownMenu>
             <DropdownMenuTrigger
               type="button"
               className={cn(
-                "inline-flex shrink-0 items-center gap-2 rounded-lg px-1.5 py-1.5 text-sm outline-none transition-colors sm:gap-3 sm:px-2",
-                "hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary/25 aria-expanded:bg-muted",
+                "focus-spark inline-flex shrink-0 items-center gap-2 rounded-lg px-1.5 py-1.5 text-sm outline-none transition-colors sm:gap-3 sm:px-2",
+                "hover:bg-muted aria-expanded:bg-muted",
               )}
             >
               <Avatar className="size-8 ring-2 ring-border/80 sm:size-9">
@@ -167,7 +206,7 @@ export function AppHeader({
               <form action={signOutAction} className="p-1">
                 <button
                   type="submit"
-                  className="flex w-full rounded-md px-2 py-1.5 text-left text-sm text-destructive hover:bg-destructive/10"
+                  className="focus-spark flex w-full rounded-md px-2 py-1.5 text-left text-sm text-destructive hover:bg-destructive/10"
                 >
                   Logout
                 </button>

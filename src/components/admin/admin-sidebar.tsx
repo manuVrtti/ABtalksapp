@@ -7,8 +7,10 @@ import {
   BookOpen,
   Briefcase,
   FileText,
+  Gift,
   LayoutDashboard,
   Megaphone,
+  Package,
   Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -20,7 +22,9 @@ type IconName =
   | "jobs"
   | "content"
   | "analytics"
-  | "ambassadors";
+  | "ambassadors"
+  | "referrals"
+  | "redemptions";
 
 const iconMap = {
   overview: LayoutDashboard,
@@ -30,6 +34,8 @@ const iconMap = {
   content: BookOpen,
   analytics: BarChart3,
   ambassadors: Megaphone,
+  referrals: Gift,
+  redemptions: Package,
 } as const;
 
 type NavItem = {
@@ -42,30 +48,47 @@ interface AdminSidebarProps {
   navItems: NavItem[];
 }
 
+function isNavActive(pathname: string, href: string): boolean {
+  if (href === "/admin") return pathname === "/admin";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function AdminSidebar({ navItems }: AdminSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden space-y-1 md:block">
-      {navItems.map((item) => {
-        const Icon = iconMap[item.icon];
-        const isActive =
-          pathname === item.href || pathname.startsWith(`${item.href}/`);
+    <aside className="flex h-full flex-col">
+      <nav className="flex-1 space-y-1">
+        {navItems.map((item) => {
+          const Icon = iconMap[item.icon];
+          const isActive = isNavActive(pathname, item.href);
 
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              "flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
-              isActive ? "bg-accent font-medium" : "hover:bg-accent/70",
-            )}
-          >
-            <Icon className="h-4 w-4" />
-            {item.label}
-          </Link>
-        );
-      })}
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
+                isActive
+                  ? "bg-gradient-to-r from-primary to-violet-500 text-primary-foreground shadow-[var(--shadow-card)]"
+                  : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
+              )}
+            >
+              <Icon className="h-4 w-4" />
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="mt-auto border-t border-border pt-4">
+        <Link
+          href="/dashboard"
+          className="text-xs text-primary hover:underline"
+        >
+          ← Back to student portal
+        </Link>
+      </div>
     </aside>
   );
 }

@@ -154,6 +154,7 @@ interface Props {
   /** Seeded from DailyTask.resources when passed by the parent page */
   resources?: string[];
   existingSubmission?: { githubUrl: string; linkedinUrl: string } | null;
+  canSubmit?: boolean;
 }
 
 export function DayPage({
@@ -162,6 +163,7 @@ export function DayPage({
   enrollmentId,
   resources: resourcesProp,
   existingSubmission,
+  canSubmit = true,
 }: Props) {
   const router = useRouter();
   const { refresh } = useSynergy();
@@ -356,33 +358,6 @@ export function DayPage({
           </ol>
         </CollapsibleSection>
 
-        {solutionVideoUrl ? (
-          <CollapsibleSection
-            icon={<PlayCircle className="h-5 w-5 text-red-500" />}
-            iconBg="bg-red-500/10"
-            title="Solution Walkthrough"
-            subtitle="Step-by-step video guide"
-            animationDelay={0.22}
-          >
-            {solutionVideoUrl.includes("REPLACE_WITH") ? (
-              <p className="text-sm text-muted-foreground">
-                Solution walkthrough video coming soon. Check back shortly.
-              </p>
-            ) : (
-              <a
-                href={solutionVideoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-600"
-              >
-                <PlayCircle className="h-4 w-4" />
-                Watch on YouTube
-                <ExternalLink className="h-3 w-3" />
-              </a>
-            )}
-          </CollapsibleSection>
-        ) : null}
-
         {resources.length > 0 ? (
           <CollapsibleSection
             icon={<BookOpen className="h-5 w-5 text-sky-500" />}
@@ -481,71 +456,135 @@ export function DayPage({
           </span>
         </CollapsibleSection>
 
-        <p className="text-center text-xs text-muted-foreground">
-          Tip: the earlier you finish each day, the more synergy you earn, and
-          adding your GitHub + LinkedIn earns even more.
-        </p>
-
-        <div className="rounded-2xl border bg-card p-6 space-y-5">
-          <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
-            <input
-              id="confirm-task"
-              type="checkbox"
-              checked={confirmed}
-              onChange={(e) => setConfirmed(e.target.checked)}
-              disabled={submitting}
-              className="mt-0.5 size-4 shrink-0 rounded border border-input accent-primary"
-            />
-            <label htmlFor="confirm-task" className="text-sm font-medium leading-snug">
-              I confirm I have completed today&apos;s task.
-            </label>
-          </div>
-
-          <div className="space-y-4">
-            <p className="text-sm font-medium text-muted-foreground">
-              Add proof (optional, earns more synergy)
-            </p>
-            <div className="space-y-2">
-              <label htmlFor="github-url" className="text-sm font-medium">
-                GitHub URL
-              </label>
-              <Input
-                id="github-url"
-                type="url"
-                placeholder="GitHub commit or repo URL"
-                value={githubUrl}
-                onChange={(e) => setGithubUrl(e.target.value)}
-                className="text-sm"
-                disabled={submitting}
-              />
-              <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="linkedin-url" className="text-sm font-medium">
-                LinkedIn URL
-              </label>
-              <Input
-                id="linkedin-url"
-                type="url"
-                placeholder="LinkedIn post URL"
-                value={linkedinUrl}
-                onChange={(e) => setLinkedinUrl(e.target.value)}
-                className="text-sm"
-                disabled={submitting}
-              />
-              <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
-            </div>
-          </div>
-
-          <Button
-            onClick={() => void handleSubmit()}
-            disabled={submitting || !confirmed}
-            className="w-full gap-2 sm:w-auto"
+        {solutionVideoUrl ? (
+          <CollapsibleSection
+            icon={<PlayCircle className="h-5 w-5 text-red-500" />}
+            iconBg="bg-red-500/10"
+            title="Solution Walkthrough"
+            subtitle="Step-by-step video guide"
+            animationDelay={0.38}
           >
-            <Send className="h-4 w-4" />
-            {submitting ? "Submitting..." : `Submit Day ${dayNumber}`}
-          </Button>
-        </div>
+            {solutionVideoUrl.includes("REPLACE_WITH") ? (
+              <p className="text-sm text-muted-foreground">
+                Solution walkthrough video coming soon. Check back shortly.
+              </p>
+            ) : (
+              <a
+                href={solutionVideoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-600"
+              >
+                <PlayCircle className="h-4 w-4" />
+                Watch on YouTube
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </CollapsibleSection>
+        ) : null}
+
+        {canSubmit ? (
+          <div className="rounded-2xl border bg-card p-6 space-y-5">
+            <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <input
+                id="confirm-task"
+                type="checkbox"
+                checked={confirmed}
+                onChange={(e) => setConfirmed(e.target.checked)}
+                disabled={submitting}
+                className="mt-0.5 size-4 shrink-0 rounded border border-input accent-primary"
+              />
+              <label htmlFor="confirm-task" className="text-sm font-medium leading-snug">
+                I confirm I have completed today&apos;s task.
+              </label>
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-sm font-medium text-muted-foreground">
+                Add proof (optional, earns more synergy)
+              </p>
+              <div className="space-y-2">
+                <label htmlFor="github-url" className="text-sm font-medium">
+                  GitHub URL
+                </label>
+                <Input
+                  id="github-url"
+                  type="url"
+                  placeholder="GitHub commit or repo URL"
+                  value={githubUrl}
+                  onChange={(e) => setGithubUrl(e.target.value)}
+                  className="text-sm"
+                  disabled={submitting}
+                />
+                <p className="text-xs text-muted-foreground">Optional · +5 synergy</p>
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="linkedin-url" className="text-sm font-medium">
+                  LinkedIn URL
+                </label>
+                <Input
+                  id="linkedin-url"
+                  type="url"
+                  placeholder="LinkedIn post URL"
+                  value={linkedinUrl}
+                  onChange={(e) => setLinkedinUrl(e.target.value)}
+                  className="text-sm"
+                  disabled={submitting}
+                />
+                <p className="text-xs text-muted-foreground">Optional · +8 synergy</p>
+              </div>
+            </div>
+
+            <Button
+              onClick={() => void handleSubmit()}
+              disabled={submitting || !confirmed}
+              className="w-full gap-2 sm:w-auto"
+            >
+              <Send className="h-4 w-4" />
+              {submitting ? "Submitting..." : `Submit Day ${dayNumber}`}
+            </Button>
+          </div>
+        ) : (
+          <div className="rounded-2xl border bg-card p-6 space-y-4">
+            {existingSubmission &&
+            (existingSubmission.githubUrl || existingSubmission.linkedinUrl) ? (
+              <div className="space-y-3 text-sm">
+                {existingSubmission.githubUrl ? (
+                  <div className="space-y-1">
+                    <p className="font-medium text-muted-foreground">GitHub</p>
+                    <a
+                      href={existingSubmission.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
+                    >
+                      {existingSubmission.githubUrl}
+                      <ExternalLink className="size-3.5" aria-hidden />
+                    </a>
+                  </div>
+                ) : null}
+                {existingSubmission.linkedinUrl ? (
+                  <div className="space-y-1">
+                    <p className="font-medium text-muted-foreground">LinkedIn</p>
+                    <a
+                      href={existingSubmission.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
+                    >
+                      {existingSubmission.linkedinUrl}
+                      <ExternalLink className="size-3.5" aria-hidden />
+                    </a>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+            <p className="text-sm text-muted-foreground">
+              Submissions for this day are closed. You&apos;re viewing it for
+              reference.
+            </p>
+          </div>
+        )}
       </main>
     </div>
   );

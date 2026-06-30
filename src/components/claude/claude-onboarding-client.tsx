@@ -245,28 +245,58 @@ export function ClaudeOnboardingClient() {
         </main>
 
         <footer className="shrink-0 border-t bg-background/50 px-6 py-4 backdrop-blur-sm">
-          <div className="mx-auto flex max-w-2xl items-center justify-between gap-3">
-            {currentIndex > 0 ? (
-              <Button
-                type="button"
-                variant="ghost"
-                onClick={prev}
-                className="gap-2"
+          {isLast ? (
+            <div className="mx-auto flex w-full max-w-2xl flex-col gap-3">
+              <div className="flex items-center justify-between gap-3">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={prev}
+                  className="gap-2"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Back
+                </Button>
+                <ProgressDots
+                  total={SLIDES.length}
+                  current={currentIndex}
+                  onSelect={goTo}
+                />
+                <div className="w-[88px]" aria-hidden />
+              </div>
+              <Link
+                href={LOGIN_HREF}
+                className={cn(
+                  buttonVariants(),
+                  "w-full justify-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500 text-white hover:opacity-90",
+                )}
               >
-                <ArrowLeft className="h-4 w-4" />
-                Back
-              </Button>
-            ) : (
-              <div className="w-[88px]" aria-hidden />
-            )}
+                <Rocket className="h-4 w-4" />
+                Reserve My Spot
+              </Link>
+            </div>
+          ) : (
+            <div className="mx-auto flex max-w-2xl items-center justify-between gap-3">
+              {currentIndex > 0 ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={prev}
+                  className="gap-2"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Back
+                </Button>
+              ) : (
+                <div className="w-[88px]" aria-hidden />
+              )}
 
-            <ProgressDots
-              total={SLIDES.length}
-              current={currentIndex}
-              onSelect={goTo}
-            />
+              <ProgressDots
+                total={SLIDES.length}
+                current={currentIndex}
+                onSelect={goTo}
+              />
 
-            {!isLast ? (
               <Button
                 type="button"
                 onClick={next}
@@ -275,19 +305,8 @@ export function ClaudeOnboardingClient() {
                 Continue
                 <ArrowRight className="h-4 w-4" />
               </Button>
-            ) : (
-              <Link
-                href={LOGIN_HREF}
-                className={cn(
-                  buttonVariants(),
-                  "gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500 text-white hover:opacity-90",
-                )}
-              >
-                <Rocket className="h-4 w-4" />
-                Reserve My Spot
-              </Link>
-            )}
-          </div>
+            </div>
+          )}
         </footer>
       </div>
     </div>

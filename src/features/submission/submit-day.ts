@@ -222,7 +222,6 @@ export async function submitDay(input: {
           enrollmentId: enrollment.id,
           challengeId: enrollment.challengeId,
           dayNumber,
-          submittedAt: submission.submittedAt,
           hasGithub,
           hasLinkedin,
         });

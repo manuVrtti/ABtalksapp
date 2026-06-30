@@ -3,6 +3,7 @@ import { clearRefCookie } from "@/lib/cookies";
 import { isClaudeEnabled } from "@/lib/feature-flags";
 import type { RegisterPayloadInput } from "@/lib/validations/register";
 import { prisma } from "@/lib/db";
+import { awardReferralSynergy } from "@/features/synergy/award-referral-synergy";
 import { generateUniqueReferralCode } from "./generate-referral-code";
 
 export type CompleteRegistrationResult =
@@ -157,12 +158,20 @@ export async function completeRegistration(
 
     if (referrerId) {
       try {
-        await prisma.referral.create({
-          data: {
+        await prisma.$transaction(async (tx) => {
+          const referral = await tx.referral.create({
+            data: {
+              referrerId,
+              referredId: userId,
+              rewardGiven: false,
+            },
+            select: { id: true },
+          });
+          await awardReferralSynergy(tx, {
             referrerId,
-            referredId: userId,
-            rewardGiven: false,
-          },
+            referralId: referral.id,
+            referredUserId: userId,
+          });
         });
       } catch (error) {
         console.error("[registration] referral creation failed:", error);

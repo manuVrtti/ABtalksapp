@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, MessageCircle } from "lucide-react";
 
-const WHATSAPP_LINK = "https://chat.whatsapp.com/LA5CQJbMczH3QGhSyJDPGK";
+const WHATSAPP_LINK = "https://chat.whatsapp.com/LSru1BgvifpEB4OMZsaZEi";
 
 export function CommunitySlide() {
   return (

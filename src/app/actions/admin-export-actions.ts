@@ -8,6 +8,7 @@ import {
   type TimeRange,
 } from "@/features/admin/get-analytics-data";
 import { getMissingStudentsForDay } from "@/features/admin/get-missing-by-day";
+import { getReferrersInRange } from "@/features/admin/get-referrals-report";
 import { getSubmissionsFeed } from "@/features/admin/get-submissions-feed";
 
 const SUBMISSIONS_EXPORT_CAP = 10_000;
@@ -51,6 +52,7 @@ export async function getStudentsForExport(filters: {
       longestStreak: true,
       user: {
         select: {
+          id: true,
           email: true,
           name: true,
           studentProfile: {
@@ -75,6 +77,15 @@ export async function getStudentsForExport(filters: {
     orderBy: [{ lastSubmittedDay: "desc" }, { createdAt: "desc" }],
   });
 
+  const referralCountRows = await prisma.referral.groupBy({
+    by: ["referrerId"],
+    where: { referrerId: { in: enrollments.map((e) => e.user.id) } },
+    _count: { id: true },
+  });
+  const referralCountMap = new Map(
+    referralCountRows.map((r) => [r.referrerId, r._count.id]),
+  );
+
   return enrollments.map((e) => ({
     "Full Name": e.user.studentProfile?.fullName ?? e.user.name ?? "",
     Email: e.user.email,
@@ -95,6 +106,7 @@ export async function getStudentsForExport(filters: {
     GitHub: e.user.studentProfile?.githubUsername ?? "",
     "Ready For Interview": e.user.studentProfile?.isReadyForInterview ?? false,
     "Referral Code": e.user.studentProfile?.referralCode ?? "",
+    "Referral Count": referralCountMap.get(e.user.id) ?? 0,
   }));
 }
 
@@ -216,5 +228,18 @@ export async function getMissingStudentsForExport(
     "Enrollment Status": r.status,
     "Days Completed": r.daysCompleted,
     "Last Submitted Day": r.lastSubmittedDay ?? "",
+  }));
+}
+
+export async function getReferrersForExport(range: {
+  startKey?: string;
+  endKey?: string;
+}) {
+  await requireAdmin();
+  const rows = await getReferrersInRange(range);
+  return rows.map((r) => ({
+    Name: r.fullName,
+    Email: r.email,
+    "Referral Count": r.referralCount,
   }));
 }

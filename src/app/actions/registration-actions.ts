@@ -1,8 +1,13 @@
 "use server";
 
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { after } from "next/server";
 import { auth } from "@/auth";
 import { UserType } from "@prisma/client";
+import { claudeWelcomeEmail } from "@/features/email/claude-welcome-email";
 import { completeRegistration } from "@/features/registration/complete-registration";
+import { sendEmail } from "@/lib/email";
 import { registerPayloadSchema } from "@/lib/validations/register";
 
 export async function completeRegistrationAction(formData: FormData) {
@@ -84,6 +89,36 @@ export async function completeRegistrationAction(formData: FormData) {
   const result = await completeRegistration(session.user.id, parsed.data);
   if (!result.ok) {
     return { ok: false as const, message: result.message };
+  }
+
+  if (session.user.email && parsed.data.domain === "CLAUDE") {
+    const to = session.user.email;
+    const appUrl =
+      process.env.NEXT_PUBLIC_APP_URL ?? "https://abtalks.in";
+    after(async () => {
+      const { subject, html, text } = claudeWelcomeEmail({
+        fullName: parsed.data.fullName,
+        appUrl,
+      });
+      const pdf = readFileSync(
+        join(
+          process.cwd(),
+          "public/documents/ABTalks-60-Day-Challenge-Guidelines.pdf",
+        ),
+      );
+      await sendEmail({
+        to,
+        subject,
+        html,
+        text,
+        attachments: [
+          {
+            filename: "ABTalks-60-Day-Challenge-Guidelines.pdf",
+            content: pdf,
+          },
+        ],
+      });
+    });
   }
 
   return { ok: true as const };

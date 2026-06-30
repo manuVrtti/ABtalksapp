@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
@@ -149,7 +148,7 @@ export function ClaudeFAQ() {
         <p className="text-xs text-muted-foreground">
           Still have questions? Reach out via the{" "}
           <a
-            href="https://chat.whatsapp.com/Fqx07wwZhiq0lA6Z7d5uad"
+            href="https://chat.whatsapp.com/LSru1BgvifpEB4OMZsaZEi"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
