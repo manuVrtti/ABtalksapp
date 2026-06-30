@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import CountdownTimer from "./CountdownTimer";
 
-export default function WorkshopHeader() {
+export default function WorkshopHeader({ targetUtc }: { targetUtc: string }) {
   const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function WorkshopHeader() {
             AI Workshop
           </span>
         </div>
-        <CountdownTimer />
+        <CountdownTimer targetUtc={targetUtc} />
       </div>
     </header>
   );

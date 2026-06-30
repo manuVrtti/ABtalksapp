@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { workshopSupabase } from "@/lib/workshop-supabase";
+import { workshopSupabase, getWorkshopConfig } from "@/lib/workshop-supabase";
 import { sendWorkshopConfirmationEmail } from "@/lib/workshop-email";
 
 export async function POST(req: NextRequest) {
@@ -48,7 +48,8 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      await sendWorkshopConfirmationEmail(name, email);
+      const config = await getWorkshopConfig();
+      await sendWorkshopConfirmationEmail(name, email, config);
     } catch (emailErr) {
       console.error("Email send error:", emailErr);
     }
