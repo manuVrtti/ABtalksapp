@@ -3013,5 +3013,220 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 29,
+    "domain": "CLAUDE",
+    "title": "Day 29: Build Operation Lifeline – A Supply Chain Crisis Lab",
+    "problemStatement": "Welcome to Day 29 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Business Applications & Enterprise Simulations\n\nToday's focus: Learn how to use Claude as a Frontend Developer, UX Designer, Game Designer, and Supply Chain Consultant.\n\nModern supply chains are highly interconnected, and even a single disruption can impact manufacturing, logistics, revenue, customer satisfaction, and business continuity. Supply chain leaders must make difficult decisions under pressure while balancing cost, inventory, supplier relationships, and customer expectations.\n\nToday you'll use Claude to build 'Operation Lifeline: Supply Chain Crisis Lab' — an interactive business simulation where you become the Head of Supply Chain responding to unexpected crises.\n\nThrough realistic business scenarios, negotiations, executive decisions, AI investments, and strategic planning, you'll learn how enterprise supply chains respond to disruption.\n\nTasks:\n1. Build the complete Supply Chain Crisis Lab.\n2. Analyze a randomly generated company profile.\n3. Respond to a real-world supply chain crisis.\n4. Select strategic response actions.\n5. Negotiate with suppliers.\n6. Answer CEO leadership questions.\n7. Choose AI-powered supply chain investments.\n8. Review the final executive dashboard.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nEnsure every playthrough generates different companies, crises, business values, and outcomes.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, completed simulation results, and learning notes.",
+    "learningObjectives": [
+      "Understand supply chain management fundamentals",
+      "Simulate enterprise crisis management",
+      "Learn supplier negotiation strategies",
+      "Explore AI applications in supply chain",
+      "Build complete React applications using Claude"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 29/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built 'Operation Lifeline: Supply Chain Crisis Lab' using Claude.\n\nThe simulation included:\n\n🏭 Random Company Generation\n🚨 Supply Chain Crisis Management\n📦 Inventory & Logistics Decisions\n🤝 Supplier Negotiation\n👨‍💼 CEO Boardroom Decisions\n🤖 AI Strategy Investments\n📊 Executive Business Dashboard\n📈 Crisis Performance Score\n\nBiggest takeaway:\n\nSupply chain isn't just about moving products.\n\nIt's about making fast, strategic decisions under uncertainty while balancing cost, customer satisfaction, resilience, and business continuity.\n\nClaude can generate complete enterprise business simulations that make complex operations easy to understand through interactive experiences.\n\n#ClaudeAI #SupplyChain #BusinessSimulation #ReactJS #Operations #EnterpriseAI #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of the simulation, final dashboard, and key learnings.",
+    "tags": [
+      "claude",
+      "day-29",
+      "supply-chain",
+      "business",
+      "simulation",
+      "react",
+      "enterprise",
+      "operations"
+    ],
+    "dayContent": {
+      "title": "Build Operation Lifeline: Supply Chain Crisis Lab",
+      "tagline": "Lead an enterprise through a supply chain crisis",
+      "module": "Enterprise Business Simulations with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Supply chain leaders constantly balance operational efficiency, customer satisfaction, supplier relationships, and business continuity. Claude can generate interactive simulations that teach enterprise decision-making through engaging business scenarios.",
+        "bullets": [
+          {
+            "label": "Supply Chain Strategy",
+            "text": "Learn how organizations respond to operational disruptions."
+          },
+          {
+            "label": "Business Decision Making",
+            "text": "Practice balancing cost, inventory, and customer satisfaction."
+          },
+          {
+            "label": "AI in Operations",
+            "text": "Explore how AI improves forecasting, procurement, and risk management."
+          },
+          {
+            "label": "Interactive React Apps",
+            "text": "Build complete enterprise simulations using Claude."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the provided Operation Lifeline prompt.",
+          "Generate the complete React HTML application.",
+          "Save the generated HTML file.",
+          "Open the simulator in your browser.",
+          "Start the simulation.",
+          "Review the randomly generated company profile.",
+          "Analyze the assigned supply chain crisis.",
+          "Choose three crisis response actions.",
+          "Complete all supplier negotiation rounds.",
+          "Answer the CEO leadership questions.",
+          "Select two AI supply chain investments.",
+          "Review the final executive dashboard and business scores.",
+          "Replay the simulation with different scenarios.",
+          "Take screenshots of the simulation and results.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day29 folder in your GitHub repository.",
+          "Create a day29.md file.",
+          "Upload screenshots, generated HTML file, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=z41fzYaa2wE"
+      },
+      "promptTemplate": "You are an expert frontend developer, UX designer, game designer, and supply chain consultant.\n\nBuild it so a complete beginner can play it — plain language, context before every decision, 'why does this matter' explanations, and guidance that makes you feel smart rather than lost.\n\nBuild a complete single-file HTML app named 'Operation Lifeline: Supply Chain Crisis Lab'.\n\nRequirements:\n• Output ONLY one HTML file.\n• React via CDN + Babel JSX.\n• Plain HTML, CSS, and JavaScript only.\n• No Tailwind, npm, backend, APIs, images, or external assets.\n• Must run offline by opening the HTML file.\n• No placeholders or incomplete features.\n\nFlow:\n1. Welcome screen with title, subtitle, and 'Start Simulation'.\n2. Generate a random fictional company (industry, revenue, factories, warehouses, suppliers, inventory days, lead time, countries) displayed as modern cards.\n3. Generate one random crisis (factory fire, supplier bankruptcy, port strike, cyberattack, flood, raw material shortage, political conflict, shipping delay) with urgency and business impact.\n4. War Room: Present six response actions. The player chooses three. Simulate consequences by updating Cost, Inventory, Profit, Delivery Speed, and Customer Satisfaction using animated progress bars.\n5. Negotiation: Branching supplier negotiation with four rounds. Each choice affects Trust, Price, and Lead Time. Display a negotiation score.\n6. CEO Boardroom: Five multiple-choice leadership questions. Score executive decision-making.\n7. AI Strategy: Let the player choose two AI investments from Demand Forecasting, Inventory Optimization, Supplier Risk Monitoring, Warehouse Vision, and Procurement Copilot. Show expected business impact.\n8. Final Dashboard: Display Overall Crisis Score (0-100), Leadership, Negotiation, Resilience, Cost Control, Risk Management, and Customer Satisfaction. Include personalized feedback, biggest mistake, best decision, expert recommendation, and lessons learned.\n\nDesign:\n• Premium dark theme inspired by enterprise dashboards.\n• Responsive.\n• Rounded cards.\n• Smooth transitions.\n• Hover effects.\n• Progress bars.\n• Modern typography.\n• Replay button.\n• Every playthrough should randomize companies, crises, values, and outcomes.\n\nStructure the React code into reusable components using useState. Ensure every button works, there are no console errors, and the final response contains only the complete HTML code inside a single code block.",
+      "engagement": {
+        "type": "Supply Chain Leadership Showcase",
+        "description": "Share the biggest crisis you faced, the strategy you chose, and your final Crisis Score. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the simulation, generated HTML file, executive dashboard, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 30,
+    "domain": "CLAUDE",
+    "title": "Day 30: Build a Supply Chain Optimizer",
+    "problemStatement": "Welcome to Day 30 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Business Applications & Supply Chain Management\n\nToday's focus: Learn how to use Claude as a Frontend Developer, UX Designer, Business Consultant, and Supply Chain Optimization Expert.\n\nYesterday, you built a supply chain.\n\nToday, you're stepping into the role of a Supply Chain Manager responsible for improving an existing supply chain rather than creating one from scratch.\n\nCustomers are experiencing delays, logistics costs are increasing, warehouses are inefficient, and suppliers are becoming unreliable. Your challenge is to optimize the existing system while balancing cost, delivery speed, resilience, sustainability, and customer satisfaction.\n\nThrough this interactive simulation, you'll learn how real supply chain professionals make strategic decisions and understand the trade-offs behind every optimization.\n\nTasks:\n1. Build the Supply Chain Optimizer application.\n2. Analyze a randomly generated company.\n3. Design a supply chain strategy.\n4. Make optimization decisions.\n5. Understand trade-offs after every choice.\n6. Monitor live business metrics.\n7. Review the final optimization dashboard.\n8. Replay using different company scenarios.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nEnsure every decision updates the business metrics dynamically and explanations remain beginner-friendly throughout the experience.\n\nIf Claude does not generate the complete output or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, optimization results, and learning notes.",
+    "learningObjectives": [
+      "Understand supply chain optimization fundamentals",
+      "Learn business trade-offs through simulation",
+      "Analyze logistics and inventory strategies",
+      "Build React-based enterprise simulations",
+      "Practice strategic decision making"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://drive.google.com/file/d/1B4I9rSPFA7b3JxEoBkhXdVa6YUzCb5jA/"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 30/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built a Supply Chain Optimizer using Claude.\n\nThe simulation included:\n\n🏭 Random Company Generator\n🚚 Supply Chain Strategy Builder\n🏗️ Factory & Warehouse Decisions\n🚛 Transportation Planning\n📦 Inventory Optimization\n📊 Live Business Metrics\n📈 Optimization Score Dashboard\n💡 Personalized Improvement Recommendations\n\nBiggest takeaway:\n\nThere is no perfect supply chain.\n\nEvery business decision involves balancing cost, delivery speed, risk, sustainability, and customer satisfaction. The best supply chain leaders understand these trade-offs and continuously optimize rather than chasing perfection.\n\nClaude made these concepts interactive through a complete business simulation generated from a single prompt.\n\n#ClaudeAI #SupplyChain #BusinessStrategy #Operations #ReactJS #EnterpriseAI #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of your optimized supply chain, final dashboard, and key learnings.",
+    "tags": [
+      "claude",
+      "day-30",
+      "supply-chain",
+      "optimization",
+      "business",
+      "react",
+      "simulation",
+      "operations"
+    ],
+    "dayContent": {
+      "title": "Build a Supply Chain Optimizer",
+      "tagline": "Optimize an existing supply chain like a real operations leader",
+      "module": "Supply Chain Optimization with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Supply chain optimization is about making continuous improvements rather than rebuilding everything. Claude can generate interactive enterprise simulations that help users understand logistics, inventory, sourcing, transportation, and business trade-offs through hands-on decision making.",
+        "bullets": [
+          {
+            "label": "Optimization Strategy",
+            "text": "Improve existing systems instead of starting from scratch."
+          },
+          {
+            "label": "Business Trade-offs",
+            "text": "Balance cost, speed, risk, sustainability, and customer satisfaction."
+          },
+          {
+            "label": "Supply Chain Fundamentals",
+            "text": "Learn how sourcing, warehousing, transportation, and inventory work together."
+          },
+          {
+            "label": "React Applications",
+            "text": "Build complete enterprise simulations using Claude."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the provided Supply Chain Optimizer prompt.",
+          "Generate the complete React HTML application.",
+          "Save the generated HTML file.",
+          "Open the simulator in your browser.",
+          "Read the beginner-friendly introduction.",
+          "Review the randomly generated company profile.",
+          "Choose your supplier strategy.",
+          "Select a factory location.",
+          "Choose a warehouse strategy.",
+          "Select a transportation method.",
+          "Choose an inventory strategy.",
+          "Observe how each decision updates the business metrics.",
+          "Review the final optimization dashboard.",
+          "Analyze your Overall Supply Chain Score.",
+          "Study your strengths, weaknesses, biggest risk, and recommended improvements.",
+          "Replay using different randomly generated companies.",
+          "Take screenshots of your results.",
+          "If Claude does not complete the output or usage limits are reached, wait for the reset period and continue later.",
+          "Create a Day30 folder in your GitHub repository.",
+          "Create a day30.md file.",
+          "Upload screenshots, generated HTML file, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=mwuLGYT_wpg&feature=youtu.be"
+      },
+      "promptTemplate": "You are an expert frontend developer, UX designer, game designer, and supply chain consultant.\n\nBuild a complete single-file HTML app named 'Supply Chain Builder'.\n\nDesign it so a complete beginner can understand supply chains. Before every decision, explain what the concept means, why it matters, and how it affects a business.\n\nRequirements:\n\n* Output ONLY one HTML file.\n* React via CDN + Babel JSX.\n* Plain HTML, CSS, and JavaScript only.\n* No Tailwind, npm, backend, APIs, images, or external assets.\n* Runs offline by opening the HTML file.\n* No placeholders or incomplete features.\n\nFlow:\n\n1. Welcome screen introducing supply chains in simple language.\n2. Generate a random company (industry, products, countries served, demand level).\n3. Guide the player through building their supply chain by choosing:\n   * Number of suppliers (single or multiple)\n   * Factory location\n   * Warehouse strategy\n   * Transportation method (road, rail, sea, air)\n   * Inventory strategy (low, balanced, high)\n4. After every choice, explain the trade-offs in plain English.\n5. Display live business metrics that update after each decision:\n   * Cost\n   * Delivery Speed\n   * Risk\n   * Customer Satisfaction\n   * Sustainability\n6. At the end, generate a dashboard with an Overall Supply Chain Score (0-100), strengths, weaknesses, biggest risk, and three practical improvements.\n\nDesign:\n\n* Premium enterprise dashboard.\n* Dark theme.\n* Responsive.\n* Smooth transitions.\n* Rounded cards.\n* Hover effects.\n* Animated progress bars.\n* Replay button.\n\nRandomize company details each playthrough. Organize the app into reusable React components using useState. Ensure every button works and return ONLY the complete HTML inside one code block.",
+      "engagement": {
+        "type": "Supply Chain Optimization Showcase",
+        "description": "Share your final Supply Chain Score and one optimization decision that had the biggest impact on your business performance. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the simulation, generated HTML file, optimization dashboard, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
