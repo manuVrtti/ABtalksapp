@@ -18,7 +18,7 @@ interface Errors {
   role?: string;
 }
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ whatsappLink }: { whatsappLink: string }) {
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
@@ -80,7 +80,7 @@ export default function RegistrationForm() {
         if (count <= 0) {
           clearInterval(interval);
           const whatsappUrl =
-            process.env.NEXT_PUBLIC_WHATSAPP_LINK ||
+            whatsappLink ||
             "https://chat.whatsapp.com/LDUvHRIlb5dGHpDJLueR9i?s=cl&p=a&mlu=0&amv=0";
           window.location.href = whatsappUrl;
         }

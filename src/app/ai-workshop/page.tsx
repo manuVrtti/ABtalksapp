@@ -4,6 +4,7 @@ import SocialProof from "@/components/workshop/SocialProof";
 import RegistrationForm from "@/components/workshop/RegistrationForm";
 import TopicsSection from "@/components/workshop/TopicsSection";
 import ScrollToTop from "@/components/workshop/ScrollToTop";
+import { getWorkshopConfig } from "@/lib/workshop-supabase";
 
 export const metadata: Metadata = {
   title: "ABTalks | FREE AI Bootcamp - Live Workshop",
@@ -18,7 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AIWorkshopPage() {
+export default async function AIWorkshopPage() {
+  const config = await getWorkshopConfig();
   return (
     <div
       style={{
@@ -57,11 +59,11 @@ export default function AIWorkshopPage() {
         }}
       />
 
-      <WorkshopHeader />
+      <WorkshopHeader targetUtc={config.webinarTargetUtc} />
       <SocialProof />
 
       <section style={{ padding: "24px 0 40px" }}>
-        <RegistrationForm />
+        <RegistrationForm whatsappLink={config.whatsappLink} />
       </section>
 
       <TopicsSection />

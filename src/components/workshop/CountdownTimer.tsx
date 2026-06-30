@@ -2,17 +2,15 @@
 
 import { useState, useEffect } from "react";
 
-// July 11, 2026 at 4:00 PM IST (= 10:30 AM UTC)
-const WEBINAR_TARGET = new Date("2026-07-11T10:30:00Z").getTime();
-
-export default function CountdownTimer() {
+export default function CountdownTimer({ targetUtc }: { targetUtc: string }) {
   const [mounted, setMounted] = useState(false);
   const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
 
   useEffect(() => {
     setMounted(true);
+    const target = new Date(targetUtc).getTime();
     const tick = () => {
-      const diff = Math.max(0, WEBINAR_TARGET - Date.now());
+      const diff = Math.max(0, target - Date.now());
       setTime({
         d: Math.floor(diff / 86400000),
         h: Math.floor((diff % 86400000) / 3600000),
@@ -57,7 +55,7 @@ interface UnitProps {
 
 function Unit({ val, label, orange }: UnitProps) {
   return (
-    <div className="flex flex-col items-center min-w-[26px] md:min-w-[32px]">
+    <div className="flex flex-col items-center min-w-6.5 md:min-w-8">
       <span
         className={`text-base md:text-[20px] font-extrabold leading-none tracking-tight ${
           orange ? "text-[#ff6a00]" : "text-gray-900"
@@ -74,7 +72,7 @@ function Unit({ val, label, orange }: UnitProps) {
 
 function Sep() {
   return (
-    <span className="text-gray-300 text-xs md:text-sm font-light self-center -translate-y-[2px] md:-translate-y-[3px]">
+    <span className="text-gray-300 text-xs md:text-sm font-light self-center -translate-y-0.5 md:-translate-y-0.75">
       :
     </span>
   );

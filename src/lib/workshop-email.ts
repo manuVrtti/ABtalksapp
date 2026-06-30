@@ -8,12 +8,10 @@ const brevoClient = new BrevoClient({ apiKey: brevoApiKey });
 
 export async function sendWorkshopConfirmationEmail(
   name: string,
-  email: string
+  email: string,
+  config: { zoomLink: string; whatsappLink: string; webinarDate: string; webinarTime: string }
 ): Promise<void> {
-  const zoomLink = process.env.ZOOM_LINK || "#";
-  const whatsappLink = process.env.WHATSAPP_LINK || "#";
-  const webinarDate = process.env.WEBINAR_DATE || "TBA";
-  const webinarTime = process.env.WEBINAR_TIME || "TBA";
+  const { zoomLink, whatsappLink, webinarDate, webinarTime } = config;
 
   const html = `
 <!DOCTYPE html>
