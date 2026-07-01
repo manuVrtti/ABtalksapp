@@ -3228,5 +3228,112 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 31,
+    "domain": "CLAUDE",
+    "title": "Day 31: Build an AI Supply Chain Control Tower",
+    "problemStatement": "Welcome to Day 31 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 4 — Entrepreneurship, Business Applications & Supply Chain Management\n\nToday's focus: Learn how to use Claude as a Product Designer, Operations Consultant, UX Designer, and Frontend Developer to build a real-time enterprise operations dashboard.\n\nYesterday, you optimized an existing supply chain.\n\nToday, you'll take the next step by building an AI Supply Chain Control Tower—the command center used by global enterprises to monitor operations in real time.\n\nInstead of creating a supply chain, you'll become the Head of Operations responsible for responding to live disruptions. Unexpected events such as supplier delays, port congestion, warehouse shortages, truck breakdowns, customs inspections, and demand spikes will continuously appear.\n\nYour mission is to prioritize alerts, make strategic decisions, protect business KPIs, and keep the entire supply chain running efficiently under pressure.\n\nThrough this interactive simulation, you'll experience how modern operations teams use digital control towers to make fast, data-driven decisions.\n\nTasks:\n1. Build the AI Supply Chain Control Tower.\n2. Monitor live operational alerts.\n3. Prioritize incidents based on urgency.\n4. Take corrective actions.\n5. Observe KPI changes after every decision.\n6. Manage multiple disruptions simultaneously.\n7. Review your operational performance dashboard.\n8. Replay to improve your decision-making.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nGenerate the complete application as a single HTML file using HTML, CSS, and vanilla JavaScript only.\n\nIf Claude doesn't finish generating the application or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots of your dashboard, the generated HTML application, and your key learnings.",
+    "learningObjectives": [
+      "Understand how Supply Chain Control Towers work",
+      "Learn operational decision-making under pressure",
+      "Practice KPI-driven business thinking",
+      "Build interactive enterprise dashboards",
+      "Create advanced HTML, CSS, and JavaScript simulations using Claude"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://www.youtube.com/watch?v=Eb6hjOtrFZ4"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 75,
+    "linkedinTemplate": "Day 31/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built an AI Supply Chain Control Tower using Claude.\n\nThe application simulates the experience of leading operations inside a global enterprise.\n\n✨ Features included:\n\n🚨 Live Operational Alerts\n📊 Real-Time Business KPIs\n🚚 Logistics Decision Making\n📦 Inventory Monitoring\n🏭 Supply Chain Incident Management\n⚡ Priority-Based Alert Handling\n📈 Performance Dashboard\n🎮 Interactive Simulation\n\nBiggest takeaway:\n\nA Supply Chain Control Tower isn't just a dashboard—it's the nerve center of modern operations. Every decision impacts cost, customer satisfaction, inventory, and revenue, making prioritization one of the most valuable business skills.\n\nAmazing to see Claude generate such an interactive enterprise simulation from a single prompt.\n\n#ClaudeAI #SupplyChain #Operations #Logistics #BusinessSimulation #EnterpriseAI #JavaScript #HTML #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of the gameplay, final performance dashboard, and your key learnings.",
+    "tags": [
+      "claude",
+      "day-31",
+      "supply-chain",
+      "control-tower",
+      "operations",
+      "enterprise",
+      "dashboard",
+      "simulation",
+      "javascript"
+    ],
+    "dayContent": {
+      "title": "Build an AI Supply Chain Control Tower",
+      "tagline": "Manage live disruptions like the Head of Operations",
+      "module": "AI Operations & Supply Chain Control Towers",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 75,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Modern organizations use Supply Chain Control Towers to monitor logistics, inventory, suppliers, and transportation in real time. Claude can help generate realistic business simulations that teach operational thinking through interactive decision making.",
+        "bullets": [
+          {
+            "label": "Control Tower Fundamentals",
+            "text": "Understand how enterprises monitor supply chain operations in real time."
+          },
+          {
+            "label": "Operational Decision Making",
+            "text": "Learn to prioritize critical alerts while balancing multiple business objectives."
+          },
+          {
+            "label": "Business KPIs",
+            "text": "See how every operational decision affects customer satisfaction, costs, inventory, and revenue."
+          },
+          {
+            "label": "Interactive Dashboard Development",
+            "text": "Build a premium enterprise dashboard using HTML, CSS, and JavaScript."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the provided AI Supply Chain Control Tower prompt.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open the application in your browser.",
+          "Read the instructions.",
+          "Monitor incoming operational alerts.",
+          "Prioritize incidents based on urgency.",
+          "Choose the best corrective action.",
+          "Observe KPI changes after each decision.",
+          "Manage multiple alerts simultaneously.",
+          "Complete the simulation.",
+          "Review your final operational performance dashboard.",
+          "Replay the simulation to improve your score.",
+          "Take screenshots of your results.",
+          "If Claude reaches its usage limit, wait for the reset period before continuing.",
+          "Create a Day31 folder in your GitHub repository.",
+          "Create a day31.md file.",
+          "Upload screenshots, the generated HTML file, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=Eb6hjOtrFZ4"
+      },
+      "promptTemplate": "Act as an expert Product Designer, Operations Consultant, UX Designer, and Frontend Developer.\n\nBuild a complete interactive web application called:\n\n# AI Supply Chain Control Tower\n\nThe goal is to simulate the experience of being the Head of Operations in a global supply chain company.\n\nThe entire project must be contained inside ONE self-contained HTML file using HTML, CSS, and vanilla JavaScript only.\n\nDo NOT use React, Vue, Angular, Tailwind, Bootstrap, external libraries, APIs, or backend services.\n\nEverything should work offline after opening the HTML file.\n\n--------------------------------------------------\nTHEME\n--------------------------------------------------\n\nCreate a premium dark Operations Control Center inspired by modern logistics dashboards.\n\nUse:\n\n• Dark background\n• Blue and cyan highlights\n• Red warning alerts\n• Green success indicators\n• Orange medium priority alerts\n\nAnimated glowing cards\n\nModern dashboard layout\n\nProfessional typography\n\nSmooth transitions\n\n--------------------------------------------------\nGAMEPLAY\n--------------------------------------------------\n\nThe player becomes:\n\nHead of Operations\n\nA stream of operational alerts appears.\n\nThe player must decide which issue to solve first.\n\nEvery decision changes business KPIs.\n\nThe goal is to maximize operational performance before time runs out.\n\n--------------------------------------------------\nKPIs\n--------------------------------------------------\n\nDisplay these live metrics at the top:\n\nService Level %\n\nCustomer Satisfaction\n\nInventory Health\n\nTransportation Efficiency\n\nOperating Cost\n\nRevenue Protected\n\nScore\n\nRemaining Time\n\n--------------------------------------------------\nALERT TYPES\n--------------------------------------------------\n\nRandomly generate alerts like:\n\n🚨 Port Congestion\n\n🚨 Supplier Delay\n\n🚨 Truck Breakdown\n\n🚨 Warehouse Running Out of Stock\n\n🚨 Customs Inspection\n\n🚨 Demand Spike\n\n🚨 Factory Machine Failure\n\n🚨 Weather Disruption\n\n🚨 Wrong Inventory Count\n\n🚨 Damaged Shipment\n\nEach alert should include:\n\nTitle\n\nShort description\n\nPriority\n\nTime remaining\n\nBusiness impact\n\n--------------------------------------------------\nPLAYER ACTIONS\n--------------------------------------------------\n\nEach alert should provide action buttons such as:\n\nExpedite Shipment\n\nUse Backup Supplier\n\nReroute Trucks\n\nIncrease Production\n\nTransfer Inventory\n\nApprove Air Freight\n\nIgnore\n\nDelay Decision\n\nEach action should have different consequences.\n\n--------------------------------------------------\nGAME LOGIC\n--------------------------------------------------\n\nChoosing the best action:\n\nIncrease score\n\nImprove KPIs\n\nReduce future risk\n\nWrong decisions should:\n\nReduce KPIs\n\nIncrease operating cost\n\nLower customer satisfaction\n\nSome decisions should have delayed consequences after several seconds.\n\n--------------------------------------------------\nDIFFICULTY\n--------------------------------------------------\n\nGame lasts 3 minutes.\n\nAs time progresses:\n\nMore alerts appear.\n\nAlert frequency increases.\n\nMultiple alerts stay active simultaneously.\n\n--------------------------------------------------\nVISUALS\n--------------------------------------------------\n\nInclude:\n\nAnimated KPI cards\n\nLive scrolling event log\n\nCountdown timer\n\nPriority color coding\n\nSmall pulse animation for critical alerts\n\nHover effects\n\nProfessional dashboard layout\n\n--------------------------------------------------\nEND OF GAME\n--------------------------------------------------\n\nWhen time ends show:\n\nFinal Score\n\nPerformance Grade\n\n(A+, A, B, C, D)\n\nFinal KPI values\n\nTotal Alerts Resolved\n\nCorrect Decisions\n\nWrong Decisions\n\nA short operational summary based on performance.\n\nInclude a Play Again button.\n\n--------------------------------------------------\nEXTRA FEATURES\n--------------------------------------------------\n\nAdd:\n\nSound toggle (visual only, no audio required)\n\nPause button\n\nHelp / Instructions modal\n\nResponsive layout for desktop and mobile\n\n--------------------------------------------------\nCODE QUALITY\n--------------------------------------------------\n\nWrite clean, well-commented code.\n\nKeep CSS organized.\n\nKeep JavaScript modular using functions.\n\nEverything must remain inside ONE HTML file.\n\nReturn only the complete HTML document.",
+      "engagement": {
+        "type": "Operations Leaderboard",
+        "description": "Share your final Control Tower score, KPI dashboard, and the toughest operational alert you handled. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the Control Tower dashboard, generated HTML application, final score, and key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
