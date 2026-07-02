@@ -3441,5 +3441,110 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 33,
+    "domain": "CLAUDE",
+    "title": "Day 33: Build a Media Integrity Analyzer",
+    "problemStatement": "Welcome to Day 33 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 5 — Media Literacy, Critical Thinking & AI Education\n\nToday's focus: Learn how to use Claude as a Frontend Developer, UX Designer, Instructional Designer, and Media Literacy Analyst.\n\nEvery day we encounter headlines, social media posts, articles, and videos that compete for our attention. Many use emotional language, exaggerated claims, or misleading framing to influence how we think before we even read the content.\n\nToday you'll build an interactive Media Integrity Analyzer that teaches users how to evaluate headlines, detect emotional manipulation, and think critically about digital content.\n\nRather than testing prior knowledge, the application guides users through discovery by explaining concepts, letting them make decisions, and then revealing why certain media techniques work.\n\nTasks:\n1. Build the complete Media Integrity Analyzer.\n2. Choose your preferred color theme.\n3. Analyze fictional news headlines.\n4. Detect emotional manipulation techniques.\n5. Learn how headlines influence perception.\n6. Review live Media Integrity metrics.\n7. Complete the Media Integrity Dashboard.\n8. Replay using new randomized scenarios.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nEnsure every interaction is fully functional and the generated HTML contains zero syntax errors.\n\nIf Claude does not complete the application or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, Media Integrity Dashboard, and key learnings.",
+    "learningObjectives": [
+      "Understand media literacy fundamentals",
+      "Identify misleading headlines",
+      "Recognize emotional manipulation techniques",
+      "Develop critical thinking skills",
+      "Build interactive HTML applications using Claude"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://www.youtube.com/watch?v=n4Fn5Q3P1Jw"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 33/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built a Media Integrity Analyzer using Claude.\n\nThe application helped users think critically about the information they consume instead of simply accepting headlines at face value.\n\n✨ Features included:\n\n📰 Headline Detective\n🎭 Emotion Detector\n📊 Live Media Integrity Metrics\n🎯 Audience Targeting Analysis\n⚠️ Manipulation Technique Detection\n✍️ Fair Headline Rewriting\n📈 Media Integrity Dashboard\n🔁 Randomized Learning Scenarios\n\nBiggest takeaway:\n\nMedia literacy isn't about distrusting everything.\n\nIt's about asking better questions, recognizing emotional influence, and separating facts from manipulation.\n\nClaude can create interactive educational experiences that teach critical thinking through hands-on exploration.\n\n#ClaudeAI #MediaLiteracy #CriticalThinking #Education #HTML #JavaScript #AIEducation #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of the Media Integrity Dashboard, and key learnings.",
+    "tags": [
+      "claude",
+      "day-33",
+      "media-literacy",
+      "critical-thinking",
+      "education",
+      "html",
+      "javascript",
+      "interactive-learning"
+    ],
+    "dayContent": {
+      "title": "Build a Media Integrity Analyzer",
+      "tagline": "Learn to evaluate information before believing it",
+      "module": "Media Literacy with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Media literacy is an essential skill in today's digital world. Claude can generate interactive educational experiences that help users recognize misleading headlines, emotional manipulation, and bias through guided discovery instead of memorization.",
+        "bullets": [
+          {
+            "label": "Headline Analysis",
+            "text": "Learn how headlines influence perception and attention."
+          },
+          {
+            "label": "Emotional Awareness",
+            "text": "Recognize language designed to trigger emotional reactions."
+          },
+          {
+            "label": "Critical Thinking",
+            "text": "Evaluate content objectively before accepting conclusions."
+          },
+          {
+            "label": "Interactive Learning",
+            "text": "Build educational HTML applications that teach through exploration."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the provided Media Integrity Analyzer prompt.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open the application in your browser.",
+          "Choose your preferred color theme.",
+          "Complete the Headline Detective challenge.",
+          "Review the headline analysis and rewritten headline.",
+          "Complete the Emotion Detector challenge.",
+          "Analyze the emotional manipulation techniques.",
+          "Observe how the live Media Integrity metrics update.",
+          "Review the final Media Integrity Dashboard.",
+          "Replay using new randomized scenarios.",
+          "Take screenshots of your results.",
+          "If Claude reaches its usage limit, wait for the reset period before continuing.",
+          "Create a Day33 folder in your GitHub repository.",
+          "Create a day33.md file.",
+          "Upload screenshots, the generated HTML file, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=n4Fn5Q3P1Jw"
+      },
+      "promptTemplate": "You are an expert frontend developer, UX designer, instructional designer, and media literacy analyst.\n\nAsk the user to choose a color theme from a few options (including Claude Orange).\n\nCreate a beautiful single-file HTML application called 'Media Integrity Analyzer'.\n\nUse pure vanilla CSS and JS. No Tailwind, npm, backend, APIs, images, or external assets. Everything must work offline in one HTML file.\n\nThe goal is to teach media literacy through interactive discovery, not test prior knowledge. The experience should feel like a guided lesson where users learn by observing, thinking, and then revealing the answer.\n\nMake it interactive.\n\nBefore each challenge, briefly explain the concept in simple language, why it matters, and how it applies to everyday life.\n\nChallenge 1: Headline Detective\n- Generate a fictional news headline and matching article.\n- Ask: Would you click this? (Yes / Maybe / No)\n- Ask the user to identify exaggerated or misleading parts.\n- Reveal the Headline Accuracy Score, highlighted mismatches, explanation, fair rewritten headline, and key takeaway.\n\nChallenge 2: Emotion Detector\n- Generate a fictional social media post, reel caption, or article excerpt.\n- Ask how it made the user feel and which words influenced that feeling.\n- Reveal the target audience, intended emotional response, manipulation technique, highlighted emotional phrases, neutral rewrite, and key takeaway.\n\nDisplay live Media Integrity metrics:\n- Headline Accuracy\n- Source Reliability\n- Emotional Manipulation\n- Audience Targeting\n\nFinish with a Media Integrity Dashboard containing:\n- Overall Media Integrity Score\n- What the user learned\n- Biggest red flag\n- Three practical media literacy habits\n- Replay with completely new scenarios\n\nDesign a premium editorial-style dark interface with smooth animations, progress indicators, hover effects, modern cards, and responsive layout.\n\nEnsure there are zero syntax errors.\n\nReturn ONLY the complete HTML inside one code block.",
+      "engagement": {
+        "type": "Media Literacy Showcase",
+        "description": "Share one surprising thing you learned about misleading headlines or emotional manipulation while using the Media Integrity Analyzer. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the Media Integrity Analyzer, generated HTML file, Media Integrity Dashboard, and your key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
