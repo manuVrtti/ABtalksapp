@@ -18,31 +18,31 @@ export const VISA_CATEGORIES = [
 export const EDUCATION_LEVELS = [
   "High School / GED",
   "Associate Degree",
-  "Bachelor's Degree — Computer Science / Engineering",
-  "Bachelor's Degree — Other Field",
-  "Master's Degree — Computer Science / AI / Data Science",
-  "Master's Degree — Other Field",
-  "PhD — Computer Science / AI / Related",
-  "PhD — Other Field",
+  "Bachelor's Degree - Computer Science / Engineering",
+  "Bachelor's Degree - Other Field",
+  "Master's Degree - Computer Science / AI / Data Science",
+  "Master's Degree - Other Field",
+  "PhD - Computer Science / AI / Related",
+  "PhD - Other Field",
   "Bootcamp / Self-taught",
   "Professional Certifications (AWS, GCP, Azure, etc.)",
 ] as const;
 
 export const TOTAL_EXPERIENCE = [
   "Less than 1 year",
-  "1–2 years",
-  "3–5 years",
-  "6–9 years",
-  "10–15 years",
+  "1-2 years",
+  "3-5 years",
+  "6-9 years",
+  "10-15 years",
   "15+ years",
 ] as const;
 
 export const AI_ML_EXPERIENCE = [
-  "None — completely new to AI/ML",
+  "None - completely new to AI/ML",
   "Under 6 months (hobby / self-study)",
-  "6–12 months",
-  "1–2 years",
-  "3–5 years",
+  "6-12 months",
+  "1-2 years",
+  "3-5 years",
   "5+ years",
 ] as const;
 
@@ -68,15 +68,15 @@ export const TARGET_ROLES = [
   "Data Scientist moving into AI Engineering",
   "Enterprise AI Consultant",
   "AI Research Engineer",
-  "Not sure yet — exploring options",
+  "Not sure yet - exploring options",
   "Other",
 ] as const;
 
 export const START_WINDOWS = [
   "As soon as possible",
-  "Within 2–4 weeks",
-  "Within 1–2 months",
-  "Flexible — ready whenever the cohort launches",
+  "Within 2-4 weeks",
+  "Within 1-2 months",
+  "Flexible - ready whenever the cohort launches",
 ] as const;
 
 const confirmed = z.literal(true, { error: "Please confirm to continue." });

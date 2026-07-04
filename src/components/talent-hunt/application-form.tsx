@@ -11,14 +11,12 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Progress, ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
 import {
   Select,
   SelectContent,
@@ -39,6 +37,17 @@ import {
   type CohortApplicationInput,
 } from "@/lib/validations/cohort-application";
 import { cn } from "@/lib/utils";
+
+const STEP_SHORT_LABELS = [
+  "Personal",
+  "Background",
+  "Your Story",
+  "Commitment",
+  "Review",
+] as const;
+
+const SELECT_TRIGGER_CLASS =
+  "h-10 w-full min-w-0 rounded-xl text-base md:text-sm data-[size=default]:h-10";
 
 const STEP_TITLES: Record<number, string> = {
   1: "Personal Information",
@@ -146,7 +155,7 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="grid gap-1 sm:grid-cols-[10rem_1fr] sm:gap-4">
       <dt className="text-sm font-medium text-muted-foreground">{label}</dt>
-      <dd className="text-sm text-foreground">{value || "—"}</dd>
+      <dd className="text-sm text-foreground">{value || "-"}</dd>
     </div>
   );
 }
@@ -168,12 +177,69 @@ function ReviewSection({
   );
 }
 
+function FormStepStepper({ step }: { step: number }) {
+  const total = STEP_SHORT_LABELS.length;
+  const progressPct = total > 1 ? ((step - 1) / (total - 1)) * 100 : 0;
+
+  return (
+    <nav aria-label="Application progress" className="w-full">
+      <div className="relative px-1">
+        <div
+          className="absolute top-4 right-[10%] left-[10%] h-px bg-border"
+          aria-hidden
+        />
+        <div
+          className="absolute top-4 left-[10%] h-px bg-primary transition-all duration-300 ease-out"
+          style={{ width: `${progressPct * 0.8}%` }}
+          aria-hidden
+        />
+        <ol className="relative flex justify-between">
+          {STEP_SHORT_LABELS.map((label, index) => {
+            const stepNum = index + 1;
+            const isActive = stepNum === step;
+            const isComplete = stepNum < step;
+
+            return (
+              <li
+                key={label}
+                className="flex flex-col items-center gap-2"
+                aria-current={isActive ? "step" : undefined}
+              >
+                <div
+                  className={cn(
+                    "flex size-8 shrink-0 items-center justify-center rounded-full border-2 bg-background text-xs font-bold transition-colors",
+                    isActive && "border-primary text-primary shadow-sm shadow-primary/20",
+                    isComplete &&
+                      "border-primary bg-primary text-primary-foreground",
+                    !isActive &&
+                      !isComplete &&
+                      "border-muted-foreground/25 text-muted-foreground",
+                  )}
+                >
+                  {stepNum}
+                </div>
+                <span
+                  className={cn(
+                    "max-w-[3.25rem] text-center text-[9px] font-semibold uppercase leading-tight tracking-wide sm:max-w-none sm:text-[11px]",
+                    isActive && "text-primary",
+                    isComplete && !isActive && "text-primary/80",
+                    !isActive && !isComplete && "text-muted-foreground",
+                  )}
+                >
+                  {label}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+  );
+}
+
 function StepIntro({ step }: { step: number }) {
   return (
     <div className="space-y-2 border-b border-border/60 pb-6">
-      <p className="text-sm font-semibold uppercase tracking-wide text-primary">
-        Step {step} of 5
-      </p>
       <h2 className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
         {STEP_TITLES[step]}
       </h2>
@@ -209,7 +275,10 @@ export function ApplicationForm() {
   async function handleNext() {
     const fields = STEP_FIELDS[step];
     const ok = await trigger(fields);
-    if (ok) setStep((s) => Math.min(5, s + 1));
+    if (ok) {
+      // Defer step change so the "Next" click doesn't land on the step-5 Submit button.
+      setTimeout(() => setStep((s) => Math.min(5, s + 1)), 0);
+    }
   }
 
   function handleBack() {
@@ -238,12 +307,11 @@ export function ApplicationForm() {
             <CircleCheck className="size-10 text-primary" aria-hidden />
           </div>
           <h2 className="font-display text-2xl font-bold tracking-tight">
-            Application received
+            Application received!
           </h2>
           <p className="mt-4 max-w-md text-muted-foreground">
-            Our team will review your application and email you to schedule your
-            30-minute pre-cohort call. Seats are limited (50, USA only) — keep
-            an eye on your inbox.
+            Thank you for applying to AI Cohort Training Program - Cohort 1.
+            Our team will review your application and get back to you within 3-5 business days.
           </p>
         </CardContent>
       </Card>
@@ -252,28 +320,24 @@ export function ApplicationForm() {
 
   return (
     <Card className="mx-auto max-w-2xl rounded-xl border-border/60 shadow-[var(--shadow-card)]">
-      <CardHeader className="space-y-4">
-        <div>
-          <CardTitle className="font-display text-2xl font-bold tracking-tight">
-            Apply for the AI Cohort Training Program
+      <CardHeader className="space-y-5">
+        <div className="text-center sm:text-left">
+          <CardTitle className="font-display text-lg font-bold uppercase tracking-wide sm:text-xl">
+            AI Cohort Training Program
           </CardTitle>
-          <CardDescription className="mt-2">
-            Complete all 5 steps. Fields marked required must be filled before
-            you can proceed.
-          </CardDescription>
+          <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Pre-assessment - Cohort 1 - USA
+          </p>
         </div>
 
-        <div className="space-y-2">
-          <Progress value={(step / 5) * 100}>
-            <ProgressTrack>
-              <ProgressIndicator />
-            </ProgressTrack>
-          </Progress>
-        </div>
+        <FormStepStepper step={step} />
       </CardHeader>
 
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="space-y-6"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -364,7 +428,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="visaCategory"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.visaCategory}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -404,7 +468,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="educationLevel"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.educationLevel}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -442,7 +506,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="totalExperience"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.totalExperience}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -478,7 +542,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="aiMlExperience"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.aiMlExperience}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -532,7 +596,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="industry"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.industry}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -589,13 +653,13 @@ export function ApplicationForm() {
                       aria-invalid={!!errors.whyInterested}
                     />
                     <p className="text-xs leading-relaxed text-muted-foreground">
-                      Be specific — generic answers like &ldquo;I want to learn
+                      Be specific - generic answers like &ldquo;I want to learn
                       AI&rdquo; are less compelling than concrete context about
                       your current situation.
                     </p>
                     <div className="flex items-center justify-between gap-2">
                       <p className="text-xs text-muted-foreground">
-                        150–250 words recommended
+                        150-250 words recommended
                       </p>
                       <p className="text-xs text-muted-foreground">
                         {countWords(values.whyInterested ?? "")} words
@@ -626,7 +690,7 @@ export function ApplicationForm() {
                     </p>
                     <div className="flex items-center justify-between gap-2">
                       <p className="text-xs text-muted-foreground">
-                        150–250 words recommended
+                        150-250 words recommended
                       </p>
                       <p className="text-xs text-muted-foreground">
                         {countWords(values.whatToAchieve ?? "")} words
@@ -653,7 +717,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="targetRole"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.targetRole}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -730,7 +794,7 @@ export function ApplicationForm() {
                         >
                           <SelectTrigger
                             id="preferredStartWindow"
-                            className="w-full min-w-0"
+                            className={SELECT_TRIGGER_CLASS}
                             aria-invalid={!!errors.preferredStartWindow}
                           >
                             <SelectValue placeholder="Select an option" />
@@ -840,9 +904,10 @@ export function ApplicationForm() {
               </Button>
             ) : (
               <Button
-                type="submit"
+                type="button"
                 className="sm:ml-auto"
                 disabled={isSubmitting}
+                onClick={() => void handleSubmit(onSubmit)()}
               >
                 {isSubmitting ? (
                   <>
@@ -862,7 +927,7 @@ export function ApplicationForm() {
                 What happens next:
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                After submitting, our team reviews your application within 3–5
+                After submitting, our team reviews your application within 3-5
                 business days. Shortlisted applicants receive a calendar invite
                 for a 30-minute pre-cohort call with a program instructor. Seats
                 are confirmed after the call on a first-qualified basis.

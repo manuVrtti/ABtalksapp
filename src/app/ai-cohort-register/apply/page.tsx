@@ -5,7 +5,7 @@ import { ApplyGate } from "@/components/talent-hunt/apply-gate";
 export const metadata: Metadata = {
   title: "Apply | AI Cohort Training Program | ABTalks",
   description:
-    "Complete your application for the AI Cohort Training Program — a 30-day intensive AI cohort for USA-based working professionals.",
+    "Complete your application for the AI Cohort Training Program - a 30-day intensive AI cohort for USA-based working professionals.",
 };
 
 export default function AICohortRegisterApplyPage() {
