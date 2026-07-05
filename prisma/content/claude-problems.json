@@ -3651,5 +3651,207 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 35,
+    "domain": "CLAUDE",
+    "title": "Day 35: Build Prompt Puzzle",
+    "problemStatement": "Welcome to Day 35 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 5 — Interactive AI Learning\n\nToday's focus: Learn Prompt Engineering by building a gamified application instead of reading theory.\n\nYou'll create Prompt Puzzle, a premium interactive HTML game that teaches prompt engineering through gameplay.\n\nPlayers will interview Claude, choose a domain and difficulty, then complete three interactive prompt engineering challenges while learning core prompting principles naturally.\n\nTasks:\n1. Build Prompt Puzzle.\n2. Select a color theme.\n3. Choose a domain.\n4. Choose a difficulty.\n5. Complete all three challenges.\n6. Review the Prompt Performance Report.\n7. Replay with different scenarios.\n8. Share your learning publicly.\n\nImportant:\nSet Claude effort level to Low.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, Prompt Performance Report, and key learnings.",
+    "learningObjectives": [
+      "Understand Prompt Engineering through gameplay",
+      "Build interactive educational applications",
+      "Differentiate weak, optimized, and over-engineered prompts",
+      "Improve prompt writing through hands-on practice",
+      "Learn by comparing AI outputs"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://youtube.com/watch?v=sgxiIMv_IQ8&feature=youtu.be"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 75,
+    "linkedinTemplate": "Day 35/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built Prompt Puzzle — an interactive game that teaches Prompt Engineering through play.\n\nInstead of reading theory, I improved my prompting skills by solving challenges, comparing AI outputs, and optimizing prompts.\n\n🧩 Build the Prompt\n🧹 Clean the Prompt\n🎯 Choose the Best Prompt\n🏆 Prompt Performance Report\n🧬 Prompt DNA Analysis\n\nBiggest takeaway:\nThe best way to learn Prompt Engineering is by practicing.\n\n#ClaudeAI #PromptEngineering #ClaudeArtifacts #AIEducation #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing screenshots of your Prompt Puzzle application, generated HTML file, Prompt Performance Report, and key learnings.",
+    "tags": [
+      "claude",
+      "day-35",
+      "prompt-engineering",
+      "gamification",
+      "education",
+      "html",
+      "javascript"
+    ],
+    "dayContent": {
+      "title": "Build Prompt Puzzle",
+      "tagline": "Master AI Prompting Through Play",
+      "module": "Interactive Prompt Engineering",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 75,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Prompt engineering is easier to master through interaction than memorization. Build an educational game where users naturally learn prompting by solving engaging challenges.",
+        "bullets": [
+          {
+            "label": "Prompt Building",
+            "text": "Learn how role, context, constraints, and formatting improve AI outputs."
+          },
+          {
+            "label": "Prompt Optimization",
+            "text": "Recognize redundant, vague, and unnecessary prompt components."
+          },
+          {
+            "label": "Output Comparison",
+            "text": "See how optimized prompts consistently generate better AI responses."
+          },
+          {
+            "label": "Gamified Learning",
+            "text": "Teach prompting through interaction instead of traditional tutorials."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Paste the Prompt Puzzle prompt.",
+          "Answer the two onboarding questions.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open it locally in your browser.",
+          "Play through all three challenges.",
+          "Review your Prompt Performance Report.",
+          "Replay using another domain or difficulty.",
+          "Take screenshots.",
+          "Create a Day35 folder in your GitHub repository.",
+          "Create a day35.md file.",
+          "Upload screenshots, HTML file, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://youtube.com/watch?v=sgxiIMv_IQ8&feature=youtu.be"
+      },
+      "promptTemplate": "You are an expert frontend developer, UX designer, instructional designer, game designer and prompt engineering expert.\n\nBefore generating anything, interview the user in chat.\n\nAsk ONLY these two questions:\n\nQuestion 1:\nWhich domain would you like to practice prompting for?\nProvide options covering all major domains.\n\nQuestion 2:\nChoose your difficulty.\n\nDo not ask any more questions.\n\nOnce both answers are received, generate the application.\n\nCreate a premium single-file HTML application called '🧩 Prompt Puzzle — Master AI Prompting Through Play'.\n\nThe application must work offline by simply opening the HTML file.\n\nUse React via CDN only if it works reliably as a standalone HTML file; otherwise automatically switch to pure HTML, CSS, and vanilla JavaScript.\n\nEverything must exist inside ONE HTML file.\n\nGenerate 6–8 randomized scenarios based on the selected domain and difficulty.\n\nEach scenario must include:\n- Desired Output\n- Correct Prompt Blocks\n- Distractor Blocks\n- Weak Prompt\n- Optimized Prompt\n- Over-Engineered Prompt\n- Weak AI Output\n- Optimized AI Output\n- Prompt Principle\n\nInclude exactly three challenge types:\n1. Build the Prompt\n2. Clean the Prompt\n3. Choose the Best Prompt\n\nImplement live scoring using Accuracy, Time, Moves, Wrong Placements, Hints Used, and Optimization Bonus.\n\nGenerate a Prompt Performance Report including Prompt Score, Rating, Rank, Prompt DNA visualization, personalized feedback, next milestone, and final optimized prompt.\n\nAllow replay with new randomized scenarios.\n\nUse a premium modern UI with drag-and-drop, hover effects, floating notifications, score animations, micro-interactions, and progress indicators.\n\nStore scenarios in reusable JavaScript objects.\n\nEverything must work offline with zero syntax or runtime errors.\n\nIf output becomes too large, reduce only the number of scenarios.\n\nReturn ONLY the complete HTML inside one code block.",
+      "engagement": {
+        "type": "Prompt Puzzle Showcase",
+        "description": "Share your Prompt Performance Report and explain one prompt engineering concept you learned while playing Prompt Puzzle. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of Prompt Puzzle, the generated HTML file, Prompt Performance Report, and your key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
+  },
+  {
+    "dayNumber": 36,
+    "domain": "CLAUDE",
+    "title": "Day 36: Explore Your Thinking Patterns with Cognitive Pattern Explorer",
+    "problemStatement": "Welcome to Day 36 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 5 — Psychology, Self-Reflection & Interactive Learning\n\nToday's focus: Learn how to use Claude as a Frontend Developer, UX Designer, Instructional Designer, and Psychology-Inspired Experience Designer.\n\nEvery person approaches problems, uncertainty, and decisions differently. Some people analyze every detail, others trust intuition, some act quickly, while others spend more time reflecting before making a choice.\n\nToday you'll build an interactive Cognitive Pattern Explorer that helps users explore their thinking tendencies through everyday scenarios, drag-and-drop activities, and reflective exercises.\n\nThis is not a personality or mental health test. Instead, it is an educational self-reflection experience that encourages users to observe their own thinking patterns in a calm, non-judgmental way.\n\nTasks:\n1. Build the complete Cognitive Pattern Explorer.\n2. Explore everyday decision-making scenarios.\n3. Discover your thinking tendencies.\n4. Complete interactive drag-and-drop reflection exercises.\n5. Compare your thinking sequence with a balanced example.\n6. Review your Reflection Journal.\n7. Replay in Calm or Stress Mode.\n8. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nThis experience is educational only. It must never diagnose or clinically assess mental health. Use reflective language throughout the application.\n\nIf Claude does not generate the complete application or your usage limit is reached, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, the generated HTML application, Reflection Journal, and key learnings.",
+    "learningObjectives": [
+      "Explore different thinking tendencies",
+      "Practice self-reflection through interactive scenarios",
+      "Understand decision-making patterns",
+      "Build advanced drag-and-drop web applications",
+      "Create educational HTML experiences using Claude"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://youtu.be/1BUUEe9xoX4"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 75,
+    "linkedinTemplate": "Day 36/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built an interactive Cognitive Pattern Explorer using Claude.\n\nInstead of taking a personality test, I explored how I naturally think and make decisions through interactive scenarios.\n\n✨ Features included:\n\n🧠 Thinking Style Discovery\n🎯 Everyday Decision Scenarios\n🧩 Drag-and-Drop Reflection Activities\n📝 Thinking Timeline Builder\n📊 Thinking Pattern Breakdown\n🌱 Personalized Reflection Journal\n🔄 Calm & Stress Modes\n♻️ Replay with New Experiences\n\nBiggest takeaway:\n\nThere isn't one 'correct' thinking style.\n\nEvery thinking pattern has strengths and blind spots depending on the situation.\n\nClaude transformed psychology-inspired learning into a calm, interactive experience that encourages reflection instead of judgment.\n\n#ClaudeAI #Psychology #SelfReflection #LearningExperience #HTML #JavaScript #PromptEngineering #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of the Reflection Journal, and your key learnings.",
+    "tags": [
+      "claude",
+      "day-36",
+      "psychology",
+      "self-reflection",
+      "thinking-patterns",
+      "html",
+      "javascript",
+      "interactive-learning"
+    ],
+    "dayContent": {
+      "title": "Explore Your Thinking Patterns",
+      "tagline": "Discover how you naturally approach decisions and uncertainty",
+      "module": "Psychology-Inspired Interactive Learning with Claude",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 75,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "People approach decisions in different ways depending on context, priorities, and habits. Claude can generate interactive educational experiences that encourage self-reflection through scenarios, drag-and-drop activities, and personalized insights without making clinical judgments.",
+        "bullets": [
+          {
+            "label": "Thinking Styles",
+            "text": "Explore different ways people naturally process information and make decisions."
+          },
+          {
+            "label": "Self Reflection",
+            "text": "Recognize personal thinking tendencies through guided activities."
+          },
+          {
+            "label": "Interactive Learning",
+            "text": "Learn through scenarios instead of static questionnaires."
+          },
+          {
+            "label": "Application Development",
+            "text": "Build complete educational HTML applications using Claude."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the provided Cognitive Pattern Explorer prompt.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open the application in your browser.",
+          "Choose Calm Mode or Stress Mode.",
+          "Complete Chapter 1 by responding to everyday scenarios.",
+          "Finish the drag-and-drop activities in Chapter 2.",
+          "Arrange your thinking sequence in Chapter 3.",
+          "Review your personalized Reflection Journal.",
+          "Compare your thinking tendencies across all chapters.",
+          "Replay the experience in the opposite mode.",
+          "Take screenshots of your Reflection Journal and thinking profile.",
+          "If Claude reaches its usage limit, wait for the reset period before continuing.",
+          "Create a Day36 folder in your GitHub repository.",
+          "Create a day36.md file.",
+          "Upload screenshots, the generated HTML file, and your key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://youtu.be/1BUUEe9xoX4"
+      },
+      "promptTemplate": "Create a single-file offline web app called 'Cognitive Pattern Explorer' using only HTML, CSS, and vanilla JavaScript (no frameworks). Combine HTML, CSS, and JS into one responsive file.\n\nPurpose:\nBuild a psychology-inspired self-reflection experience that explores thinking patterns through interactive scenarios. It must feel calm, game-like, and exploratory rather than like a test.\n\nThis is educational only. Never diagnose or clinically assess mental health. Use reflective language ('you often...', 'this suggests...') instead of absolute labels.\n\nThinking Tendencies:\n- Analytical Thinker\n- Emotional Intuitive\n- Overthinking Loop Style\n- Action-First Decision Maker\n- Balanced Reflective Thinker\n\nFlow:\n1. Start Screen with Calm/Stress Mode.\n2. Chapter 1 – Discover Your Thinking Style.\n3. Chapter 2 – Choose Your Priorities using draggable cards.\n4. Chapter 3 – Map Your Thinking using draggable timelines.\n5. Final Reflection Journal with personalized insights and percentage breakdown.\n\nDesign:\n- Calm modern aesthetic.\n- Smooth transitions.\n- Progress indicators.\n- Responsive layout.\n- Ambient animations.\n- Keyboard accessibility.\n- Reduced motion support.\n\nTechnical Requirements:\n- Single HTML file.\n- Vanilla JavaScript only.\n- Native drag-and-drop with touch fallback.\n- Works completely offline.\n- Store all scenarios as JavaScript objects.\n- Reuse drag-and-drop components.\n- Verify there are no syntax errors, scoring works, progress tracking works, and the layout is responsive.\n\nReturn only one complete HTML file.",
+      "engagement": {
+        "type": "Self-Reflection Showcase",
+        "description": "Share one insight you discovered about your thinking style or decision-making process while using the Cognitive Pattern Explorer. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of the Cognitive Pattern Explorer, generated HTML file, Reflection Journal, and your key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]

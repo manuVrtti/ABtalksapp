@@ -430,107 +430,107 @@
   {
     "weekNumber": 5,
     "domain": "CLAUDE",
-    "title": "Week 5: Research, Data & Ecosystem",
+    "title": "Week 5 Challenge Quiz: Enterprise Simulations, Marketing & Media Intelligence with Claude",
     "questions": [
       {
         "questionOrder": 1,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 1: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What was the main objective of the Supply Chain Crisis Lab built in Day 29?",
+        "optionA": "Design a warehouse layout",
+        "optionB": "Respond to real-world supply chain disruptions through interactive decision-making",
+        "optionC": "Predict stock prices",
+        "optionD": "Build an e-commerce website",
+        "correctAnswer": "B",
+        "explanation": "The Supply Chain Crisis Lab teaches users how to manage operational disruptions, supplier issues, logistics challenges, and business continuity through simulation."
       },
       {
         "questionOrder": 2,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 2: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the Supply Chain Optimizer (Day 30), what is the primary lesson?",
+        "optionA": "Always minimize inventory",
+        "optionB": "Optimization requires balancing trade-offs between cost, speed, risk, and customer satisfaction",
+        "optionC": "Use only one supplier",
+        "optionD": "Air freight is always the best option",
+        "correctAnswer": "B",
+        "explanation": "Supply chain optimization is about making balanced decisions rather than maximizing a single metric."
       },
       {
         "questionOrder": 3,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 3: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "In the AI Supply Chain Control Tower (Day 31), what is the player's primary responsibility?",
+        "optionA": "Manage employee attendance",
+        "optionB": "Prioritize operational alerts and protect business KPIs",
+        "optionC": "Write logistics reports",
+        "optionD": "Design new factories",
+        "correctAnswer": "B",
+        "explanation": "Players act as the Head of Operations, prioritizing alerts while maintaining service levels, costs, inventory health, and customer satisfaction."
       },
       {
         "questionOrder": 4,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 4: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "The Marketing Strategy Simulator (Day 32) teaches that successful marketing begins with:",
+        "optionA": "Posting content every day",
+        "optionB": "Running paid advertisements",
+        "optionC": "Understanding the audience before choosing tactics",
+        "optionD": "Hiring influencers",
+        "correctAnswer": "C",
+        "explanation": "The simulator emphasizes audience-first thinking before selecting platforms, messaging, or content strategies."
       },
       {
         "questionOrder": 5,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 5: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why were reusable 'How to Ask Claude' prompt cards included throughout the Marketing Strategy Simulator?",
+        "optionA": "To increase application size",
+        "optionB": "To teach prompt engineering alongside marketing strategy",
+        "optionC": "To advertise Claude",
+        "optionD": "To replace the learning content",
+        "correctAnswer": "B",
+        "explanation": "Users learned both marketing concepts and how to write reusable prompts for Claude."
       },
       {
         "questionOrder": 6,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 6: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "The Media Integrity Analyzer (Day 33) encourages users to:",
+        "optionA": "Believe every headline",
+        "optionB": "Avoid all news entirely",
+        "optionC": "Think critically before accepting information",
+        "optionD": "Share articles immediately",
+        "correctAnswer": "C",
+        "explanation": "The application teaches users to evaluate headlines, emotional manipulation, and media framing before drawing conclusions."
       },
       {
         "questionOrder": 7,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 7: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Which manipulation technique was explored in the Emotion Detector challenge?",
+        "optionA": "Database optimization",
+        "optionB": "Programming syntax",
+        "optionC": "Emotional language used to influence readers",
+        "optionD": "SEO optimization",
+        "correctAnswer": "C",
+        "explanation": "Users learned how fear, urgency, outrage, and identity-based language can influence emotions and decision-making."
       },
       {
         "questionOrder": 8,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 8: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the primary goal of the Marketing Detective application (Day 34)?",
+        "optionA": "Create social media posts automatically",
+        "optionB": "Investigate marketing campaigns by gathering evidence before identifying the root cause",
+        "optionC": "Build a CRM system",
+        "optionD": "Generate advertising budgets",
+        "correctAnswer": "B",
+        "explanation": "The detective game teaches analytical thinking by having users investigate campaign data before solving the case."
       },
       {
         "questionOrder": 9,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 9: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Across Week 5, what common learning approach was used in nearly every project?",
+        "optionA": "Reading long documentation",
+        "optionB": "Watching prerecorded videos only",
+        "optionC": "Learning through interactive simulations and decision-making",
+        "optionD": "Completing coding quizzes",
+        "correctAnswer": "C",
+        "explanation": "Week 5 focused on hands-on learning through business simulations, investigations, dashboards, and interactive applications."
       },
       {
         "questionOrder": 10,
-        "questionText": "Week 5: Research, Data & Ecosystem - Question 10: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 5 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the biggest mindset shift from Week 5?",
+        "optionA": "Claude is mainly a content generation tool",
+        "optionB": "Claude can create immersive educational simulations that teach business, operations, marketing, and critical thinking through interaction",
+        "optionC": "Claude should only be used for programming",
+        "optionD": "Claude replaces human expertise entirely",
+        "correctAnswer": "B",
+        "explanation": "Week 5 demonstrated how Claude can build complete interactive learning experiences across supply chain, marketing, media literacy, and business analysis—not just generate text or code."
       }
     ]
   },
