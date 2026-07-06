@@ -10,44 +10,21 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import { cn } from "@/lib/utils";
 
-const stats = [
-  {
-    icon: Layers,
-    value: "4",
-    label: "Core Modules",
-  },
-  {
-    icon: Rocket,
-    value: "30",
-    label: "Days Intensive",
-  },
-  {
-    icon: Briefcase,
-    value: "4",
-    label: "Live Projects",
-  },
-  {
-    icon: Users,
-    value: "50",
-    label: "Seats (USA only)",
-  },
-  {
-    icon: Clock,
-    value: "2 hrs/day",
-    label: "Time Commitment",
-  },
-  {
-    icon: Target,
-    value: "1-on-1",
-    label: "Mentorship",
-  },
-] as const;
-
 type Props = {
   compact?: boolean;
+  country?: string;
 };
 
-export function ProgramAtAGlance({ compact = false }: Props) {
+export function ProgramAtAGlance({ compact = false, country = "USA" }: Props) {
+  const stats = [
+    { icon: Layers, value: "4", label: "Core Modules" },
+    { icon: Rocket, value: "30", label: "Days Intensive" },
+    { icon: Briefcase, value: "4", label: "Live Projects" },
+    { icon: Users, value: "50", label: `Seats (${country} only)` },
+    { icon: Clock, value: "2 hrs/day", label: "Time Commitment" },
+    { icon: Target, value: "1-on-1", label: "Mentorship" },
+  ] as const;
+
   return (
     <section className={cn("px-4", compact ? "py-4 md:py-6" : "py-16")}>
       <div className="container mx-auto max-w-5xl">

@@ -13,9 +13,12 @@ export function AppFooter() {
   const isCohortRegister =
     pathname === "/ai-cohort-register" ||
     pathname.startsWith("/ai-cohort-register/");
+  const isCohortIndia =
+    pathname === "/ai-cohort-india" ||
+    pathname.startsWith("/ai-cohort-india/");
   const supportEmail = "team@abtalks.in";
 
-  if (isWorkshop || isCohortRegister) return null;
+  if (isWorkshop || isCohortRegister || isCohortIndia) return null;
 
   return (
     <footer
