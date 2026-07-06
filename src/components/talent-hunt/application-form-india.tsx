@@ -424,7 +424,7 @@ export function ApplicationFormIndia() {
                         htmlFor="originatedInIndia"
                         className="cursor-pointer text-sm font-normal leading-snug"
                       >
-                        I am originated in India.
+                        I am Indian.
                       </Label>
                     </div>
                     {errors.originatedInIndia ? (
