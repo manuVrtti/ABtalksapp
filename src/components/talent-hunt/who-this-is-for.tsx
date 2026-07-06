@@ -17,9 +17,10 @@ const audiences = [
 
 type Props = {
   compact?: boolean;
+  country?: string;
 };
 
-export function WhoThisIsFor({ compact = false }: Props) {
+export function WhoThisIsFor({ compact = false, country = "U.S." }: Props) {
   return (
     <section className={cn("px-4", compact ? "py-4 md:py-6" : "py-16")}>
       <div className="container mx-auto max-w-4xl text-center">
@@ -27,8 +28,8 @@ export function WhoThisIsFor({ compact = false }: Props) {
           Who This Is For
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-          U.S.-based working professionals who are committed to advancing their
-          careers in applied AI.
+          {country}-based working professionals who are committed to advancing
+          their careers in applied AI.
         </p>
 
         <div

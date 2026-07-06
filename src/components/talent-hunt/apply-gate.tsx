@@ -7,19 +7,25 @@ import { COHORT_REGISTER_ONBOARDING_KEY } from "@/components/talent-hunt/constan
 
 type Props = {
   children: ReactNode;
+  basePath?: string;
+  storageKey?: string;
 };
 
-export function ApplyGate({ children }: Props) {
+export function ApplyGate({
+  children,
+  basePath = "/ai-cohort-register",
+  storageKey = COHORT_REGISTER_ONBOARDING_KEY,
+}: Props) {
   const router = useRouter();
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem(COHORT_REGISTER_ONBOARDING_KEY) === "1") {
+    if (sessionStorage.getItem(storageKey) === "1") {
       setAllowed(true);
       return;
     }
-    router.replace("/ai-cohort-register");
-  }, [router]);
+    router.replace(basePath);
+  }, [router, basePath, storageKey]);
 
   if (!allowed) {
     return (

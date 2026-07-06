@@ -9,6 +9,8 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { COHORT_REGISTER_ONBOARDING_KEY } from "@/components/talent-hunt/constants";
 import { cn } from "@/lib/utils";
 
+const DEFAULT_BASE_PATH = "/ai-cohort-register";
+
 const slideVariants = {
   enter: (d: "next" | "prev") => ({
     opacity: 0,
@@ -26,9 +28,15 @@ const slideVariants = {
 
 type Props = {
   children: ReactNode;
+  basePath?: string;
+  storageKey?: string;
 };
 
-export function CohortRegisterOnboardingFlow({ children }: Props) {
+export function CohortRegisterOnboardingFlow({
+  children,
+  basePath = DEFAULT_BASE_PATH,
+  storageKey = COHORT_REGISTER_ONBOARDING_KEY,
+}: Props) {
   const router = useRouter();
   const slides = Children.toArray(children);
   const total = slides.length;
@@ -65,8 +73,8 @@ export function CohortRegisterOnboardingFlow({ children }: Props) {
   }
 
   function handleGetStarted() {
-    sessionStorage.setItem(COHORT_REGISTER_ONBOARDING_KEY, "1");
-    router.push("/ai-cohort-register/apply");
+    sessionStorage.setItem(storageKey, "1");
+    router.push(`${basePath}/apply`);
   }
 
   return (

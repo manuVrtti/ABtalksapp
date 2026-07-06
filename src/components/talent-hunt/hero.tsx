@@ -4,9 +4,10 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   compact?: boolean;
+  country?: string;
 };
 
-export function Hero({ compact = false }: Props) {
+export function Hero({ compact = false, country = "USA" }: Props) {
   return (
     <section
       className={cn(
@@ -25,9 +26,9 @@ export function Hero({ compact = false }: Props) {
           Learn. Build. Ship AI.
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-          A 30-day intensive cohort designed for USA-based working professionals
-          who want to transition into high-impact AI roles with live projects,
-          mentorship, and enterprise-grade skills.
+          A 30-day intensive cohort designed for {country}-based working
+          professionals who want to transition into high-impact AI roles with
+          live projects, mentorship, and enterprise-grade skills.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
