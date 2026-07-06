@@ -1,6 +1,7 @@
 "use client";
 
 import { Children, useState, type ReactNode } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Rocket } from "lucide-react";
@@ -85,8 +86,17 @@ export function CohortRegisterOnboardingFlow({
       </div>
 
       <header className="relative z-10 shrink-0 px-6 py-4">
-        <div className="font-display text-xl font-bold">ABTalks</div>
-        <p className="text-sm text-muted-foreground">AI Cohort Training Program</p>
+        <Image
+          src="/abt-logo2.png"
+          alt="ABTalks"
+          width={300}
+          height={84}
+          priority
+          className="block h-7 w-auto dark:invert"
+        />
+        <p className="mt-1 text-sm text-muted-foreground">
+          AI Cohort Training Program
+        </p>
       </header>
 
       <main className="relative z-10 flex min-h-0 flex-1 flex-col px-4 py-2 sm:px-6">
