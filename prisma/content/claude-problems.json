@@ -3853,5 +3853,108 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 37,
+    "domain": "CLAUDE",
+    "title": "Day 37: Build Task Compass – Learn How Work Flows Through Organizations",
+    "problemStatement": "Welcome to Day 37 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 5 — Organizational Thinking & Interactive Learning\n\nToday's focus: Learn how work flows through real organizations by building an interactive management simulation.\n\nYou'll create Task Compass, a gamified HTML application that teaches ownership, delegation, collaboration, escalation, and workflow thinking through realistic workplace scenarios.\n\nInstead of memorizing job titles, you'll experience how tasks move across departments and how teams collaborate to solve real business problems.\n\nTasks:\n1. Build the Task Compass application.\n2. Choose a workplace type.\n3. Complete all three simulation stages.\n4. Learn ownership and delegation.\n5. Build organizational workflows.\n6. Solve collaboration challenges.\n7. Review your Organizational Thinking Report.\n8. Replay using different workplace environments.\n9. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nEnsure every interaction is fully functional and the generated HTML contains zero syntax errors.\n\nIf Claude reaches its usage limit, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, Organizational Thinking Report, and key learnings.",
+    "learningObjectives": [
+      "Understand ownership and accountability",
+      "Learn task delegation and workflow routing",
+      "Develop collaboration and systems thinking",
+      "Build interactive educational HTML applications",
+      "Understand how organizations solve complex problems"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://www.youtube.com/watch?v=jJWjp2_U5HU&feature=youtu.be"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 75,
+    "linkedinTemplate": "Day 37/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built Task Compass using Claude.\n\nInstead of learning about organizations through slides, I experienced how work actually flows across teams.\n\n✨ Features:\n\n🎯 Who Owns This?\n🔄 Task Routing Simulation\n🤝 Collaboration Challenges\n📊 Organizational Thinking Dashboard\n🏢 Workplace Simulations\n\nBiggest takeaway:\n\nGreat organizations aren't built on individuals.\nThey're built on collaboration, ownership, and effective workflows.\n\n#ClaudeAI #TaskCompass #Leadership #Management #Collaboration #HTML #JavaScript #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots of your Organizational Thinking Dashboard, and key learnings.",
+    "tags": [
+      "claude",
+      "day-37",
+      "organizational-thinking",
+      "management",
+      "gamification",
+      "education",
+      "html",
+      "javascript",
+      "interactive-learning"
+    ],
+    "dayContent": {
+      "title": "Build Task Compass",
+      "tagline": "Learn How Work Flows Through Real Organizations",
+      "module": "Interactive Organizational Learning",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 75,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Organizations succeed through clear ownership, effective delegation, structured workflows, and collaboration. Today you'll build a management simulation that teaches these concepts through interactive gameplay rather than theory.",
+        "bullets": [
+          {
+            "label": "Ownership",
+            "text": "Understand who should own different workplace tasks and why."
+          },
+          {
+            "label": "Workflow Thinking",
+            "text": "Learn how work moves across departments in real organizations."
+          },
+          {
+            "label": "Collaboration",
+            "text": "Discover why complex problems require multiple teams."
+          },
+          {
+            "label": "Management Simulation",
+            "text": "Learn organizational thinking through interactive gameplay."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the Task Compass prompt.",
+          "Choose a workplace type.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open the application locally in your browser.",
+          "Complete Stage 1: Who Owns This?",
+          "Complete Stage 2: Task Routing.",
+          "Complete Stage 3: Collaboration Challenge.",
+          "Review your Organizational Thinking Dashboard.",
+          "Replay using another workplace type.",
+          "Take screenshots.",
+          "Create a Day37 folder in your GitHub repository.",
+          "Create a day37.md file.",
+          "Upload screenshots, generated HTML file, and your key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=jJWjp2_U5HU&feature=youtu.be"
+      },
+      "promptTemplate": "You are an expert educational game designer, UI/UX designer, organizational consultant and frontend developer.\n\nBefore generating anything, ask the user ONE question:\n\n\"What type of workplace would you like to explore?\"\n\nOptions: Tech Company, Startup, Corporate Office, Café / Restaurant, Retail Business, Hospital / Healthcare, School / University, Manufacturing, Media / Creative Agency, Freelancer / Small Business, Other (one sentence).\n\nWait for the user's answer.\n\nThen generate a beautiful single-file HTML application called: Task Compass\n\nSubtitle:\nLearn how work flows through real organizations.\n\nIMPORTANT\n\nGenerate ONLY one self-contained HTML file.\n\nUse only: HTML, CSS, Vanilla JavaScript.\n\nDo NOT use: React, Tailwind, npm, Babel, external libraries or APIs.\n\nEverything must work completely offline.\n\nInternally verify there are no syntax or runtime errors before returning the code.\n\nOBJECTIVE\n\nThe goal is NOT to test job titles.\n\nThe goal is to teach: ownership, delegation, collaboration, escalation and how work moves through organizations.\n\nThe experience should feel like a management simulation rather than a quiz.\n\nGAMEPLAY\n\nThe application contains THREE stages.\n\nEach stage becomes slightly more realistic.\n\nDisplay progress throughout.\n\nSTAGE 1\n\nWho Owns This? (do 3 questions of this only)\n\nDisplay one realistic workplace task at a time.\n\nExample:\n\n\"A customer reports that payments fail only on iPhones.\"\n\nPresent 6-8 role cards.\n\nExamples for a tech company: Frontend Developer, Backend Developer, QA Engineer, Product Manager, UX Designer, Customer Support, Engineering Manager.\n\nThe player drags ONE role into the highlighted ownership slot.\n\nAfter submission reveal:\n\n✓ Primary Owner\n\n✓ Why they own it\n\n✓ Which roles may assist.\n\nNever simply say Correct or Wrong.\n\nAlways explain the reasoning.\n\nInclude 8-10 different task cards.\n\nSTAGE 2\n\nTask Routing (do 3 questions of this only)\n\nNow the player manages incoming work.\n\nA task appears.\n\nThe player must build the workflow.\n\nExample:\n\nCustomer Support ↓ QA ↓ Backend ↓ Product Manager ↓ Customer\n\nThe player drags role cards into the correct order.\n\nSome tasks may only need three steps.\n\nOthers may need five.\n\nAfter submission animate the task moving through the organization.\n\nExplain why this order is commonly used.\n\nSTAGE 3\n\nCollaboration Challenge (do 3 questions of this only)\n\nPresent larger situations.\n\nExamples:\n\nCustomer satisfaction suddenly drops\n\nSales increase dramatically\n\nNegative reviews appear online\n\nA major feature is delayed.\n\nInstead of choosing one owner, allow players to assign up to FOUR departments or roles.\n\nThe player should think about collaboration.\n\nAfter submission display:\n\nPrimary Owner\n\nSupporting Teams\n\nReasoning\n\nPossible Communication Flow.\n\nEmphasize that complex problems usually require multiple people.\n\nSCORING\n\nInstead of points, award understanding.\n\nCategories:\n\nOwnership\n\nDelegation\n\nCollaboration\n\nWorkflow Thinking.\n\nDisplay a radar or bar chart at the end using only HTML, CSS and JavaScript.\n\nFINAL REFLECTION\n\nInstead of a score, generate:\n\nWhat you understood well\n\nWhere you tended to over-assign responsibility\n\nWhere you underestimated collaboration\n\nOne insight about how organizations actually work.\n\nExample:\n\n\"Many real workplace problems are solved by teams rather than individuals.\"\n\nAvoid absolute language.\n\nGAME FEEL\n\nThe experience should feel satisfying.\n\nUse:\n\ndrag-and-drop\n\nanimated cards\n\nsmooth transitions\n\nsatisfying snap animations\n\nsubtle sounds using CSS/JS only if possible (optional)\n\nhover effects\n\nprogress indicator\n\ncompletion celebration.\n\nAvoid making it feel like an exam.\n\nIt should feel like a modern strategy game.\n\nDESIGN\n\nPremium modern UI.\n\nDark mode.\n\nGlassmorphism.\n\nRounded cards.\n\nAnimated gradients.\n\nDistinct colors for each department.\n\nRole cards should feel collectible.\n\nTask cards should resemble work tickets.\n\nUse icons or emojis where appropriate.\n\nTECHNICAL REQUIREMENTS\n\nStore all scenarios in JavaScript objects.\n\nReuse components wherever possible.\n\nOptimize code size for Claude Free.\n\nIf necessary, reduce the number of scenarios instead of reducing functionality.\n\nEverything must remain offline.\n\nBefore returning:\n\nVerify drag-and-drop works.\n\nVerify scoring works.\n\nVerify animations work.\n\nVerify no syntax errors.\n\nVerify responsive layout.\n\nReturn ONLY the complete HTML inside one code block.",
+      "engagement": {
+        "type": "Task Compass Showcase",
+        "description": "Share one insight you learned about ownership, delegation, or collaboration while using Task Compass. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of Task Compass, the generated HTML file, Organizational Thinking Dashboard, and your key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
