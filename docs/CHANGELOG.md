@@ -1,5 +1,6 @@
 ## Pending reconcile
 
+- 2026-07-08 [rule] Program entry assessment: 20 MCQs (10 aptitude + 10 technical), server-timed 25 min, pass = >=12/20 and technical >=5/10, max 2 attempts 24h apart, capacity-checked ENROLLED else WAITLISTED (all enforced server-side in submitEntryAttempt transaction).
 - 2026-07-08 [schema] Added B2B AI Mastery Program models (Program* + RecruiterProfile/RecruiterShortlistItem) and Role.RECRUITER for the recruiter talent pipeline.
 - 2026-07-08 [env] ENABLE_PROGRAM feature flag gates all /program and /talent routes (notFound when unset).
 - 2026-07-08 [convention] Program auth via node-only src/lib/program-auth.ts (requireProgramMember/requireRecruiter, DB-checked); missionSpec is server-only, assetsJson is the only client-safe day asset.

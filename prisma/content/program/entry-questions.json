@@ -1,0 +1,182 @@
+[
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — If a train travels 60 km in 45 minutes, what is its average speed in km/h?",
+    "options": ["75", "80", "90", "60"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. 60 km in 0.75 h = 80 km/h.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — What comes next in the sequence: 2, 6, 12, 20, 30, ?",
+    "options": ["36", "40", "42", "44"],
+    "correctIndex": 2,
+    "explanation": "PLACEHOLDER — replace in content phase. Differences increase by 2: next diff is 12, 30+12=42.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — 25% of 240 is:",
+    "options": ["48", "60", "72", "80"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. 240 x 0.25 = 60.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — If 3 workers build a wall in 12 days, how many days do 6 workers take (same rate)?",
+    "options": ["3", "6", "9", "24"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. Twice the workers, half the time: 6 days.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — Which number is the odd one out: 4, 9, 16, 20, 25?",
+    "options": ["9", "16", "20", "25"],
+    "correctIndex": 2,
+    "explanation": "PLACEHOLDER — replace in content phase. 20 is not a perfect square.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — A shirt costs 800 after a 20% discount. What was the original price?",
+    "options": ["960", "1000", "1024", "1200"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. 800 / 0.8 = 1000.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — The ratio 3:5 is equivalent to which of the following?",
+    "options": ["6:9", "9:15", "12:16", "15:20"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. 9:15 simplifies to 3:5.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — If today is Wednesday, what day is it 100 days from now?",
+    "options": ["Thursday", "Friday", "Saturday", "Sunday"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. 100 mod 7 = 2; Wednesday + 2 = Friday.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — What is the average of 10, 20, 30, 40, and 50?",
+    "options": ["25", "30", "35", "40"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. Sum 150 / 5 = 30.",
+    "active": true
+  },
+  {
+    "section": "APTITUDE",
+    "question": "PLACEHOLDER — A number increased by 20% gives 90. What is the number?",
+    "options": ["70", "72", "75", "78"],
+    "correctIndex": 2,
+    "explanation": "PLACEHOLDER — replace in content phase. 90 / 1.2 = 75.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — What is the time complexity of binary search on a sorted array of n elements?",
+    "options": ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. Binary search halves the range each step: O(log n).",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — Which SQL clause filters rows after aggregation (GROUP BY)?",
+    "options": ["WHERE", "HAVING", "ORDER BY", "LIMIT"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. HAVING filters grouped/aggregated results.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — In HTTP, which status code indicates 'Not Found'?",
+    "options": ["200", "301", "404", "500"],
+    "correctIndex": 2,
+    "explanation": "PLACEHOLDER — replace in content phase. 404 means the resource was not found.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — Which data structure follows First-In-First-Out (FIFO)?",
+    "options": ["Stack", "Queue", "Tree", "Hash map"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. A queue is FIFO.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — What does the 'K' in a k-NN classifier represent?",
+    "options": [
+      "Number of features",
+      "Number of nearest neighbors considered",
+      "Number of classes",
+      "Learning rate"
+    ],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. k is the count of nearest neighbors used to vote.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — Which Python data type is immutable?",
+    "options": ["list", "dict", "set", "tuple"],
+    "correctIndex": 3,
+    "explanation": "PLACEHOLDER — replace in content phase. Tuples are immutable.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — In Git, which command creates a new branch and switches to it?",
+    "options": [
+      "git branch new",
+      "git checkout -b new",
+      "git merge new",
+      "git clone new"
+    ],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. 'git checkout -b new' creates and switches.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — What is a vector embedding primarily used for in RAG systems?",
+    "options": [
+      "Encrypting data at rest",
+      "Representing text as numeric vectors for similarity search",
+      "Compressing images",
+      "Scheduling background jobs"
+    ],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. Embeddings enable semantic similarity search.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — Which HTTP method is idempotent and used to fully replace a resource?",
+    "options": ["POST", "PUT", "PATCH", "CONNECT"],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. PUT replaces a resource and is idempotent.",
+    "active": true
+  },
+  {
+    "section": "TECHNICAL",
+    "question": "PLACEHOLDER — In Docker, what does a Dockerfile define?",
+    "options": [
+      "Runtime container logs",
+      "The steps to build a container image",
+      "A running container's IP",
+      "The host's kernel version"
+    ],
+    "correctIndex": 1,
+    "explanation": "PLACEHOLDER — replace in content phase. A Dockerfile describes how to build an image.",
+    "active": true
+  }
+]

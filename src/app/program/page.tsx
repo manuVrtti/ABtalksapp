@@ -6,6 +6,7 @@ import {
   Database,
   Network,
 } from "lucide-react";
+import { auth } from "@/auth";
 import {
   Card,
   CardContent,
@@ -14,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
+import { getEntryState } from "@/features/program/entry";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -73,7 +75,29 @@ const steps = [
   },
 ];
 
-export default function ProgramLandingPage() {
+async function getPrimaryCta(): Promise<{ label: string; href: string }> {
+  const session = await auth();
+  if (!session?.user?.id) return { label: "Apply now", href: "/program/apply" };
+
+  const state = await getEntryState(session.user.id);
+  switch (state.screen) {
+    case "enrolled":
+      return { label: "Go to dashboard", href: "/program/dashboard" };
+    case "in_progress":
+      return { label: "Continue assessment", href: "/program/assessment" };
+    case "intro":
+      return { label: "Continue application", href: "/program/apply" };
+    case "cooldown":
+    case "failed":
+    case "waitlisted":
+      return { label: "View status", href: "/program/apply" };
+    default:
+      return { label: "Apply now", href: "/program/apply" };
+  }
+}
+
+export default async function ProgramLandingPage() {
+  const cta = await getPrimaryCta();
   return (
     <main className="flex min-h-svh flex-col bg-gradient-to-br from-primary/5 via-background to-background">
       <section className="container mx-auto flex flex-col items-center px-6 pt-20 pb-12 text-center md:pt-28">
@@ -90,10 +114,10 @@ export default function ProgramLandingPage() {
         </p>
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
           <Link
-            href="/program/apply"
+            href={cta.href}
             className={cn(buttonVariants({ size: "lg" }), "px-6")}
           >
-            Apply now
+            {cta.label}
             <ArrowRight className="size-4" />
           </Link>
           <Link
@@ -166,10 +190,10 @@ export default function ProgramLandingPage() {
             is open.
           </p>
           <Link
-            href="/program/apply"
+            href={cta.href}
             className={cn(buttonVariants({ size: "lg" }), "mt-6 px-6")}
           >
-            Apply now
+            {cta.label}
             <ArrowRight className="size-4" />
           </Link>
         </div>
