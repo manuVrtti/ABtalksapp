@@ -10,6 +10,7 @@
     "lint": "eslint",
     "db:seed": "tsx prisma/seed.ts",
     "db:seed:content": "tsx prisma/seed-content.ts",
+    "db:seed:program": "tsx prisma/seed-program.ts",
     "db:seed:marketplace": "tsx prisma/seed-marketplace.ts",
     "db:seed:test-users": "tsx prisma/seed-test-users.ts",
     "db:seed:claude-test": "tsx prisma/seed-claude-test-users.ts",

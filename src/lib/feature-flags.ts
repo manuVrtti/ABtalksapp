@@ -9,3 +9,7 @@ export function isClaudeEnabled(): boolean {
 export function isDayLockBypassEnabled(): boolean {
   return process.env.BYPASS_DAY_LOCKS === "true";
 }
+
+export function isProgramEnabled(): boolean {
+  return process.env.ENABLE_PROGRAM === "true";
+}

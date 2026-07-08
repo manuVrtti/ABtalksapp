@@ -1,5 +1,8 @@
 ## Pending reconcile
 
+- 2026-07-08 [schema] Added B2B AI Mastery Program models (Program* + RecruiterProfile/RecruiterShortlistItem) and Role.RECRUITER for the recruiter talent pipeline.
+- 2026-07-08 [env] ENABLE_PROGRAM feature flag gates all /program and /talent routes (notFound when unset).
+- 2026-07-08 [convention] Program auth via node-only src/lib/program-auth.ts (requireProgramMember/requireRecruiter, DB-checked); missionSpec is server-only, assetsJson is the only client-safe day asset.
 - 2026-07-04 [convention] AI Cohort Training Program public routes renamed from `/ai-talent-hunt` to `/ai-cohort-register` (+ `/apply` subroute).
 - 2026-07-04 [rule] AI Talent Hunt applications at `/ai-talent-hunt` stored in workshop Supabase `cohort_applications` (not Neon); confirmation email deferred. Dashboard read paths must not write; streaks/daysCompleted stay write-time-only (submitDay). Immutable content (daily tasks, Challenge.startsAt) cached via unstable_cache tags daily-tasks:<challengeId> / challenge:CLAUDE, busted on reseed/redeploy.
 - 2026-06-28 [rule] Marketplace item costSP raised from 250 to 1800 SP for all catalog products in marketplace.json.
