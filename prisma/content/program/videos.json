@@ -1,0 +1,53 @@
+[
+  {
+    "dayNumber": 1,
+    "videos": [
+      {
+        "order": 1,
+        "title": "PLACEHOLDER — Intro video (replace in content phase)",
+        "youtubeId": "aircAruvnKk",
+        "durationMin": 19
+      },
+      {
+        "order": 2,
+        "title": "PLACEHOLDER — Deep dive (replace in content phase)",
+        "youtubeId": "kCc8FmEb1nY",
+        "durationMin": 25
+      }
+    ]
+  },
+  {
+    "dayNumber": 2,
+    "videos": [
+      {
+        "order": 1,
+        "title": "PLACEHOLDER — SQL basics (replace in content phase)",
+        "youtubeId": "HXV3zeQKqGY",
+        "durationMin": 20
+      },
+      {
+        "order": 2,
+        "title": "PLACEHOLDER — Aggregations (replace in content phase)",
+        "youtubeId": "9Pzj7Aj25lw",
+        "durationMin": 15
+      }
+    ]
+  },
+  {
+    "dayNumber": 3,
+    "videos": [
+      {
+        "order": 1,
+        "title": "PLACEHOLDER — JS arrays (replace in content phase)",
+        "youtubeId": "R8rmfD9Y5-c",
+        "durationMin": 12
+      },
+      {
+        "order": 2,
+        "title": "PLACEHOLDER — Higher-order fns (replace in content phase)",
+        "youtubeId": "rRgD1yVwIvE",
+        "durationMin": 18
+      }
+    ]
+  }
+]

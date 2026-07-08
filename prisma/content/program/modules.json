@@ -1,0 +1,34 @@
+[
+  {
+    "number": 1,
+    "title": "Data & Knowledge Engineering",
+    "subtitle": "Kafka · Vector DBs · Neo4j · RAG",
+    "color": "#6366f1",
+    "startDay": 1,
+    "endDay": 7
+  },
+  {
+    "number": 2,
+    "title": "APIs & Microservices",
+    "subtitle": "FastAPI · GraphQL · gRPC · Docker · Kubernetes",
+    "color": "#0ea5e9",
+    "startDay": 8,
+    "endDay": 14
+  },
+  {
+    "number": 3,
+    "title": "LLM & Agentic Development",
+    "subtitle": "OpenAI · Anthropic · LangGraph · CrewAI",
+    "color": "#f59e0b",
+    "startDay": 15,
+    "endDay": 21
+  },
+  {
+    "number": 4,
+    "title": "MCP & Enterprise Adoption",
+    "subtitle": "Model Context Protocol · Capstone",
+    "color": "#10b981",
+    "startDay": 22,
+    "endDay": 30
+  }
+]

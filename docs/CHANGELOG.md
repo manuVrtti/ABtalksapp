@@ -1,5 +1,7 @@
 ## Pending reconcile
 
+- 2026-07-08 [convention] Program Workbench runs code fully client-side: Python (Pyodide) + SQL (sql.js) lazy-loaded from CDN on first Run, JS in a 5s-terminate blob Worker, YAML via js-yaml; styled textarea only (no Monaco/CodeMirror).
+- 2026-07-08 [env] ANTHROPIC_API_KEY (+ optional PROGRAM_ANTHROPIC_MODEL, default claude-sonnet-5) for server-only Claude JSON grading via src/lib/anthropic.ts (used from plan 027).
 - 2026-07-08 [rule] Program entry assessment: 20 MCQs (10 aptitude + 10 technical), server-timed 25 min, pass = >=12/20 and technical >=5/10, max 2 attempts 24h apart, capacity-checked ENROLLED else WAITLISTED (all enforced server-side in submitEntryAttempt transaction).
 - 2026-07-08 [schema] Added B2B AI Mastery Program models (Program* + RecruiterProfile/RecruiterShortlistItem) and Role.RECRUITER for the recruiter talent pipeline.
 - 2026-07-08 [env] ENABLE_PROGRAM feature flag gates all /program and /talent routes (notFound when unset).
