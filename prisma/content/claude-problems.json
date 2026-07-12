@@ -4457,5 +4457,105 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 43,
+    "domain": "CLAUDE",
+    "title": "Day 43: Build AI Workflow Architect – Design End-to-End AI Workflows",
+    "problemStatement": "Welcome to Day 43 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 6 — AI Workflow Design & Automation\n\nToday's focus: Learn how to design complete AI-powered workflows instead of isolated prompts.\n\nYou'll build AI Workflow Architect, an interactive application that maps an entire business or personal workflow from planning to execution. Instead of receiving generic advice or checklists, you'll generate structured workflows complete with AI tool recommendations, prompt examples, decision trees, timelines, and automation opportunities.\n\nTasks:\n1. Choose the workflow domain.\n2. Narrow it down into a specific role or objective.\n3. Configure the workflow structure.\n4. Generate the complete AI Workflow Architect application.\n5. Explore every workflow stage.\n6. Review recommended AI tools and prompts.\n7. Discover automation opportunities.\n8. Share your learning publicly.\n\nImportant:\nSet Claude's effort level to Low.\n\nEnsure every interaction is fully functional and the generated HTML contains zero syntax errors.\n\nIf Claude reaches its usage limit, wait for the reset period and continue later.\n\nSubmission: Share your GitHub commit URL containing screenshots, generated HTML application, and key learnings.",
+    "learningObjectives": [
+      "Design end-to-end AI workflows",
+      "Learn workflow mapping and process optimization",
+      "Generate AI-powered workflow applications",
+      "Understand tool selection and automation strategies",
+      "Build professional productivity platforms using Claude"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://www.youtube.com/watch?v=ot_o4jhUSpE"
+    ],
+    "difficulty": "Intermediate",
+    "estimatedMinutes": 30,
+    "linkedinTemplate": "Day 43/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nToday I built AI Workflow Architect using Claude.\n\nInstead of generating isolated prompts, I created a complete workflow platform that maps an entire process from planning to execution.\n\n🗺️ End-to-End Workflow Mapping\n🤖 AI Tool Recommendations\n🌳 Interactive Decision Trees\n📝 Prompt Examples\n📊 Progress Tracking\n⚡ Future Automation Opportunities\n\nBiggest takeaway:\n\nThe real power of AI isn't just answering questions—it's helping us design complete systems that save time and improve productivity.\n\n#ClaudeAI #WorkflowAutomation #BuildWithClaude #HTML #JavaScript #Productivity #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing the generated HTML application, screenshots, and key learnings.",
+    "tags": [
+      "claude",
+      "day-43",
+      "workflow",
+      "automation",
+      "productivity",
+      "html",
+      "javascript",
+      "ai-workflows"
+    ],
+    "dayContent": {
+      "title": "Build AI Workflow Architect",
+      "tagline": "Design Complete AI-Powered Workflows",
+      "module": "Workflow Automation",
+      "difficulty": "Intermediate",
+      "estimatedMinutes": 30,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Today you'll learn how Claude can generate complete workflow systems by combining workflow mapping, AI tool recommendations, prompt engineering, automation opportunities, and interactive visualizations into a single productivity application.",
+        "bullets": [
+          {
+            "label": "Workflow Design",
+            "text": "Design complete end-to-end workflows instead of isolated tasks."
+          },
+          {
+            "label": "AI Tool Selection",
+            "text": "Learn which AI tools fit each stage of a workflow."
+          },
+          {
+            "label": "Automation Thinking",
+            "text": "Identify repetitive tasks that can be automated using AI."
+          },
+          {
+            "label": "Interactive Productivity Apps",
+            "text": "Generate polished workflow platforms using Claude."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Read the provided resources.",
+          "Watch the solution video.",
+          "Open Claude.",
+          "Set Claude effort level to Low.",
+          "Start a new conversation.",
+          "Paste the AI Workflow Architect prompt.",
+          "Answer Claude's interview questions.",
+          "Generate the complete HTML application.",
+          "Save the generated HTML file.",
+          "Open it locally in your browser.",
+          "Explore every workflow stage.",
+          "Review the recommended AI tools and prompts.",
+          "Analyze future automation opportunities.",
+          "Take screenshots.",
+          "Create a Day43 folder in your GitHub repository.",
+          "Create a day43.md file.",
+          "Upload screenshots, generated HTML file, and key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://www.youtube.com/watch?v=ot_o4jhUSpE"
+      },
+      "promptTemplate": "# AI Workflow Architect\n\nYou are an expert workflow consultant, business analyst, AI strategist, automation architect, productivity expert, UI/UX designer, and senior frontend developer.\n\nBefore generating anything, ask the user the following questions ONE AT A TIME in MCQ format only, with typed input only as the last option.\n\n1. What type of workflow would you like to build?\n(Offer options such as Marketing, Sales, HR, Software Development, Design, Education, Finance, Healthcare, Legal, Customer Support, Content Creation, Entrepreneurship, Research, Personal Productivity, and more.)\n\n2. Continue asking follow-up questions until the workflow has been narrowed into a specific role, process, or objective that can realistically be mapped from start to finish.\nDo not stop after identifying only an industry or domain. Use your own judgment to determine when the scope is appropriate.\n\nExample:\nMarketing → Social Media → Instagram Marketing → Personal Brand Growth\n\nSoftware Development → Frontend Development → React → Portfolio Website\n\nHuman Resources → Recruitment → Technical Hiring\n\n3. Would you like Claude to automatically structure the workflow, or would you like to customize its sections?\nIf the user chooses customization, ask which sections they want included.\n\nAfter collecting all responses, generate a premium single-page HTML application called \"AI Workflow Architect.\"\n\nThe application should generate a complete end-to-end workflow for the selected process rather than providing general advice or a checklist.\n\nBreak the workflow into logical stages from planning to execution.\n\nEach stage should include:\n\nObjectives\n\nTasks\n\nBest AI tools for that stage\n\nWhy each tool is recommended\n\nAlternative tools\n\nPrompt examples\n\nBest practices\n\nCommon mistakes\n\nExpected outputs\n\nTime estimates\n\nTips for improving efficiency\n\nInclude interactive workflow diagrams, comparisons, decision trees, tool recommendations, progress tracking, notes, bookmarks, and actionable insights where appropriate.\n\nConclude with:\n\nWorkflow Summary\n\nRecommended AI Stack\n\nLearning Resources\n\nCommunities\n\nSearch Keywords\n\nAdditional AI Prompts\n\nFuture Automation Opportunities\n\nGenerate everything as a single self-contained HTML file using only HTML, CSS, and JavaScript without external libraries or frameworks.\n\nDesign the interface as a polished commercial workflow platform with responsive design, dark mode, smooth animations, interactive diagrams, local storage, printable workflow guides, and an intuitive user experience.",
+      "engagement": {
+        "type": "Workflow Architect Showcase",
+        "description": "Share your AI Workflow Architect and explain which workflow you automated and what productivity gains you discovered. Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing screenshots of your AI Workflow Architect, generated HTML file, and your key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
