@@ -2,10 +2,20 @@ import { redirect } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { Award, Clock } from "lucide-react";
 import type { ProgramMissionType } from "@prisma/client";
+import { prisma } from "@/lib/db";
 import { requireProgramMember } from "@/lib/program-auth";
 import { getDayShell } from "@/features/program/days";
+import { getMissionState } from "@/features/program/missions";
+import { getConceptCheckStatus } from "@/features/program/concept-check";
+import { getMissionMentorFeedback } from "@/features/program/mentor";
+import {
+  buildGitSubmitSnippet,
+  buildLauncherUrls,
+} from "@/features/program/launchers";
 import { LiteYoutube } from "@/components/program/lite-youtube";
-import { Workbench, type WorkbenchLanguage } from "@/components/program/workbench/workbench";
+import { MissionPanel } from "@/components/program/mission-panel";
+import { ConceptCheckPanel } from "@/components/program/concept-check-panel";
+import type { WorkbenchLanguage } from "@/components/program/workbench/workbench";
 import type { WorkbenchAsset } from "@/components/program/workbench/asset-viewer";
 
 type Props = { params: Promise<{ day: string }> };
@@ -27,15 +37,23 @@ function isAsset(value: unknown): value is WorkbenchAsset {
   );
 }
 
-// assetsJson is the ONLY client-safe day asset field. Parse it defensively into
-// the shapes the client Workbench understands.
 function parseAssets(assetsJson: unknown): {
   assets: WorkbenchAsset[];
   setupSql: string | null;
   visibleChecks: string[];
+  workbenchMode: string | null;
+  notebookPath: string | null;
+  iframeNotebookPath: string | null;
 } {
   if (!assetsJson || typeof assetsJson !== "object") {
-    return { assets: [], setupSql: null, visibleChecks: [] };
+    return {
+      assets: [],
+      setupSql: null,
+      visibleChecks: [],
+      workbenchMode: null,
+      notebookPath: null,
+      iframeNotebookPath: null,
+    };
   }
   const obj = assetsJson as Record<string, unknown>;
   const rawAssets = Array.isArray(obj.assets)
@@ -48,7 +66,24 @@ function parseAssets(assetsJson: unknown): {
   const visibleChecks = Array.isArray(obj.visibleChecks)
     ? obj.visibleChecks.filter((c): c is string => typeof c === "string")
     : [];
-  return { assets, setupSql, visibleChecks };
+  const workbenchMode =
+    typeof obj.workbenchMode === "string" ? obj.workbenchMode : null;
+  const notebookPath =
+    typeof obj.notebookPath === "string" ? obj.notebookPath : null;
+  const iframeNotebookPath =
+    typeof obj.iframeNotebookPath === "string"
+      ? obj.iframeNotebookPath
+      : notebookPath
+        ? notebookPath.split("/").pop() ?? null
+        : null;
+  return {
+    assets,
+    setupSql,
+    visibleChecks,
+    workbenchMode,
+    notebookPath,
+    iframeNotebookPath,
+  };
 }
 
 export default async function ProgramDayPage({ params }: Props) {
@@ -64,8 +99,51 @@ export default async function ProgramDayPage({ params }: Props) {
     redirect("/program/curriculum");
   }
 
-  const { day } = result;
-  const { assets, setupSql, visibleChecks } = parseAssets(day.assetsJson);
+  const { day, state } = result;
+  const {
+    assets,
+    setupSql,
+    visibleChecks,
+    workbenchMode,
+    notebookPath,
+    iframeNotebookPath,
+  } = parseAssets(day.assetsJson);
+
+  const [missionState, conceptStatus, memberProfile] = await Promise.all([
+    getMissionState(member.id, dayNumber),
+    getConceptCheckStatus(member.id, dayNumber),
+    prisma.programMember.findUnique({
+      where: { id: member.id },
+      select: { githubRepoUrl: true },
+    }),
+  ]);
+
+  if (!missionState || !memberProfile) redirect("/program/curriculum");
+
+  const initialMentorFeedback =
+    missionState.dayState === "PASSED"
+      ? await getMissionMentorFeedback(member.id, dayNumber)
+      : null;
+
+  const showWorkbenchHeader =
+    day.missionType === "CODE_SPRINT" ||
+    day.missionType === "DATA_ROOM" ||
+    workbenchMode === "notebook";
+
+  const launcherUrls = buildLauncherUrls(
+    memberProfile.githubRepoUrl,
+    notebookPath,
+  );
+  const gitSubmitSnippet = buildGitSubmitSnippet(
+    memberProfile.githubRepoUrl,
+    notebookPath,
+  );
+  const colabUrl = launcherUrls?.colabUrl ?? memberProfile.githubRepoUrl;
+  const codespacesUrl =
+    launcherUrls?.codespacesUrl ?? memberProfile.githubRepoUrl;
+  const githubFileUrl =
+    launcherUrls?.githubFileUrl ?? memberProfile.githubRepoUrl;
+  const colabHint = launcherUrls?.colabHint ?? null;
 
   return (
     <div className="space-y-6">
@@ -156,30 +234,39 @@ export default async function ProgramDayPage({ params }: Props) {
       )}
 
       <section className="space-y-3">
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Workbench
-        </h2>
-        <Workbench
+        {showWorkbenchHeader && (
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            {workbenchMode === "notebook" ? "Notebook Lab" : "Workbench"}
+          </h2>
+        )}
+        <MissionPanel
+          dayNumber={dayNumber}
+          dayTitle={day.title}
+          missionType={day.missionType}
           language={day.language as WorkbenchLanguage | null}
           starterCode={day.starterCode}
           setupSql={setupSql}
           assets={assets}
           visibleChecks={visibleChecks}
+          githubRepoUrl={memberProfile.githubRepoUrl}
+          workbenchMode={workbenchMode}
+          notebookPath={notebookPath}
+          iframeNotebookPath={iframeNotebookPath}
+          gitSubmitSnippet={gitSubmitSnippet}
+          colabUrl={colabUrl}
+          codespacesUrl={codespacesUrl}
+          githubFileUrl={githubFileUrl}
+          colabHint={colabHint}
+          missionState={missionState}
+          initialMentorFeedback={initialMentorFeedback}
         />
-        <div className="rounded-xl border border-dashed p-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Experiment freely with Run. Mission submission and verification open
-            soon.
-          </p>
-          <button
-            type="button"
-            disabled
-            className="mt-3 inline-flex cursor-not-allowed items-center rounded-lg bg-muted px-4 py-2 text-sm font-medium text-muted-foreground opacity-70"
-          >
-            Submit mission (coming online)
-          </button>
-        </div>
       </section>
+
+      {(state === "AVAILABLE" ||
+        state === "PASSED" ||
+        state === "SKIPPED") && (
+        <ConceptCheckPanel dayNumber={dayNumber} initialStatus={conceptStatus} />
+      )}
     </div>
   );
 }

@@ -70,3 +70,128 @@ export const entrySubmitSchema = z.object({
 });
 
 export type EntrySubmitInput = z.infer<typeof entrySubmitSchema>;
+
+export const missionDaySchema = z.object({
+  dayNumber: z.number().int().min(1).max(30),
+});
+
+export const codeSprintPayloadSchema = z.object({
+  code: z.string().max(20_000),
+  hiddenOutputs: z.array(z.string().max(20_000)).max(20),
+});
+
+export const dataRoomPayloadSchema = z.object({
+  answers: z
+    .array(z.union([z.string().max(500), z.number()]))
+    .max(20),
+});
+
+export const promptForgePayloadSchema = z.object({
+  prompt: z.string().max(4_000),
+});
+
+export const bossBuildPayloadSchema = z.object({
+  repoUrl: z.string().url().max(500),
+  writeup: z.string().max(10_000),
+});
+
+export const submitMissionSchema = z.object({
+  dayNumber: z.number().int().min(1).max(30),
+  payload: z.union([
+    codeSprintPayloadSchema,
+    dataRoomPayloadSchema,
+    promptForgePayloadSchema,
+    bossBuildPayloadSchema,
+    z.object({}),
+  ]),
+});
+
+export const conceptStartSchema = z.object({
+  dayNumber: z.number().int().min(1).max(30),
+});
+
+export const conceptSubmitSchema = z.object({
+  attemptId: z.string().cuid(),
+  answers: z.array(z.number().int().min(0).max(3).nullable()).length(3),
+});
+
+export const arenaCompleteSchema = z.object({
+  exerciseId: z.string().cuid(),
+  code: z.string().max(20_000),
+  output: z.string().max(20_000),
+});
+
+export const mentorReviewSchema = z.object({
+  dayNumber: z.number().int().min(1).max(30),
+});
+
+export const gradeProjectSchema = z.object({
+  projectId: z.string().cuid(),
+});
+
+export const overrideProjectScoreSchema = z.object({
+  projectId: z.string().cuid(),
+  score: z.number().int().min(0).max(100),
+  reason: z.string().trim().min(1).max(500),
+});
+
+export const generateRecommendationsSchema = z.object({
+  cohortId: z.string().cuid(),
+});
+
+export const interviewTranscriptLineSchema = z.object({
+  role: z.enum(["ai", "candidate"]),
+  text: z.string().max(5000),
+  ts: z.number(),
+});
+
+export const completeInterviewSchema = z.object({
+  transcript: z.array(interviewTranscriptLineSchema).max(400),
+  durationSec: z.number().int().min(0).max(1200),
+});
+
+export const adminEvaluateInterviewSchema = z.object({
+  interviewId: z.string().cuid(),
+});
+
+export const adminResetInterviewSchema = z.object({
+  memberId: z.string().cuid(),
+  reason: z.string().trim().min(1).max(500),
+});
+
+export const cohortFormSchema = z
+  .object({
+    cohortId: z.string().cuid().optional(),
+    name: z.string().trim().min(1).max(120),
+    startsAt: z.string().min(1),
+    endsAt: z.string().min(1),
+    capacity: z.coerce.number().int().min(1).max(100),
+  })
+  .refine((d) => new Date(d.startsAt) < new Date(d.endsAt), {
+    message: "Start must be before end.",
+    path: ["endsAt"],
+  });
+
+export const cohortStatusSchema = z.object({
+  cohortId: z.string().cuid(),
+  status: z.enum(["DRAFT", "ENROLLING", "ACTIVE", "COMPLETED", "ARCHIVED"]),
+});
+
+export const cohortIdSchema = z.object({
+  cohortId: z.string().cuid(),
+});
+
+export const adminMemberActionSchema = z.object({
+  memberId: z.string().cuid(),
+  reason: z.string().trim().min(1).max(500),
+});
+
+export const adminUnlockDaySchema = z.object({
+  memberId: z.string().cuid(),
+  day: z.number().int().min(1).max(30),
+  reason: z.string().trim().min(1).max(500),
+});
+
+export const adminMemberIdSchema = z.object({
+  memberId: z.string().cuid(),
+});

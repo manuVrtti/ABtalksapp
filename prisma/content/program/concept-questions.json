@@ -1,0 +1,50 @@
+[
+  {
+    "dayNumber": 1,
+    "questions": [
+      {
+        "order": 1,
+        "question": "PLACEHOLDER — What is the primary role of an event ingestion pipeline?",
+        "options": [
+          "Capture and route events reliably",
+          "Replace all databases",
+          "Only serve static files",
+          "Train ML models directly"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ingestion pipelines capture events and route them to downstream systems."
+      },
+      {
+        "order": 2,
+        "question": "PLACEHOLDER — Which format is commonly used for streaming events?",
+        "options": ["JSON", "BMP", "WAV", "TIFF"],
+        "correctIndex": 0,
+        "explanation": "JSON is a common lightweight serialization format for events."
+      },
+      {
+        "order": 3,
+        "question": "PLACEHOLDER — Why validate payloads at the edge?",
+        "options": [
+          "Catch bad data early",
+          "Increase storage cost",
+          "Disable monitoring",
+          "Skip schema design"
+        ],
+        "correctIndex": 0,
+        "explanation": "Early validation prevents corrupt data from polluting downstream systems."
+      },
+      {
+        "order": 4,
+        "question": "PLACEHOLDER — What does idempotency help with?",
+        "options": [
+          "Safe retries without duplicates",
+          "Faster GPU training",
+          "UI theming",
+          "Git branching"
+        ],
+        "correctIndex": 0,
+        "explanation": "Idempotent handlers produce the same outcome if a message is processed more than once."
+      }
+    ]
+  }
+]

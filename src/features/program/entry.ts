@@ -1,6 +1,7 @@
 import "server-only";
 import type { Prisma, ProgramEntrySection } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { isProgramEntryBypassEnabled } from "@/lib/feature-flags";
 import { logger } from "@/lib/logger";
 import type { ApplyProfileInput } from "@/lib/validations/program";
 
@@ -440,8 +441,9 @@ export async function submitEntryAttempt(
       });
 
       const totalScore = aptitudeScore + technicalScore;
-      const passed =
+      const meetsScoreThreshold =
         totalScore >= ENTRY_PASS_TOTAL && technicalScore >= ENTRY_PASS_TECHNICAL;
+      const passed = isProgramEntryBypassEnabled() || meetsScoreThreshold;
 
       await tx.programEntryAttempt.update({
         where: { id: attempt.id },

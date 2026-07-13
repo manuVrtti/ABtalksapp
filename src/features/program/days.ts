@@ -1,8 +1,10 @@
 import "server-only";
 import type { ProgramLanguage, ProgramMissionType, Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { deriveDayState, type DayState } from "@/features/program/progression";
+import { isDayLockBypassEnabled } from "@/lib/feature-flags";
 
-export type DayState = "LOCKED" | "AVAILABLE" | "PASSED" | "SKIPPED";
+export type { DayState } from "@/features/program/progression";
 
 export type DayVideo = {
   id: string;
@@ -34,32 +36,12 @@ export type DayShell = {
 
 export type DayShellResult = { day: DayShell; state: DayState };
 
-export type CurriculumModule = {
-  number: number;
-  title: string;
-  subtitle: string;
-  color: string;
-  startDay: number;
-  endDay: number;
-};
-
-export type CurriculumDay = {
-  dayNumber: number;
-  title: string;
-  missionType: ProgramMissionType;
-  isProjectDay: boolean;
-  moduleNumber: number;
-  state: DayState;
-};
-
-function deriveState(
-  dayNumber: number,
-  highestUnlockedDay: number,
-  passed: boolean,
-): DayState {
-  if (passed) return "PASSED";
-  if (dayNumber <= highestUnlockedDay) return "AVAILABLE";
-  return "LOCKED";
+function isSkippedPayload(payload: unknown): boolean {
+  return (
+    !!payload &&
+    typeof payload === "object" &&
+    (payload as { skipped?: unknown }).skipped === true
+  );
 }
 
 export async function getDayShell(
@@ -103,68 +85,25 @@ export async function getDayShell(
   });
   if (!member) return null;
 
-  const passedSubmission = await prisma.programMissionSubmission.findFirst({
-    where: { memberId, dayNumber, passed: true },
-    select: { id: true },
+  const submissions = await prisma.programMissionSubmission.findMany({
+    where: { memberId, dayNumber },
+    select: { passed: true, payload: true },
   });
 
-  const state = deriveState(
+  const passedDays = new Set<number>();
+  const skippedDays = new Set<number>();
+  for (const row of submissions) {
+    if (row.passed) passedDays.add(dayNumber);
+    else if (isSkippedPayload(row.payload)) skippedDays.add(dayNumber);
+  }
+
+  const state = deriveDayState(
     dayNumber,
     member.highestUnlockedDay,
-    !!passedSubmission,
+    passedDays,
+    skippedDays,
+    isDayLockBypassEnabled(),
   );
 
   return { day, state };
-}
-
-export async function getMemberDayStates(
-  memberId: string,
-): Promise<{ modules: CurriculumModule[]; days: CurriculumDay[] }> {
-  const member = await prisma.programMember.findUnique({
-    where: { id: memberId },
-    select: { highestUnlockedDay: true },
-  });
-  const highestUnlockedDay = member?.highestUnlockedDay ?? 1;
-
-  const [modules, days, passedRows] = await Promise.all([
-    prisma.programModule.findMany({
-      orderBy: { number: "asc" },
-      select: {
-        number: true,
-        title: true,
-        subtitle: true,
-        color: true,
-        startDay: true,
-        endDay: true,
-      },
-    }),
-    prisma.programDay.findMany({
-      orderBy: { dayNumber: "asc" },
-      select: {
-        dayNumber: true,
-        title: true,
-        missionType: true,
-        isProjectDay: true,
-        module: { select: { number: true } },
-      },
-    }),
-    prisma.programMissionSubmission.findMany({
-      where: { memberId, passed: true },
-      select: { dayNumber: true },
-      distinct: ["dayNumber"],
-    }),
-  ]);
-
-  const passedDays = new Set(passedRows.map((r) => r.dayNumber));
-
-  const dayStates: CurriculumDay[] = days.map((d) => ({
-    dayNumber: d.dayNumber,
-    title: d.title,
-    missionType: d.missionType,
-    isProjectDay: d.isProjectDay,
-    moduleNumber: d.module.number,
-    state: deriveState(d.dayNumber, highestUnlockedDay, passedDays.has(d.dayNumber)),
-  }));
-
-  return { modules, days: dayStates };
 }

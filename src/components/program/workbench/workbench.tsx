@@ -15,6 +15,7 @@ type Props = {
   setupSql?: string | null;
   assets: WorkbenchAsset[];
   visibleChecks: string[];
+  onCodeChange?: (code: string) => void;
 };
 
 const LANGUAGE_LABEL: Record<WorkbenchLanguage, string> = {
@@ -32,6 +33,7 @@ export function Workbench({
   setupSql,
   assets,
   visibleChecks,
+  onCodeChange,
 }: Props) {
   const [code, setCode] = useState(starterCode ?? "");
   const [output, setOutput] = useState("");
@@ -41,6 +43,11 @@ export function Workbench({
   const [ranOnce, setRanOnce] = useState(false);
   const [pane, setPane] = useState<Pane>("editor");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  function setCodeAndNotify(next: string) {
+    setCode(next);
+    onCodeChange?.(next);
+  }
 
   const checks: CheckItem[] = visibleChecks.map((check) => ({
     check,
@@ -97,7 +104,7 @@ export function Workbench({
       const start = el.selectionStart;
       const end = el.selectionEnd;
       const next = code.slice(0, start) + "  " + code.slice(end);
-      setCode(next);
+      setCodeAndNotify(next);
       requestAnimationFrame(() => {
         el.selectionStart = el.selectionEnd = start + 2;
       });
@@ -169,7 +176,7 @@ export function Workbench({
                 type="button"
                 variant="outline"
                 size="sm"
-                onClick={() => setCode(starterCode ?? "")}
+                onClick={() => setCodeAndNotify(starterCode ?? "")}
                 disabled={running}
               >
                 <RotateCcw className="size-3.5" />
@@ -200,7 +207,7 @@ export function Workbench({
             <textarea
               ref={textareaRef}
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => setCodeAndNotify(e.target.value)}
               onKeyDown={onKeyDown}
               spellCheck={false}
               autoCapitalize="off"

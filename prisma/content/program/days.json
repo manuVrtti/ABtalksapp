@@ -5,9 +5,16 @@
     "title": "PLACEHOLDER — Ingest the events feed",
     "missionType": "CODE_SPRINT",
     "language": "PYTHON",
-    "briefMd": "## PLACEHOLDER mission\n\nReplace in the content phase. Warm up by printing a greeting, then compute a total from the provided dataset.\n\n- Read the CSV in Materials.\n- Print the number of rows.",
-    "missionSpec": {},
-    "starterCode": "print(\"Hello, ABTalks\")\n\ntotal = sum([120, 340, 90])\nprint(\"total:\", total)\n",
+    "briefMd": "## PLACEHOLDER mission\n\nReplace in the content phase. Warm up by printing a greeting, then compute a total from the provided dataset.\n\n- Read the CSV in Materials.\n- Print the number of rows.\n\n### Set up your program repo (do this first)\n\nCopy the template bundle from `prisma/content/program/repo-template/` into your GitHub program repo:\n\n- `.devcontainer/devcontainer.json` + `requirements.txt` for Codespaces\n- `README.md` scaffold\n- `notebooks/` starter files for lab days\n\nWe never push to your repo — clone, copy, commit, and push yourself.",
+    "missionSpec": {
+      "hiddenTests": [
+        {
+          "check": "Prints greeting and total",
+          "input": "",
+          "expected": "Hello, ABTalks\ntotal: 550"
+        }
+      ]
+    },
     "assetsJson": {
       "assets": [
         {
@@ -38,8 +45,15 @@
     "missionType": "DATA_ROOM",
     "language": "SQL",
     "briefMd": "## PLACEHOLDER mission\n\nRun a query against the seeded table to answer the question.",
-    "missionSpec": {},
-    "starterCode": "SELECT vendor, SUM(amount) AS total\nFROM orders\nGROUP BY vendor\nORDER BY total DESC;",
+    "missionSpec": {
+      "answers": [
+        {
+          "check": "Highest-total vendor",
+          "value": "globex",
+          "caseInsensitive": true
+        }
+      ]
+    },
     "assetsJson": {
       "setupSql": "CREATE TABLE orders (id INTEGER, amount INTEGER, vendor TEXT);\nINSERT INTO orders VALUES (1,120,'acme'),(2,340,'globex'),(3,90,'initech'),(4,500,'globex');",
       "assets": [
@@ -63,8 +77,15 @@
     "missionType": "CODE_SPRINT",
     "language": "JAVASCRIPT",
     "briefMd": "## PLACEHOLDER mission\n\nUse `console.log` to print a transformed array.",
-    "missionSpec": {},
-    "starterCode": "const nums = [1, 2, 3, 4];\nconsole.log(nums.map((n) => n * 2));",
+    "missionSpec": {
+      "hiddenTests": [
+        {
+          "check": "Doubled array logged",
+          "input": "",
+          "expected": "[2,4,6,8]"
+        }
+      ]
+    },
     "assetsJson": { "assets": [], "visibleChecks": ["Logs the doubled array"] },
     "objectives": ["PLACEHOLDER — map an array"],
     "tools": ["JavaScript"],
@@ -75,12 +96,41 @@
   {
     "dayNumber": 4,
     "moduleNumber": 1,
-    "title": "PLACEHOLDER — Publish the ingestion service",
+    "title": "PLACEHOLDER — Publish the ingestion notebook",
     "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission\n\nPush a file to your program repo at the specified path.",
-    "missionSpec": {},
-    "objectives": ["PLACEHOLDER — commit an artifact"],
-    "tools": ["Git", "GitHub"],
+    "briefMd": "## PLACEHOLDER mission\n\nComplete the ingestion lab notebook and push it to your program repo.\n\nUse the in-platform **Notebook Lab**, or open the same notebook in Colab/Codespaces. Submit by pushing `notebooks/day04-ingestion-lab.ipynb`, then click **Submit for verification**.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "Notebook file exists and parses",
+          "kind": "notebookParses",
+          "path": "notebooks/day04-ingestion-lab.ipynb"
+        },
+        {
+          "check": "At least 2 code cells",
+          "kind": "notebookMinCells",
+          "path": "notebooks/day04-ingestion-lab.ipynb",
+          "min": 2,
+          "ofType": "code"
+        }
+      ]
+    },
+    "assetsJson": {
+      "workbenchMode": "notebook",
+      "notebookPath": "notebooks/day04-ingestion-lab.ipynb",
+      "iframeNotebookPath": "day04-ingestion-lab.ipynb",
+      "assets": [
+        {
+          "type": "markdown",
+          "content": "### Lab deliverable\nPush your completed notebook to `notebooks/day04-ingestion-lab.ipynb`."
+        }
+      ],
+      "visibleChecks": [
+        "Notebook parses as valid .ipynb",
+        "Contains at least 2 code cells"
+      ]
+    },
+    "tools": ["Git", "GitHub", "Jupyter"],
     "estimatedMin": 60,
     "missionPoints": 12,
     "isProjectDay": false
@@ -92,8 +142,15 @@
     "missionType": "CODE_SPRINT",
     "language": "YAML",
     "briefMd": "## PLACEHOLDER mission\n\nWrite valid YAML describing a pipeline.",
-    "missionSpec": {},
-    "starterCode": "pipeline:\n  name: ingest\n  steps:\n    - read\n    - transform\n    - load",
+    "missionSpec": {
+      "hiddenTests": [
+        {
+          "check": "Valid pipeline YAML",
+          "input": "",
+          "expected": "{\n  \"pipeline\": {\n    \"name\": \"ingest\",\n    \"steps\": [\n      \"read\",\n      \"transform\",\n      \"load\"\n    ]\n  }\n}"
+        }
+      ]
+    },
     "assetsJson": { "assets": [], "visibleChecks": ["YAML parses"] },
     "objectives": ["PLACEHOLDER — author config"],
     "tools": ["YAML"],
