@@ -2,506 +2,864 @@
   {
     "dayNumber": 1,
     "moduleNumber": 1,
-    "title": "PLACEHOLDER — Ingest the events feed",
-    "missionType": "CODE_SPRINT",
-    "language": "PYTHON",
-    "briefMd": "## PLACEHOLDER mission\n\nReplace in the content phase. Warm up by printing a greeting, then compute a total from the provided dataset.\n\n- Read the CSV in Materials.\n- Print the number of rows.\n\n### Set up your program repo (do this first)\n\nCopy the template bundle from `prisma/content/program/repo-template/` into your GitHub program repo:\n\n- `.devcontainer/devcontainer.json` + `requirements.txt` for Codespaces\n- `README.md` scaffold\n- `notebooks/` starter files for lab days\n\nWe never push to your repo — clone, copy, commit, and push yourself.",
+    "title": "VS Code & Python Environment Setup",
+    "missionType": "DATA_ROOM",
+    "briefMd": "## Mission: Build your engineer's cockpit\n\nEvery AI engineer works out of the same cockpit: **VS Code + Python + a terminal**. Today you set yours up properly — the same environment you'll use for all 31 days to build a production healthcare coverage chatbot.\n\n### Build steps\n\n1. **Install VS Code** from https://code.visualstudio.com. macOS: drag it into Applications. Windows: run the installer and keep \"Add to PATH\" checked.\n2. *(macOS)* Enable the `code` terminal command: `Cmd+Shift+P` → \"Shell Command: Install 'code' command in PATH\". You'll use `code .` constantly.\n3. **Install Python 3.x** from https://www.python.org/downloads/. Windows: check **\"Add python.exe to PATH\"** before installing.\n4. **Verify**: open a terminal (in VS Code: `` Ctrl+` ``) and run `python3 --version` (macOS) or `python --version` (Windows). You want Python 3.10+.\n5. In the Extensions panel (`Cmd/Ctrl+Shift+X`), install the **Python** extension published by **Microsoft** (it brings Pylance for IntelliSense).\n6. Create a projects folder, open it (File → Open Folder), create `hello.py` with `print(\"Hello from Python!\")`, and run it with the ▶ button. If prompted, select your Python 3.x interpreter.\n7. **Debug once**: click left of a line number to set a breakpoint, press `F5` → \"Python File\", and step through. Debugging beats print-statements — learn it on day one.\n8. **Create a virtual environment** — you'll do this for every project in this program: `python3 -m venv .venv`, then activate it (macOS/Linux: `source .venv/bin/activate`; Windows: `.venv\\Scripts\\activate`). Your prompt should now start with `(.venv)`.\n9. Confirm the venv works: `pip install requests`. When VS Code offers to select the new environment as your interpreter, click Yes.\n\n### Submit your answers\n\nAnswer these below in order (they prove you actually did the setup):\n\n1. What is the name of the **folder** created by the `python3 -m venv .venv` command?\n2. Which **company/publisher** publishes the official Python extension for VS Code?\n3. Which **test package** did you install to confirm your virtual environment works?\n",
     "missionSpec": {
-      "hiddenTests": [
+      "answers": [
         {
-          "check": "Prints greeting and total",
-          "input": "",
-          "expected": "Hello, ABTalks\ntotal: 550"
-        }
-      ]
-    },
-    "assetsJson": {
-      "assets": [
-        {
-          "type": "markdown",
-          "content": "### Scenario\nA fintech logs order events. PLACEHOLDER context."
+          "check": "venv folder name",
+          "value": ".venv",
+          "caseInsensitive": true
         },
         {
-          "type": "csv",
-          "name": "orders.csv",
-          "content": "id,amount,vendor\n1,120,acme\n2,340,globex\n3,90,initech"
+          "check": "Python extension publisher",
+          "value": "Microsoft",
+          "caseInsensitive": true
+        },
+        {
+          "check": "Test package installed",
+          "value": "requests",
+          "caseInsensitive": true
         }
-      ],
-      "visibleChecks": [
-        "Prints a greeting",
-        "Prints the correct total"
       ]
     },
-    "objectives": ["PLACEHOLDER — read a dataset", "PLACEHOLDER — aggregate values"],
-    "tools": ["Python", "pandas"],
-    "estimatedMin": 45,
+    "objectives": [
+      "Install and verify VS Code + Python",
+      "Run and debug a Python file in VS Code",
+      "Create and activate a per-project virtual environment"
+    ],
+    "tools": [
+      "VS Code",
+      "Python 3",
+      "pip"
+    ],
+    "estimatedMin": 105,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 2,
     "moduleNumber": 1,
-    "title": "PLACEHOLDER — Query the orders table",
+    "title": "Ollama (Local LLM) + AI Coding Assistant Setup",
     "missionType": "DATA_ROOM",
-    "language": "SQL",
-    "briefMd": "## PLACEHOLDER mission\n\nRun a query against the seeded table to answer the question.",
+    "briefMd": "## Mission: Your own local AI, running on your laptop\n\nToday you install **Ollama** and run an open coding model **fully locally** — free, no API key, works offline. Then you wire it into VS Code as your AI pair programmer. This local model also powers your chatbot's LLM calls later in the program, so nothing in these 31 days requires a paid subscription.\n\n### Build steps\n\n1. **Install Ollama** from https://ollama.com (macOS: move to Applications and launch — a menu-bar icon appears; Windows: installer, runs in the system tray).\n2. Verify in a terminal: `ollama --version`.\n3. **Pull a coding model sized to your RAM** — this matters on an 8 GB laptop:\n   - **8 GB RAM → `ollama pull qwen2.5-coder:3b`** (your default for this program)\n   - 16 GB RAM → `ollama pull qwen2.5-coder:7b`\n   - 32 GB+ → `ollama pull qwen2.5-coder:14b`\n   The first pull downloads a few GB — let it finish.\n4. **Test it**: `ollama run qwen2.5-coder:3b` (use your size). Ask it to *\"write a python function to reverse a string\"*, confirm a sensible answer, then exit the chat with `/bye`. While the app is running, Ollama automatically serves an API at `http://localhost:11434` — no separate server step.\n5. **Option A — GitHub Copilot Free + Ollama** (if you have a GitHub account): install the \"GitHub Copilot\" extension, sign in, open the Chat panel, click the model dropdown → \"Manage Models…\" → select **Ollama** → tick your pulled model. If nothing lists: check the Ollama app is running, then `ollama list` and `curl http://localhost:11434`.\n6. **Option B — Cline** (no account needed): install the \"Cline\" extension (publisher saoudrizwan), open its settings, set API Provider to **Ollama**, Base URL `http://localhost:11434`, pick your model. Wherever this program says \"ask Copilot,\" the same prompt works in Cline.\n7. **Prove it's local**: disconnect from the internet and ask your VS Code assistant to write a function — it still answers.\n\n### Submit your answers\n\n1. On which **localhost port** does Ollama serve its API?\n2. Which terminal command **lists the models** you have pulled?\n3. What do you type inside an `ollama run` chat session to **exit**?\n",
     "missionSpec": {
       "answers": [
         {
-          "check": "Highest-total vendor",
-          "value": "globex",
+          "check": "Ollama API port",
+          "value": "11434",
+          "caseInsensitive": true
+        },
+        {
+          "check": "List pulled models command",
+          "value": "ollama list",
+          "caseInsensitive": true
+        },
+        {
+          "check": "Exit chat command",
+          "value": "/bye",
           "caseInsensitive": true
         }
       ]
     },
-    "assetsJson": {
-      "setupSql": "CREATE TABLE orders (id INTEGER, amount INTEGER, vendor TEXT);\nINSERT INTO orders VALUES (1,120,'acme'),(2,340,'globex'),(3,90,'initech'),(4,500,'globex');",
-      "assets": [
-        {
-          "type": "markdown",
-          "content": "### Question\nWhich vendor has the highest total? PLACEHOLDER."
-        }
-      ],
-      "visibleChecks": ["Returns totals per vendor"]
-    },
-    "objectives": ["PLACEHOLDER — group and aggregate"],
-    "tools": ["SQL", "SQLite"],
-    "estimatedMin": 40,
+    "objectives": [
+      "Run an open LLM fully locally with Ollama",
+      "Pick a model size that fits your RAM",
+      "Wire the local model into VS Code (Copilot Free or Cline)"
+    ],
+    "tools": [
+      "Ollama",
+      "qwen2.5-coder",
+      "GitHub Copilot Free / Cline"
+    ],
+    "estimatedMin": 105,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 3,
     "moduleNumber": 1,
-    "title": "PLACEHOLDER — Transform the payload",
-    "missionType": "CODE_SPRINT",
-    "language": "JAVASCRIPT",
-    "briefMd": "## PLACEHOLDER mission\n\nUse `console.log` to print a transformed array.",
+    "title": "First Python Project, a Local Chatbot & Git/GitHub",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Mission: First AI project — a working local chatbot, pushed to GitHub\n\nToday the real project starts. You'll write a command-line chatbot that talks to your local model, scaffold the FastAPI backend that the entire program builds on, and push it all to **your program repo** — the GitHub repository you registered when you applied. From today, *every* day's work is committed and pushed there: that repo becomes your portfolio.\n\n### Your repo layout (set this up first)\n\nClone your program repo and use this structure — verification checks these exact paths:\n\n```\nyour-program-repo/\n├── chatbot.py          ← today's CLI chatbot\n├── backend/\n│   ├── main.py         ← FastAPI app (grows for 28 more days)\n│   └── requirements.txt\n├── .gitignore\n└── README.md\n```\n\n### Build steps\n\n1. Clone your program repo, open it in VS Code (`code .`), create a venv and activate it (Day 1 skills).\n2. Install the Ollama Python client: `pip install ollama`.\n3. Create `chatbot.py` — write it with your AI assistant's help, and make sure it keeps **conversation history**:\n\n```python\nimport ollama\n\nhistory = []\nprint(\"Local chatbot — type 'quit' to exit\")\nwhile True:\n    user = input(\"\\nYou: \")\n    if user.lower() == \"quit\":\n        break\n    history.append({\"role\": \"user\", \"content\": user})\n    reply = ollama.chat(model=\"qwen2.5-coder:3b\", messages=history)\n    text = reply[\"message\"][\"content\"]\n    history.append({\"role\": \"assistant\", \"content\": text})\n    print(f\"\\nAI: {text}\")\n```\n\n4. Run it (`python chatbot.py`) and have a short conversation. **Test the memory**: ask a follow-up question that only makes sense if it remembers your earlier message.\n5. **Scaffold the backend**: create `backend/main.py` — ask your assistant to *\"write a FastAPI app with a GET /health endpoint returning {\\\"status\\\": \\\"ok\\\"}\"* — and `backend/requirements.txt` containing `fastapi` and `uvicorn`. Review generated code before accepting; that habit starts now.\n6. Install and run it: `pip install -r backend/requirements.txt`, then `uvicorn main:app --reload` from inside `backend/`. Open `http://localhost:8000/health` in your browser and confirm `{\"status\":\"ok\"}` — Docker health checks and Kubernetes probes will hit this same endpoint in week 4.\n7. Create `.gitignore` at the repo root containing at least: `.venv/`, `__pycache__/`, `*.pyc`, `.env`.\n8. Update `README.md`: what this project is (healthcare coverage chatbot — 31-day build), your name, and today's progress. You'll extend it daily.\n9. One-time git setup if needed (`git config --global user.name/email`), then **commit and push**: `git add . && git commit -m \"day 3: local chatbot + FastAPI skeleton\" && git push`. This add→commit→push cycle is your daily rhythm — commits are tracked and scored.\n10. Hit **Verify my repo** below — the checks fetch your pushed files.\n",
+    "language": "PYTHON",
     "missionSpec": {
-      "hiddenTests": [
+      "repoChecks": [
         {
-          "check": "Doubled array logged",
-          "input": "",
-          "expected": "[2,4,6,8]"
+          "check": "chatbot.py exists",
+          "kind": "fileExists",
+          "path": "chatbot.py"
+        },
+        {
+          "check": "chatbot.py uses the ollama client",
+          "kind": "contentMatches",
+          "path": "chatbot.py",
+          "regex": "ollama"
+        },
+        {
+          "check": "chatbot.py keeps conversation history",
+          "kind": "contentMatches",
+          "path": "chatbot.py",
+          "regex": "history"
+        },
+        {
+          "check": "FastAPI backend exists",
+          "kind": "fileExists",
+          "path": "backend/main.py"
+        },
+        {
+          "check": "/health endpoint defined",
+          "kind": "contentMatches",
+          "path": "backend/main.py",
+          "regex": "health"
+        },
+        {
+          "check": "requirements.txt lists fastapi",
+          "kind": "contentMatches",
+          "path": "backend/requirements.txt",
+          "regex": "fastapi"
+        },
+        {
+          "check": ".gitignore protects .venv",
+          "kind": "contentMatches",
+          "path": ".gitignore",
+          "regex": "\\.venv"
+        },
+        {
+          "check": "README has real content",
+          "kind": "minLines",
+          "path": "README.md",
+          "min": 3
         }
       ]
     },
-    "assetsJson": { "assets": [], "visibleChecks": ["Logs the doubled array"] },
-    "objectives": ["PLACEHOLDER — map an array"],
-    "tools": ["JavaScript"],
-    "estimatedMin": 30,
+    "objectives": [
+      "Call a local LLM from Python with conversation history",
+      "Scaffold the FastAPI backend the whole program extends",
+      "Adopt the daily add→commit→push workflow"
+    ],
+    "tools": [
+      "Python",
+      "ollama (pip)",
+      "FastAPI",
+      "uvicorn",
+      "Git & GitHub"
+    ],
+    "estimatedMin": 210,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 4,
-    "moduleNumber": 1,
-    "title": "PLACEHOLDER — Publish the ingestion notebook",
+    "moduleNumber": 2,
+    "title": "Reading & Processing Structured Data",
     "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission\n\nComplete the ingestion lab notebook and push it to your program repo.\n\nUse the in-platform **Notebook Lab**, or open the same notebook in Colab/Codespaces. Submit by pushing `notebooks/day04-ingestion-lab.ipynb`, then click **Submit for verification**.",
+    "briefMd": "## Reading & Processing Structured Data\n\nIngest and query structured coverage data (health plans, premiums, claims) with pandas and SQLite — the data your chatbot will serve answers from.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
     "missionSpec": {
       "repoChecks": [
         {
-          "check": "Notebook file exists and parses",
-          "kind": "notebookParses",
-          "path": "notebooks/day04-ingestion-lab.ipynb"
-        },
-        {
-          "check": "At least 2 code cells",
-          "kind": "notebookMinCells",
-          "path": "notebooks/day04-ingestion-lab.ipynb",
-          "min": 2,
-          "ofType": "code"
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
         }
       ]
     },
-    "assetsJson": {
-      "workbenchMode": "notebook",
-      "notebookPath": "notebooks/day04-ingestion-lab.ipynb",
-      "iframeNotebookPath": "day04-ingestion-lab.ipynb",
-      "assets": [
-        {
-          "type": "markdown",
-          "content": "### Lab deliverable\nPush your completed notebook to `notebooks/day04-ingestion-lab.ipynb`."
-        }
-      ],
-      "visibleChecks": [
-        "Notebook parses as valid .ipynb",
-        "Contains at least 2 code cells"
-      ]
-    },
-    "tools": ["Git", "GitHub", "Jupyter"],
-    "estimatedMin": 60,
+    "objectives": [
+      "Ingest and query structured coverage data (health plans, premiums, claims) with pandas and SQLite — the data your chatbot will serve answers from."
+    ],
+    "tools": [
+      "pandas",
+      "SQLite",
+      "SQL"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 5,
-    "moduleNumber": 1,
-    "title": "PLACEHOLDER — Define the pipeline config",
-    "missionType": "CODE_SPRINT",
-    "language": "YAML",
-    "briefMd": "## PLACEHOLDER mission\n\nWrite valid YAML describing a pipeline.",
+    "moduleNumber": 2,
+    "title": "Reading & Processing Unstructured Data",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Reading & Processing Unstructured Data\n\nExtract usable text from policy PDFs, claim-form docs, and scanned enrollment documents with pdfplumber, python-docx and OCR.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
     "missionSpec": {
-      "hiddenTests": [
+      "repoChecks": [
         {
-          "check": "Valid pipeline YAML",
-          "input": "",
-          "expected": "{\n  \"pipeline\": {\n    \"name\": \"ingest\",\n    \"steps\": [\n      \"read\",\n      \"transform\",\n      \"load\"\n    ]\n  }\n}"
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
         }
       ]
     },
-    "assetsJson": { "assets": [], "visibleChecks": ["YAML parses"] },
-    "objectives": ["PLACEHOLDER — author config"],
-    "tools": ["YAML"],
-    "estimatedMin": 30,
+    "objectives": [
+      "Extract usable text from policy PDFs, claim-form docs, and scanned enrollment documents with pdfplumber, python-docx and OCR."
+    ],
+    "tools": [
+      "pdfplumber",
+      "pytesseract",
+      "BeautifulSoup"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 6,
-    "moduleNumber": 1,
-    "title": "PLACEHOLDER — Rank vendors by SLA",
-    "missionType": "DATA_ROOM",
-    "language": "SQL",
-    "briefMd": "## PLACEHOLDER mission\n\nAnalyze the dataset and answer precisely.",
-    "missionSpec": {},
-    "starterCode": "SELECT * FROM sla;",
-    "assetsJson": {
-      "setupSql": "CREATE TABLE sla (vendor TEXT, breaches INTEGER);\nINSERT INTO sla VALUES ('acme',2),('globex',7),('initech',1);",
-      "assets": [],
-      "visibleChecks": ["Identifies worst vendor"]
+    "moduleNumber": 2,
+    "title": "Building the Knowledge Base",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Building the Knowledge Base\n\nChunk your cleaned documents and structured data into a unified, metadata-tagged knowledge base ready for embedding.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
     },
-    "objectives": ["PLACEHOLDER"],
-    "tools": ["SQL"],
-    "estimatedMin": 40,
+    "objectives": [
+      "Chunk your cleaned documents and structured data into a unified, metadata-tagged knowledge base ready for embedding."
+    ],
+    "tools": [
+      "langchain-text-splitters",
+      "JSONL"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 7,
-    "moduleNumber": 1,
-    "title": "PLACEHOLDER — Module 1 Boss Build",
-    "missionType": "BOSS_BUILD",
-    "briefMd": "## PLACEHOLDER project\n\nShip the module capstone to your repo and submit it.",
-    "missionSpec": {},
-    "objectives": ["PLACEHOLDER — end-to-end build"],
-    "tools": ["Git"],
-    "estimatedMin": 120,
+    "moduleNumber": 3,
+    "title": "Embeddings Explained",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Embeddings Explained\n\nTurn every knowledge-base chunk into a vector with Sentence-Transformers and visualize the clusters in 2D.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Turn every knowledge-base chunk into a vector with Sentence-Transformers and visualize the clusters in 2D."
+    ],
+    "tools": [
+      "sentence-transformers",
+      "scikit-learn",
+      "matplotlib"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
-    "isProjectDay": true
+    "isProjectDay": false
   },
   {
     "dayNumber": 8,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Scaffold the FastAPI service",
+    "moduleNumber": 3,
+    "title": "Vector Databases — Overview",
     "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["FastAPI"],
-    "estimatedMin": 60,
+    "briefMd": "## Vector Databases — Overview\n\nSurvey the vector DB landscape and stand up a local Chroma instance (plus a free Pinecone index for comparison).\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Survey the vector DB landscape and stand up a local Chroma instance (plus a free Pinecone index for comparison)."
+    ],
+    "tools": [
+      "Chroma",
+      "Pinecone"
+    ],
+    "estimatedMin": 90,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 9,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Validate request payloads",
-    "missionType": "CODE_SPRINT",
-    "language": "PYTHON",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "print(\"validate\")",
-    "assetsJson": { "assets": [], "visibleChecks": [] },
-    "tools": ["Python", "Pydantic"],
-    "estimatedMin": 45,
+    "moduleNumber": 3,
+    "title": "Building & Populating the Vector Database",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Building & Populating the Vector Database\n\nBatch-upsert your embedded chunks into Chroma with metadata, and validate retrieval quality with real coverage questions.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Batch-upsert your embedded chunks into Chroma with metadata, and validate retrieval quality with real coverage questions."
+    ],
+    "tools": [
+      "Chroma",
+      "metadata filtering"
+    ],
+    "estimatedMin": 120,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 10,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Containerize the service",
-    "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["Docker"],
-    "estimatedMin": 60,
+    "moduleNumber": 3,
+    "title": "CHECKPOINT 1 — The Retrieval / Matching Engine",
+    "missionType": "BOSS_BUILD",
+    "briefMd": "## CHECKPOINT 1 — The Retrieval / Matching Engine\n\nBuild the engine that routes each member question to SQL, the vector DB, or both — then submit it for AI review.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "checkpointNumber": 1,
+      "note": "PLACEHOLDER — checkpoint rubric ships before this day unlocks"
+    },
+    "objectives": [
+      "Build the engine that routes each member question to SQL, the vector DB, or both — then submit it for AI review."
+    ],
+    "tools": [
+      "hybrid retrieval",
+      "query routing"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
-    "isProjectDay": false
+    "isProjectDay": true
   },
   {
     "dayNumber": 11,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Write the gateway logic",
-    "missionType": "CODE_SPRINT",
-    "language": "JAVASCRIPT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "console.log(\"gateway\");",
-    "assetsJson": { "assets": [], "visibleChecks": [] },
-    "tools": ["JavaScript"],
-    "estimatedMin": 45,
+    "moduleNumber": 4,
+    "title": "RAG End-to-End & LLM API Basics",
+    "missionType": "SHIP_IT",
+    "briefMd": "## RAG End-to-End & LLM API Basics\n\nConnect your retrieval engine to an LLM (local Ollama or free Groq) — your first full grounded RAG answer about coverage.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Connect your retrieval engine to an LLM (local Ollama or free Groq) — your first full grounded RAG answer about coverage."
+    ],
+    "tools": [
+      "Ollama",
+      "Groq",
+      "openai SDK"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 12,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Inspect the request logs",
-    "missionType": "DATA_ROOM",
-    "language": "SQL",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "SELECT * FROM logs;",
-    "assetsJson": {
-      "setupSql": "CREATE TABLE logs (path TEXT, status INTEGER);\nINSERT INTO logs VALUES ('/a',200),('/b',500),('/c',200);",
-      "assets": [],
-      "visibleChecks": []
+    "moduleNumber": 4,
+    "title": "Prompt Engineering Fundamentals",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Prompt Engineering Fundamentals\n\nDesign and A/B five system-prompt variants for accurate, empathetic, compliant coverage answers.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
     },
-    "tools": ["SQL"],
-    "estimatedMin": 40,
+    "objectives": [
+      "Design and A/B five system-prompt variants for accurate, empathetic, compliant coverage answers."
+    ],
+    "tools": [
+      "prompt design",
+      "few-shot",
+      "chain-of-thought"
+    ],
+    "estimatedMin": 120,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 13,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Deploy to Kubernetes",
+    "moduleNumber": 4,
+    "title": "Advanced Prompting: Function Calling & Structured Outputs",
     "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["Kubernetes"],
-    "estimatedMin": 75,
+    "briefMd": "## Advanced Prompting: Function Calling & Structured Outputs\n\nGive the LLM tools — check_coverage, get_claim_status, get_plan_details — with Pydantic-validated structured outputs.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Give the LLM tools — check_coverage, get_claim_status, get_plan_details — with Pydantic-validated structured outputs."
+    ],
+    "tools": [
+      "function calling",
+      "Pydantic"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 14,
-    "moduleNumber": 2,
-    "title": "PLACEHOLDER — Module 2 Boss Build",
-    "missionType": "BOSS_BUILD",
-    "briefMd": "## PLACEHOLDER project",
-    "missionSpec": {},
-    "tools": ["Docker", "Kubernetes"],
-    "estimatedMin": 120,
+    "moduleNumber": 4,
+    "title": "Fine-Tuning — Concepts & When to Use It",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Fine-Tuning — Concepts & When to Use It\n\nLearn when fine-tuning beats RAG, and curate a 20–30 example dataset for consistent tone and disclaimer usage.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Learn when fine-tuning beats RAG, and curate a 20–30 example dataset for consistent tone and disclaimer usage."
+    ],
+    "tools": [
+      "JSONL datasets",
+      "LoRA concepts"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
-    "isProjectDay": true
+    "isProjectDay": false
   },
   {
     "dayNumber": 15,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Craft the extraction prompt",
-    "missionType": "PROMPT_FORGE",
-    "briefMd": "## PLACEHOLDER mission\n\nWrite a system prompt that extracts fields.",
-    "missionSpec": {},
-    "tools": ["Anthropic"],
-    "estimatedMin": 50,
+    "moduleNumber": 4,
+    "title": "Fine-Tuning — Hands-On with LoRA/QLoRA",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Fine-Tuning — Hands-On with LoRA/QLoRA\n\nFine-tune a small model with LoRA and compare it against the base model on held-out questions.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Fine-tune a small model with LoRA and compare it against the base model on held-out questions."
+    ],
+    "tools": [
+      "HuggingFace PEFT",
+      "LoRA"
+    ],
+    "estimatedMin": 210,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 16,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Chunk documents for RAG",
-    "missionType": "CODE_SPRINT",
-    "language": "PYTHON",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "print(\"chunk\")",
-    "assetsJson": { "assets": [], "visibleChecks": [] },
-    "tools": ["Python"],
-    "estimatedMin": 45,
+    "moduleNumber": 5,
+    "title": "Chatbot Backend & API Integration",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Chatbot Backend & API Integration\n\nAssemble retrieval, tools and the LLM into your FastAPI backend: POST /chat and GET /history endpoints with sessions.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Assemble retrieval, tools and the LLM into your FastAPI backend: POST /chat and GET /history endpoints with sessions."
+    ],
+    "tools": [
+      "FastAPI",
+      "session management"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 17,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Route intents with a prompt",
-    "missionType": "PROMPT_FORGE",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["OpenAI"],
-    "estimatedMin": 50,
+    "moduleNumber": 5,
+    "title": "Chatbot Frontend Development (Streamlit)",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Chatbot Frontend Development (Streamlit)\n\nBuild the chat UI in Streamlit: message bubbles, chat input, a plan selector, and a New Conversation button.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Build the chat UI in Streamlit: message bubbles, chat input, a plan selector, and a New Conversation button."
+    ],
+    "tools": [
+      "Streamlit"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 18,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Build the agent loop",
-    "missionType": "CODE_SPRINT",
-    "language": "PYTHON",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "print(\"agent\")",
-    "assetsJson": { "assets": [], "visibleChecks": [] },
-    "tools": ["LangGraph"],
-    "estimatedMin": 60,
+    "moduleNumber": 5,
+    "title": "Full-Stack Integration & Streaming Responses",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Full-Stack Integration & Streaming Responses\n\nStream tokens from backend to frontend with SSE so answers type out in real time.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Stream tokens from backend to frontend with SSE so answers type out in real time."
+    ],
+    "tools": [
+      "SSE",
+      "StreamingResponse"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 19,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Enforce a refusal policy",
-    "missionType": "PROMPT_FORGE",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["Anthropic"],
-    "estimatedMin": 50,
+    "moduleNumber": 5,
+    "title": "Response Formatting & Rich Outputs",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Response Formatting & Rich Outputs\n\nAdd citations back to policy chunks, plus claim-status and coverage-summary cards.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Add citations back to policy chunks, plus claim-status and coverage-summary cards."
+    ],
+    "tools": [
+      "citations",
+      "Pydantic cards"
+    ],
+    "estimatedMin": 150,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 20,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Evaluate agent traces",
-    "missionType": "DATA_ROOM",
-    "language": "SQL",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "SELECT * FROM traces;",
-    "assetsJson": {
-      "setupSql": "CREATE TABLE traces (step TEXT, ok INTEGER);\nINSERT INTO traces VALUES ('plan',1),('act',0),('reflect',1);",
-      "assets": [],
-      "visibleChecks": []
-    },
-    "tools": ["SQL"],
-    "estimatedMin": 40,
-    "missionPoints": 12,
-    "isProjectDay": false
-  },
-  {
-    "dayNumber": 21,
-    "moduleNumber": 3,
-    "title": "PLACEHOLDER — Module 3 Boss Build",
+    "moduleNumber": 5,
+    "title": "CHECKPOINT 2 — Working Full-Stack Chatbot with Memory",
     "missionType": "BOSS_BUILD",
-    "briefMd": "## PLACEHOLDER project",
-    "missionSpec": {},
-    "tools": ["LangGraph", "Anthropic"],
-    "estimatedMin": 120,
+    "briefMd": "## CHECKPOINT 2 — Working Full-Stack Chatbot with Memory\n\nConversation memory, context budgeting and summarization — then submit the working full-stack chatbot for AI review.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "checkpointNumber": 2,
+      "note": "PLACEHOLDER — checkpoint rubric ships before this day unlocks"
+    },
+    "objectives": [
+      "Conversation memory, context budgeting and summarization — then submit the working full-stack chatbot for AI review."
+    ],
+    "tools": [
+      "conversation memory",
+      "token budgeting"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": true
   },
   {
-    "dayNumber": 22,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Scaffold an MCP server",
+    "dayNumber": 21,
+    "moduleNumber": 6,
+    "title": "Agentic Frameworks: LangChain Agents & Tool Use",
     "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["MCP"],
-    "estimatedMin": 60,
+    "briefMd": "## Agentic Frameworks: LangChain Agents & Tool Use\n\nTurn your function-calling logic into a ReAct reasoning agent and read its reasoning traces.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Turn your function-calling logic into a ReAct reasoning agent and read its reasoning traces."
+    ],
+    "tools": [
+      "LangChain",
+      "ReAct"
+    ],
+    "estimatedMin": 180,
+    "missionPoints": 12,
+    "isProjectDay": false
+  },
+  {
+    "dayNumber": 22,
+    "moduleNumber": 6,
+    "title": "Multi-Agent Orchestration",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Multi-Agent Orchestration\n\nSplit responsibilities across a Router, Coverage Specialist and Claims Specialist with CrewAI or LangGraph.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Split responsibilities across a Router, Coverage Specialist and Claims Specialist with CrewAI or LangGraph."
+    ],
+    "tools": [
+      "CrewAI",
+      "LangGraph"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 23,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Design the tool schema prompt",
-    "missionType": "PROMPT_FORGE",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["MCP"],
-    "estimatedMin": 50,
+    "moduleNumber": 6,
+    "title": "Model Context Protocol (MCP)",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Model Context Protocol (MCP)\n\nExpose your coverage and claims tools as an MCP server and connect it to Claude Desktop or Cline.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Expose your coverage and claims tools as an MCP server and connect it to Claude Desktop or Cline."
+    ],
+    "tools": [
+      "MCP Python SDK"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 24,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Expose resources over MCP",
+    "moduleNumber": 6,
+    "title": "Agentic Chatbot — Full Integration",
     "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["MCP"],
-    "estimatedMin": 60,
+    "briefMd": "## Agentic Chatbot — Full Integration\n\nBring agents, MCP tools, memory and retrieval together with timeouts, retries and graceful fallbacks — chaos-tested.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Bring agents, MCP tools, memory and retrieval together with timeouts, retries and graceful fallbacks — chaos-tested."
+    ],
+    "tools": [
+      "error handling",
+      "fallbacks"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 25,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Implement the adapter",
-    "missionType": "CODE_SPRINT",
-    "language": "PYTHON",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "print(\"adapter\")",
-    "assetsJson": { "assets": [], "visibleChecks": [] },
-    "tools": ["Python"],
-    "estimatedMin": 45,
+    "moduleNumber": 7,
+    "title": "AI Governance, PHI Handling & Guardrails",
+    "missionType": "SHIP_IT",
+    "briefMd": "## AI Governance, PHI Handling & Guardrails\n\nWrite your governance checklist, build PII redaction, and add input/output guardrails — tested with adversarial prompts.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Write your governance checklist, build PII redaction, and add input/output guardrails — tested with adversarial prompts."
+    ],
+    "tools": [
+      "Guardrails AI",
+      "presidio",
+      "PHI redaction"
+    ],
+    "estimatedMin": 240,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 26,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Harden the system prompt",
-    "missionType": "PROMPT_FORGE",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["Anthropic"],
-    "estimatedMin": 50,
+    "moduleNumber": 7,
+    "title": "Token Governance, Cost Management & Experiment Design",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Token Governance, Cost Management & Experiment Design\n\nToken/cost logging, rate limiting, response caching, and a designed A/B experiment across two chatbot variants.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Token/cost logging, rate limiting, response caching, and a designed A/B experiment across two chatbot variants."
+    ],
+    "tools": [
+      "tiktoken",
+      "caching",
+      "A/B testing"
+    ],
+    "estimatedMin": 240,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 27,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Ship the deployment manifest",
-    "missionType": "SHIP_IT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "tools": ["Kubernetes"],
-    "estimatedMin": 60,
+    "moduleNumber": 7,
+    "title": "CHECKPOINT 3 — Evaluation Scorecard",
+    "missionType": "BOSS_BUILD",
+    "briefMd": "## CHECKPOINT 3 — Evaluation Scorecard\n\nMeasure quality systematically with RAGAS (faithfulness, relevance, context precision/recall) — submit scorecard + guardrails for AI review.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "checkpointNumber": 3,
+      "note": "PLACEHOLDER — checkpoint rubric ships before this day unlocks"
+    },
+    "objectives": [
+      "Measure quality systematically with RAGAS (faithfulness, relevance, context precision/recall) — submit scorecard + guardrails for AI review."
+    ],
+    "tools": [
+      "RAGAS",
+      "LLM-as-judge"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
-    "isProjectDay": false
+    "isProjectDay": true
   },
   {
     "dayNumber": 28,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Audit adoption metrics",
-    "missionType": "DATA_ROOM",
-    "language": "SQL",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "SELECT * FROM adoption;",
-    "assetsJson": {
-      "setupSql": "CREATE TABLE adoption (team TEXT, active INTEGER);\nINSERT INTO adoption VALUES ('a',12),('b',3),('c',20);",
-      "assets": [],
-      "visibleChecks": []
+    "moduleNumber": 8,
+    "title": "Docker — Containerizing the Coverage Chatbot",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Docker — Containerizing the Coverage Chatbot\n\nPackage backend and frontend into containers with multi-stage builds, docker-compose and health checks.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
     },
-    "tools": ["SQL"],
-    "estimatedMin": 40,
+    "objectives": [
+      "Package backend and frontend into containers with multi-stage builds, docker-compose and health checks."
+    ],
+    "tools": [
+      "Docker",
+      "docker-compose"
+    ],
+    "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 29,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Wire the client SDK",
-    "missionType": "CODE_SPRINT",
-    "language": "JAVASCRIPT",
-    "briefMd": "## PLACEHOLDER mission",
-    "missionSpec": {},
-    "starterCode": "console.log(\"sdk\");",
-    "assetsJson": { "assets": [], "visibleChecks": [] },
-    "tools": ["JavaScript"],
-    "estimatedMin": 45,
+    "moduleNumber": 8,
+    "title": "Kubernetes — Orchestrating & Scaling the Deployment",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Kubernetes — Orchestrating & Scaling the Deployment\n\nDeploy to a local Minikube cluster: deployments, services, secrets, probes, scaling and rolling updates.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Deploy to a local Minikube cluster: deployments, services, secrets, probes, scaling and rolling updates."
+    ],
+    "tools": [
+      "Kubernetes",
+      "Minikube",
+      "kubectl"
+    ],
+    "estimatedMin": 210,
     "missionPoints": 12,
     "isProjectDay": false
   },
   {
     "dayNumber": 30,
-    "moduleNumber": 4,
-    "title": "PLACEHOLDER — Capstone Boss Build",
+    "moduleNumber": 8,
+    "title": "Monitoring & Observability",
+    "missionType": "SHIP_IT",
+    "briefMd": "## Monitoring & Observability\n\nWire Langfuse tracing into the deployed chatbot and practice debugging pods with kubectl.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "repoChecks": [
+        {
+          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "kind": "fileExists",
+          "path": "README.md"
+        }
+      ]
+    },
+    "objectives": [
+      "Wire Langfuse tracing into the deployed chatbot and practice debugging pods with kubectl."
+    ],
+    "tools": [
+      "Langfuse",
+      "kubectl logs"
+    ],
+    "estimatedMin": 150,
+    "missionPoints": 12,
+    "isProjectDay": false
+  },
+  {
+    "dayNumber": 31,
+    "moduleNumber": 8,
+    "title": "CHECKPOINT 4 — Capstone: Deployed System Demo & Roadmap",
     "missionType": "BOSS_BUILD",
-    "briefMd": "## PLACEHOLDER project\n\nThe final capstone.",
-    "missionSpec": {},
-    "tools": ["MCP", "Docker"],
+    "briefMd": "## CHECKPOINT 4 — Capstone: Deployed System Demo & Roadmap\n\nFull live walkthrough of your Kubernetes-deployed chatbot, retrospective, v2 roadmap and demo video — final AI-graded submission.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "missionSpec": {
+      "checkpointNumber": 4,
+      "note": "PLACEHOLDER — checkpoint rubric ships before this day unlocks"
+    },
+    "objectives": [
+      "Full live walkthrough of your Kubernetes-deployed chatbot, retrospective, v2 roadmap and demo video — final AI-graded submission."
+    ],
+    "tools": [
+      "end-to-end demo",
+      "retrospective"
+    ],
     "estimatedMin": 180,
     "missionPoints": 12,
     "isProjectDay": true
