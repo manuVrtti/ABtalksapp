@@ -1,5 +1,7 @@
 ## Pending reconcile
 
+- 2026-07-16 [convention] `allowedDevOrigins` auto-includes LAN IPv4s so Next 16 serves `/_next` JS on Network URL (fixes dead login form when opened via 192.168.x.x).
+- 2026-07-16 [convention] Dev credentials login always navigates same-origin (ignores AUTH_URL host in result.url) so LAN/phone testing works; local AUTH_URL optional when trustHost is on.
 - 2026-07-16 [convention] `npm run db:seed:program:users` seeds AI Cohort test logins (`prog.*@abtalks.dev` / `test`) plus test cohort/members/recruiters for local program QA.
 - 2026-07-15 [convention] AI Cohort migration: PROGRAM_TOTAL_DAYS=31 / max score 1020; BOSS_BUILD ProgramProject.moduleNumber from missionSpec.checkpointNumber; dropped in-browser lab/arena/Workbench runners (git-artifact verification only); display name AI Cohort; apply requires 8GB RAM attestation (not persisted).
 - 2026-07-11 [env] BYPASS_DAY_LOCKS=true bypasses program day lock gating server-side (view, submit, concept check); PASSED/SKIPPED unchanged; mirrors existing challenge bypass.
