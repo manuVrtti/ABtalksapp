@@ -266,8 +266,11 @@ export function MissionPanel({
           </p>
           {missionState.shipItHints && missionState.shipItHints.length > 0 && (
             <ul className="space-y-1 text-sm">
-              {missionState.shipItHints.map((h) => (
-                <li key={h.path} className="font-mono text-muted-foreground">
+              {missionState.shipItHints.map((h, i) => (
+                <li
+                  key={`${h.check}:${h.path}:${i}`}
+                  className="font-mono text-muted-foreground"
+                >
                   {h.check}: <span className="text-foreground">{h.path}</span>
                 </li>
               ))}
