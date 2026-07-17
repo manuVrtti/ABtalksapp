@@ -31,8 +31,13 @@ On notebook lab days, work in the in-platform JupyterLite lab or open the same n
 .
 ├── .devcontainer/
 │   └── devcontainer.json
+├── data/                         # Day 4+ structured datasets
+│   ├── plans.csv
+│   └── claims.csv
 ├── notebooks/
 │   └── day04-ingestion-lab.ipynb
+├── coverage.db                   # Day 4 SQLite deliverable
+├── structured_queries.md         # Day 4 SQL query log
 ├── README.md
 └── requirements.txt
 ```

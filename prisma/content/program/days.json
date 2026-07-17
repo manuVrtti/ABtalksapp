@@ -155,18 +155,73 @@
     "moduleNumber": 2,
     "title": "Reading & Processing Structured Data",
     "missionType": "SHIP_IT",
-    "briefMd": "## Reading & Processing Structured Data\n\nIngest and query structured coverage data (health plans, premiums, claims) with pandas and SQLite — the data your chatbot will serve answers from.\n\n> **The full mission brief for this day unlocks as the cohort approaches it.** Keep your daily rhythm: every day's work is committed and pushed to your program repo.",
+    "briefMd": "## Mission: Ingest and query the coverage data your chatbot will answer from\n\nToday you build the structured data layer behind the healthcare coverage chatbot. You'll create **synthetic** (fake) plans and claims datasets, clean them with pandas, load them into a local SQLite database, and write SQL queries that answer realistic member questions. Use synthetic data only — never real member PHI. Expect about **2–3 hours**.\n\n**Concepts to learn**\n\n- **Loading data with pandas** — CSV/Excel/JSON into DataFrames; filtering, joins, and cleaning\n- **SQL fundamentals** — SELECT, WHERE, JOIN, GROUP BY, and nested queries\n- **Connecting Python to a database** — SQLite for local development (today); Postgres via SQLAlchemy is the production pattern you'll see later — you do **not** need SQLAlchemy for this mission\n- **Basic data cleaning** — nulls, type coercion, and deduplication\n\n### Your repo layout (verification checks these exact paths)\n\n```\nyour-program-repo/\n├── data/\n│   ├── plans.csv\n│   └── claims.csv\n├── coverage.db\n├── structured_queries.md\n├── notebooks/\n│   └── day04-ingestion-lab.ipynb   ← optional workspace\n├── chatbot.py                      ← from Day 3\n└── backend/                        ← from Day 3\n```\n\n### Build steps\n\n1. In your activated venv, install dependencies: `pip install pandas openpyxl`.\n2. Create **synthetic** sample datasets (fake data only):\n   - `data/plans.csv` with columns: `plan_id`, `plan_name`, `monthly_premium`, `annual_deductible`, `copay_pct`, `coverage_type` (e.g. PPO/HMO), `network_tier`. Include a plan named something like **Gold PPO** so the sample questions work.\n   - `data/claims.csv` with columns: `claim_id`, `member_id`, `plan_id`, `procedure`, `claim_amount`, `status`, `date_filed`. Include member **M1001** with at least one pending claim.\n3. Load both CSVs with `pd.read_csv()`, inspect with `.info()` and `.head()`, then clean: drop duplicates, fill or drop nulls, and coerce `date_filed` to datetime.\n4. Create `coverage.db` with Python's `sqlite3` module and load the cleaned DataFrames via `df.to_sql()` (tables for plans and claims).\n5. Write and test **5 SQL queries** mapped to realistic member questions:\n   - \"What's the deductible on the Gold PPO plan?\"\n   - \"How many claims are pending for member M1001?\"\n   - \"Which plans have a monthly premium under $400?\"\n   - A JOIN between claims and plans\n   - A top-N query (e.g. most claimed procedures)\n6. Save each query and its output in `structured_queries.md` for later reference.\n7. Commit and push, then hit **Verify my repo** below — the checks fetch your pushed files.\n\nTip: `notebooks/day04-ingestion-lab.ipynb` is a convenient workspace for the lab. Deliverables at the paths above are what get verified.\n",
+    "language": "PYTHON",
     "missionSpec": {
       "repoChecks": [
         {
-          "check": "PLACEHOLDER — full checks ship before this day unlocks",
+          "check": "plans.csv exists",
           "kind": "fileExists",
-          "path": "README.md"
+          "path": "data/plans.csv"
+        },
+        {
+          "check": "claims.csv exists",
+          "kind": "fileExists",
+          "path": "data/claims.csv"
+        },
+        {
+          "check": "plans.csv has plan_id header",
+          "kind": "contentMatches",
+          "path": "data/plans.csv",
+          "regex": "plan_id"
+        },
+        {
+          "check": "claims.csv has claim_id header",
+          "kind": "contentMatches",
+          "path": "data/claims.csv",
+          "regex": "claim_id"
+        },
+        {
+          "check": "coverage.db exists",
+          "kind": "fileExists",
+          "path": "coverage.db"
+        },
+        {
+          "check": "structured_queries.md exists",
+          "kind": "fileExists",
+          "path": "structured_queries.md"
+        },
+        {
+          "check": "structured_queries.md has real content",
+          "kind": "minLines",
+          "path": "structured_queries.md",
+          "min": 15
+        },
+        {
+          "check": "structured_queries.md includes SELECT",
+          "kind": "contentMatches",
+          "path": "structured_queries.md",
+          "regex": "SELECT"
+        },
+        {
+          "check": "structured_queries.md includes a JOIN",
+          "kind": "contentMatches",
+          "path": "structured_queries.md",
+          "regex": "(?i)join"
+        },
+        {
+          "check": "structured_queries.md covers sample member questions",
+          "kind": "contentMatches",
+          "path": "structured_queries.md",
+          "regex": "(?i)(deductible|premium|pending|procedure)"
         }
       ]
     },
     "objectives": [
-      "Ingest and query structured coverage data (health plans, premiums, claims) with pandas and SQLite — the data your chatbot will serve answers from."
+      "Load and clean structured coverage CSVs with pandas (DataFrames, nulls, types, dedupe)",
+      "Write SQL with SELECT, WHERE, JOIN, GROUP BY against plans and claims",
+      "Connect Python to SQLite and load cleaned tables into coverage.db",
+      "Document five working queries mapped to sample member questions in structured_queries.md"
     ],
     "tools": [
       "pandas",
