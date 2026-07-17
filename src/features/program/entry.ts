@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { isProgramEntryBypassEnabled } from "@/lib/feature-flags";
 import { logger } from "@/lib/logger";
 import type { ApplyProfileInput } from "@/lib/validations/program";
+import { bootstrapMemberStartDay } from "@/features/program/bootstrap-start-day";
 
 export const ENTRY_DURATION_MIN = 25;
 export const ENTRY_PER_SECTION = 10;
@@ -469,14 +470,18 @@ export async function submitEntryAttempt(
         });
         const hasRoom = !!cohort && enrolledCount < cohort.capacity;
 
-        await tx.programMember.update({
+        const memberAfter = await tx.programMember.update({
           where: {
             userId_cohortId: { userId, cohortId: attempt.cohortId },
           },
           data: hasRoom
             ? { status: "ENROLLED", enrolledAt: new Date() }
             : { status: "WAITLISTED" },
+          select: { id: true },
         });
+        if (hasRoom) {
+          await bootstrapMemberStartDay(tx, memberAfter.id);
+        }
         outcome = hasRoom ? "ENROLLED" : "WAITLISTED";
       } else if (attempt.attemptNumber < ENTRY_MAX_ATTEMPTS) {
         outcome = "RETAKE";

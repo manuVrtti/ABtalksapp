@@ -4,6 +4,7 @@ import { formatInTimeZone } from "date-fns-tz";
 import { prisma } from "@/lib/db";
 import { IST, formatDateTimeIST } from "@/lib/date-utils";
 import { PROGRAM_TOTAL_DAYS } from "@/features/program/constants";
+import { bootstrapMemberStartDay } from "@/features/program/bootstrap-start-day";
 import { getAtRiskMembers } from "@/features/program/commits";
 import { getCohortCalendarDay } from "@/features/program/progression";
 import { askClaudeJson } from "@/lib/anthropic";
@@ -550,6 +551,7 @@ export async function promoteWaitlisted(
         where: { id: memberId },
         data: { status: "ENROLLED", enrolledAt: new Date() },
       });
+      await bootstrapMemberStartDay(tx, memberId);
       await tx.adminAction.create({
         data: {
           adminUserId: adminId,
