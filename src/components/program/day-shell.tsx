@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Circle, Lock, SkipForward } from "lucide-react";
 import type { CurriculumDay, DayState } from "@/features/program/progression";
@@ -140,16 +139,6 @@ export function DayShell({
   return (
     <div className="-mx-4 -my-6 min-h-[calc(100svh-4rem)] bg-[#030712] px-4 py-6 text-white md:-mx-4 md:px-6">
       <header className="mb-6 flex flex-wrap items-center gap-4 md:gap-6">
-        <Link href="/program/dashboard" className="shrink-0">
-          <Image
-            src="/program/abtalks-mark.png"
-            alt="ABTalks"
-            width={202}
-            height={53}
-            className="h-8 w-auto md:h-9"
-            priority
-          />
-        </Link>
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <span
             className="size-2.5 shrink-0 rounded-full bg-[#FF4B4B]"
