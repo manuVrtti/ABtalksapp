@@ -23,7 +23,7 @@ export default async function ProgramAppLayout({
         <div className="container mx-auto flex items-center gap-4 px-4 py-3 md:gap-6">
           <Link href="/program/dashboard" className="shrink-0">
             <Image
-              src="/program/abtalks-mark.png"
+              src="/abtalks-logo.png"
               alt="ABTalks"
               width={160}
               height={42}

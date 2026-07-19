@@ -2,7 +2,7 @@
 
 import { useState, type KeyboardEvent } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, X } from "lucide-react";
+import { Info, Loader2, X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -224,12 +224,29 @@ export function ApplyForm() {
           <FieldError message={errors.githubUsername?.message} />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="githubRepoUrl">Program repo URL</Label>
+          <Label
+            htmlFor="githubRepoUrl"
+            className="inline-flex items-center gap-1.5"
+          >
+            Program repo URL
+            <span
+              className="inline-flex size-4 items-center justify-center rounded-full border border-amber-500/60 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+              title="IMPORTANT: This repository will be used throughout the cohort for task completion and verification. Make sure you type it correctly."
+              aria-label="Important information about the program repository URL"
+            >
+              <Info className="size-2.5" strokeWidth={3} aria-hidden />
+            </span>
+          </Label>
           <Input
             id="githubRepoUrl"
             placeholder="https://github.com/you/ai-cohort"
             {...register("githubRepoUrl")}
           />
+          <p className="rounded-md border border-amber-500/40 bg-amber-500/10 px-2.5 py-2 text-xs leading-relaxed text-amber-800 dark:text-amber-200">
+            <span className="font-semibold">IMPORTANT:</span> The repository you
+            create will be used in the cohort for task completion and
+            verification — make sure you type it correctly.
+          </p>
           <FieldError message={errors.githubRepoUrl?.message} />
         </div>
       </div>

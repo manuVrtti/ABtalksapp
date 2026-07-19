@@ -127,7 +127,7 @@ export function ProgramLanding({ cta }: { cta: Cta }) {
         <div className="relative mx-auto max-w-7xl px-5 pt-6 md:px-10 md:pt-8">
           <Link href="/" className="inline-block">
             <Image
-              src="/program/abtalks-mark.png"
+              src="/abtalks-logo.png"
               alt="ABTalks"
               width={202}
               height={53}
