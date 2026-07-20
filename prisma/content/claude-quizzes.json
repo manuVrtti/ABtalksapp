@@ -644,107 +644,107 @@
   {
     "weekNumber": 7,
     "domain": "CLAUDE",
-    "title": "Week 7: MCP, Plugins & Agentic Flows",
+    "title": "Week 7 Challenge Quiz: AI Career Intelligence, Content Optimization & Interview Readiness with Claude",
     "questions": [
       {
         "questionOrder": 1,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 1: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the primary objective of the LinkedIn Profile Optimizer (Day 44)?",
+        "optionA": "Increase LinkedIn followers automatically",
+        "optionB": "Analyze and optimize a user's professional brand using AI",
+        "optionC": "Schedule LinkedIn posts",
+        "optionD": "Generate random networking messages",
+        "correctAnswer": "B",
+        "explanation": "The LinkedIn Profile Optimizer evaluates a user's profile, identifies improvement opportunities, and provides AI-powered recommendations to strengthen their professional brand."
       },
       {
         "questionOrder": 2,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 2: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why does the LinkedIn Profile Optimizer first interview the user before generating recommendations?",
+        "optionA": "To collect unnecessary information",
+        "optionB": "To personalize suggestions based on career goals, experience, and target audience",
+        "optionC": "To reduce processing time",
+        "optionD": "To create longer reports",
+        "correctAnswer": "B",
+        "explanation": "Personalization allows Claude to generate recommendations that align with the user's career objectives instead of providing generic advice."
       },
       {
         "questionOrder": 3,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 3: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What makes Content Intelligence Studio (Day 47) different from a traditional content review tool?",
+        "optionA": "It only checks grammar and spelling",
+        "optionB": "It uses multiple specialized AI reviewers to provide intelligent content analysis and recommendations",
+        "optionC": "It only generates hashtags",
+        "optionD": "It focuses only on YouTube content",
+        "correctAnswer": "B",
+        "explanation": "Content Intelligence Studio creates an adaptive review workflow where multiple AI reviewers analyze different aspects of the content to provide comprehensive feedback."
       },
       {
         "questionOrder": 4,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 4: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why does Content Intelligence Studio support both text and image uploads?",
+        "optionA": "To increase file size",
+        "optionB": "Because modern content includes both written and visual elements that should be analyzed together",
+        "optionC": "To simplify the interface",
+        "optionD": "Because HTML requires image support",
+        "correctAnswer": "B",
+        "explanation": "Modern content performance depends on both visuals and written communication, so multimodal analysis produces better recommendations."
       },
       {
         "questionOrder": 5,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 5: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the primary goal of Defend Your Experience (Day 50)?",
+        "optionA": "Automatically rewrite resumes",
+        "optionB": "Help users confidently defend every claim they make during interviews",
+        "optionC": "Generate interview certificates",
+        "optionD": "Replace HR interviews",
+        "correctAnswer": "B",
+        "explanation": "The application extracts meaningful claims from a user's experience and challenges them with personalized follow-up questions to improve interview confidence."
       },
       {
         "questionOrder": 6,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 6: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why are interview questions in Defend Your Experience adaptive rather than fixed?",
+        "optionA": "To make the application longer",
+        "optionB": "Because every answer should influence future questions, creating realistic interview conversations",
+        "optionC": "To reduce HTML size",
+        "optionD": "To avoid using AI",
+        "correctAnswer": "B",
+        "explanation": "Real interviews evolve based on the candidate's responses, making adaptive questioning far more effective than static questionnaires."
       },
       {
         "questionOrder": 7,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 7: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Across Week 7, what common design philosophy was emphasized?",
+        "optionA": "Build generic AI applications for everyone",
+        "optionB": "Begin by understanding the user before generating personalized AI experiences",
+        "optionC": "Focus only on attractive animations",
+        "optionD": "Generate as many reports as possible",
+        "correctAnswer": "B",
+        "explanation": "Every application starts by interviewing the user so Claude can personalize the interface, workflow, and recommendations."
       },
       {
         "questionOrder": 8,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 8: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What role does Claude primarily play in the applications built during Week 7?",
+        "optionA": "Static rule engine",
+        "optionB": "Intelligent reasoning engine that generates personalized insights through live AI analysis",
+        "optionC": "Database management system",
+        "optionD": "Frontend framework",
+        "correctAnswer": "B",
+        "explanation": "Claude powers reasoning, recommendations, interview simulations, and content analysis rather than relying on hardcoded logic."
       },
       {
         "questionOrder": 9,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 9: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "Why is personalization considered essential in AI-powered career and content applications?",
+        "optionA": "Because every user has identical goals",
+        "optionB": "Because recommendations become significantly more valuable when tailored to an individual's background, goals, and uploaded content",
+        "optionC": "To reduce application performance",
+        "optionD": "Because HTML requires personalization",
+        "correctAnswer": "B",
+        "explanation": "Personalized AI experiences deliver more accurate insights and practical recommendations than generic templates."
       },
       {
         "questionOrder": 10,
-        "questionText": "Week 7: MCP, Plugins & Agentic Flows - Question 10: What is the best default habit when using Claude for serious work?",
-        "optionA": "Write a clear goal, constraints, output format, and review steps before accepting outputs",
-        "optionB": "Paste sensitive credentials so Claude can debug faster",
-        "optionC": "Ship external content without reading for speed",
-        "optionD": "Avoid saving reusable prompts or templates",
-        "correctAnswer": "A",
-        "explanation": "Week 7 placeholder: structured prompting plus human review is the backbone of responsible use. Final quiz copy arrives with curriculum."
+        "questionText": "What is the biggest mindset shift from Week 7?",
+        "optionA": "AI should only generate content",
+        "optionB": "AI can intelligently coach, evaluate, challenge, and prepare users for real-world professional scenarios through personalized interactive applications",
+        "optionC": "AI replaces interviewers completely",
+        "optionD": "AI applications only need beautiful interfaces",
+        "correctAnswer": "B",
+        "explanation": "Week 7 demonstrates how Claude can build intelligent systems that go beyond content generation to provide coaching, analysis, adaptive interviews, and personalized professional guidance."
       }
     ]
   },
