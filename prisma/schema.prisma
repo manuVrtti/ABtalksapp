@@ -239,6 +239,7 @@ model User {
   referralsMade                      Referral[]      @relation("Referral_referrerIdToUser")
   sessions                           Session[]
   studentProfile                     StudentProfile?
+  phoneVerification                  PhoneVerification?
   recruiterReview                    RecruiterReview?
   submissions                        Submission[]
   synergyEvents                      SynergyEvent[]
@@ -250,7 +251,6 @@ model User {
   programEntryAttempts               ProgramEntryAttempt[]
   recruiterProfile                   RecruiterProfile?
   shortlistItems                     RecruiterShortlistItem[]
-  phoneVerification                  PhoneVerification?
 
   @@index([createdAt(sort: Desc)])
 }
