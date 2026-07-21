@@ -1,5 +1,6 @@
 ## Pending reconcile
 
+- 2026-07-21 [rule] MSG91 phone OTP removed from app/UI; StudentProfile.phoneVerified* + PhoneVerification remain in DB unused
 - 2026-07-20 [schema] PhoneVerification table + StudentProfile.phoneVerified/phoneVerifiedAt (OTP phone verification; was ondev only)
 - 2026-07-20 [rule] Program commit days credited on first mission pass (today) and seeded for cohort calendar days 1–3 at enroll; cron remains supplemental
 - 2026-07-20 [schema] ProgramCohort.joinCode (unique); multi concurrent cohorts allowed; apply gated by ENROLLING join code; requireProgramMember resolves by membership
