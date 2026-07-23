@@ -5,7 +5,7 @@ const ICONS = [FileCode2, Globe, NotebookPen] as const;
 
 export function Deliverables() {
   return (
-    <section className="mx-auto w-full max-w-[1897px] px-4 py-16 sm:px-9 sm:py-24">
+    <section className="mx-auto w-full max-w-[1897px] px-8 py-16 sm:px-9 sm:py-24">
       <h2
         className="bg-gradient-to-r from-white from-[75%] to-[#A2A2A2] bg-clip-text text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-tight text-transparent"
         style={{ fontFamily: "var(--font-hackathon-mono), monospace" }}

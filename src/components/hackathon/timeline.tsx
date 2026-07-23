@@ -7,7 +7,7 @@ function TimelineNode({ index, size }: { index: number; size: "sm" | "lg" }) {
       className={
         isLg
           ? "relative z-10 flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#1E1B37] shadow-[0_4px_10px_rgba(0,0,0,0.1),4px_0_10px_rgba(0,0,0,0.1),-4px_0_10px_rgba(0,0,0,0.1)]"
-          : "absolute -left-[2.35rem] top-0 flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#1E1B37] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          : "relative z-10 flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-[#1E1B37] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
       }
       style={{
         background:
@@ -19,7 +19,7 @@ function TimelineNode({ index, size }: { index: number; size: "sm" | "lg" }) {
         className={
           isLg
             ? "block text-[22px] font-semibold leading-none text-white"
-            : "block text-[16px] font-semibold leading-none text-white"
+            : "block text-[13px] font-semibold leading-none text-white"
         }
         style={{ fontFamily: "var(--font-hackathon-mono), monospace" }}
       >
@@ -31,7 +31,7 @@ function TimelineNode({ index, size }: { index: number; size: "sm" | "lg" }) {
 
 export function Timeline() {
   return (
-    <section className="mx-auto w-full max-w-[1897px] px-4 py-16 sm:px-9 sm:py-24">
+    <section className="mx-auto w-full max-w-[1897px] px-8 py-16 sm:px-9 sm:py-24">
       <h2
         className="bg-gradient-to-r from-white from-[75%] to-[#A2A2A2] bg-clip-text text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-tight text-transparent"
         style={{ fontFamily: "var(--font-hackathon-mono), monospace" }}
@@ -42,15 +42,26 @@ export function Timeline() {
         {HACKATHON.kickoffLabel} through {HACKATHON.resultsLabel}.
       </p>
 
-      {/* Mobile: vertical */}
-      <ol className="relative mt-12 space-y-10 border-l border-dashed border-[#7364E6] pl-8 md:hidden">
+      {/* Mobile: vertical rail — continuous dashed line through numbered nodes */}
+      <ol className="relative mt-10 space-y-8 origin-top max-md:[zoom:0.9] md:hidden">
+        {/* Line centered on the node column (w-9 = 36px → center at 18px) */}
+        <span
+          className="absolute left-[17px] top-4 bottom-4 w-0 border-l-2 border-dashed border-[#7364E6]"
+          aria-hidden
+        />
         {HACKATHON.timeline.map((item, index) => (
-          <li key={item.title} className="relative">
-            <TimelineNode index={index} size="sm" />
-            <h3 className="text-[20px] font-semibold text-[#968BEC] underline">
-              {item.title}
-            </h3>
-            <p className="mt-2 text-[16px] text-[#E9E9E9]">{item.body}</p>
+          <li key={item.title} className="relative flex gap-3">
+            <div className="relative z-10 flex w-9 shrink-0 flex-col items-center">
+              <TimelineNode index={index} size="sm" />
+            </div>
+            <div className="min-w-0 flex-1 pt-0.5">
+              <h3 className="text-[16px] font-semibold leading-snug text-[#968BEC] underline">
+                {item.title}
+              </h3>
+              <p className="mt-1.5 text-[14px] leading-relaxed text-[#E9E9E9]">
+                {item.body}
+              </p>
+            </div>
           </li>
         ))}
       </ol>

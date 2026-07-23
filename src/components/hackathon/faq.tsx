@@ -9,7 +9,7 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="mx-auto w-full max-w-[1897px] px-4 py-16 sm:px-9 sm:pb-28 sm:pt-24">
+    <section className="mx-auto w-full max-w-[1897px] px-8 py-16 sm:px-9 sm:pb-28 sm:pt-24">
       <h2
         className="bg-gradient-to-r from-white from-[75%] to-[#A2A2A2] bg-clip-text text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-tight text-transparent"
         style={{ fontFamily: "var(--font-hackathon-mono), monospace" }}

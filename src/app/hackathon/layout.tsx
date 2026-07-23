@@ -1,3 +1,5 @@
+import "@fontsource/dseg7-classic/400.css";
+import "@fontsource/dseg7-classic/700.css";
 import { Bitcount_Prop_Single, IBM_Plex_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
