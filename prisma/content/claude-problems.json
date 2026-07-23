@@ -5358,5 +5358,107 @@
         "format": "GitHub commit URL"
       }
     }
+  },
+  {
+    "dayNumber": 53,
+    "domain": "CLAUDE",
+    "title": "Day 53: Project Setup & Foundation – Capstone Day 3",
+    "problemStatement": "Welcome to Day 53 of the 60-Day Claude AI Mastery Challenge.\n\nTheme: Phase 8 — Capstone Project (Days 51-60): From Idea to Deployed v1.0\n\nToday's focus: Continuing the same capstone conversation, turn your System Design, Architecture, Database Design, API Design, and Project Structure documents into a real, running project foundation.\n\nThis is Day 3 of the 10-day capstone. Before doing anything else, Claude will read back the Product Requirements Document (PRD), the 10-Day Blueprint, and the System Design documents from previous days — these remain the source of truth and should not be redesigned unless a critical issue is discovered. If any document isn't available in the conversation, upload it before continuing.\n\nTasks:\n1. Bring the PRD, 10-Day Blueprint, System Design, Architecture, Database Design, API Design, and Project Structure documents into the conversation (or confirm Claude already has them).\n2. Follow Claude's guided environment setup — runtime, IDE extensions, package managers, framework CLI, SDKs, and environment variables.\n3. Initialize the project, install dependencies, and verify it runs locally.\n4. Connect the local project to GitHub, set up a branching strategy, and make the initial commit.\n5. Build only the foundational pieces (routing, layout, navigation, auth scaffold, database connection, API client, shared components, state management, configuration) — not core features yet.\n6. Verify the project builds with no errors and matches the System Design.\n7. Generate and download SETUP.md, PROJECT-STRUCTURE.md, ENVIRONMENT.md, and DAY3-SUMMARY.md.\n8. Commit and push today's work, update the project log, and write a LinkedIn post summarizing progress.\n9. Confirm tomorrow's objective: building the first major user-facing feature.\n\nImportant:\nFor every manual step outside the chat, follow Claude's exact instructions (buttons, menus, commands, terminal steps) and confirm with a screenshot before moving on — don't let Claude assume a step is done.\n\nDo not begin implementing core features today unless the Day 2 blueprint specifically scheduled a small foundation feature for Day 3.\n\nSubmission: Share your GitHub commit URL containing SETUP.md, PROJECT-STRUCTURE.md, ENVIRONMENT.md, DAY3-SUMMARY.md, a screenshot of the working \"Hello World\" version running locally, and your key learnings.",
+    "learningObjectives": [
+      "Set up a complete local development environment from a System Design document",
+      "Initialize a project and verify it runs before any feature work begins",
+      "Connect a project to GitHub with an intentional branching strategy",
+      "Scaffold foundational architecture (routing, auth, database connection, API client, state management) without building features early",
+      "Verify a project's structure and build health against its own System Design before moving forward"
+    ],
+    "resources": [
+      "https://claude.ai",
+      "https://youtu.be/HzMaGLTVV0w?si=aNqECkGoAKRthDiT"
+    ],
+    "difficulty": "Advanced",
+    "estimatedMinutes": 60,
+    "linkedinTemplate": "Day 53/60 of #60DayClaudeChallenge with @ABTalksOnAI 🚀\n\nDay 3 of my 10-day capstone: today was all foundation, no features.\n\nWith Claude as my technical lead, I set up the dev environment, initialized the project, connected GitHub with a real branching strategy, and scaffolded routing, auth, and database connections — ending with a working Hello World running locally.\n\n⚙️ Full Environment Setup\n🗂️ Project Initialized & Verified\n🔀 GitHub + Branching Strategy\n🧱 Foundational Scaffolding (Routing, Auth, DB, API Client)\n✅ Hello World, Running\n📄 SETUP.md / ENVIRONMENT.md / PROJECT-STRUCTURE.md\n\nBiggest takeaway:\n\nA solid foundation day feels like it produces nothing impressive — until every day after it goes faster because there's nothing left to figure out.\n\n#ClaudeAI #ProjectSetup #BuildWithClaude #AI #SoftwareEngineering #Capstone #ABTalksOnAI #60DayClaudeChallenge",
+    "solutionApproach": "Submit a GitHub commit URL containing SETUP.md, PROJECT-STRUCTURE.md, ENVIRONMENT.md, DAY3-SUMMARY.md, a screenshot of the running Hello World application, and your key learnings.",
+    "tags": [
+      "claude",
+      "day-53",
+      "capstone",
+      "project-setup",
+      "environment-setup",
+      "git",
+      "foundation",
+      "system-design"
+    ],
+    "dayContent": {
+      "title": "Project Setup & Foundation",
+      "tagline": "Capstone Day 3: From System Design to a Running Hello World",
+      "module": "Capstone Project — Day 3 of 10",
+      "difficulty": "Advanced",
+      "estimatedMinutes": 60,
+      "deliverableFormat": "GitHub commit URL",
+      "learning": {
+        "summary": "Today you'll learn how to translate a System Design document into a real, running project foundation — environment setup, project initialization, version control with a branching strategy, and just enough scaffolding to verify everything works, without starting on features yet.",
+        "bullets": [
+          {
+            "label": "Environment Setup",
+            "text": "Install and configure the runtime, IDE extensions, package managers, and SDKs your System Design actually calls for, and understand why each one is needed."
+          },
+          {
+            "label": "Project Initialization & Verification",
+            "text": "Create the project, install dependencies, and confirm it runs locally before writing any feature code."
+          },
+          {
+            "label": "Repository & Branching Strategy",
+            "text": "Connect to GitHub with an intentional branch structure instead of committing everything to main."
+          },
+          {
+            "label": "Foundational Scaffolding",
+            "text": "Build only what feature development depends on — routing, layout, auth scaffold, database connection, API client, state management — and understand every file created."
+          }
+        ]
+      },
+      "task": {
+        "title": "Your Task",
+        "steps": [
+          "Continue the same capstone conversation from Day 51 and Day 52.",
+          "Paste the Day 3: Project Setup & Foundation prompt.",
+          "If Claude doesn't already have the PRD, 10-Day Blueprint, System Design, Architecture, Database Design, API Design, or Project Structure documents, upload them.",
+          "Follow the guided environment setup step by step — install and configure the runtime, IDE extensions, package managers, framework CLI, SDKs, and environment variables.",
+          "Confirm each manual step with a screenshot before continuing.",
+          "Initialize the project, install dependencies, and verify it runs locally.",
+          "Connect the project to GitHub, set up the recommended branching strategy, and make the initial commit.",
+          "Build only the foundational pieces Claude identifies — routing, layout, navigation, auth scaffold, database connection, API client, shared components, state management, configuration.",
+          "Ask Claude to explain every major file it creates.",
+          "Verify the project builds with no errors and matches the System Design.",
+          "Debug any issues with Claude before moving on.",
+          "Generate and download SETUP.md, PROJECT-STRUCTURE.md, ENVIRONMENT.md, and DAY3-SUMMARY.md.",
+          "Commit today's work with a meaningful commit message and push to GitHub.",
+          "Update your project log and write the suggested LinkedIn post.",
+          "Review Claude's summary of what's completed, what's ready for tomorrow, and tomorrow's objective.",
+          "Take a screenshot of the working Hello World version running locally.",
+          "Create a Day53 folder in your GitHub repository.",
+          "Create a day53.md file.",
+          "Upload screenshots, SETUP.md, PROJECT-STRUCTURE.md, ENVIRONMENT.md, DAY3-SUMMARY.md, and your key learnings.",
+          "Commit and push the changes.",
+          "Submit the GitHub commit URL."
+        ],
+        "solutionVideoUrl": "https://youtu.be/HzMaGLTVV0w?si=aNqECkGoAKRthDiT"
+      },
+      "promptTemplate": "Day 3: Project Setup & Foundation\n\nToday is Day 3, continuing the same capstone. Before doing anything, read the following documents from the previous days:\n\n* Product Requirements Document (PRD)\n* 10-Day Blueprint\n* System Design Documents\n* Architecture\n* Database Design\n* API Design\n* Project Structure\n\nThese documents are now the source of truth. Do not redesign the project unless a critical issue is discovered. If any document is unavailable, ask me to upload it.\n\nStanding Rules\n\n* Assume I need guidance for every manual step unless I tell you otherwise.\n* Whenever I need to perform a task outside this chat, explain it using the exact buttons, menus, commands, and terminal instructions.\n* Wait for my confirmation and a screenshot before continuing.\n* Never assume I've completed a manual step.\n* Explain every technical concept in beginner-friendly language before using it.\n\nToday's Goal\n\nToday's objective is to build the project's foundation. By the end of today I should have:\n\n* Development environment fully configured\n* Project running locally\n* Complete folder structure\n* Git repository initialized and connected\n* Dependencies installed\n* Configuration files completed\n* Database connected (if required)\n* Authentication scaffolded (if required)\n* Basic navigation/routing working\n* A working \"Hello World\" version of the application running successfully\n\nDo not begin implementing the core features yet unless the Day 2 blueprint specifically schedules a small foundation feature. Follow the Day 3 section of the 10-Day Blueprint while adapting to any issues that arise.\n\nComplete the Following\n\n1. Environment Setup\nGuide me through installing and configuring everything required for this project. Examples include:\n\n* Runtime\n* IDE extensions\n* Package managers\n* Framework CLI\n* SDKs\n* Environment variables\n\nExplain why each tool is needed.\n\n2. Project Initialization\nWalk me through:\n\n* Creating the project\n* Installing dependencies\n* Initializing configuration\n* Running the project\n* Verifying everything works\n\n3. Repository Setup\nIf not already completed:\n\n* Connect local project to GitHub\n* Create appropriate branches\n* Explain the branching strategy\n* Make the initial commit\n\n4. Build the Foundation\nImplement only the foundational pieces required before feature development. Examples:\n\n* Routing\n* Layout\n* Navigation\n* Authentication scaffold\n* Database connection\n* API client setup\n* Shared components\n* State management\n* Configuration\n\nExplain every major file that is created.\n\n5. Verify the Project\nConfirm that:\n\n* The application builds successfully.\n* There are no errors.\n* The project structure matches the System Design.\n* Everything is ready for feature development tomorrow.\n\nIf problems occur, help me debug them before moving on.\n\nDeliverables\n\nGenerate downloadable versions of:\n\n* SETUP.md (installation and setup guide)\n* PROJECT-STRUCTURE.md (updated if necessary)\n* ENVIRONMENT.md (all environment variables, tools, and configuration)\n* DAY3-SUMMARY.md\n\nUpdate the 10-Day Blueprint if today's implementation required any changes.\n\nEnd of Day\n\nHelp me:\n\n* Commit today's work using a meaningful commit message.\n* Push it to GitHub.\n* Update the project log.\n* Write a LinkedIn post summarizing today's progress.\n\nFinally, summarize:\n\n* ✅ What was completed today\n* 🚧 What's ready to build tomorrow\n* 🎯 What tomorrow's objective will be\n\nTomorrow should begin implementing the first major user-facing feature, with no additional setup or planning required.",
+      "engagement": {
+        "type": "Capstone Day 3 Showcase",
+        "description": "Share a screenshot of your Hello World running locally and the most important foundation decision you made (branching strategy, folder structure, or scaffolding choice). Mention @Anthropic @ABTalksOnAI @AnilBajpai.",
+        "hashtag": "#60DayClaudeChallenge",
+        "mentions": [
+          "@AnilBajpai",
+          "@ABTalksOnAI",
+          "@Anthropic"
+        ]
+      },
+      "deliverable": {
+        "description": "Upload a markdown file containing a screenshot of your working Hello World application, SETUP.md, PROJECT-STRUCTURE.md, ENVIRONMENT.md, DAY3-SUMMARY.md, and your key learnings.",
+        "format": "GitHub commit URL"
+      }
+    }
   }
 ]
