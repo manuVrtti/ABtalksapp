@@ -6,6 +6,7 @@ import {
   getTeamByCode,
   hackathonSupabase,
   isEmailRegistered,
+  isTeamNameTaken,
 } from "@/lib/hackathon-supabase";
 import { logger } from "@/lib/logger";
 import {
@@ -84,6 +85,13 @@ export async function submitHackathonRegistrationAction(
     };
   }
 
+  if (d.entryType === "TEAM_CREATE" && (await isTeamNameTaken(d.teamName))) {
+    return {
+      ok: false as const,
+      message: "That team name is already taken. Pick another.",
+    };
+  }
+
   if (d.entryType === "SOLO" || d.entryType === "TEAM_CREATE") {
     const entryTypeDb = d.entryType === "SOLO" ? "SOLO" : "TEAM";
     const teamName = d.entryType === "TEAM_CREATE" ? d.teamName : null;
@@ -110,6 +118,15 @@ export async function submitHackathonRegistrationAction(
       }
 
       if (isUniqueViolation(teamError)) {
+        if (
+          teamName !== null &&
+          (await isTeamNameTaken(teamName))
+        ) {
+          return {
+            ok: false as const,
+            message: "That team name is already taken. Pick another.",
+          };
+        }
         continue;
       }
 

@@ -53,3 +53,14 @@ export async function isEmailRegistered(email: string): Promise<boolean> {
   if (error) return false;
   return data !== null;
 }
+
+export async function isTeamNameTaken(teamName: string): Promise<boolean> {
+  const { data, error } = await hackathonSupabase
+    .from("hackathon_teams")
+    .select("id")
+    .ilike("team_name", teamName)
+    .maybeSingle();
+
+  if (error) return false;
+  return data !== null;
+}

@@ -1,5 +1,6 @@
 ## Pending reconcile
 
+- 2026-07-24 [schema] hackathon_teams unique index on lower(team_name) where not null — block duplicate team names
 - 2026-07-22 [env] SUPABASE_SERVICE_ROLE_KEY for hackathon registration (server-only service role; bypasses RLS on hackathon_* tables)
 - 2026-07-22 [convention] Program calendar-key day math uses UTC (addCalendarDaysToKey) so Chicago reformat no longer drops early commit day 0 (10→15 pts)
 - 2026-07-22 [rule] Program commit cron preserves existing commitCount floor (Math.max) so seeded early days are not wiped to 0
