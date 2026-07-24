@@ -76,7 +76,13 @@ const ENTRY_OPTIONS: { value: EntryType; title: string; body: string }[] = [
   },
 ];
 
-export function RegistrationForm() {
+export function RegistrationForm({
+  initialEmail,
+  initialName = "",
+}: {
+  initialEmail: string;
+  initialName?: string;
+}) {
   const [step, setStep] = useState(1);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [success, setSuccess] = useState<SuccessState | null>(null);
@@ -93,8 +99,8 @@ export function RegistrationForm() {
     ) as unknown as Resolver<FormValues>,
     defaultValues: {
       entryType: "SOLO",
-      fullName: "",
-      email: "",
+      fullName: initialName,
+      email: initialEmail,
       phone: "",
       college: "",
       graduationYear: 2026,
@@ -324,7 +330,14 @@ export function RegistrationForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" autoComplete="email" {...field} />
+                    <Input
+                      type="email"
+                      autoComplete="email"
+                      readOnly
+                      tabIndex={-1}
+                      className="bg-muted text-muted-foreground"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

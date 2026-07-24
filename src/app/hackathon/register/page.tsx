@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { auth } from "@/auth";
 import { RegistrationForm } from "@/components/hackathon/registration-form";
 import { HACKATHON } from "@/components/hackathon/hackathon-config";
 import { buttonVariants } from "@/components/ui/button";
@@ -12,7 +14,15 @@ export const metadata: Metadata = {
     "Register for the ABTalks Vibe Code Hackathon, solo or as a team of up to 3.",
 };
 
-export default function HackathonRegisterPage() {
+export default async function HackathonRegisterPage() {
+  const session = await auth();
+  if (!session?.user?.id || !session.user.email) {
+    redirect("/login?from=/hackathon/register");
+  }
+
+  const initialEmail = session.user.email;
+  const initialName = session.user.name ?? "";
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto w-full max-w-xl px-4 py-12 sm:py-16">
@@ -36,7 +46,10 @@ export default function HackathonRegisterPage() {
 
         <div className="mt-8">
           {HACKATHON.registrationOpen ? (
-            <RegistrationForm />
+            <RegistrationForm
+              initialEmail={initialEmail}
+              initialName={initialName}
+            />
           ) : (
             <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
               <h2 className="font-display text-lg font-semibold text-foreground">

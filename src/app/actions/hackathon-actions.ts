@@ -1,5 +1,6 @@
 "use server";
 
+import { auth } from "@/auth";
 import { HACKATHON } from "@/components/hackathon/hackathon-config";
 import {
   getTeamByCode,
@@ -57,6 +58,12 @@ export async function lookupHackathonTeamAction(code: string) {
 export async function submitHackathonRegistrationAction(
   input: HackathonRegistrationInput,
 ) {
+  const session = await auth();
+  if (!session?.user?.id || !session.user.email) {
+    return { ok: false as const, message: "Not authenticated" };
+  }
+  const email = session.user.email.trim().toLowerCase();
+
   if (!HACKATHON.registrationOpen) {
     return { ok: false as const, message: "Registration is closed." };
   }
@@ -68,7 +75,7 @@ export async function submitHackathonRegistrationAction(
       message: parsed.error.issues[0]?.message ?? "Invalid input",
     };
   }
-  const d = parsed.data;
+  const d = { ...parsed.data, email };
 
   if (await isEmailRegistered(d.email)) {
     return {
