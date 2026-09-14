@@ -2,7 +2,7 @@
 
 **Author:** Manuvrtti (self)
 **Date:** 2026-09-15
-**Environment audited:** `upstream/master @ b4985aaa` (production-tracking) + two open feature branches
+**Environment audited:** `upstream/master @ eead773c` (production-tracking, includes T-251 via PR #384 and T-253/T-254 via PR #388)
 **Scope:** every Manuvrtti-owned journey listed on the Demo 2 readiness row of `ABTalks_Execution_Plan.xlsx`
 
 > "Verify jobs, applicant convergence, job alerts, profile views and recruiter
@@ -19,12 +19,14 @@
 | J2 · Candidate jobs — browse / filter / apply / track | Manuvrtti | ✅ **PASS on master** | — |
 | J3 · Applicant convergence into recruiter pipeline (T-247) | Manuvrtti | 🔒 **BLOCKED — do not demo** | Shashank · T-240 pipeline stages (schema-only) |
 | J4 · Job alerts (T-250) — rule-based match, 24h dedup, admin + recruiter | Manuvrtti | ✅ **PASS on master** | — |
-| J5 · Profile-view notification (T-251) | Manuvrtti | ⚠️ **PASS on branch, not merged** | Awaiting PR merge |
+| J5 · Profile-view notification (T-251) | Manuvrtti | ✅ **PASS on master** (PR #384 merged as `8457bc21`) | — |
 | J6 · Recruiter notification events (T-249) — 5 events | Manuvrtti | 🔒 **PARTIAL — do not demo** | 2 of 5 events blocked via T-247; the other 3 not wired |
-| J7 · Analytics event instrumentation (T-253) | Manuvrtti | ⚠️ **PASS on branch, not merged** | Awaiting PR merge |
-| J8 · UTM attribution + DebugView (T-254) | Manuvrtti | ⚠️ **PASS on branch, not merged** | Awaiting PR merge |
+| J7 · Analytics event instrumentation (T-253) | Manuvrtti | ✅ **PASS on master** (PR #388 merged as `eead773c`) | — |
+| J8 · UTM attribution + DebugView (T-254) | Manuvrtti | ✅ **PASS on master** (PR #388 merged as `eead773c`) | — |
 
-**Demo-ability today:** J1, J2, J4 can be demonstrated live on `abtalks.in` right now. J5 / J7 / J8 need PR merge + Vercel deploy first (both PRs open and stacked, tests green). J3 and J6 must be pulled from the demo — they are external blockers, not Manuvrtti failures.
+**Demo-ability today:** J1, J2, J4, J5, J7, J8 can be demonstrated live on `abtalks.in` right now. J3 and J6 must be pulled from the demo — they are external blockers, not Manuvrtti failures.
+
+**Six of eight journeys shippable. Two external blockers logged in §3.**
 
 ---
 
@@ -73,18 +75,16 @@ Key rules that must hold on prod today:
 - **Live verified on prod during the T-250 rollout day** — user reported bell notification and email delivered end-to-end after the fix landed. See earlier session log.
 - **Manual test to demo:** two candidate alerts, publish matching admin job → one bell + one email. Publish non-match → nothing. Toggle alert off → publish match → nothing.
 
-### J5 — Profile-view notification (T-251) — ⚠️ ON BRANCH
+### J5 — Profile-view notification (T-251) — ✅ ON MASTER
 
-- **Branch:** `origin/feature/T-251-profile-view-notification` @ `944b4415`.
-- **PR:** not yet opened. Link: <https://github.com/manuVrtti/ABtalksapp/pull/new/feature/T-251-profile-view-notification>.
+- **Merged as:** PR #384 · `8457bc21 Merge pull request #384 from manuVrtti/feature/T-251-profile-view-notification`.
 - **Automated coverage:** 9 ✓ / 0 ✗ in `service.test.ts` covering TC-C-018.1..7 + name resolution edge cases.
-- **Design correctness (verified during T-251 session):**
+- **Design correctness:**
   - Two producer hooks: `markMatchViewedAction` (scout desk) + `getMyJobApplicantCardAction` (jobs desk).
   - Admin surface excluded by construction — `talent-project-inspector.tsx` is a Server Component with no writer imports.
   - Self-view guard, 24h rolling window, rotating dedupeKey.
   - No schema change.
-- **Blocker to demo:** must merge PR + wait for Vercel deploy. Both are minutes, not days.
-- **Severity if not shipped by demo:** MEDIUM — the notification path works but the bell shows nothing for profile views. J5 becomes untestable.
+- **Manual test to demo:** recruiter opens a candidate from scout desk → candidate's bell fires once. Refresh + re-open → nothing. Different recruiter opens same profile → one more bell entry. Admin opens same profile via `/admin/hire/...` → nothing.
 
 ### J6 — Recruiter notification events (T-249) — 🔒 PARTIAL, do not demo
 
@@ -100,25 +100,25 @@ Spec calls for exactly five events:
 - **Recommendation:** pull J6 from Demo 2. Reopen as a scoped ticket "T-249a: application.received + system events only" for Demo 3 unblock.
 - **Bug row to raise:** *"T-249 depends on T-240 (Shashank) and T-232 (Zainab). Not shippable as a whole this cycle. Severity: medium."*
 
-### J7 — Analytics event instrumentation (T-253) — ⚠️ ON BRANCH
+### J7 — Analytics event instrumentation (T-253) — ✅ ON MASTER
 
-- **Branch:** `origin/feature/T-253-T-254-analytics` @ `7d7db361` (stacked on T-251).
-- **PR:** not yet opened.
+- **Merged as:** PR #388 · `eead773c Merge pull request #388 from manuVrtti/feature/T-253-T-254-analytics`.
 - **9 of 9 spec-listed events wired.** Seven were already live in master (`recruiter_reg_submitted`, `recruiter_candidate_viewed`, `recruiter_contact_unlocked`, `site_profile_updated`, `site_skill_added`, `site_job_applied`, `site_test_completed`); the two new ones (`site_job_alert_sent`, `site_profile_view_notified`) fire from a client-side notification tracker.
 - **PII guard:** allowlist in `sanitizeParams` — non-enum values are dropped in-transit, verified by 19 assertions in `events.test.ts`.
 - **Removed-events regression:** verified absent — visibility toggles, recruiter Google login, Company Admin, team invitation.
 - **Automated coverage:** 19 (events) + 9 (instrumentation) + 4 (consent) + 12 (loader) = 44 assertions passing.
-- **Blocker to demo:** merge + deploy.
+- **Manual test to demo:** with GA4 DebugView open, walk each of the nine behaviours and confirm one event fires per action with only bounded-enum params.
 
-### J8 — UTM attribution + DebugView (T-254) — ⚠️ ON BRANCH
+### J8 — UTM attribution + DebugView (T-254) — ✅ ON MASTER
 
-- Same branch as T-253.
-- **Schema:** 6 new UTM columns on `User` + migration `20260914170000_t254_user_utm`. Nullable, safe against existing rows.
+- **Merged as:** part of PR #388.
+- **Schema:** 6 new UTM columns on `User` — applied to production Neon via `build:deploy` running `prisma migrate deploy` on Vercel.
 - **Client capture:** `UtmCapture` in root layout writes first-touch cookie, 90-day TTL, SameSite=Lax.
 - **Server persistence:** `attributeUtmToUser` writes only when all 5 UTM columns are `NULL` (first-touch guard, atomic).
 - **DebugView:** `useTrack` passes `debug_mode: true` when `NEXT_PUBLIC_GA_DEBUG=1`.
 - **Automated coverage:** 10 ✓ in `utm.test.ts`.
-- **Blocker to demo:** merge + deploy + set `NEXT_PUBLIC_GA_DEBUG=1` in Vercel env vars for DebugView.
+- **Pending config (not a blocker to the code):** set `NEXT_PUBLIC_GA_DEBUG=1` in Vercel env vars if DebugView surfacing is required during the demo. Without it the events still fire, but they land in the main GA4 property rather than DebugView.
+- **Manual test to demo:** visit `abtalks.in/?utm_source=demo&utm_campaign=demo2` in incognito, sign up, verify the six UTM columns on the new `User` row.
 
 ---
 
@@ -141,16 +141,16 @@ Two blockers do not stem from Manuvrtti work and must be recorded with owner + s
 
 ---
 
-## 4. Demo 2 rehearsal plan (before showtime)
+## 4. Demo 2 rehearsal plan (ready to run against `abtalks.in` right now)
 
-Recommended order once T-251 and T-253/T-254 PRs are merged and Vercel is green:
+All six shippable journeys are live on `upstream/master @ eead773c` after PR #384 and PR #388 merged. Recommended demo order:
 
 1. **Candidate + recruiter setup.** Two browsers, two accounts.
 2. **J1 walkthrough** — recruiter creates job as DRAFT, opens URL as candidate (404), publishes, closes, reopens.
 3. **J2 walkthrough** — candidate applies, retries (must be refused server-side), tracks the application; sign out + in on browser 2 to confirm persistence.
 4. **J4 walkthrough** — candidate saves an alert, admin/recruiter publishes a matching job, candidate receives one bell + one email; publish again to prove dedup; toggle alert off + publish → nothing.
 5. **J5 walkthrough** — recruiter opens candidate's profile from scout desk (or jobs applicant desk); candidate's bell shows one entry; refresh + re-open → nothing new; admin opens the same profile → nothing (system-read exclusion).
-6. **J7 verification** — with GA4 DebugView open, walk through §5 above, showing each event firing exactly once with clean params (no PII).
+6. **J7 verification** — with GA4 DebugView open (or the main property if `NEXT_PUBLIC_GA_DEBUG` isn't set on prod), walk through steps 2–5 above, showing each event firing exactly once with clean params (no PII).
 7. **J8 verification** — visit `abtalks.in/?utm_source=demo&utm_campaign=demo2` in incognito, complete signup, check `User` row for the persisted UTM columns.
 
 **Skip in demo:** J3, J6. Read the blocker rows above to the room instead.
